@@ -1,21 +1,22 @@
 {
-  "latest": "0.3.2",
+  "latest": "1.3.0",
   "min_compatible": "0.2.0",
   "release_date": "2026-06-16",
   "changelog": [
-    "v0.3.2 Bug修复版本",
-    "修复 Dashboard 蜂巢图/徽章数据不一致（徽章显示 totalAssets，蜂巢加载 size=500）",
-    "修复 init_db NULL比较崩溃（.is_(None) 替换 == None，组织全部资产组名冲突解决）",
-    "修复 版本更新页面响应解析错误（移除双层 .data 访问）",
-    "修复 Dashboard latest-metrics API size 参数上限 100→500"
+    "v1.3.0 生产就绪版本",
+    "Dashboard 字段名一致性修复 (total_assets 统一)",
+    "License 状态端点公开访问 (登录页可展示)",
+    "XSS防护: 资产名称等字段过滤HTML标签",
+    "IP地址格式校验 (IPv4/IPv6)",
+    "Docker Compose 默认禁用验证码"
   ],
   "download": {
-    "url": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download/v0.3.2/opsmate-0.3.2-update.tar.gz",
-    "sha256": "53bf58a463d4acfbc8a84fd55f65e58f14ab60a2a94acb9bf0a945af0c658485",
+    "url": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download/v1.3.0/opsmate-1.3.0-update.tar.gz",
+    "sha256": "9ac450f7a5700c9599f8ff845d78d5d613b68c5da9a11d5756149253190a1b3c",
     "size_mb": 0.02
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "Dashboard数据一致性修复 + init_db崩溃修复 + 更新页面修复",
+  "notes": "v1.3.0: Dashboard一致性+License公开+XSS防护+IP校验",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates"
 }
