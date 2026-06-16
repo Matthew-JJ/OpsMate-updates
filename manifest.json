@@ -11,9 +11,8 @@
   ],
   "download": {
     "url": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download/v0.3.1/opsmate-0.3.1-update.tar.gz",
-    "sha256": "cc82d7fc34845780a7e42928a6d277cfdbd36a1b965891436e614e81c7eac10",
-    "md5": "5c0650277246a254000a767e7c9870b7",
-    "size_mb": 0.0
+    "sha256": "66ba04ecb018622e367276a8b0175bf60927d218468305a09c3dbae1a024fd51",
+    "size_mb": 0.01
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
