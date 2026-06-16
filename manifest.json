@@ -1,0 +1,19 @@
+{
+  "latest": "0.1.0",
+  "min_compatible": "0.1.0",
+  "release_date": "2026-06-16",
+  "changelog": [
+    "初始发布：RBAC权限体系完善",
+    "新增流量分析(traffic:read)权限",
+    "修复viewer角色权限缺失问题",
+    "修复资产组权限降级逻辑"
+  ],
+  "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
+  "download": {
+    "url": "",
+    "md5": "",
+    "size_mb": 0
+  },
+  "notes": "首个正式版本",
+  "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates"
+}
