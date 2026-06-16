@@ -1,12 +1,20 @@
 {
-  "latest": "0.1.0",
+  "latest": "0.2.0",
   "min_compatible": "0.1.0",
   "release_date": "2026-06-16",
   "changelog": [
-    "初始发布：RBAC权限体系完善",
-    "新增流量分析(traffic:read)权限",
-    "修复viewer角色权限缺失问题",
-    "修复资产组权限降级逻辑"
+    "v0.2.0 安全加固版本",
+    "H1: JWT密钥为空时拒绝启动（RuntimeError）",
+    "H2: /health端点仅返回公开状态，详情需认证",
+    "H3: 备份删除接口增加路径遍历检查",
+    "H4: 安全模块异常不再静默吞掉（添加日志）",
+    "H5: Demo登录增加IP速率限制",
+    "H6: 登录失败记录日志（不再静默）",
+    "M1: settings.py使用Redis连接池替代直连",
+    "M2: 清理死代码文件",
+    "M3: 调度器锁释放失败增加日志",
+    "修复init_db多行数据查询异常",
+    "docker-compose.yml添加scripts目录挂载"
   ],
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "download": {
@@ -14,6 +22,6 @@
     "md5": "",
     "size_mb": 0
   },
-  "notes": "首个正式版本",
+  "notes": "安全加固版本，修复6个HIGH和3个MEDIUM级别问题",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates"
 }
