@@ -1,22 +1,21 @@
 {
-  "latest": "0.3.1",
+  "latest": "0.3.2",
   "min_compatible": "0.2.0",
   "release_date": "2026-06-16",
   "changelog": [
-    "v0.3.1 更新机制验证版本",
-    "修复 Redis Sentinel 递归溢出（降级路径不再调用 get_settings）",
-    "修复 WebSocket pubsub 订阅 aclose 拼写",
-    "APP_VERSION 统一由 config.py 代码默认值管理，.env/docker-compose 不再覆盖",
-    "scripts 目录挂载到 Docker 容器（热更新支持）"
+    "v0.3.2 Bug修复版本",
+    "修复 Dashboard 蜂巢图/徽章数据不一致（徽章显示 totalAssets，蜂巢加载 size=500）",
+    "修复 init_db NULL比较崩溃（.is_(None) 替换 == None，组织全部资产组名冲突解决）",
+    "修复 版本更新页面响应解析错误（移除双层 .data 访问）",
+    "修复 Dashboard latest-metrics API size 参数上限 100→500"
   ],
   "download": {
-    "url": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download/v0.3.1/opsmate-0.3.1-update.tar.gz",
-    "sha256": "cc82d7fc34845780a7e42928a6d277cfdbd36a1b965891436e614e81c7eac10",
-    "md5": "5c0650277246a254000a767e7c9870b7",
-    "size_mb": 0.0
+    "url": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download/v0.3.2/opsmate-0.3.2-update.tar.gz",
+    "sha256": "53bf58a463d4acfbc8a84fd55f65e58f14ab60a2a94acb9bf0a945af0c658485",
+    "size_mb": 0.02
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "更新机制验证版本 + Redis递归修复 + Docker热更新支持",
+  "notes": "Dashboard数据一致性修复 + init_db崩溃修复 + 更新页面修复",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates"
 }
