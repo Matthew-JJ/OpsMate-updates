@@ -1,20 +1,13 @@
 {
-  "latest": "0.2.0",
-  "min_compatible": "0.1.0",
+  "latest": "0.3.0",
+  "min_compatible": "0.2.0",
   "release_date": "2026-06-16",
   "changelog": [
-    "v0.2.0 安全加固版本",
-    "H1: JWT密钥为空时拒绝启动（RuntimeError）",
-    "H2: /health端点仅返回公开状态，详情需认证",
-    "H3: 备份删除接口增加路径遍历检查",
-    "H4: 安全模块异常不再静默吞掉（添加日志）",
-    "H5: Demo登录增加IP速率限制",
-    "H6: 登录失败记录日志（不再静默）",
-    "M1: settings.py使用Redis连接池替代直连",
-    "M2: 清理死代码文件",
-    "M3: 调度器锁释放失败增加日志",
-    "修复init_db多行数据查询异常",
-    "docker-compose.yml添加scripts目录挂载"
+    "v0.3.0 安全加固版本",
+    "H7: TDengine/NPM SQL注入修复（4个文件），增强_escape_sql+新增_safe_int",
+    "H8: Poller认证签名绕过修复，实现真实JWT验证和HMAC-SHA256签名验证",
+    "H9: Hub Legacy PSK明文认证默认禁用，需ALLOW_LEGACY_PSK=true显式启用",
+    "强制Fernet加密PSK存储，移除明文回退"
   ],
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "download": {
@@ -22,6 +15,6 @@
     "md5": "",
     "size_mb": 0
   },
-  "notes": "安全加固版本，修复6个HIGH和3个MEDIUM级别问题",
+  "notes": "深度安全加固：SQL注入防御、认证机制完善、Legacy PSK禁用",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates"
 }
