@@ -7,14 +7,19 @@
     "H7: TDengine/NPM SQL注入修复（4个文件），增强_escape_sql+新增_safe_int",
     "H8: Poller认证签名绕过修复，实现真实JWT验证和HMAC-SHA256签名验证",
     "H9: Hub Legacy PSK明文认证默认禁用，需ALLOW_LEGACY_PSK=true显式启用",
-    "强制Fernet加密PSK存储，移除明文回退"
+    "强制Fernet加密PSK存储，移除明文回退",
+    "新增一键升级机制（下载→校验→解压→覆盖→自动重启）",
+    "更新包构建工具 build_update_package.py",
+    "多镜像回退支持（GitHub+网站镜像）"
   ],
-  "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "download": {
-    "url": "",
-    "md5": "",
-    "size_mb": 0
+    "url": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download/v0.3.0/opsmate-0.3.0-update.tar.gz",
+    "sha256": "2d80e51989e58ff98afb5974b258e9f07a8425988c0179986a33ba5e162ddc93",
+    "md5": "790d7842da2ea7c0979de5bb199bce25",
+    "size_mb": 0.04
   },
-  "notes": "深度安全加固：SQL注入防御、认证机制完善、Legacy PSK禁用",
+  "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
+  "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
+  "notes": "深度安全加固：SQL注入防御、认证机制完善、Legacy PSK禁用，含一键升级机制",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates"
 }
