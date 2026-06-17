@@ -1,27 +1,60 @@
 {
-  "latest": "1.3.2",
-  "latest_version": "1.3.2",
+  "latest": "1.3.3",
+  "latest_version": "1.3.3",
   "min_compatible": "0.2.0",
   "minimum_version": "0.3.0",
   "release_date": "2026-06-17",
   "changelog": [
-    "v1.3.2 Bug修复版本",
-    "Critical: 空HTTP_PROXY/HTTPS_PROXY导致httpx所有HTTP请求失败",
-    "Fix: Celery健康检查不可靠，改用ping+pgrep双重检查",
-    "Fix: Watchtower升级流程改进，修正URL优先级",
-    "Fix: 添加_CleanProxyEnv工具，所有httpx调用前清理空代理变量",
-    "Fix: 移除docker-compose.yml中空的代理环境变量"
+    "v1.3.3 Fresh Deploy修复版本",
+    "Critical: Dockerfile ENV APP_VERSION覆盖config.py版本号",
+    "Fix: .env.example重写，区分必填/可选/禁止，移除APP_VERSION",
+    "Fix: docker-compose.quick.yml Celery健康检查升级为两级(ping+pgrep)",
+    "Fix: docker-compose.quick.yml添加TDENGINE_PASSWORD，移除空代理变量",
+    "Fix: docker-compose.yml移除ENCRYPTION_KEY空值(避免覆盖backend/.env)",
+    "Fix: update_service.py动态检测安装路径，不再硬编码/opt/opsmate",
+    "Fix: update_service.py detect_install_root()返回None时安全处理",
+    "Fix: update_service.py _CleanProxyEnv清理空代理变量",
+    "Docs: RELEASE-GUIDELINES.md新增v1.3.3踩坑经验"
   ],
   "download": {
-    "url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.2/opsmate-1.3.2-update.tar.gz",
-    "sha256": "7010c1d1d37309b5afbc89c27985b426a796b4854236198a346f312feb55a7b0",
+    "url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.3/opsmate-1.3.3-update.tar.gz",
+    "sha256": "06c37ada7327b325d1937cda74ca01779de2581671b1736e3a95ed787b48dca0",
     "size_mb": 1.05
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "v1.3.1: 修复TDengine健康检查404、设置日志刷屏、Celery健康检查问题",
+  "notes": "v1.3.3: 修复全新部署场景下的多个致命问题，确保开箱即用",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
   "versions": [
+    {
+      "version": "1.3.3",
+      "released_at": "2026-06-17T14:55:00Z",
+      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.3/opsmate-1.3.3-update.tar.gz",
+      "sha256": "06c37ada7327b325d1937cda74ca01779de2581671b1736e3a95ed787b48dca0",
+      "size_bytes": 1101995,
+      "changelog": [
+        "Critical: Dockerfile ENV APP_VERSION覆盖config.py版本号",
+        "Fix: .env.example重写，区分必填/可选/禁止，移除APP_VERSION",
+        "Fix: docker-compose.quick.yml Celery健康检查升级为两级(ping+pgrep)",
+        "Fix: docker-compose.quick.yml添加TDENGINE_PASSWORD，移除空代理变量",
+        "Fix: docker-compose.yml移除ENCRYPTION_KEY空值",
+        "Fix: update_service.py动态检测安装路径",
+        "Fix: update_service.py detect_install_root()安全处理None",
+        "Fix: update_service.py _CleanProxyEnv清理空代理变量"
+      ]
+    },
+    {
+      "version": "1.3.2",
+      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.2/opsmate-1.3.2-update.tar.gz",
+      "sha256": "7010c1d1d37309b5afbc89c27985b426a796b4854236198a346f312feb55a7b0",
+      "size_bytes": 1101004,
+      "released_at": "2026-06-17T11:08:00Z",
+      "changelog": [
+        "Fix: 空HTTP_PROXY/HTTPS_PROXY导致httpx所有HTTP请求失败",
+        "Fix: Celery健康检查不可靠，改用ping+pgrep双重检查",
+        "Fix: Watchtower升级流程改进，修正URL优先级"
+      ]
+    },
     {
       "version": "1.3.1",
       "released_at": "2026-06-17T08:30:00Z",
@@ -29,12 +62,11 @@
       "sha256": "a8d92c4b69bfbece7eae26ca61d845dac70a982fc96d771df2c480e1d74a130c",
       "size_bytes": 1101004,
       "changelog": [
-        "Bug: TDengine默认密码为空导致健康检查404",
-        "Bug: get_settings()每次cache_clear重复打印warning",
-        "Bug: Celery healthcheck不可靠(仅检查/proc/1/cmdline)",
+        "Fix: TDengine默认密码为空导致健康检查404",
+        "Fix: get_settings()重复打印warning",
+        "Fix: Celery healthcheck不可靠",
         "Fix: tdengine_password默认值改为taosdata",
-        "Fix: docker-compose.yml添加TDENGINE_PASSWORD环境变量",
-        "Fix: Celery健康检查改为inspect ping + ps fallback"
+        "Fix: docker-compose.yml添加TDENGINE_PASSWORD环境变量"
       ]
     },
     {
@@ -45,32 +77,8 @@
       "size_bytes": 1143329,
       "changelog": [
         "v1.3.0 重大功能更新版本",
-        "新增 CI/CD 流水线：自动构建并推送 Docker 镜像到 GHCR",
-        "新增 Docker 镜像部署架构：GHCR 镜像 + Watchtower 自动升级",
-        "新增 Watchtower HTTP API 触发升级机制",
-        "修复 Redis Sentinel 递归溢出问题",
-        "修复 Dashboard total_assets 字段不一致",
-        "修复 License /status 接口需要认证的问题",
-        "修复 XSS 漏洞：资产名称存储 HTML 标签",
-        "修复 IP 地址无格式验证",
-        "修复 parse_version 未正确 split 的问题",
-        "修复 system.py 缺少 tempfile/shutil import",
-        "移除镜像更新源，统一使用 GitHub 作为唯一更新源",
-        "新增生产发布规范文档 RELEASE-GUIDELINES.md"
-      ]
-    },
-    {
-      "version": "1.3.2",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.2/opsmate-1.3.2-update.tar.gz",
-      "sha256": "7010c1d1d37309b5afbc89c27985b426a796b4854236198a346f312feb55a7b0",
-      "size_mb": 1.05,
-      "release_date": "2026-06-17",
-      "changelog": [
-        "v1.3.2 Bug修复版本",
-        "Fix: Celery健康检查不可靠，改用ping+pgrep双重检查",
-        "Fix: Watchtower升级流程改进，修正URL优先级",
-        "Fix: 升级流程消息优化，明确告知短暂不可用",
-        "Chore: Celery健康检查参数优化（更长超时和间隔）"
+        "新增 CI/CD + Docker镜像 + Watchtower自动升级",
+        "修复 Redis Sentinel递归溢出、Dashboard字段不一致、XSS漏洞等"
       ]
     }
   ]
