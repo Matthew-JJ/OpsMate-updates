@@ -1,20 +1,19 @@
 {
-  "latest": "1.3.1",
-  "latest_version": "1.3.1",
+  "latest": "1.3.2",
+  "latest_version": "1.3.2",
   "min_compatible": "0.2.0",
   "minimum_version": "0.3.0",
   "release_date": "2026-06-17",
   "changelog": [
-    "v1.3.1 Bug修复版本",
-    "Bug: TDengine默认密码为空导致健康检查404错误",
-    "Bug: get_settings()警告日志大量刷屏",
-    "Bug: Celery容器健康检查不可靠",
-    "Fix: docker-compose.yml添加TDENGINE_PASSWORD环境变量",
-    "Fix: Celery健康检查改为celery inspect ping + ps fallback"
+    "v1.3.2 Bug修复版本",
+    "Fix: Celery健康检查不可靠，改用ping+pgrep双重检查",
+    "Fix: Watchtower升级流程改进，修正URL优先级",
+    "Fix: 升级流程消息优化，明确告知短暂不可用",
+    "Chore: Celery健康检查参数优化（更长超时和间隔）"
   ],
   "download": {
-    "url": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download/v1.3.1/opsmate-1.3.1-update.tar.gz",
-    "sha256": "a8d92c4b69bfbece7eae26ca61d845dac70a982fc96d771df2c480e1d74a130c",
+    "url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.2/opsmate-1.3.2-update.tar.gz",
+    "sha256": "07c5e0f21ed00998a82ff1ec4edb8dd8573a9d1589eff8a62447cb70b5666227",
     "size_mb": 1.05
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
@@ -57,6 +56,20 @@
         "修复 system.py 缺少 tempfile/shutil import",
         "移除镜像更新源，统一使用 GitHub 作为唯一更新源",
         "新增生产发布规范文档 RELEASE-GUIDELINES.md"
+      ]
+    },
+    {
+      "version": "1.3.2",
+      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.2/opsmate-1.3.2-update.tar.gz",
+      "sha256": "07c5e0f21ed00998a82ff1ec4edb8dd8573a9d1589eff8a62447cb70b5666227",
+      "size_mb": 1.05,
+      "release_date": "2026-06-17",
+      "changelog": [
+        "v1.3.2 Bug修复版本",
+        "Fix: Celery健康检查不可靠，改用ping+pgrep双重检查",
+        "Fix: Watchtower升级流程改进，修正URL优先级",
+        "Fix: 升级流程消息优化，明确告知短暂不可用",
+        "Chore: Celery健康检查参数优化（更长超时和间隔）"
       ]
     }
   ]
