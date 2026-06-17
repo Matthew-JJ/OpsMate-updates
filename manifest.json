@@ -22,5 +22,31 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "notes": "v1.3.0: Dashboard一致性+License公开+XSS防护+IP校验+版本比较修复+Docker升级架构重构",
-  "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates"
+  "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
+  "latest_version": "1.3.0",
+  "minimum_version": "0.3.0",
+  "versions": [
+    {
+      "version": "1.3.0",
+      "released_at": "2026-06-17T06:00:00Z",
+      "download_url": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download/v1.3.0/opsmate-1.3.0-update.tar.gz",
+      "sha256": "dc9adf9d7f47da7ab91289b56120cb80b525b28d42a051090603991a6288c447",
+      "size_bytes": 1141558,
+      "changelog": [
+        "Bug: SNMP BER解析器Integer/Gauge值放大256倍",
+        "Bug: Dashboard字段名total_assets不一致",
+        "Bug: License /status需认证 -> 公开访问",
+        "Bug: XSS过滤 - 资产名HTML标签注入",
+        "Bug: IP地址无格式验证",
+        "Bug: parse_version()未split导致比较失败",
+        "Bug: 更新服务缺import tempfile/shutil",
+        "New: Docker+Systemd双模式自动升级",
+        "New: Watchtower镜像自动升级",
+        "New: GHCR CI/CD流水线",
+        "Sec: JWT空密钥防护",
+        "Sec: 登录限速+失败日志",
+        "Sec: SQL注入加固"
+      ]
+    }
+  ]
 }
