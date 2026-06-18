@@ -1,18 +1,16 @@
 {
-  "latest": "1.5.2",
-  "latest_version": "1.5.2",
+  "latest": "1.5.3",
+  "latest_version": "1.5.3",
   "min_compatible": "0.2.0",
   "minimum_version": "0.3.0",
   "release_date": "2026-06-18",
   "changelog": [
-    "v1.5.2 审计HIGH优先级修复（8项）",
-    "Fix: OLLAMA_BASE_URL环境变量名不匹配导致LLM配置永远不生效",
-    "Fix: MonitorPolicy前端enabled vs 后端is_enabled显示不一致",
-    "Fix: Poller注册返回硬编码JWT占位符（安全问题）",
-    "Fix: DISABLE_CAPTCHA/ENCRYPTION_KEY等未纳入config.py统一配置",
-    "Fix: Celery link_tasks命名不一致(ops.link.* → app.tasks.*)",
-    "Fix: CredentialInfo Schema缺少updated_at字段",
-    "Fix: Asset Schema缺少change_detection_config和monitor_policy_id字段",
+    "v1.5.3 审计MEDIUM优先级修复",
+    "Refactor: 提取通用paginate()分页工具函数，去重25个API文件",
+    "Fix: pollers.py分页参数不一致(page_size→size, has_more→标准格式)",
+    "Fix: batch.ts硬编码/api/v1/assets/template URL → /assets/template",
+    "Cleanup: KnowledgeArticle zombie model标注",
+    "Cleanup: 移除空plugins/protocols/目录"
     "Fix: 前端ProtocolType缺少vcenter类型"
   ],
   "download": {
@@ -38,9 +36,24 @@
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "v1.5.2: 审计HIGH优先级修复8项",
+  "notes": "v1.5.3: 审计MEDIUM优先级修复，分页工具函数提取",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
   "versions": [
+    {
+      "version": "1.5.3",
+      "released_at": "2026-06-18T17:00:00Z",
+      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.3/opsmate-1.5.3-update.tar.gz",
+      "sha256": "5240e067835e3bba8fd5be4b51f02212e93c7892bb2083bbd3b827b38a97541b",
+      "size_bytes": 1101466,
+      "compatible_modes": ["docker", "systemd"],
+      "changelog": [
+        "Refactor: 提取通用paginate()分页工具函数",
+        "Fix: pollers.py分页参数一致化(page_size→size)",
+        "Fix: batch.ts硬编码URL修复",
+        "Cleanup: KnowledgeArticle zombie model标注",
+        "Cleanup: 移除空plugins/protocols/目录"
+      ]
+    },
     {
       "version": "1.5.2",
       "released_at": "2026-06-18T16:00:00Z",
