@@ -1,14 +1,15 @@
 {
-  "latest": "1.5.7",
-  "latest_version": "1.5.7",
+  "latest": "1.5.8",
+  "latest_version": "1.5.8",
   "min_compatible": "0.2.0",
   "minimum_version": "0.3.0",
   "release_date": "2026-06-18",
   "changelog": [
-    "v1.5.7 Excel批量导入支持全部8种协议",
-    "New: Redfish/Modbus/Prometheus/vCenter 4种协议模板",
-    "New: 资产类型扩展到11种（新增物联网/服务/数据库/中间件/容器/操作系统）",
-    "New: Excel模板8个协议Tab+填写说明页，必填字段标记清晰"
+    "v1.5.8 凭证管理+导入UI+资产概览补全",
+    "Fix: 凭证管理页面新增vCenter协议支持",
+    "Fix: 批量导入/下载模板按钮更显眼",
+    "Fix: security/service资产类型概览卡片配置",
+    "Fix: 智能接入vCenter指标发现+类型推断"
   ],
   "download": {
     "url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.4.0/opsmate-1.4.0-update.tar.gz",
@@ -33,9 +34,25 @@
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "v1.5.7: Excel批量导入支持8种协议+11种资产类型",
+  "notes": "v1.5.8: 凭证管理+vCenter+导入UI+概览卡片补全",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
   "versions": [
+    {
+      "version": "1.5.8",
+      "released_at": "2026-06-18T22:00:00Z",
+      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.8/opsmate-1.5.8-update.tar.gz",
+      "sha256": "9f515c24c3f7fd9b59c41e8914ccdd199c1375f302c01f98b9fa1c0c1ff71560",
+      "size_bytes": 1114077,
+      "compatible_modes": ["docker", "systemd"],
+      "changelog": [
+        "Fix: 凭证管理页面新增vCenter协议(host/port/username/password)",
+        "Fix: 批量导入按钮改为绿色高亮，下载模板改为独立按钮",
+        "Fix: 新增security/service资产类型概览卡片配置",
+        "Fix: MetricsDiscoveryStep支持vCenter指标发现",
+        "Fix: vCenter协议正确推断为virtualization类型",
+        "Fix: modbus/prometheus导入不再强制要求IP地址"
+      ]
+    },
     {
       "version": "1.5.7",
       "released_at": "2026-06-18T21:00:00Z",
