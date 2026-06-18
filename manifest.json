@@ -1,17 +1,17 @@
 {
-  "latest": "1.5.3",
-  "latest_version": "1.5.3",
+  "latest": "1.5.4",
+  "latest_version": "1.5.4",
   "min_compatible": "0.2.0",
   "minimum_version": "0.3.0",
   "release_date": "2026-06-18",
   "changelog": [
-    "v1.5.3 审计MEDIUM优先级修复",
-    "Refactor: 提取通用paginate()分页工具函数，去重25个API文件",
-    "Fix: pollers.py分页参数不一致(page_size→size, has_more→标准格式)",
-    "Fix: batch.ts硬编码/api/v1/assets/template URL → /assets/template",
-    "Cleanup: KnowledgeArticle zombie model标注",
-    "Cleanup: 移除空plugins/protocols/目录"
-    "Fix: 前端ProtocolType缺少vcenter类型"
+    "v1.5.4 关键Bug修复",
+    "Fix: Docker healthcheck从不存在的/api/v1/auth/protocols改为/api/v1/system/health",
+    "Fix: license_middleware白名单路径auth/protocols修正为discovery/protocols",
+    "Fix: 更新检查URL自动回退(GitHub→ghfast.top镜像→自定义URL)，国内用户零配置可用",
+    "Fix: SSH探测表单添加用户名字段",
+    "Fix: 前端ProbeProtocol类型添加vcenter",
+    "New: vCenter探测表单(用户名/密码/端口/SSL验证)"
   ],
   "download": {
     "url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.4.0/opsmate-1.4.0-update.tar.gz",
@@ -36,9 +36,25 @@
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "v1.5.3: 审计MEDIUM优先级修复，分页工具函数提取",
+  "notes": "v1.5.4: Docker healthcheck修复，更新URL自动回退，SSH/vCenter探测修复",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
   "versions": [
+    {
+      "version": "1.5.4",
+      "released_at": "2026-06-18T18:00:00Z",
+      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.4/opsmate-1.5.4-update.tar.gz",
+      "sha256": "4d91b2bb0808c2613fe1828822a4c090bc93040414b238d36f78e2bd0fccec06",
+      "size_bytes": 1105731,
+      "compatible_modes": ["docker", "systemd"],
+      "changelog": [
+        "Fix: Docker healthcheck URL从不存在的/api/v1/auth/protocols改为/api/v1/system/health",
+        "Fix: license_middleware白名单路径修正",
+        "Fix: 更新检查URL自动回退(GitHub→ghfast.top→自定义)，国内零配置",
+        "Fix: SSH探测表单添加用户名字段",
+        "Fix: ProbeProtocol类型添加vcenter",
+        "New: vCenter探测表单"
+      ]
+    },
     {
       "version": "1.5.3",
       "released_at": "2026-06-18T17:00:00Z",
