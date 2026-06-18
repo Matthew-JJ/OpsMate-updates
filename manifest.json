@@ -1,14 +1,15 @@
 {
-  "latest": "1.5.5",
-  "latest_version": "1.5.5",
+  "latest": "1.5.6",
+  "latest_version": "1.5.6",
   "min_compatible": "0.2.0",
   "minimum_version": "0.3.0",
   "release_date": "2026-06-18",
   "changelog": [
-    "v1.5.5 关键修复：升级后前端页面无法打开",
-    "Fix: nginx.conf index.html添加no-cache头，防止浏览器缓存旧入口文件",
-    "Fix: router.onError处理动态import失败（chunk hash不匹配时自动刷新页面）",
-    "Fix: 升级后点击资产详情404问题彻底解决"
+    "v1.5.6 彻底解决升级后前端404问题",
+    "New: 前端版本监控(useVersionMonitor)，检测后端升级后主动提示刷新",
+    "Fix: nginx index.html no-cache头",
+    "Fix: router.onError chunk加载失败自动刷新（兜底）",
+    "三层防护：主动检测→路由兜底→缓存控制"
   ],
   "download": {
     "url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.4.0/opsmate-1.4.0-update.tar.gz",
@@ -33,9 +34,23 @@
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "v1.5.5: 修复升级后前端chunk 404问题，index.html no-cache + router.onError自动刷新",
+  "notes": "v1.5.6: 三层防护彻底解决升级后前端404，版本监控主动提示刷新",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
   "versions": [
+    {
+      "version": "1.5.6",
+      "released_at": "2026-06-18T20:00:00Z",
+      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.6/opsmate-1.5.6-update.tar.gz",
+      "sha256": "bfcd47e9551316c4e44b4b4337b9036d7528be62bcf390d20c62b06ee000f274",
+      "size_bytes": 1093555,
+      "compatible_modes": ["docker", "systemd"],
+      "changelog": [
+        "New: 前端版本监控，检测后端升级后主动弹窗提示刷新",
+        "Fix: nginx index.html no-cache头防止缓存旧入口",
+        "Fix: router.onError chunk加载失败自动刷新(兜底)",
+        "三层防护：主动检测→路由兜底→缓存控制"
+      ]
+    },
     {
       "version": "1.5.5",
       "released_at": "2026-06-18T19:00:00Z",
