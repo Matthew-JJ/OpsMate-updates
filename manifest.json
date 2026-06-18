@@ -5,11 +5,13 @@
   "minimum_version": "0.3.0",
   "release_date": "2026-06-18",
   "changelog": [
-    "v1.5.8 凭证管理+导入UI+资产概览补全",
+    "v1.5.8 凭证管理+导入增强+列宽修复",
     "Fix: 凭证管理页面新增vCenter协议支持",
     "Fix: 批量导入/下载模板按钮更显眼",
     "Fix: security/service资产类型概览卡片配置",
-    "Fix: 智能接入vCenter指标发现+类型推断"
+    "Fix: 智能接入vCenter指标发现+类型推断",
+    "New: Excel模板新增所属组织列（容错跳过）",
+    "New: 导入上限200→1000条"
   ],
   "download": {
     "url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.4.0/opsmate-1.4.0-update.tar.gz",
@@ -34,15 +36,15 @@
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "v1.5.8: 凭证管理+vCenter+导入UI+概览卡片补全",
+  "notes": "v1.5.8: 凭证管理+vCenter+导入增强(组织列+1000条)+列宽修复",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
   "versions": [
     {
       "version": "1.5.8",
       "released_at": "2026-06-18T22:00:00Z",
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.8/opsmate-1.5.8-update.tar.gz",
-      "sha256": "9f515c24c3f7fd9b59c41e8914ccdd199c1375f302c01f98b9fa1c0c1ff71560",
-      "size_bytes": 1114077,
+      "sha256": "ab3e9979e21c1bcc69923924ef644efe43eebb7c8d4c789cdd179cb11bf51595",
+      "size_bytes": 1122304,
       "compatible_modes": ["docker", "systemd"],
       "changelog": [
         "Fix: 凭证管理页面新增vCenter协议(host/port/username/password)",
@@ -50,7 +52,10 @@
         "Fix: 新增security/service资产类型概览卡片配置",
         "Fix: MetricsDiscoveryStep支持vCenter指标发现",
         "Fix: vCenter协议正确推断为virtualization类型",
-        "Fix: modbus/prometheus导入不再强制要求IP地址"
+        "Fix: modbus/prometheus导入不再强制要求IP地址",
+        "New: Excel模板新增所属组织列（按名称匹配，容错跳过）",
+        "New: 导入上限从200提升到1000条",
+        "Fix: 资产列表列宽压缩，消除横向滚动条"
       ]
     },
     {
