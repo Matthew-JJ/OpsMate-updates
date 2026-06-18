@@ -1,27 +1,57 @@
 {
-  "latest": "1.3.9",
-  "latest_version": "1.3.9",
+  "latest": "1.4.0",
+  "latest_version": "1.4.0",
   "min_compatible": "0.2.0",
   "minimum_version": "0.3.0",
   "release_date": "2026-06-18",
   "changelog": [
-    "v1.3.9 nginx镜像安装openssl，修复自签名证书生成静默失败",
-    "Fix: sentinel anchor移到services外，修复被识别为服务的问题",
-    "Fix: YAML >折叠标量截断修复，切换到列表形式command",
-    "Fix: docker-compose $$转义修复，shell变量不再被Docker Compose替换为空",
-    "New: nginx自动SSL证书生成，postgres/replica/sentinel内嵌脚本，deploy.sh部署脚本",
-    "New: GHCR镜像源可配置，支持国内加速镜像"
+    "v1.4.0 ACR双源镜像推送，国内用户1-3秒拉取镜像",
+    "New: IMAGE_REGISTRY+IMAGE_NAMESPACE统一镜像源变量（替代GHCR_REGISTRY）",
+    "New: deploy.sh自动检测ACR→GHCR镜像站→ghcr.io三级镜像源",
+    "New: CI/CD双推GHCR+ACR，tag推送自动构建两套镜像",
+    "New: .env.example三源配置说明（ACR/GHCR镜像站/ghcr.io）"
   ],
   "download": {
-    "url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.9/opsmate-update-v1.3.9.tar.gz",
-    "sha256": "e51188bd15f6776865c19170d2cf257064857f82f6567e7539ea4fe48c4b3cbf",
-    "size_mb": 0.01
+    "url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.4.0/opsmate-1.4.0-update.tar.gz",
+    "sha256": "0968acce933a2014bdbd72967e9c1b7a8d4c4a7b8498086546ae3cfc70540758",
+    "size_mb": 1.05
+  },
+  "images": {
+    "acr": {
+      "registry": "crpi-fl58ilr09nofz274.cn-hangzhou.personal.cr.aliyuncs.com",
+      "namespace": "opsmate",
+      "backend": "crpi-fl58ilr09nofz274.cn-hangzhou.personal.cr.aliyuncs.com/opsmate/opsmate-backend",
+      "nginx": "crpi-fl58ilr09nofz274.cn-hangzhou.personal.cr.aliyuncs.com/opsmate/opsmate-nginx",
+      "note": "国内用户最优，1-3秒拉取"
+    },
+    "ghcr": {
+      "registry": "ghcr.io",
+      "namespace": "matthew-jj",
+      "backend": "ghcr.io/matthew-jj/opsmate-backend",
+      "nginx": "ghcr.io/matthew-jj/opsmate-nginx",
+      "note": "海外用户默认源"
+    }
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "v1.3.9: nginx镜像安装openssl，修复自签名证书生成静默失败",
+  "notes": "v1.4.0: ACR双源镜像推送，国内秒级拉取",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
   "versions": [
+    {
+      "version": "1.4.0",
+      "released_at": "2026-06-18T04:20:00Z",
+      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.4.0/opsmate-1.4.0-update.tar.gz",
+      "sha256": "0968acce933a2014bdbd72967e9c1b7a8d4c4a7b8498086546ae3cfc70540758",
+      "size_bytes": 1099726,
+      "compatible_modes": ["docker", "systemd"],
+      "changelog": [
+        "New: ACR双源镜像推送，国内用户1-3秒拉取",
+        "New: IMAGE_REGISTRY+IMAGE_NAMESPACE统一变量（替代GHCR_REGISTRY）",
+        "New: deploy.sh自动检测ACR→GHCR镜像站→ghcr.io",
+        "New: CI/CD双推GHCR+ACR",
+        "New: .env.example三源配置说明"
+      ]
+    },
     {
       "version": "1.3.9",
       "released_at": "2026-06-18T12:00:00Z",
