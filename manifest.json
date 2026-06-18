@@ -1,15 +1,14 @@
 {
-  "latest": "1.5.6",
-  "latest_version": "1.5.6",
+  "latest": "1.5.7",
+  "latest_version": "1.5.7",
   "min_compatible": "0.2.0",
   "minimum_version": "0.3.0",
   "release_date": "2026-06-18",
   "changelog": [
-    "v1.5.6 彻底解决升级后前端404问题",
-    "New: 前端版本监控(useVersionMonitor)，检测后端升级后主动提示刷新",
-    "Fix: nginx index.html no-cache头",
-    "Fix: router.onError chunk加载失败自动刷新（兜底）",
-    "三层防护：主动检测→路由兜底→缓存控制"
+    "v1.5.7 Excel批量导入支持全部8种协议",
+    "New: Redfish/Modbus/Prometheus/vCenter 4种协议模板",
+    "New: 资产类型扩展到11种（新增物联网/服务/数据库/中间件/容器/操作系统）",
+    "New: Excel模板8个协议Tab+填写说明页，必填字段标记清晰"
   ],
   "download": {
     "url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.4.0/opsmate-1.4.0-update.tar.gz",
@@ -34,9 +33,23 @@
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "v1.5.6: 三层防护彻底解决升级后前端404，版本监控主动提示刷新",
+  "notes": "v1.5.7: Excel批量导入支持8种协议+11种资产类型",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
   "versions": [
+    {
+      "version": "1.5.7",
+      "released_at": "2026-06-18T21:00:00Z",
+      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.7/opsmate-1.5.7-update.tar.gz",
+      "sha256": "6675c467ebba8d1a973c7d6bf3226303e7358d1a8a3864424a603efa9e791ee1",
+      "size_bytes": 1118952,
+      "compatible_modes": ["docker", "systemd"],
+      "changelog": [
+        "New: Excel模板新增Redfish/Modbus/Prometheus/vCenter 4种协议Tab",
+        "New: 资产类型从5种扩展到11种",
+        "New: 必填字段标记清晰，示例数据黄色背景",
+        "Fix: 凭证自动复用逻辑支持全部8种协议"
+      ]
+    },
     {
       "version": "1.5.6",
       "released_at": "2026-06-18T20:00:00Z",
