@@ -45,8 +45,8 @@
       "version": "1.5.2",
       "released_at": "2026-06-18T16:00:00Z",
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.2/opsmate-1.5.2-update.tar.gz",
-      "sha256": "pending",
-      "size_bytes": 0,
+      "sha256": "5165402bc41670610ba7ba673f05ecbda3860b879fdbf35c9764073b831b4376",
+      "size_bytes": 1151929,
       "compatible_modes": ["docker", "systemd"],
       "changelog": [
         "Fix: OLLAMA_BASE_URL环境变量别名支持，LLM配置可正常生效",
