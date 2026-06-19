@@ -1,14 +1,16 @@
 {
-  "latest": "1.5.11",
-  "latest_version": "1.5.11",
+  "latest": "1.5.12",
+  "latest_version": "1.5.12",
   "min_compatible": "0.2.0",
   "minimum_version": "0.3.0",
   "release_date": "2026-06-19",
   "changelog": [
-    "v1.5.11 修复资产健康状态推断和组织归属",
-    "Fix: 智能接入创建资产时 organization_id 为空",
-    "Fix: 部件健康状态不回写父资产（18个部件全OK但父资产health=unknown）",
-    "Fix: OS层资产和层级子资产也缺少 organization_id"
+    "v1.5.12 启动自检 + 初始化期间health不报unhealthy + 7个缺失配置项",
+    "New: 启动时自检Settings属性完整性（缺失配置项直接报错，不再等运行时崩溃）",
+    "New: SNMP知识库导入期间health返回200+initializing（不再被Docker标记unhealthy）",
+    "Fix: 补充7个缺失配置项（ssh_esxi_probe_timeout/ssh_collector_workers/modbus_connect_timeout/modbus_operation_timeout/ticket_dedup_ttl/capacity_prediction_days/layer_discovery_semaphore）",
+    "Fix: deploy.sh自动修护.docker/config.json目录问题",
+    "Fix: healthcheck start_period从30s延长至120s，retries从3增至10"
   ],
   "download": {
     "url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.4.0/opsmate-1.4.0-update.tar.gz",
@@ -33,7 +35,7 @@
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "v1.5.11: 修复资产健康状态推断+智能接入organization_id缺失",
+  "notes": "v1.5.12: 启动自检+初始化期health+7缺失配置+deploy.sh修护",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
   "versions": [
     {
