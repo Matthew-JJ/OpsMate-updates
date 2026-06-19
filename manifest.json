@@ -1,17 +1,18 @@
 {
-  "latest": "1.5.8",
-  "latest_version": "1.5.8",
+  "latest": "1.5.9",
+  "latest_version": "1.5.9",
   "min_compatible": "0.2.0",
   "minimum_version": "0.3.0",
-  "release_date": "2026-06-18",
+  "release_date": "2026-06-19",
   "changelog": [
-    "v1.5.8 凭证管理+导入增强+列宽修复",
-    "Fix: 凭证管理页面新增vCenter协议支持",
-    "Fix: 批量导入/下载模板按钮更显眼",
-    "Fix: security/service资产类型概览卡片配置",
-    "Fix: 智能接入vCenter指标发现+类型推断",
-    "New: Excel模板新增所属组织列（容错跳过）",
-    "New: 导入上限200→1000条"
+    "v1.5.9 资产详情页配置监控入口",
+    "New: 资产详情页新增配置监控Tab（3步引导流程）",
+    "New: 选择凭证→发现指标→创建采集任务",
+    "New: 支持内联新建凭证，避免跳转",
+    "New: 自动发现指标并推荐勾选",
+    "Fix: 列宽压缩消除横向滚动条",
+    "Fix: Excel导入新增所属组织列",
+    "Fix: 导入上限1000条"
   ],
   "download": {
     "url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.4.0/opsmate-1.4.0-update.tar.gz",
@@ -36,9 +37,26 @@
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "v1.5.8: 凭证管理+vCenter+导入增强(组织列+1000条)+列宽修复",
+  "notes": "v1.5.9: 资产详情页配置监控入口(3步引导)+导入组织列+列宽修复",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
   "versions": [
+    {
+      "version": "1.5.9",
+      "released_at": "2026-06-19T08:00:00Z",
+      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.9/opsmate-1.5.9-update.tar.gz",
+      "sha256": "8ddf9e7f2aa421c3570ceb0d05f82c177670f816860afa9df7e82796d21af91f",
+      "size_bytes": 1101004,
+      "compatible_modes": ["docker", "systemd"],
+      "changelog": [
+        "New: 资产详情页新增配置监控Tab（3步引导：选凭证→发现指标→创建任务）",
+        "New: 支持内联新建凭证，无需跳转凭证管理页",
+        "New: 自动发现指标并推荐勾选，支持全选/取消全选",
+        "New: 支持8种协议(SNMP/SSH/WinRM/IPMI/Redfish/Modbus/Prometheus/vCenter)",
+        "Fix: 资产列表列宽压缩，消除横向滚动条",
+        "Fix: Excel导入新增所属组织列（容错跳过）",
+        "Fix: 导入上限从200提升到1000条"
+      ]
+    },
     {
       "version": "1.5.8",
       "released_at": "2026-06-18T22:00:00Z",
