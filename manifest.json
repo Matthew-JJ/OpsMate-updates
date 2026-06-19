@@ -1,18 +1,16 @@
 {
-  "latest": "1.5.9",
-  "latest_version": "1.5.9",
+  "latest": "1.5.10",
+  "latest_version": "1.5.10",
   "min_compatible": "0.2.0",
   "minimum_version": "0.3.0",
   "release_date": "2026-06-19",
   "changelog": [
-    "v1.5.9 资产详情页配置监控入口",
-    "New: 资产详情页新增配置监控Tab（3步引导流程）",
-    "New: 选择凭证→发现指标→创建采集任务",
-    "New: 支持内联新建凭证，避免跳转",
-    "New: 自动发现指标并推荐勾选",
-    "Fix: 列宽压缩消除横向滚动条",
-    "Fix: Excel导入新增所属组织列",
-    "Fix: 导入上限1000条"
+    "v1.5.10 修复SSH/WinRM/IPMI探测失败",
+    "Fix: 添加缺失的 ssh_connect_timeout 配置项（导致SSH探测报Settings属性错误）",
+    "Fix: 添加缺失的 ssh_command_timeout 配置项",
+    "Fix: 添加缺失的 ssh_inventory_timeout 配置项",
+    "Fix: 添加缺失的 winrm_connect_timeout / winrm_discovery_timeout 配置项",
+    "Fix: 添加缺失的 ipmi_timeout 配置项"
   ],
   "download": {
     "url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.4.0/opsmate-1.4.0-update.tar.gz",
@@ -37,9 +35,25 @@
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "v1.5.9: 资产详情页配置监控入口(3步引导)+导入组织列+列宽修复",
+  "notes": "v1.5.10: 修复SSH/WinRM/IPMI探测失败(missing timeout settings)",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
   "versions": [
+    {
+      "version": "1.5.10",
+      "released_at": "2026-06-19T10:00:00Z",
+      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.10/opsmate-1.5.10-update.tar.gz",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": ["docker", "systemd"],
+      "changelog": [
+        "Fix: 添加缺失的 ssh_connect_timeout 配置（导致SSH探测报Settings属性错误）",
+        "Fix: 添加缺失的 ssh_command_timeout 配置",
+        "Fix: 添加缺失的 ssh_inventory_timeout 配置",
+        "Fix: 添加缺失的 winrm_connect_timeout / winrm_discovery_timeout 配置",
+        "Fix: 添加缺失的 ipmi_timeout 配置",
+        "影响的协议: SSH探测、SSH采集、WinRM探测、IPMI探测、层级发现、凭证测试、自愈引擎"
+      ]
+    },
     {
       "version": "1.5.9",
       "released_at": "2026-06-19T08:00:00Z",
