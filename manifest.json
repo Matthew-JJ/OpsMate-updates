@@ -1,23 +1,20 @@
 {
-  "latest": "2.6.9",
-  "latest_version": "2.6.9",
+  "latest": "2.7.0",
+  "latest_version": "2.7.0",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-06-27",
   "changelog": [
-    "v2.6.9 AI/密码策略持久化 + ITSM修复 + 资产重要性 + 工单自动化策略 + SLA自动匹配",
-    "New: AI和密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
-    "Fix: ITSM ai-troubleshoot 500错误（Asset.protocol_type -> Asset.device_type）",
-    "Fix: AI端点添加异常降级兜底，不再因单点故障导致500",
-    "New: 资产列表/表单/智能接入支持设置重要性（核心/重要/普通）",
-    "New: 工单自动化策略矩阵（资产重要性×告警严重度→是否自动创建工单及优先级）",
-    "Fix: 告警自动创建的工单现自动匹配SLA策略（与手动创建工单行为一致）",
-    "Fix: vCenter采集任务创建失败（buildCredentialConfig缺少vCenter分支）",
-    "Fix: 交换机接口状态显示DOWN（前端读取旧字段row.status）",
-    "Fix: 监控概览200个入站错误小卡片（前端用device_type判断改为asset_type）",
-    "Fix: 配置监控修改规则状态500错误（同上device_type→asset_type）",
-    "Fix: Docker API版本兼容性（支持Docker Engine 27+）",
-    "New: 国内自包含部署脚本（deploy-cn.sh，内嵌docker-compose.yml）"
+    "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
+    "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
+    "v2.6.9: fix ITSM ai-troubleshoot 500 error (Asset.protocol_type -> device_type), add exception fallback",
+    "fix: 告警信息展示实例标识（端口/实例维度）",
+    "feat: 自动更新开关 + check_update_background自动升级",
+    "feat: 规则模板化 + include/exclude实例过滤",
+    "feat: AI智能建议 - 指标预选弹窗 + 默认停用 + 429修复",
+    "fix: sFlow/NetFlow v9/IPFIX parser永远为None导致报错'NoneType has no attribute parse'",
+    "v2.6.7: nginx AI端点proxy_read_timeout 300s防504",
+    "v2.6.7: AI智能推荐告警规则 - 从TDengine查实例+采样值，启用资产详情页AI按钮，移除接入向导AI按钮"
   ],
   "download": {
     "url": "",
@@ -43,16 +40,40 @@
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "v2.6.9: AI配置持久化 + ITSM修复 + 资产重要性 + 工单自动化策略 + SLA自动匹配",
+  "notes": "v2.7.0: v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix + feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失 + v2.6.9: fix ITSM ai-troubleshoot 500 error (Asset.protocol_type -> device_type), add exception fallback 等10项更新",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
   "versions": [
+    {
+      "version": "2.7.0",
+      "released_at": "2026-06-27T06:49:16Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
+        "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
+        "v2.6.9: fix ITSM ai-troubleshoot 500 error (Asset.protocol_type -> device_type), add exception fallback",
+        "fix: 告警信息展示实例标识（端口/实例维度）",
+        "feat: 自动更新开关 + check_update_background自动升级",
+        "feat: 规则模板化 + include/exclude实例过滤",
+        "feat: AI智能建议 - 指标预选弹窗 + 默认停用 + 429修复",
+        "fix: sFlow/NetFlow v9/IPFIX parser永远为None导致报错'NoneType has no attribute parse'",
+        "v2.6.7: nginx AI端点proxy_read_timeout 300s防504",
+        "v2.6.7: AI智能推荐告警规则 - 从TDengine查实例+采样值，启用资产详情页AI按钮，移除接入向导AI按钮"
+      ]
+    },
     {
       "version": "2.6.9",
       "released_at": "2026-06-27T04:00:00Z",
       "download_url": "",
       "sha256": "",
       "size_bytes": 0,
-      "compatible_modes": ["docker"],
+      "compatible_modes": [
+        "docker"
+      ],
       "changelog": [
         "New: AI和密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
         "Fix: ITSM ai-troubleshoot 500错误（Asset.protocol_type -> Asset.device_type）",
@@ -71,7 +92,9 @@
       "download_url": "",
       "sha256": "",
       "size_bytes": 0,
-      "compatible_modes": ["docker"],
+      "compatible_modes": [
+        "docker"
+      ],
       "changelog": [
         "New: 自动更新开关 + check_update_background定时检查",
         "New: 规则模板化 + include/exclude实例过滤",
@@ -84,7 +107,9 @@
       "download_url": "",
       "sha256": "",
       "size_bytes": 0,
-      "compatible_modes": ["docker"],
+      "compatible_modes": [
+        "docker"
+      ],
       "changelog": [
         "Fix: vCenter资产层级为空（link-parent建立父子关系）",
         "Fix: el-checkbox label弃用改为value",
@@ -97,7 +122,9 @@
       "download_url": "",
       "sha256": "",
       "size_bytes": 0,
-      "compatible_modes": ["docker"],
+      "compatible_modes": [
+        "docker"
+      ],
       "changelog": [
         "Fix: vCenter采集任务未创建（buildCredentialConfig缺少vCenter分支）",
         "Fix: 交换机接口状态全显示DOWN",
@@ -112,7 +139,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.4.0/opsmate-1.4.0-update.tar.gz",
       "sha256": "0968acce933a2014bdbd72967e9c1b7a8d4c4a7b8498086546ae3cfc70540758",
       "size_bytes": 1099726,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "v2.3.6 全协议探测安全 + 组件变更监测 + 更新机制优化 + 合约修复",
         "Fix: WinRM探测AttributeError（winrm_connect_timeout缺失），全协议getattr防御",
@@ -130,7 +160,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.11/opsmate-1.5.11-update.tar.gz",
       "sha256": "",
       "size_bytes": 0,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "Fix: 智能接入创建资产时 organization_id 为空（继承创建用户的组织）",
         "Fix: 部件健康状态不同步到父资产（18个部件全OK但父资产health=unknown）",
@@ -144,7 +177,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.10/opsmate-1.5.10-update.tar.gz",
       "sha256": "",
       "size_bytes": 0,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "Fix: 添加缺失的 ssh_connect_timeout 配置（导致SSH探测报Settings属性错误）",
         "Fix: 添加缺失的 ssh_command_timeout 配置",
@@ -160,7 +196,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.9/opsmate-1.5.9-update.tar.gz",
       "sha256": "8ddf9e7f2aa421c3570ceb0d05f82c177670f816860afa9df7e82796d21af91f",
       "size_bytes": 1101004,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "New: 资产详情页新增配置监控Tab（3步引导：选凭证→发现指标→创建任务）",
         "New: 支持内联新建凭证，无需跳转凭证管理页",
@@ -177,7 +216,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.8/opsmate-1.5.8-update.tar.gz",
       "sha256": "ab3e9979e21c1bcc69923924ef644efe43eebb7c8d4c789cdd179cb11bf51595",
       "size_bytes": 1122304,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "Fix: 凭证管理页面新增vCenter协议(host/port/username/password)",
         "Fix: 批量导入按钮改为绿色高亮，下载模板改为独立按钮",
@@ -196,7 +238,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.7/opsmate-1.5.7-update.tar.gz",
       "sha256": "6675c467ebba8d1a973c7d6bf3226303e7358d1a8a3864424a603efa9e791ee1",
       "size_bytes": 1118952,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "New: Excel模板新增Redfish/Modbus/Prometheus/vCenter 4种协议Tab",
         "New: 资产类型从5种扩展到11种",
@@ -210,7 +255,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.6/opsmate-1.5.6-update.tar.gz",
       "sha256": "bfcd47e9551316c4e44b4b4337b9036d7528be62bcf390d20c62b06ee000f274",
       "size_bytes": 1093555,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "New: 前端版本监控，检测后端升级后主动弹窗提示刷新",
         "Fix: nginx index.html no-cache头防止缓存旧入口",
@@ -224,7 +272,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.5/opsmate-1.5.5-update.tar.gz",
       "sha256": "6684033e6740802696a8b2ef0641e5cafb8f9204015d35e8b1fdc149868e9be3",
       "size_bytes": 1092852,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "Fix: nginx index.html添加no-cache头，防止升级后浏览器缓存旧入口",
         "Fix: router.onError处理chunk加载失败，自动刷新页面",
@@ -237,7 +288,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.4/opsmate-1.5.4-update.tar.gz",
       "sha256": "4d91b2bb0808c2613fe1828822a4c090bc93040414b238d36f78e2bd0fccec06",
       "size_bytes": 1105731,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "Fix: Docker healthcheck URL从不存在的/api/v1/auth/protocols改为/api/v1/system/health",
         "Fix: license_middleware白名单路径修正",
@@ -253,7 +307,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.3/opsmate-1.5.3-update.tar.gz",
       "sha256": "5240e067835e3bba8fd5be4b51f02212e93c7892bb2083bbd3b827b38a97541b",
       "size_bytes": 1101466,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "Refactor: 提取通用paginate()分页工具函数",
         "Fix: pollers.py分页参数一致化(page_size→size)",
@@ -268,7 +325,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.2/opsmate-1.5.2-update.tar.gz",
       "sha256": "5165402bc41670610ba7ba673f05ecbda3860b879fdbf35c9764073b831b4376",
       "size_bytes": 1151929,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "Fix: OLLAMA_BASE_URL环境变量别名支持，LLM配置可正常生效",
         "Fix: MonitorPolicy前端is_enabled字段名与后端对齐",
@@ -287,7 +347,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.4.0/opsmate-1.4.0-update.tar.gz",
       "sha256": "0968acce933a2014bdbd72967e9c1b7a8d4c4a7b8498086546ae3cfc70540758",
       "size_bytes": 1099726,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "New: ACR双源镜像推送，国内用户1-3秒拉取",
         "New: IMAGE_REGISTRY+IMAGE_NAMESPACE统一变量（替代GHCR_REGISTRY）",
@@ -302,7 +365,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.9/opsmate-update-v1.3.9.tar.gz",
       "sha256": "e51188bd15f6776865c19170d2cf257064857f82f6567e7539ea4fe48c4b3cbf",
       "size_bytes": 13134,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "Fix: nginx镜像安装openssl，修复自签名证书生成静默失败"
       ]
@@ -313,7 +379,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.8/opsmate-update-v1.3.8.tar.gz",
       "sha256": "9f880ca82262eab3edb74a2f8a6a8ddc99bf0c113c8783f9bd60c3dc99a7a6fd",
       "size_bytes": 13134,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "Fix: sentinel anchor移到services外，修复被识别为服务的问题"
       ]
@@ -324,7 +393,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.7/opsmate-update-v1.3.7.tar.gz",
       "sha256": "c92e681814ae9f2046a12491acdb47c1f26da352a4576e91b58fe866e422da75",
       "size_bytes": 13133,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "Fix: YAML >折叠标量截断修复，切换到列表形式command"
       ]
@@ -335,7 +407,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.6/opsmate-update-v1.3.6.tar.gz",
       "sha256": "357484b4c1832aa525686d42d109b425ed1eb1257e7e5228675125cde4a781e9",
       "size_bytes": 13134,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "Fix: docker-compose $$转义修复，shell变量不再被Docker Compose替换为空"
       ]
@@ -346,7 +421,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.5/opsmate-update-v1.3.5.tar.gz",
       "sha256": "32fbe42f9b49b7a5c9135232abaf447b271aec793ff639f2e3bb6013d6cee50e",
       "size_bytes": 13136,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "New: nginx自动SSL证书生成",
         "New: postgres/replica/sentinel内嵌脚本",
@@ -359,7 +437,10 @@
       "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.4/opsmate-update-v1.3.4.tar.gz",
       "sha256": "c86dd3e1afa7786c6c0a0ef11569d86135348f2e19c82399fa3264dbe8d8f984",
       "size_bytes": 11116,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "New: GHCR镜像源可配置，支持国内加速镜像"
       ]
