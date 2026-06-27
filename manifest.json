@@ -1,10 +1,11 @@
 {
-  "latest": "2.7.0",
-  "latest_version": "2.7.0",
+  "latest": "2.7.1",
+  "latest_version": "2.7.1",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-06-27",
   "changelog": [
+    "v2.7.1: fix trend chart blank on time switch + 429 rate limit",
     "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
     "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
     "v2.6.9: fix ITSM ai-troubleshoot 500 error (Asset.protocol_type -> device_type), add exception fallback",
@@ -13,8 +14,7 @@
     "feat: 规则模板化 + include/exclude实例过滤",
     "feat: AI智能建议 - 指标预选弹窗 + 默认停用 + 429修复",
     "fix: sFlow/NetFlow v9/IPFIX parser永远为None导致报错'NoneType has no attribute parse'",
-    "v2.6.7: nginx AI端点proxy_read_timeout 300s防504",
-    "v2.6.7: AI智能推荐告警规则 - 从TDengine查实例+采样值，启用资产详情页AI按钮，移除接入向导AI按钮"
+    "v2.6.7: nginx AI端点proxy_read_timeout 300s防504"
   ],
   "download": {
     "url": "",
@@ -40,9 +40,31 @@
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "v2.7.0: v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix + feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失 + v2.6.9: fix ITSM ai-troubleshoot 500 error (Asset.protocol_type -> device_type), add exception fallback 等10项更新",
+  "notes": "v2.7.1: v2.7.1: fix trend chart blank on time switch + 429 rate limit + v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix + feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失 等10项更新",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
   "versions": [
+    {
+      "version": "2.7.1",
+      "released_at": "2026-06-27T07:45:43Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.7.1: fix trend chart blank on time switch + 429 rate limit",
+        "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
+        "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
+        "v2.6.9: fix ITSM ai-troubleshoot 500 error (Asset.protocol_type -> device_type), add exception fallback",
+        "fix: 告警信息展示实例标识（端口/实例维度）",
+        "feat: 自动更新开关 + check_update_background自动升级",
+        "feat: 规则模板化 + include/exclude实例过滤",
+        "feat: AI智能建议 - 指标预选弹窗 + 默认停用 + 429修复",
+        "fix: sFlow/NetFlow v9/IPFIX parser永远为None导致报错'NoneType has no attribute parse'",
+        "v2.6.7: nginx AI端点proxy_read_timeout 300s防504"
+      ]
+    },
     {
       "version": "2.7.0",
       "released_at": "2026-06-27T06:49:16Z",
