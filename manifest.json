@@ -1,27 +1,29 @@
 {
-  "latest": "2.3.6",
-  "latest_version": "2.3.6",
+  "latest": "2.6.9",
+  "latest_version": "2.6.9",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-06-23",
+  "release_date": "2026-06-27",
   "changelog": [
-    "v2.3.6 全协议探测安全 + 组件变更监测 + 更新机制优化 + 合约修复",
-    "Fix: WinRM探测AttributeError（winrm_connect_timeout缺失），全协议getattr防御",
-    "Fix: WinRM采集器硬编码超时改为读取配置",
-    "New: 配置快照扩展覆盖硬件组件变更监测（CPU/内存/磁盘/风扇/电源增减和属性变化）",
-    "Fix: Watchtower不再自动轮询更新，仅用户点击一键升级时触发",
-    "Fix: 手动检查更新强制从远程拉取最新manifest，不再返回缓存",
-    "Fix: Poller分页参数合约对齐（page_size→size, has_more基于total计算）",
-    "Fix: el-pagination small属性弃用改为size=\"small\"",
-    "Fix: credentials size上限从100提升到500",
-    "Fix: el-radio-button label→value弃用修复",
-    "New: 自定义角色CRUD功能",
-    "New: API文档门户（/docs/redoc + /docs/swagger）"
+    "v2.6.9 AI/密码策略持久化 + ITSM修复 + 资产重要性 + 工单自动化策略 + SLA自动匹配",
+    "New: AI和密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
+    "Fix: ITSM ai-troubleshoot 500错误（Asset.protocol_type -> Asset.device_type）",
+    "Fix: AI端点添加异常降级兜底，不再因单点故障导致500",
+    "New: 资产列表/表单/智能接入支持设置重要性（核心/重要/普通）",
+    "New: 工单自动化策略矩阵（资产重要性×告警严重度→是否自动创建工单及优先级）",
+    "Fix: 告警自动创建的工单现自动匹配SLA策略（与手动创建工单行为一致）",
+    "Fix: vCenter采集任务创建失败（buildCredentialConfig缺少vCenter分支）",
+    "Fix: 交换机接口状态显示DOWN（前端读取旧字段row.status）",
+    "Fix: 监控概览200个入站错误小卡片（前端用device_type判断改为asset_type）",
+    "Fix: 配置监控修改规则状态500错误（同上device_type→asset_type）",
+    "Fix: Docker API版本兼容性（支持Docker Engine 27+）",
+    "New: 国内自包含部署脚本（deploy-cn.sh，内嵌docker-compose.yml）"
   ],
   "download": {
-    "url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.4.0/opsmate-1.4.0-update.tar.gz",
-    "sha256": "0968acce933a2014bdbd72967e9c1b7a8d4c4a7b8498086546ae3cfc70540758",
-    "size_mb": 1.05
+    "url": "",
+    "sha256": "",
+    "size_mb": 0,
+    "note": "Docker模式通过Watchtower拉取latest镜像自动升级，无需下载更新包"
   },
   "images": {
     "acr": {
@@ -41,9 +43,87 @@
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "v2.3.6: 全协议getattr安全 + 组件变更监测 + Watchtower手动触发 + 合约修复",
+  "notes": "v2.6.9: AI配置持久化 + ITSM修复 + 资产重要性 + 工单自动化策略 + SLA自动匹配",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
   "versions": [
+    {
+      "version": "2.6.9",
+      "released_at": "2026-06-27T04:00:00Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": ["docker"],
+      "changelog": [
+        "New: AI和密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
+        "Fix: ITSM ai-troubleshoot 500错误（Asset.protocol_type -> Asset.device_type）",
+        "Fix: AI端点添加异常降级兜底",
+        "New: 资产列表/表单/智能接入支持设置重要性（核心/重要/普通）",
+        "New: 工单自动化策略矩阵（资产重要性×告警严重度→工单优先级）",
+        "Fix: 告警自动创建的工单现自动匹配SLA策略",
+        "Fix: vCenter采集任务创建失败（buildCredentialConfig缺少vCenter分支）",
+        "Fix: 交换机接口状态显示DOWN（前端读取旧字段）",
+        "Fix: Docker API版本兼容性（支持Docker Engine 27+）"
+      ]
+    },
+    {
+      "version": "2.6.8",
+      "released_at": "2026-06-26T14:00:00Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": ["docker"],
+      "changelog": [
+        "New: 自动更新开关 + check_update_background定时检查",
+        "New: 规则模板化 + include/exclude实例过滤",
+        "Fix: 告警信息展示实例标识（端口/实例维度）"
+      ]
+    },
+    {
+      "version": "2.6.7",
+      "released_at": "2026-06-26T06:00:00Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": ["docker"],
+      "changelog": [
+        "Fix: vCenter资产层级为空（link-parent建立父子关系）",
+        "Fix: el-checkbox label弃用改为value",
+        "New: OpsMate-Lite完整移植到主项目"
+      ]
+    },
+    {
+      "version": "2.6.6",
+      "released_at": "2026-06-25T12:00:00Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": ["docker"],
+      "changelog": [
+        "Fix: vCenter采集任务未创建（buildCredentialConfig缺少vCenter分支）",
+        "Fix: 交换机接口状态全显示DOWN",
+        "Fix: 监控概览200个入站错误（device_type→asset_type判断修复）",
+        "Fix: 配置监控修改规则状态500错误",
+        "New: 国内自包含部署脚本"
+      ]
+    },
+    {
+      "version": "2.3.6",
+      "released_at": "2026-06-23T08:00:00Z",
+      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.4.0/opsmate-1.4.0-update.tar.gz",
+      "sha256": "0968acce933a2014bdbd72967e9c1b7a8d4c4a7b8498086546ae3cfc70540758",
+      "size_bytes": 1099726,
+      "compatible_modes": ["docker", "systemd"],
+      "changelog": [
+        "v2.3.6 全协议探测安全 + 组件变更监测 + 更新机制优化 + 合约修复",
+        "Fix: WinRM探测AttributeError（winrm_connect_timeout缺失），全协议getattr防御",
+        "Fix: WinRM采集器硬编码超时改为读取配置",
+        "New: 配置快照扩展覆盖硬件组件变更监测",
+        "Fix: Watchtower不再自动轮询更新，仅用户点击一键升级时触发",
+        "Fix: 手动检查更新强制从远程拉取最新manifest",
+        "New: 自定义角色CRUD功能",
+        "New: API文档门户（/docs/redoc + /docs/swagger）"
+      ]
+    },
     {
       "version": "1.5.11",
       "released_at": "2026-06-19T11:00:00Z",
