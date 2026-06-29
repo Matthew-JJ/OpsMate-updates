@@ -1,26 +1,29 @@
 {
-  "latest": "2.7.8",
-  "latest_version": "2.7.8",
+  "latest": "2.8.0",
+  "latest_version": "2.8.0",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-06-29",
   "changelog": [
-    "v2.7.8: audit fix round - security(docker/nginx/init_setup), runtime(notification/evaluator/self_heal/assets), sFlow parsing, BizError 409 mapping, alert org_scope, router readOnlyFor guard",
-    "v2.7.7: fix sFlow v5 parsing - header offset, Expanded Flow Sample(type=3), sampled_ipv4(format=3), protocol identification; fix assets.py UUID comparison",
-    "v2.7.6: round 2 audit fixes",
-    "v2.7.5: audit fix round 2 - security, schema types, BizError consistency, frontend",
-    "v2.7.4: fix sFlow v5 header format (IIIHHII->IIIIIII) + NetFlow v9 NameError crash",
-    "v2.7.3: comprehensive bug audit fix - 14 HIGH, 22 MEDIUM backend, 8 MEDIUM frontend, 3 LOW",
-    "v2.7.2: Gitee mirror, check-update fix, offline upgrade scripts",
-    "v2.7.1: fix trend chart blank on time switch + 429 rate limit",
-    "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
-    "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失"
+    "v2.8.0: 安全加固+Bug修复+基础设施改进",
+    "[高] python-jose→PyJWT迁移 (CVE-2024-53861)，消除已知安全漏洞",
+    "[高] deploy-cn.sh内嵌compose与主compose同步（TDengine健康检查、8000端口、Watchtower绑定、Redis认证）",
+    "[中] Backend端口: 162→1162/udp, 514→1514/udp (非root Docker兼容)",
+    "[中] Postgres密码不再暴露在命令行参数（printf pipe方式）",
+    "[中] encryption.py: 密钥无效时不静默重新生成，加ERROR告警",
+    "[中] nginx.conf HTTPS重定向注释完善",
+    "[低] redis_pool.py: async客户端改用asyncio.Lock，不再阻塞事件循环",
+    "[低] api_key permissions类型修复: dict→list（与schema一致）",
+    "[低] 告警规则一键创建: 默认启用is_enabled=True",
+    "[低] 容量预测: days_to_zero上限3650天，避免数千天无意义预测",
+    "[低] IPFIX: Template字段解析修正为RFC 7011标准(6字节+Enterprise IE)",
+    "[低] 前端: 4处自写Markdown渲染统一为utils/markdown.ts",
+    "[低] request.ts: 消除2处any类型"
   ],
   "download": {
     "url": "",
     "sha256": "",
-    "size_mb": 0,
-    "note": "Docker模式通过Watchtower拉取latest镜像自动升级，无需下载更新包"
+    "size_mb": 0
   },
   "images": {
     "acr": {
@@ -40,640 +43,70 @@
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "v2.7.8: v2.7.8: audit fix round - security(docker/nginx/init_setup), runtime(notification/evaluator/self_heal/assets), sFlow parsing, BizError 409 mapping, alert org_scope, router readOnlyFor guard + v2.7.7: fix sFlow v5 parsing - header offset, Expanded Flow Sample(type=3), sampled_ipv4(format=3), protocol identification; fix assets.py UUID comparison + v2.7.6: round 2 audit fixes 等10项更新",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
+  "notes": "v2.8.0: PyJWT迁移(CVE修复)+compose同步+安全加固+Bug修复15项",
   "versions": [
     {
-      "version": "2.7.8",
-      "released_at": "2026-06-29T13:15:06Z",
+      "version": "2.8.0",
+      "released_at": "2026-06-29T15:25:00Z",
       "download_url": "",
       "sha256": "",
       "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
+      "compatible_modes": ["docker", "systemd"],
       "changelog": [
-        "v2.7.8: audit fix round - security(docker/nginx/init_setup), runtime(notification/evaluator/self_heal/assets), sFlow parsing, BizError 409 mapping, alert org_scope, router readOnlyFor guard",
-        "v2.7.7: fix sFlow v5 parsing - header offset, Expanded Flow Sample(type=3), sampled_ipv4(format=3), protocol identification; fix assets.py UUID comparison",
-        "v2.7.6: round 2 audit fixes",
-        "v2.7.5: audit fix round 2 - security, schema types, BizError consistency, frontend",
-        "v2.7.4: fix sFlow v5 header format (IIIHHII->IIIIIII) + NetFlow v9 NameError crash",
-        "v2.7.3: comprehensive bug audit fix - 14 HIGH, 22 MEDIUM backend, 8 MEDIUM frontend, 3 LOW",
-        "v2.7.2: Gitee mirror, check-update fix, offline upgrade scripts",
-        "v2.7.1: fix trend chart blank on time switch + 429 rate limit",
-        "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
-        "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失"
+        "[高] python-jose→PyJWT迁移 (CVE-2024-53861)",
+        "[高] deploy-cn.sh内嵌compose同步5处差异",
+        "[中] Backend端口 162→1162/udp, 514→1514/udp",
+        "[中] Postgres密码: -c→printf pipe避免ps泄露",
+        "[中] encryption.py: 无效密钥不静默重生成+ERROR日志",
+        "[中] nginx.conf HTTPS重定向注释完善",
+        "[低] redis_pool async Lock + get_async_redis_client→async",
+        "[低] api_key permissions dict→list",
+        "[低] quick_create is_enabled=True",
+        "[低] capacity days_to_zero上限3650天",
+        "[低] IPFIX 6B RFC 7011 + Enterprise IE",
+        "[低] 前端Markdown统一 + request.ts any修复"
+      ]
+    },
+    {
+      "version": "2.7.8",
+      "released_at": "2026-06-29T13:10:00Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": ["docker", "systemd"],
+      "changelog": [
+        "v2.7.8: audit fix round - 20 files, 173 insertions, 64 deletions",
+        "Watchtower API 0.0.0.0→127.0.0.1",
+        "Backend 8000端口禁用",
+        "Redis健康检查: -a→REDISCLI_AUTH",
+        "nginx CSP connect-src移除通配符+server_tokens off",
+        "init_setup.py: 添加已初始化检查",
+        "assets.py: 重复IP→BizError + 权限修复",
+        "notification_service: DetachedInstanceError修复",
+        "alert_evaluator: SSH/WinRM side effects隔离",
+        "self_heal_engine: SSH连接try/finally",
+        "main.py: 告警订阅指数退避重连",
+        "sflow_v5: estimated_bytes修复",
+        "alert_governance: asyncio.to_thread",
+        "BizError 409 mapping + 优先级重排",
+        "router readOnlyFor guard + RouteMeta类型"
       ]
     },
     {
       "version": "2.7.7",
-      "released_at": "2026-06-29T11:26:26Z",
+      "released_at": "2026-06-29T11:10:00Z",
       "download_url": "",
       "sha256": "",
       "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
+      "compatible_modes": ["docker", "systemd"],
       "changelog": [
-        "v2.7.7: fix sFlow v5 parsing - header offset, Expanded Flow Sample(type=3), sampled_ipv4(format=3), protocol identification; fix assets.py UUID comparison",
-        "v2.7.6: round 2 audit fixes",
-        "v2.7.5: audit fix round 2 - security, schema types, BizError consistency, frontend",
-        "v2.7.4: fix sFlow v5 header format (IIIHHII->IIIIIII) + NetFlow v9 NameError crash",
-        "v2.7.3: comprehensive bug audit fix - 14 HIGH, 22 MEDIUM backend, 8 MEDIUM frontend, 3 LOW",
-        "v2.7.2: Gitee mirror, check-update fix, offline upgrade scripts",
-        "v2.7.1: fix trend chart blank on time switch + 429 rate limit",
-        "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
-        "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
-        "v2.6.9: fix ITSM ai-troubleshoot 500 error (Asset.protocol_type -> device_type), add exception fallback"
-      ]
-    },
-    {
-      "version": "2.7.6",
-      "released_at": "2026-06-29T09:49:03Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.7.6: round 2 audit fixes",
-        "v2.7.5: audit fix round 2 - security, schema types, BizError consistency, frontend",
-        "v2.7.4: fix sFlow v5 header format (IIIHHII->IIIIIII) + NetFlow v9 NameError crash",
-        "v2.7.3: comprehensive bug audit fix - 14 HIGH, 22 MEDIUM backend, 8 MEDIUM frontend, 3 LOW",
-        "v2.7.2: Gitee mirror, check-update fix, offline upgrade scripts",
-        "v2.7.1: fix trend chart blank on time switch + 429 rate limit",
-        "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
-        "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
-        "v2.6.9: fix ITSM ai-troubleshoot 500 error (Asset.protocol_type -> device_type), add exception fallback",
-        "fix: 告警信息展示实例标识（端口/实例维度）"
-      ]
-    },
-    {
-      "version": "2.7.5",
-      "released_at": "2026-06-29T09:05:00Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.7.5: audit fix round 2 - security, schema types, BizError consistency, frontend",
-        "v2.7.4: fix sFlow v5 header format (IIIHHII->IIIIIII) + NetFlow v9 NameError crash",
-        "v2.7.3: comprehensive bug audit fix - 14 HIGH, 22 MEDIUM backend, 8 MEDIUM frontend, 3 LOW",
-        "v2.7.2: Gitee mirror, check-update fix, offline upgrade scripts",
-        "v2.7.1: fix trend chart blank on time switch + 429 rate limit",
-        "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
-        "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
-        "v2.6.9: fix ITSM ai-troubleshoot 500 error (Asset.protocol_type -> device_type), add exception fallback",
-        "fix: 告警信息展示实例标识（端口/实例维度）",
-        "feat: 自动更新开关 + check_update_background自动升级"
-      ]
-    },
-    {
-      "version": "2.7.4",
-      "released_at": "2026-06-29T08:19:57Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.7.4: fix sFlow v5 header format (IIIHHII->IIIIIII) + NetFlow v9 NameError crash",
-        "v2.7.3: comprehensive bug audit fix - 14 HIGH, 22 MEDIUM backend, 8 MEDIUM frontend, 3 LOW",
-        "v2.7.2: Gitee mirror, check-update fix, offline upgrade scripts",
-        "v2.7.1: fix trend chart blank on time switch + 429 rate limit",
-        "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
-        "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
-        "v2.6.9: fix ITSM ai-troubleshoot 500 error (Asset.protocol_type -> device_type), add exception fallback",
-        "fix: 告警信息展示实例标识（端口/实例维度）",
-        "feat: 自动更新开关 + check_update_background自动升级",
-        "feat: 规则模板化 + include/exclude实例过滤"
-      ]
-    },
-    {
-      "version": "2.7.3",
-      "released_at": "2026-06-29T06:58:29Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.7.3: comprehensive bug audit fix - 14 HIGH, 22 MEDIUM backend, 8 MEDIUM frontend, 3 LOW",
-        "v2.7.2: Gitee mirror, check-update fix, offline upgrade scripts",
-        "v2.7.1: fix trend chart blank on time switch + 429 rate limit",
-        "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
-        "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
-        "v2.6.9: fix ITSM ai-troubleshoot 500 error (Asset.protocol_type -> device_type), add exception fallback",
-        "fix: 告警信息展示实例标识（端口/实例维度）",
-        "feat: 自动更新开关 + check_update_background自动升级",
-        "feat: 规则模板化 + include/exclude实例过滤",
-        "feat: AI智能建议 - 指标预选弹窗 + 默认停用 + 429修复"
-      ]
-    },
-    {
-      "version": "2.7.2",
-      "released_at": "2026-06-27T13:24:52Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.7.2: Gitee mirror, check-update fix, offline upgrade scripts",
-        "v2.7.1: fix trend chart blank on time switch + 429 rate limit",
-        "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
-        "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
-        "v2.6.9: fix ITSM ai-troubleshoot 500 error (Asset.protocol_type -> device_type), add exception fallback",
-        "fix: 告警信息展示实例标识（端口/实例维度）",
-        "feat: 自动更新开关 + check_update_background自动升级",
-        "feat: 规则模板化 + include/exclude实例过滤",
-        "feat: AI智能建议 - 指标预选弹窗 + 默认停用 + 429修复",
-        "fix: sFlow/NetFlow v9/IPFIX parser永远为None导致报错'NoneType has no attribute parse'"
-      ]
-    },
-    {
-      "version": "2.7.1",
-      "released_at": "2026-06-27T07:45:43Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.7.1: fix trend chart blank on time switch + 429 rate limit",
-        "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
-        "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
-        "v2.6.9: fix ITSM ai-troubleshoot 500 error (Asset.protocol_type -> device_type), add exception fallback",
-        "fix: 告警信息展示实例标识（端口/实例维度）",
-        "feat: 自动更新开关 + check_update_background自动升级",
-        "feat: 规则模板化 + include/exclude实例过滤",
-        "feat: AI智能建议 - 指标预选弹窗 + 默认停用 + 429修复",
-        "fix: sFlow/NetFlow v9/IPFIX parser永远为None导致报错'NoneType has no attribute parse'",
-        "v2.6.7: nginx AI端点proxy_read_timeout 300s防504"
-      ]
-    },
-    {
-      "version": "2.7.0",
-      "released_at": "2026-06-27T06:49:16Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
-        "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
-        "v2.6.9: fix ITSM ai-troubleshoot 500 error (Asset.protocol_type -> device_type), add exception fallback",
-        "fix: 告警信息展示实例标识（端口/实例维度）",
-        "feat: 自动更新开关 + check_update_background自动升级",
-        "feat: 规则模板化 + include/exclude实例过滤",
-        "feat: AI智能建议 - 指标预选弹窗 + 默认停用 + 429修复",
-        "fix: sFlow/NetFlow v9/IPFIX parser永远为None导致报错'NoneType has no attribute parse'",
-        "v2.6.7: nginx AI端点proxy_read_timeout 300s防504",
-        "v2.6.7: AI智能推荐告警规则 - 从TDengine查实例+采样值，启用资产详情页AI按钮，移除接入向导AI按钮"
-      ]
-    },
-    {
-      "version": "2.6.9",
-      "released_at": "2026-06-27T04:00:00Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "New: AI和密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
-        "Fix: ITSM ai-troubleshoot 500错误（Asset.protocol_type -> Asset.device_type）",
-        "Fix: AI端点添加异常降级兜底",
-        "New: 资产列表/表单/智能接入支持设置重要性（核心/重要/普通）",
-        "New: 工单自动化策略矩阵（资产重要性×告警严重度→工单优先级）",
-        "Fix: 告警自动创建的工单现自动匹配SLA策略",
-        "Fix: vCenter采集任务创建失败（buildCredentialConfig缺少vCenter分支）",
-        "Fix: 交换机接口状态显示DOWN（前端读取旧字段）",
-        "Fix: Docker API版本兼容性（支持Docker Engine 27+）"
-      ]
-    },
-    {
-      "version": "2.6.8",
-      "released_at": "2026-06-26T14:00:00Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "New: 自动更新开关 + check_update_background定时检查",
-        "New: 规则模板化 + include/exclude实例过滤",
-        "Fix: 告警信息展示实例标识（端口/实例维度）"
-      ]
-    },
-    {
-      "version": "2.6.7",
-      "released_at": "2026-06-26T06:00:00Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "Fix: vCenter资产层级为空（link-parent建立父子关系）",
-        "Fix: el-checkbox label弃用改为value",
-        "New: OpsMate-Lite完整移植到主项目"
-      ]
-    },
-    {
-      "version": "2.6.6",
-      "released_at": "2026-06-25T12:00:00Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "Fix: vCenter采集任务未创建（buildCredentialConfig缺少vCenter分支）",
-        "Fix: 交换机接口状态全显示DOWN",
-        "Fix: 监控概览200个入站错误（device_type→asset_type判断修复）",
-        "Fix: 配置监控修改规则状态500错误",
-        "New: 国内自包含部署脚本"
-      ]
-    },
-    {
-      "version": "2.3.6",
-      "released_at": "2026-06-23T08:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.4.0/opsmate-1.4.0-update.tar.gz",
-      "sha256": "0968acce933a2014bdbd72967e9c1b7a8d4c4a7b8498086546ae3cfc70540758",
-      "size_bytes": 1099726,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "v2.3.6 全协议探测安全 + 组件变更监测 + 更新机制优化 + 合约修复",
-        "Fix: WinRM探测AttributeError（winrm_connect_timeout缺失），全协议getattr防御",
-        "Fix: WinRM采集器硬编码超时改为读取配置",
-        "New: 配置快照扩展覆盖硬件组件变更监测",
-        "Fix: Watchtower不再自动轮询更新，仅用户点击一键升级时触发",
-        "Fix: 手动检查更新强制从远程拉取最新manifest",
-        "New: 自定义角色CRUD功能",
-        "New: API文档门户（/docs/redoc + /docs/swagger）"
-      ]
-    },
-    {
-      "version": "1.5.11",
-      "released_at": "2026-06-19T11:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.11/opsmate-1.5.11-update.tar.gz",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "Fix: 智能接入创建资产时 organization_id 为空（继承创建用户的组织）",
-        "Fix: 部件健康状态不同步到父资产（18个部件全OK但父资产health=unknown）",
-        "Fix: OS层资产和层级子资产也缺少 organization_id",
-        "New: 组件同步后自动推断父资产健康状态（任意fault→fault, 任意warning→warning, 全ok→ok）"
-      ]
-    },
-    {
-      "version": "1.5.10",
-      "released_at": "2026-06-19T10:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.10/opsmate-1.5.10-update.tar.gz",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "Fix: 添加缺失的 ssh_connect_timeout 配置（导致SSH探测报Settings属性错误）",
-        "Fix: 添加缺失的 ssh_command_timeout 配置",
-        "Fix: 添加缺失的 ssh_inventory_timeout 配置",
-        "Fix: 添加缺失的 winrm_connect_timeout / winrm_discovery_timeout 配置",
-        "Fix: 添加缺失的 ipmi_timeout 配置",
-        "影响的协议: SSH探测、SSH采集、WinRM探测、IPMI探测、层级发现、凭证测试、自愈引擎"
-      ]
-    },
-    {
-      "version": "1.5.9",
-      "released_at": "2026-06-19T08:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.9/opsmate-1.5.9-update.tar.gz",
-      "sha256": "8ddf9e7f2aa421c3570ceb0d05f82c177670f816860afa9df7e82796d21af91f",
-      "size_bytes": 1101004,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "New: 资产详情页新增配置监控Tab（3步引导：选凭证→发现指标→创建任务）",
-        "New: 支持内联新建凭证，无需跳转凭证管理页",
-        "New: 自动发现指标并推荐勾选，支持全选/取消全选",
-        "New: 支持8种协议(SNMP/SSH/WinRM/IPMI/Redfish/Modbus/Prometheus/vCenter)",
-        "Fix: 资产列表列宽压缩，消除横向滚动条",
-        "Fix: Excel导入新增所属组织列（容错跳过）",
-        "Fix: 导入上限从200提升到1000条"
-      ]
-    },
-    {
-      "version": "1.5.8",
-      "released_at": "2026-06-18T22:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.8/opsmate-1.5.8-update.tar.gz",
-      "sha256": "ab3e9979e21c1bcc69923924ef644efe43eebb7c8d4c789cdd179cb11bf51595",
-      "size_bytes": 1122304,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "Fix: 凭证管理页面新增vCenter协议(host/port/username/password)",
-        "Fix: 批量导入按钮改为绿色高亮，下载模板改为独立按钮",
-        "Fix: 新增security/service资产类型概览卡片配置",
-        "Fix: MetricsDiscoveryStep支持vCenter指标发现",
-        "Fix: vCenter协议正确推断为virtualization类型",
-        "Fix: modbus/prometheus导入不再强制要求IP地址",
-        "New: Excel模板新增所属组织列（按名称匹配，容错跳过）",
-        "New: 导入上限从200提升到1000条",
-        "Fix: 资产列表列宽压缩，消除横向滚动条"
-      ]
-    },
-    {
-      "version": "1.5.7",
-      "released_at": "2026-06-18T21:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.7/opsmate-1.5.7-update.tar.gz",
-      "sha256": "6675c467ebba8d1a973c7d6bf3226303e7358d1a8a3864424a603efa9e791ee1",
-      "size_bytes": 1118952,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "New: Excel模板新增Redfish/Modbus/Prometheus/vCenter 4种协议Tab",
-        "New: 资产类型从5种扩展到11种",
-        "New: 必填字段标记清晰，示例数据黄色背景",
-        "Fix: 凭证自动复用逻辑支持全部8种协议"
-      ]
-    },
-    {
-      "version": "1.5.6",
-      "released_at": "2026-06-18T20:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.6/opsmate-1.5.6-update.tar.gz",
-      "sha256": "bfcd47e9551316c4e44b4b4337b9036d7528be62bcf390d20c62b06ee000f274",
-      "size_bytes": 1093555,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "New: 前端版本监控，检测后端升级后主动弹窗提示刷新",
-        "Fix: nginx index.html no-cache头防止缓存旧入口",
-        "Fix: router.onError chunk加载失败自动刷新(兜底)",
-        "三层防护：主动检测→路由兜底→缓存控制"
-      ]
-    },
-    {
-      "version": "1.5.5",
-      "released_at": "2026-06-18T19:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.5/opsmate-1.5.5-update.tar.gz",
-      "sha256": "6684033e6740802696a8b2ef0641e5cafb8f9204015d35e8b1fdc149868e9be3",
-      "size_bytes": 1092852,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "Fix: nginx index.html添加no-cache头，防止升级后浏览器缓存旧入口",
-        "Fix: router.onError处理chunk加载失败，自动刷新页面",
-        "Fix: 升级后点击资产详情404问题彻底解决"
-      ]
-    },
-    {
-      "version": "1.5.4",
-      "released_at": "2026-06-18T18:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.4/opsmate-1.5.4-update.tar.gz",
-      "sha256": "4d91b2bb0808c2613fe1828822a4c090bc93040414b238d36f78e2bd0fccec06",
-      "size_bytes": 1105731,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "Fix: Docker healthcheck URL从不存在的/api/v1/auth/protocols改为/api/v1/system/health",
-        "Fix: license_middleware白名单路径修正",
-        "Fix: 更新检查URL自动回退(GitHub→ghfast.top→自定义)，国内零配置",
-        "Fix: SSH探测表单添加用户名字段",
-        "Fix: ProbeProtocol类型添加vcenter",
-        "New: vCenter探测表单"
-      ]
-    },
-    {
-      "version": "1.5.3",
-      "released_at": "2026-06-18T17:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.3/opsmate-1.5.3-update.tar.gz",
-      "sha256": "5240e067835e3bba8fd5be4b51f02212e93c7892bb2083bbd3b827b38a97541b",
-      "size_bytes": 1101466,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "Refactor: 提取通用paginate()分页工具函数",
-        "Fix: pollers.py分页参数一致化(page_size→size)",
-        "Fix: batch.ts硬编码URL修复",
-        "Cleanup: KnowledgeArticle zombie model标注",
-        "Cleanup: 移除空plugins/protocols/目录"
-      ]
-    },
-    {
-      "version": "1.5.2",
-      "released_at": "2026-06-18T16:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.5.2/opsmate-1.5.2-update.tar.gz",
-      "sha256": "5165402bc41670610ba7ba673f05ecbda3860b879fdbf35c9764073b831b4376",
-      "size_bytes": 1151929,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "Fix: OLLAMA_BASE_URL环境变量别名支持，LLM配置可正常生效",
-        "Fix: MonitorPolicy前端is_enabled字段名与后端对齐",
-        "Fix: Poller注册生成真实JWT（替换硬编码占位符）",
-        "Fix: DISABLE_CAPTCHA/ENCRYPTION_KEY/ALLOW_LEGACY_PSK/WATCHTOWER_API_TOKEN纳入config.py统一配置",
-        "Fix: Celery link_tasks命名不一致(ops.link.* → app.tasks.link_tasks.*)",
-        "Fix: CredentialInfo Schema补充updated_at字段",
-        "Fix: Asset Schema补充change_detection_config和monitor_policy_id字段",
-        "Fix: 前端ProtocolType补充vcenter类型",
-        "Fix: Asset _ALLOWED_UPDATE_FIELDS移除ghost字段(protocol/port/os_version)"
-      ]
-    },
-    {
-      "version": "1.4.0",
-      "released_at": "2026-06-18T04:20:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.4.0/opsmate-1.4.0-update.tar.gz",
-      "sha256": "0968acce933a2014bdbd72967e9c1b7a8d4c4a7b8498086546ae3cfc70540758",
-      "size_bytes": 1099726,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "New: ACR双源镜像推送，国内用户1-3秒拉取",
-        "New: IMAGE_REGISTRY+IMAGE_NAMESPACE统一变量（替代GHCR_REGISTRY）",
-        "New: deploy.sh自动检测ACR→GHCR镜像站→ghcr.io",
-        "New: CI/CD双推GHCR+ACR",
-        "New: .env.example三源配置说明"
-      ]
-    },
-    {
-      "version": "1.3.9",
-      "released_at": "2026-06-18T12:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.9/opsmate-update-v1.3.9.tar.gz",
-      "sha256": "e51188bd15f6776865c19170d2cf257064857f82f6567e7539ea4fe48c4b3cbf",
-      "size_bytes": 13134,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "Fix: nginx镜像安装openssl，修复自签名证书生成静默失败"
-      ]
-    },
-    {
-      "version": "1.3.8",
-      "released_at": "2026-06-18T10:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.8/opsmate-update-v1.3.8.tar.gz",
-      "sha256": "9f880ca82262eab3edb74a2f8a6a8ddc99bf0c113c8783f9bd60c3dc99a7a6fd",
-      "size_bytes": 13134,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "Fix: sentinel anchor移到services外，修复被识别为服务的问题"
-      ]
-    },
-    {
-      "version": "1.3.7",
-      "released_at": "2026-06-18T08:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.7/opsmate-update-v1.3.7.tar.gz",
-      "sha256": "c92e681814ae9f2046a12491acdb47c1f26da352a4576e91b58fe866e422da75",
-      "size_bytes": 13133,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "Fix: YAML >折叠标量截断修复，切换到列表形式command"
-      ]
-    },
-    {
-      "version": "1.3.6",
-      "released_at": "2026-06-18T06:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.6/opsmate-update-v1.3.6.tar.gz",
-      "sha256": "357484b4c1832aa525686d42d109b425ed1eb1257e7e5228675125cde4a781e9",
-      "size_bytes": 13134,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "Fix: docker-compose $$转义修复，shell变量不再被Docker Compose替换为空"
-      ]
-    },
-    {
-      "version": "1.3.5",
-      "released_at": "2026-06-17T20:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.5/opsmate-update-v1.3.5.tar.gz",
-      "sha256": "32fbe42f9b49b7a5c9135232abaf447b271aec793ff639f2e3bb6013d6cee50e",
-      "size_bytes": 13136,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "New: nginx自动SSL证书生成",
-        "New: postgres/replica/sentinel内嵌脚本",
-        "New: deploy.sh部署脚本"
-      ]
-    },
-    {
-      "version": "1.3.4",
-      "released_at": "2026-06-17T16:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.4/opsmate-update-v1.3.4.tar.gz",
-      "sha256": "c86dd3e1afa7786c6c0a0ef11569d86135348f2e19c82399fa3264dbe8d8f984",
-      "size_bytes": 11116,
-      "compatible_modes": [
-        "docker",
-        "systemd"
-      ],
-      "changelog": [
-        "New: GHCR镜像源可配置，支持国内加速镜像"
-      ]
-    },
-    {
-      "version": "1.3.3",
-      "released_at": "2026-06-17T14:55:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.3/opsmate-1.3.3-update.tar.gz",
-      "sha256": "06c37ada7327b325d1937cda74ca01779de2581671b1736e3a95ed787b48dca0",
-      "size_bytes": 1101995,
-      "changelog": [
-        "Critical: Dockerfile ENV APP_VERSION覆盖config.py版本号",
-        "Fix: .env.example重写，区分必填/可选/禁止，移除APP_VERSION",
-        "Fix: docker-compose.quick.yml Celery健康检查升级为两级(ping+pgrep)",
-        "Fix: docker-compose.quick.yml添加TDENGINE_PASSWORD，移除空代理变量",
-        "Fix: docker-compose.yml移除ENCRYPTION_KEY空值",
-        "Fix: update_service.py动态检测安装路径",
-        "Fix: update_service.py detect_install_root()安全处理None",
-        "Fix: update_service.py _CleanProxyEnv清理空代理变量"
-      ]
-    },
-    {
-      "version": "1.3.2",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate/releases/download/v1.3.2/opsmate-1.3.2-update.tar.gz",
-      "sha256": "7010c1d1d37309b5afbc89c27985b426a796b4854236198a346f312feb55a7b0",
-      "size_bytes": 1101004,
-      "released_at": "2026-06-17T11:08:00Z",
-      "changelog": [
-        "Fix: 空HTTP_PROXY/HTTPS_PROXY导致httpx所有HTTP请求失败",
-        "Fix: Celery健康检查不可靠，改用ping+pgrep双重检查",
-        "Fix: Watchtower升级流程改进，修正URL优先级"
-      ]
-    },
-    {
-      "version": "1.3.1",
-      "released_at": "2026-06-17T08:30:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download/v1.3.1/opsmate-1.3.1-update.tar.gz",
-      "sha256": "a8d92c4b69bfbece7eae26ca61d845dac70a982fc96d771df2c480e1d74a130c",
-      "size_bytes": 1101004,
-      "changelog": [
-        "Fix: TDengine默认密码为空导致健康检查404",
-        "Fix: get_settings()重复打印warning",
-        "Fix: Celery healthcheck不可靠",
-        "Fix: tdengine_password默认值改为taosdata",
-        "Fix: docker-compose.yml添加TDENGINE_PASSWORD环境变量"
-      ]
-    },
-    {
-      "version": "1.3.0",
-      "released_at": "2026-06-17T06:00:00Z",
-      "download_url": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download/v1.3.0/opsmate-1.3.0-update.tar.gz",
-      "sha256": "dc9adf9d7f47da7ab91289b56120cb80b525b28d42a051090603991a6288c447",
-      "size_bytes": 1143329,
-      "changelog": [
-        "v1.3.0 重大功能更新版本",
-        "新增 CI/CD + Docker镜像 + Watchtower自动升级",
-        "修复 Redis Sentinel递归溢出、Dashboard字段不一致、XSS漏洞等"
+        "v2.7.7: sFlow v5解析修复",
+        "sFlow header偏移: 6×I→8×I (24→32字节)",
+        "Expanded Flow Sample (type=3) 支持",
+        "sampled_ipv4 (format=3) 支持",
+        "协议识别: sFlow v5和NetFlow v5区分",
+        "assets.py UUID比较修复"
       ]
     }
   ]
