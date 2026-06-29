@@ -1,10 +1,11 @@
 {
-  "latest": "2.7.2",
-  "latest_version": "2.7.2",
+  "latest": "2.7.3",
+  "latest_version": "2.7.3",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-06-27",
+  "release_date": "2026-06-29",
   "changelog": [
+    "v2.7.3: comprehensive bug audit fix - 14 HIGH, 22 MEDIUM backend, 8 MEDIUM frontend, 3 LOW",
     "v2.7.2: Gitee mirror, check-update fix, offline upgrade scripts",
     "v2.7.1: fix trend chart blank on time switch + 429 rate limit",
     "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
@@ -13,8 +14,7 @@
     "fix: 告警信息展示实例标识（端口/实例维度）",
     "feat: 自动更新开关 + check_update_background自动升级",
     "feat: 规则模板化 + include/exclude实例过滤",
-    "feat: AI智能建议 - 指标预选弹窗 + 默认停用 + 429修复",
-    "fix: sFlow/NetFlow v9/IPFIX parser永远为None导致报错'NoneType has no attribute parse'"
+    "feat: AI智能建议 - 指标预选弹窗 + 默认停用 + 429修复"
   ],
   "download": {
     "url": "",
@@ -40,9 +40,31 @@
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "v2.7.2: v2.7.2: Gitee mirror, check-update fix, offline upgrade scripts + v2.7.1: fix trend chart blank on time switch + 429 rate limit + v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix 等10项更新",
+  "notes": "v2.7.3: v2.7.3: comprehensive bug audit fix - 14 HIGH, 22 MEDIUM backend, 8 MEDIUM frontend, 3 LOW + v2.7.2: Gitee mirror, check-update fix, offline upgrade scripts + v2.7.1: fix trend chart blank on time switch + 429 rate limit 等10项更新",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
   "versions": [
+    {
+      "version": "2.7.3",
+      "released_at": "2026-06-29T06:58:29Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.7.3: comprehensive bug audit fix - 14 HIGH, 22 MEDIUM backend, 8 MEDIUM frontend, 3 LOW",
+        "v2.7.2: Gitee mirror, check-update fix, offline upgrade scripts",
+        "v2.7.1: fix trend chart blank on time switch + 429 rate limit",
+        "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
+        "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
+        "v2.6.9: fix ITSM ai-troubleshoot 500 error (Asset.protocol_type -> device_type), add exception fallback",
+        "fix: 告警信息展示实例标识（端口/实例维度）",
+        "feat: 自动更新开关 + check_update_background自动升级",
+        "feat: 规则模板化 + include/exclude实例过滤",
+        "feat: AI智能建议 - 指标预选弹窗 + 默认停用 + 429修复"
+      ]
+    },
     {
       "version": "2.7.2",
       "released_at": "2026-06-27T13:24:52Z",
