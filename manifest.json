@@ -1,10 +1,11 @@
 {
-  "latest": "2.7.7",
-  "latest_version": "2.7.7",
+  "latest": "2.7.8",
+  "latest_version": "2.7.8",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-06-29",
   "changelog": [
+    "v2.7.8: audit fix round - security(docker/nginx/init_setup), runtime(notification/evaluator/self_heal/assets), sFlow parsing, BizError 409 mapping, alert org_scope, router readOnlyFor guard",
     "v2.7.7: fix sFlow v5 parsing - header offset, Expanded Flow Sample(type=3), sampled_ipv4(format=3), protocol identification; fix assets.py UUID comparison",
     "v2.7.6: round 2 audit fixes",
     "v2.7.5: audit fix round 2 - security, schema types, BizError consistency, frontend",
@@ -13,8 +14,7 @@
     "v2.7.2: Gitee mirror, check-update fix, offline upgrade scripts",
     "v2.7.1: fix trend chart blank on time switch + 429 rate limit",
     "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
-    "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失",
-    "v2.6.9: fix ITSM ai-troubleshoot 500 error (Asset.protocol_type -> device_type), add exception fallback"
+    "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失"
   ],
   "download": {
     "url": "",
@@ -40,9 +40,31 @@
   },
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
-  "notes": "v2.7.7: v2.7.7: fix sFlow v5 parsing - header offset, Expanded Flow Sample(type=3), sampled_ipv4(format=3), protocol identification; fix assets.py UUID comparison + v2.7.6: round 2 audit fixes + v2.7.5: audit fix round 2 - security, schema types, BizError consistency, frontend 等10项更新",
+  "notes": "v2.7.8: v2.7.8: audit fix round - security(docker/nginx/init_setup), runtime(notification/evaluator/self_heal/assets), sFlow parsing, BizError 409 mapping, alert org_scope, router readOnlyFor guard + v2.7.7: fix sFlow v5 parsing - header offset, Expanded Flow Sample(type=3), sampled_ipv4(format=3), protocol identification; fix assets.py UUID comparison + v2.7.6: round 2 audit fixes 等10项更新",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
   "versions": [
+    {
+      "version": "2.7.8",
+      "released_at": "2026-06-29T13:15:06Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.7.8: audit fix round - security(docker/nginx/init_setup), runtime(notification/evaluator/self_heal/assets), sFlow parsing, BizError 409 mapping, alert org_scope, router readOnlyFor guard",
+        "v2.7.7: fix sFlow v5 parsing - header offset, Expanded Flow Sample(type=3), sampled_ipv4(format=3), protocol identification; fix assets.py UUID comparison",
+        "v2.7.6: round 2 audit fixes",
+        "v2.7.5: audit fix round 2 - security, schema types, BizError consistency, frontend",
+        "v2.7.4: fix sFlow v5 header format (IIIHHII->IIIIIII) + NetFlow v9 NameError crash",
+        "v2.7.3: comprehensive bug audit fix - 14 HIGH, 22 MEDIUM backend, 8 MEDIUM frontend, 3 LOW",
+        "v2.7.2: Gitee mirror, check-update fix, offline upgrade scripts",
+        "v2.7.1: fix trend chart blank on time switch + 429 rate limit",
+        "v2.7.0: asset importance UI, ticket automation policy, SLA fix, credential bug fix",
+        "feat: AI/密码策略配置持久化到数据库（system_settings表），升级重启不丢失"
+      ]
+    },
     {
       "version": "2.7.7",
       "released_at": "2026-06-29T11:26:26Z",
