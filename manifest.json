@@ -1,10 +1,11 @@
 {
-  "latest": "2.8.6",
-  "latest_version": "2.8.6",
+  "latest": "2.8.7",
+  "latest_version": "2.8.7",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-01",
   "changelog": [
+    "v2.8.7: 修复Docker升级后代码不生效 - entrypoint自动同步镜像代码到挂载目录",
     "v2.8.6: WinRM接入超时修复+采集性能优化",
     "v2.8.6: WinRM接入超时修复+采集性能优化",
     "v2.8.5: 修复登录500 - password_changed_at类型不匹配(3处)",
@@ -13,8 +14,7 @@
     "v3.0.0: 代码审核bug修复（5 HIGH + 4 MEDIUM）",
     "v3.0.0: 存储REST采集器+数据库/中间件模板增强",
     "v3.0.0: 存储阵列/数据库/中间件监控能力扩展",
-    "fix: 检查更新API前端超时15s→60s（后端3源回退最多45s）",
-    "v2.8.0: 安全加固+Bug修复+基础设施改进"
+    "fix: 检查更新API前端超时15s→60s（后端3源回退最多45s）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.8.6: v2.8.6: WinRM接入超时修复+采集性能优化 + v2.8.6: WinRM接入超时修复+采集性能优化 + v2.8.5: 修复登录500 - password_changed_at类型不匹配(3处) 等10项更新",
+  "notes": "v2.8.7: v2.8.7: 修复Docker升级后代码不生效 - entrypoint自动同步镜像代码到挂载目录 + v2.8.6: WinRM接入超时修复+采集性能优化 + v2.8.6: WinRM接入超时修复+采集性能优化 等10项更新",
   "versions": [
+    {
+      "version": "2.8.7",
+      "released_at": "2026-07-01T16:32:53Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.8.7: 修复Docker升级后代码不生效 - entrypoint自动同步镜像代码到挂载目录",
+        "v2.8.6: WinRM接入超时修复+采集性能优化",
+        "v2.8.6: WinRM接入超时修复+采集性能优化",
+        "v2.8.5: 修复登录500 - password_changed_at类型不匹配(3处)",
+        "v3.0.0: 湖南工程学院需求推进 - SNMP ifXTable 64位计数器+dot3StatsTable以太网错误+Counter64精度修复+IPMI SEL日志+华为iBMC模板+OceanStor增强+VDX6740 Brocade模板+SC3020 REST补充",
+        "fix: 第二轮审计修复7个HIGH+3个MEDIUM bug",
+        "v3.0.0: 代码审核bug修复（5 HIGH + 4 MEDIUM）",
+        "v3.0.0: 存储REST采集器+数据库/中间件模板增强",
+        "v3.0.0: 存储阵列/数据库/中间件监控能力扩展",
+        "fix: 检查更新API前端超时15s→60s（后端3源回退最多45s）"
+      ]
+    },
     {
       "version": "2.8.6",
       "released_at": "2026-07-01T15:48:59Z",
