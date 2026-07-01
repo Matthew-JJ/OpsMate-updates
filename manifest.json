@@ -5,6 +5,7 @@
   "minimum_version": "2.0.0",
   "release_date": "2026-07-01",
   "changelog": [
+    "v2.8.7: 删除docker-compose.yml中的代码volume挂载",
     "v2.8.7: 修复Docker升级后代码不生效 - entrypoint自动同步镜像代码到挂载目录",
     "v2.8.6: WinRM接入超时修复+采集性能优化",
     "v2.8.6: WinRM接入超时修复+采集性能优化",
@@ -13,8 +14,7 @@
     "fix: 第二轮审计修复7个HIGH+3个MEDIUM bug",
     "v3.0.0: 代码审核bug修复（5 HIGH + 4 MEDIUM）",
     "v3.0.0: 存储REST采集器+数据库/中间件模板增强",
-    "v3.0.0: 存储阵列/数据库/中间件监控能力扩展",
-    "fix: 检查更新API前端超时15s→60s（后端3源回退最多45s）"
+    "v3.0.0: 存储阵列/数据库/中间件监控能力扩展"
   ],
   "download": {
     "url": "",
@@ -41,11 +41,11 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.8.7: v2.8.7: 修复Docker升级后代码不生效 - entrypoint自动同步镜像代码到挂载目录 + v2.8.6: WinRM接入超时修复+采集性能优化 + v2.8.6: WinRM接入超时修复+采集性能优化 等10项更新",
+  "notes": "v2.8.7: v2.8.7: 删除docker-compose.yml中的代码volume挂载 + v2.8.7: 修复Docker升级后代码不生效 - entrypoint自动同步镜像代码到挂载目录 + v2.8.6: WinRM接入超时修复+采集性能优化 等10项更新",
   "versions": [
     {
       "version": "2.8.7",
-      "released_at": "2026-07-01T16:32:53Z",
+      "released_at": "2026-07-01T16:53:38Z",
       "download_url": "",
       "sha256": "",
       "size_bytes": 0,
@@ -53,6 +53,7 @@
         "docker"
       ],
       "changelog": [
+        "v2.8.7: 删除docker-compose.yml中的代码volume挂载",
         "v2.8.7: 修复Docker升级后代码不生效 - entrypoint自动同步镜像代码到挂载目录",
         "v2.8.6: WinRM接入超时修复+采集性能优化",
         "v2.8.6: WinRM接入超时修复+采集性能优化",
@@ -61,8 +62,7 @@
         "fix: 第二轮审计修复7个HIGH+3个MEDIUM bug",
         "v3.0.0: 代码审核bug修复（5 HIGH + 4 MEDIUM）",
         "v3.0.0: 存储REST采集器+数据库/中间件模板增强",
-        "v3.0.0: 存储阵列/数据库/中间件监控能力扩展",
-        "fix: 检查更新API前端超时15s→60s（后端3源回退最多45s）"
+        "v3.0.0: 存储阵列/数据库/中间件监控能力扩展"
       ]
     },
     {
