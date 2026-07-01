@@ -1,29 +1,26 @@
 {
-  "latest": "2.8.0",
-  "latest_version": "2.8.0",
+  "latest": "2.8.2",
+  "latest_version": "2.8.2",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-06-29",
+  "release_date": "2026-07-01",
   "changelog": [
-    "v2.8.0: 安全加固+Bug修复+基础设施改进",
-    "[高] python-jose→PyJWT迁移 (CVE-2024-53861)，消除已知安全漏洞",
-    "[高] deploy-cn.sh内嵌compose与主compose同步（TDengine健康检查、8000端口、Watchtower绑定、Redis认证）",
-    "[中] Backend端口: 162→1162/udp, 514→1514/udp (非root Docker兼容)",
-    "[中] Postgres密码不再暴露在命令行参数（printf pipe方式）",
-    "[中] encryption.py: 密钥无效时不静默重新生成，加ERROR告警",
-    "[中] nginx.conf HTTPS重定向注释完善",
-    "[低] redis_pool.py: async客户端改用asyncio.Lock，不再阻塞事件循环",
-    "[低] api_key permissions类型修复: dict→list（与schema一致）",
-    "[低] 告警规则一键创建: 默认启用is_enabled=True",
-    "[低] 容量预测: days_to_zero上限3650天，避免数千天无意义预测",
-    "[低] IPFIX: Template字段解析修正为RFC 7011标准(6字节+Enterprise IE)",
-    "[低] 前端: 4处自写Markdown渲染统一为utils/markdown.ts",
-    "[低] request.ts: 消除2处any类型"
+    "v2.8.2: NPM端口管理+实时重映射+分类器修复",
+    "fix(NPM): 移除src_port匹配+高位端口兜底修正",
+    "feat(NPM): 实时重映射+热加载+合并端口管理+Top主机修复",
+    "feat(NPM): port discovery + port labels + custom categories + bug fixes",
+    "v2.8.1: NPM流量空白bug修复 - tenant_id不匹配+IP过滤过严+fallback兼容",
+    "docs: _resolve_tenant_id注释说明启动时同步调用可接受",
+    "fix: _resolve_tenant_id使用database_url_sync连接串而非不存在的postgres_host属性",
+    "fix: NPM流量页面空白 - tenant_id不匹配+IP过滤过严",
+    "fix: 检查更新API前端超时15s→60s（后端3源回退最多45s）",
+    "v2.8.0: 安全加固+Bug修复+基础设施改进"
   ],
   "download": {
     "url": "",
     "sha256": "",
-    "size_mb": 0
+    "size_mb": 0,
+    "note": "Docker模式通过Watchtower拉取latest镜像自动升级，无需下载更新包"
   },
   "images": {
     "acr": {
@@ -44,15 +41,40 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.8.0: PyJWT迁移(CVE修复)+compose同步+安全加固+Bug修复15项",
+  "notes": "v2.8.2: v2.8.2: NPM端口管理+实时重映射+分类器修复 + fix(NPM): 移除src_port匹配+高位端口兜底修正 + feat(NPM): 实时重映射+热加载+合并端口管理+Top主机修复 等10项更新",
   "versions": [
+    {
+      "version": "2.8.2",
+      "released_at": "2026-07-01T08:13:31Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.8.2: NPM端口管理+实时重映射+分类器修复",
+        "fix(NPM): 移除src_port匹配+高位端口兜底修正",
+        "feat(NPM): 实时重映射+热加载+合并端口管理+Top主机修复",
+        "feat(NPM): port discovery + port labels + custom categories + bug fixes",
+        "v2.8.1: NPM流量空白bug修复 - tenant_id不匹配+IP过滤过严+fallback兼容",
+        "docs: _resolve_tenant_id注释说明启动时同步调用可接受",
+        "fix: _resolve_tenant_id使用database_url_sync连接串而非不存在的postgres_host属性",
+        "fix: NPM流量页面空白 - tenant_id不匹配+IP过滤过严",
+        "fix: 检查更新API前端超时15s→60s（后端3源回退最多45s）",
+        "v2.8.0: 安全加固+Bug修复+基础设施改进"
+      ]
+    },
     {
       "version": "2.8.0",
       "released_at": "2026-06-29T15:25:00Z",
       "download_url": "",
       "sha256": "",
       "size_bytes": 0,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "[高] python-jose→PyJWT迁移 (CVE-2024-53861)",
         "[高] deploy-cn.sh内嵌compose同步5处差异",
@@ -74,7 +96,10 @@
       "download_url": "",
       "sha256": "",
       "size_bytes": 0,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "v2.7.8: audit fix round - 20 files, 173 insertions, 64 deletions",
         "Watchtower API 0.0.0.0→127.0.0.1",
@@ -99,7 +124,10 @@
       "download_url": "",
       "sha256": "",
       "size_bytes": 0,
-      "compatible_modes": ["docker", "systemd"],
+      "compatible_modes": [
+        "docker",
+        "systemd"
+      ],
       "changelog": [
         "v2.7.7: sFlow v5解析修复",
         "sFlow header偏移: 6×I→8×I (24→32字节)",
