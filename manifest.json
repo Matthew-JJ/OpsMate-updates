@@ -1,10 +1,11 @@
 {
-  "latest": "2.9.3",
-  "latest_version": "2.9.3",
+  "latest": "2.9.4",
+  "latest_version": "2.9.4",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-02",
   "changelog": [
+    "hotfix8: move _MAX_SCRIPT_CHARS into WinrmCollector class",
     "bump version to 2.9.3",
     "hotfix7: dispose DB engine pool in celery prefork child process",
     "bump version to 2.9.2",
@@ -13,8 +14,7 @@
     "v2.9.1-hotfix5: WinRM长脚本写入临时ps1文件执行",
     "v2.9.1-hotfix4: celery worker子进程日志初始化",
     "v2.9.1-hotfix3: Watchtower一键更新修复+前端升级页面修复",
-    "v2.9.1-hotfix2: celery worker日志初始化",
-    "v2.9.1-hotfix: _build_credentials解密target_config"
+    "v2.9.1-hotfix2: celery worker日志初始化"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.9.3: bump version to 2.9.3 + hotfix7: dispose DB engine pool in celery prefork child process + bump version to 2.9.2 等10项更新",
+  "notes": "v2.9.4: hotfix8: move _MAX_SCRIPT_CHARS into WinrmCollector class + bump version to 2.9.3 + hotfix7: dispose DB engine pool in celery prefork child process 等10项更新",
   "versions": [
+    {
+      "version": "2.9.4",
+      "released_at": "2026-07-02T17:30:12Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "hotfix8: move _MAX_SCRIPT_CHARS into WinrmCollector class",
+        "bump version to 2.9.3",
+        "hotfix7: dispose DB engine pool in celery prefork child process",
+        "bump version to 2.9.2",
+        "hotfix6: fix celery KeyError task_name + scheduler .decode() on str",
+        "v2.9.1-hotfix5-v2: WinRM长脚本分批执行（替代临时文件hack）",
+        "v2.9.1-hotfix5: WinRM长脚本写入临时ps1文件执行",
+        "v2.9.1-hotfix4: celery worker子进程日志初始化",
+        "v2.9.1-hotfix3: Watchtower一键更新修复+前端升级页面修复",
+        "v2.9.1-hotfix2: celery worker日志初始化"
+      ]
+    },
     {
       "version": "2.9.3",
       "released_at": "2026-07-02T17:10:23Z",
