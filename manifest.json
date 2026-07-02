@@ -1,10 +1,11 @@
 {
-  "latest": "2.8.8",
-  "latest_version": "2.8.8",
+  "latest": "2.8.9",
+  "latest_version": "2.8.9",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-02",
   "changelog": [
+    "v2.8.9: 修复WinRM指标空白(self参数)+AI graceful degradation+alembic兼容+ai_core异常处理",
     "v2.8.8: 恢复CI/CD latest标签（正式发布）",
     "v2.8.8: CI/CD本次不推latest标签（测试版本，防止Watchtower自动升级）",
     "v2.8.8: 修复WinRM智能接入指标列表空白",
@@ -13,8 +14,7 @@
     "v2.8.7: WinRM接入超时修复+采集性能优化",
     "v2.8.5: 修复登录500 - UserInfo.password_changed_at类型应为datetime非str",
     "v2.8.4: 修复修改密码500错误 - password_changed_at类型不匹配",
-    "v2.8.3: 修复PyJWT依赖缺失+port_label导入+postgres_where警告",
-    "v2.8.2: NPM端口管理+实时重映射+分类器修复"
+    "v2.8.3: 修复PyJWT依赖缺失+port_label导入+postgres_where警告"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.8.8: v2.8.8: 恢复CI/CD latest标签（正式发布） + v2.8.8: CI/CD本次不推latest标签（测试版本，防止Watchtower自动升级） + v2.8.8: 修复WinRM智能接入指标列表空白 等10项更新",
+  "notes": "v2.8.9: v2.8.9: 修复WinRM指标空白(self参数)+AI graceful degradation+alembic兼容+ai_core异常处理 + v2.8.8: 恢复CI/CD latest标签（正式发布） + v2.8.8: CI/CD本次不推latest标签（测试版本，防止Watchtower自动升级） 等10项更新",
   "versions": [
+    {
+      "version": "2.8.9",
+      "released_at": "2026-07-02T09:47:54Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.8.9: 修复WinRM指标空白(self参数)+AI graceful degradation+alembic兼容+ai_core异常处理",
+        "v2.8.8: 恢复CI/CD latest标签（正式发布）",
+        "v2.8.8: CI/CD本次不推latest标签（测试版本，防止Watchtower自动升级）",
+        "v2.8.8: 修复WinRM智能接入指标列表空白",
+        "v2.8.8: 修复登录500 - password_changed_at列类型varchar→timestamptz",
+        "删除docker-compose.yml中的代码volume挂载(3处)",
+        "v2.8.7: WinRM接入超时修复+采集性能优化",
+        "v2.8.5: 修复登录500 - UserInfo.password_changed_at类型应为datetime非str",
+        "v2.8.4: 修复修改密码500错误 - password_changed_at类型不匹配",
+        "v2.8.3: 修复PyJWT依赖缺失+port_label导入+postgres_where警告"
+      ]
+    },
     {
       "version": "2.8.8",
       "released_at": "2026-07-02T07:34:16Z",
