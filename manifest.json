@@ -1,10 +1,12 @@
 {
-  "latest": "2.9.2",
-  "latest_version": "2.9.2",
+  "latest": "2.9.3",
+  "latest_version": "2.9.3",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-02",
   "changelog": [
+    "bump version to 2.9.3",
+    "hotfix7: dispose DB engine pool in celery prefork child process",
     "bump version to 2.9.2",
     "hotfix6: fix celery KeyError task_name + scheduler .decode() on str",
     "v2.9.1-hotfix5-v2: WinRM长脚本分批执行（替代临时文件hack）",
@@ -12,9 +14,7 @@
     "v2.9.1-hotfix4: celery worker子进程日志初始化",
     "v2.9.1-hotfix3: Watchtower一键更新修复+前端升级页面修复",
     "v2.9.1-hotfix2: celery worker日志初始化",
-    "v2.9.1-hotfix: _build_credentials解密target_config",
-    "v2.9.1: WinRM静默失败修复+日志黑洞+采集状态精确标记+前端计时器响应式+告警规则脏数据降级",
-    "v2.9.0: fix WinRM NIC blank/memory unit/effective-policies 500/monitoring stuck/alembic fallback"
+    "v2.9.1-hotfix: _build_credentials解密target_config"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.9.2: bump version to 2.9.2 + hotfix6: fix celery KeyError task_name + scheduler .decode() on str + v2.9.1-hotfix5-v2: WinRM长脚本分批执行（替代临时文件hack） 等10项更新",
+  "notes": "v2.9.3: bump version to 2.9.3 + hotfix7: dispose DB engine pool in celery prefork child process + bump version to 2.9.2 等10项更新",
   "versions": [
+    {
+      "version": "2.9.3",
+      "released_at": "2026-07-02T17:10:23Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "bump version to 2.9.3",
+        "hotfix7: dispose DB engine pool in celery prefork child process",
+        "bump version to 2.9.2",
+        "hotfix6: fix celery KeyError task_name + scheduler .decode() on str",
+        "v2.9.1-hotfix5-v2: WinRM长脚本分批执行（替代临时文件hack）",
+        "v2.9.1-hotfix5: WinRM长脚本写入临时ps1文件执行",
+        "v2.9.1-hotfix4: celery worker子进程日志初始化",
+        "v2.9.1-hotfix3: Watchtower一键更新修复+前端升级页面修复",
+        "v2.9.1-hotfix2: celery worker日志初始化",
+        "v2.9.1-hotfix: _build_credentials解密target_config"
+      ]
+    },
     {
       "version": "2.9.2",
       "released_at": "2026-07-02T16:48:25Z",
