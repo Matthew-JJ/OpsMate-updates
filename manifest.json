@@ -5,6 +5,7 @@
   "minimum_version": "2.0.0",
   "release_date": "2026-07-02",
   "changelog": [
+    "v2.9.1-hotfix: _build_credentials解密target_config",
     "v2.9.1: WinRM静默失败修复+日志黑洞+采集状态精确标记+前端计时器响应式+告警规则脏数据降级",
     "v2.9.0: fix WinRM NIC blank/memory unit/effective-policies 500/monitoring stuck/alembic fallback",
     "v2.8.9: 修复WinRM指标空白(self参数)+AI graceful degradation+alembic兼容+ai_core异常处理",
@@ -13,8 +14,7 @@
     "v2.8.8: 修复WinRM智能接入指标列表空白",
     "v2.8.8: 修复登录500 - password_changed_at列类型varchar→timestamptz",
     "删除docker-compose.yml中的代码volume挂载(3处)",
-    "v2.8.7: WinRM接入超时修复+采集性能优化",
-    "v2.8.5: 修复登录500 - UserInfo.password_changed_at类型应为datetime非str"
+    "v2.8.7: WinRM接入超时修复+采集性能优化"
   ],
   "download": {
     "url": "",
@@ -41,11 +41,11 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.9.1: v2.9.1: WinRM静默失败修复+日志黑洞+采集状态精确标记+前端计时器响应式+告警规则脏数据降级 + v2.9.0: fix WinRM NIC blank/memory unit/effective-policies 500/monitoring stuck/alembic fallback + v2.8.9: 修复WinRM指标空白(self参数)+AI graceful degradation+alembic兼容+ai_core异常处理 等10项更新",
+  "notes": "v2.9.1: v2.9.1-hotfix: _build_credentials解密target_config + v2.9.1: WinRM静默失败修复+日志黑洞+采集状态精确标记+前端计时器响应式+告警规则脏数据降级 + v2.9.0: fix WinRM NIC blank/memory unit/effective-policies 500/monitoring stuck/alembic fallback 等10项更新",
   "versions": [
     {
       "version": "2.9.1",
-      "released_at": "2026-07-02T13:55:09Z",
+      "released_at": "2026-07-02T14:37:19Z",
       "download_url": "",
       "sha256": "",
       "size_bytes": 0,
@@ -53,6 +53,7 @@
         "docker"
       ],
       "changelog": [
+        "v2.9.1-hotfix: _build_credentials解密target_config",
         "v2.9.1: WinRM静默失败修复+日志黑洞+采集状态精确标记+前端计时器响应式+告警规则脏数据降级",
         "v2.9.0: fix WinRM NIC blank/memory unit/effective-policies 500/monitoring stuck/alembic fallback",
         "v2.8.9: 修复WinRM指标空白(self参数)+AI graceful degradation+alembic兼容+ai_core异常处理",
@@ -61,8 +62,7 @@
         "v2.8.8: 修复WinRM智能接入指标列表空白",
         "v2.8.8: 修复登录500 - password_changed_at列类型varchar→timestamptz",
         "删除docker-compose.yml中的代码volume挂载(3处)",
-        "v2.8.7: WinRM接入超时修复+采集性能优化",
-        "v2.8.5: 修复登录500 - UserInfo.password_changed_at类型应为datetime非str"
+        "v2.8.7: WinRM接入超时修复+采集性能优化"
       ]
     },
     {
