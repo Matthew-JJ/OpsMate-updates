@@ -1,10 +1,11 @@
 {
-  "latest": "2.10.9",
-  "latest_version": "2.10.9",
+  "latest": "2.10.10",
+  "latest_version": "2.10.10",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-03",
   "changelog": [
+    "v2.10.10: Redfish健康指标大修 - 字符串枚举映射+逐组件walk模式",
     "v2.10.9: 全局监控页告警规则弹窗加实例选择(单资产作用域)",
     "v2.10.8: 告警schema加metric_instance、描述模板加实例信息、所属事件可点击跳转",
     "v2.10.7: 预设模板标签优先+critical规则合并到同一行",
@@ -13,8 +14,7 @@
     "fix: disable Redfish dual-probe OS asset auto-creation",
     "refactor: ServerSNMPOverview unified with Component data",
     "bump version to 2.10.2",
-    "feat: add ServerSNMPOverview for SNMP server hardware monitoring",
-    "v2.10.1-hotfix: 监控策略实例映射冲突 + 预设模板重复 + uptime换算"
+    "feat: add ServerSNMPOverview for SNMP server hardware monitoring"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.10.9: v2.10.9: 全局监控页告警规则弹窗加实例选择(单资产作用域) + v2.10.8: 告警schema加metric_instance、描述模板加实例信息、所属事件可点击跳转 + v2.10.7: 预设模板标签优先+critical规则合并到同一行 等10项更新",
+  "notes": "v2.10.10: v2.10.10: Redfish健康指标大修 - 字符串枚举映射+逐组件walk模式 + v2.10.9: 全局监控页告警规则弹窗加实例选择(单资产作用域) + v2.10.8: 告警schema加metric_instance、描述模板加实例信息、所属事件可点击跳转 等10项更新",
   "versions": [
+    {
+      "version": "2.10.10",
+      "released_at": "2026-07-03T18:46:19Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.10.10: Redfish健康指标大修 - 字符串枚举映射+逐组件walk模式",
+        "v2.10.9: 全局监控页告警规则弹窗加实例选择(单资产作用域)",
+        "v2.10.8: 告警schema加metric_instance、描述模板加实例信息、所属事件可点击跳转",
+        "v2.10.7: 预设模板标签优先+critical规则合并到同一行",
+        "v2.10.6: 删除server_status指标、统一power标签名、告警实例标签格式优化",
+        "v2.10.5: 自定义字段中文标签+运行时间格式化、告警实例标签统一格式",
+        "fix: disable Redfish dual-probe OS asset auto-creation",
+        "refactor: ServerSNMPOverview unified with Component data",
+        "bump version to 2.10.2",
+        "feat: add ServerSNMPOverview for SNMP server hardware monitoring"
+      ]
+    },
     {
       "version": "2.10.9",
       "released_at": "2026-07-03T18:26:16Z",
