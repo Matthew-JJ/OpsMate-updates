@@ -1,10 +1,11 @@
 {
-  "latest": "2.10.15",
-  "latest_version": "2.10.15",
+  "latest": "2.10.16",
+  "latest_version": "2.10.16",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-04",
   "changelog": [
+    "v2.10.16: _collect_network_metrics加HealthRollup和State推断",
     "bump version to 2.10.15",
     "refactor: 重写NIC采集参照DMTF Redfish规范和idrac_exporter实践",
     "v2.10.14: 后端驱动的metric_label + Dell NIC健康多级fallback",
@@ -13,8 +14,7 @@
     "v2.10.12: fix NIC health unknown + temp zone visibility",
     "v2.10.11: 预设模板阈值OK→0 + Redfish部件补全 + enum_map + 概览去重 + 温度CSS",
     "v2.10.10: Redfish健康指标大修 - 字符串枚举映射+逐组件walk模式",
-    "v2.10.9: 全局监控页告警规则弹窗加实例选择(单资产作用域)",
-    "v2.10.8: 告警schema加metric_instance、描述模板加实例信息、所属事件可点击跳转"
+    "v2.10.9: 全局监控页告警规则弹窗加实例选择(单资产作用域)"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.10.15: bump version to 2.10.15 + refactor: 重写NIC采集参照DMTF Redfish规范和idrac_exporter实践 + v2.10.14: 后端驱动的metric_label + Dell NIC健康多级fallback 等10项更新",
+  "notes": "v2.10.16: v2.10.16: _collect_network_metrics加HealthRollup和State推断 + bump version to 2.10.15 + refactor: 重写NIC采集参照DMTF Redfish规范和idrac_exporter实践 等10项更新",
   "versions": [
+    {
+      "version": "2.10.16",
+      "released_at": "2026-07-04T07:23:24Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.10.16: _collect_network_metrics加HealthRollup和State推断",
+        "bump version to 2.10.15",
+        "refactor: 重写NIC采集参照DMTF Redfish规范和idrac_exporter实践",
+        "v2.10.14: 后端驱动的metric_label + Dell NIC健康多级fallback",
+        "bump version to 2.10.13",
+        "fix: 补全METRIC_NAME_MAP + metrics路径NIC health推断",
+        "v2.10.12: fix NIC health unknown + temp zone visibility",
+        "v2.10.11: 预设模板阈值OK→0 + Redfish部件补全 + enum_map + 概览去重 + 温度CSS",
+        "v2.10.10: Redfish健康指标大修 - 字符串枚举映射+逐组件walk模式",
+        "v2.10.9: 全局监控页告警规则弹窗加实例选择(单资产作用域)"
+      ]
+    },
     {
       "version": "2.10.15",
       "released_at": "2026-07-04T06:35:50Z",
