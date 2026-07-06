@@ -1,20 +1,20 @@
 {
-  "latest": "2.10.22",
-  "latest_version": "2.10.22",
+  "latest": "2.10.25",
+  "latest_version": "2.10.25",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-06",
   "changelog": [
+    "v2.10.25: 修复effective-policies/relations 500、流量值突变、counter位宽、CPU接口过滤",
+    "v2.10.24: 修复48端口交换机1208指标性能爆炸",
+    "v2.10.23: 修复新部署Alembic架构缺陷",
+    "fix: 016迁移幂等保护 - unique constraint用DO块IF NOT EXISTS避免create_all回退后冲突",
     "v2.10.22: metric_catalog元数据驱动架构 + 采集链路关键bug修复",
     "fix: catalog API去掉不支持的meta参数,改用嵌套data结构",
     "fix: Dockerfile.nginx 去CRLF确保heredoc脚本可执行",
     "fix: metric_catalog INSERT 补充created_at/updated_at(now())",
     "fix: metric_catalog INSERT 补充id字段(uuid4)",
-    "fix: metric_catalog INSERT 修复asyncpg不兼容::jsonb语法",
-    "feat(v3.0): SNMP canonical naming refactoring (P0-P5)",
-    "v2.10.21: 修复智能接入告警规则匹配bug - computed指标误匹配原始计数器",
-    "v2.10.20: 添加带宽利用率计算 if_util_in_percent/if_util_out_percent",
-    "v2.10.19: SNMP counter→rate速率计算 + 网络设备limit提高 + 告警规则修复"
+    "fix: metric_catalog INSERT 修复asyncpg不兼容::jsonb语法"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.10.22: v2.10.22: metric_catalog元数据驱动架构 + 采集链路关键bug修复 + fix: catalog API去掉不支持的meta参数,改用嵌套data结构 + fix: Dockerfile.nginx 去CRLF确保heredoc脚本可执行 等10项更新",
+  "notes": "v2.10.25: v2.10.25: 修复effective-policies/relations 500、流量值突变、counter位宽、CPU接口过滤 + v2.10.24: 修复48端口交换机1208指标性能爆炸 + v2.10.23: 修复新部署Alembic架构缺陷 等10项更新",
   "versions": [
+    {
+      "version": "2.10.25",
+      "released_at": "2026-07-06T12:57:22Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.10.25: 修复effective-policies/relations 500、流量值突变、counter位宽、CPU接口过滤",
+        "v2.10.24: 修复48端口交换机1208指标性能爆炸",
+        "v2.10.23: 修复新部署Alembic架构缺陷",
+        "fix: 016迁移幂等保护 - unique constraint用DO块IF NOT EXISTS避免create_all回退后冲突",
+        "v2.10.22: metric_catalog元数据驱动架构 + 采集链路关键bug修复",
+        "fix: catalog API去掉不支持的meta参数,改用嵌套data结构",
+        "fix: Dockerfile.nginx 去CRLF确保heredoc脚本可执行",
+        "fix: metric_catalog INSERT 补充created_at/updated_at(now())",
+        "fix: metric_catalog INSERT 补充id字段(uuid4)",
+        "fix: metric_catalog INSERT 修复asyncpg不兼容::jsonb语法"
+      ]
+    },
     {
       "version": "2.10.22",
       "released_at": "2026-07-06T07:37:46Z",
