@@ -1,20 +1,20 @@
 {
-  "latest": "2.10.20",
-  "latest_version": "2.10.20",
+  "latest": "2.10.22",
+  "latest_version": "2.10.22",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-07-04",
+  "release_date": "2026-07-06",
   "changelog": [
+    "v2.10.22: metric_catalog元数据驱动架构 + 采集链路关键bug修复",
+    "fix: catalog API去掉不支持的meta参数,改用嵌套data结构",
+    "fix: Dockerfile.nginx 去CRLF确保heredoc脚本可执行",
+    "fix: metric_catalog INSERT 补充created_at/updated_at(now())",
+    "fix: metric_catalog INSERT 补充id字段(uuid4)",
+    "fix: metric_catalog INSERT 修复asyncpg不兼容::jsonb语法",
+    "feat(v3.0): SNMP canonical naming refactoring (P0-P5)",
+    "v2.10.21: 修复智能接入告警规则匹配bug - computed指标误匹配原始计数器",
     "v2.10.20: 添加带宽利用率计算 if_util_in_percent/if_util_out_percent",
-    "v2.10.19: SNMP counter→rate速率计算 + 网络设备limit提高 + 告警规则修复",
-    "v2.10.18: fix network device traffic dual-counting and overview cards conflict",
-    "v2.10.17: 修复智能接入power_value模糊匹配误指向power_status的bug",
-    "v2.10.16: _collect_network_metrics加HealthRollup和State推断",
-    "bump version to 2.10.15",
-    "refactor: 重写NIC采集参照DMTF Redfish规范和idrac_exporter实践",
-    "v2.10.14: 后端驱动的metric_label + Dell NIC健康多级fallback",
-    "bump version to 2.10.13",
-    "fix: 补全METRIC_NAME_MAP + metrics路径NIC health推断"
+    "v2.10.19: SNMP counter→rate速率计算 + 网络设备limit提高 + 告警规则修复"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.10.20: v2.10.20: 添加带宽利用率计算 if_util_in_percent/if_util_out_percent + v2.10.19: SNMP counter→rate速率计算 + 网络设备limit提高 + 告警规则修复 + v2.10.18: fix network device traffic dual-counting and overview cards conflict 等10项更新",
+  "notes": "v2.10.22: v2.10.22: metric_catalog元数据驱动架构 + 采集链路关键bug修复 + fix: catalog API去掉不支持的meta参数,改用嵌套data结构 + fix: Dockerfile.nginx 去CRLF确保heredoc脚本可执行 等10项更新",
   "versions": [
+    {
+      "version": "2.10.22",
+      "released_at": "2026-07-06T07:37:46Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.10.22: metric_catalog元数据驱动架构 + 采集链路关键bug修复",
+        "fix: catalog API去掉不支持的meta参数,改用嵌套data结构",
+        "fix: Dockerfile.nginx 去CRLF确保heredoc脚本可执行",
+        "fix: metric_catalog INSERT 补充created_at/updated_at(now())",
+        "fix: metric_catalog INSERT 补充id字段(uuid4)",
+        "fix: metric_catalog INSERT 修复asyncpg不兼容::jsonb语法",
+        "feat(v3.0): SNMP canonical naming refactoring (P0-P5)",
+        "v2.10.21: 修复智能接入告警规则匹配bug - computed指标误匹配原始计数器",
+        "v2.10.20: 添加带宽利用率计算 if_util_in_percent/if_util_out_percent",
+        "v2.10.19: SNMP counter→rate速率计算 + 网络设备limit提高 + 告警规则修复"
+      ]
+    },
     {
       "version": "2.10.20",
       "released_at": "2026-07-04T13:48:05Z",
