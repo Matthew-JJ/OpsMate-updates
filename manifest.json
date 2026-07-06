@@ -1,10 +1,11 @@
 {
-  "latest": "2.10.26",
-  "latest_version": "2.10.26",
+  "latest": "2.10.27",
+  "latest_version": "2.10.27",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-06",
   "changelog": [
+    "v2.10.27: 删除资产添加详细调试日志定位500根因",
     "v2.10.26: 修复资产删除500、effectivePolicies空结果、relations降级查询",
     "v2.10.25: 修复effective-policies/relations 500、流量值突变、counter位宽、CPU接口过滤",
     "v2.10.24: 修复48端口交换机1208指标性能爆炸",
@@ -13,8 +14,7 @@
     "v2.10.22: metric_catalog元数据驱动架构 + 采集链路关键bug修复",
     "fix: catalog API去掉不支持的meta参数,改用嵌套data结构",
     "fix: Dockerfile.nginx 去CRLF确保heredoc脚本可执行",
-    "fix: metric_catalog INSERT 补充created_at/updated_at(now())",
-    "fix: metric_catalog INSERT 补充id字段(uuid4)"
+    "fix: metric_catalog INSERT 补充created_at/updated_at(now())"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.10.26: v2.10.26: 修复资产删除500、effectivePolicies空结果、relations降级查询 + v2.10.25: 修复effective-policies/relations 500、流量值突变、counter位宽、CPU接口过滤 + v2.10.24: 修复48端口交换机1208指标性能爆炸 等10项更新",
+  "notes": "v2.10.27: v2.10.27: 删除资产添加详细调试日志定位500根因 + v2.10.26: 修复资产删除500、effectivePolicies空结果、relations降级查询 + v2.10.25: 修复effective-policies/relations 500、流量值突变、counter位宽、CPU接口过滤 等10项更新",
   "versions": [
+    {
+      "version": "2.10.27",
+      "released_at": "2026-07-06T14:46:04Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.10.27: 删除资产添加详细调试日志定位500根因",
+        "v2.10.26: 修复资产删除500、effectivePolicies空结果、relations降级查询",
+        "v2.10.25: 修复effective-policies/relations 500、流量值突变、counter位宽、CPU接口过滤",
+        "v2.10.24: 修复48端口交换机1208指标性能爆炸",
+        "v2.10.23: 修复新部署Alembic架构缺陷",
+        "fix: 016迁移幂等保护 - unique constraint用DO块IF NOT EXISTS避免create_all回退后冲突",
+        "v2.10.22: metric_catalog元数据驱动架构 + 采集链路关键bug修复",
+        "fix: catalog API去掉不支持的meta参数,改用嵌套data结构",
+        "fix: Dockerfile.nginx 去CRLF确保heredoc脚本可执行",
+        "fix: metric_catalog INSERT 补充created_at/updated_at(now())"
+      ]
+    },
     {
       "version": "2.10.26",
       "released_at": "2026-07-06T13:43:01Z",
