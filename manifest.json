@@ -1,20 +1,20 @@
 {
-  "latest": "2.10.32",
-  "latest_version": "2.10.32",
+  "latest": "2.10.33",
+  "latest_version": "2.10.33",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-07",
   "changelog": [
+    "v2.10.33: fix compose log-config + celery cache race",
+    "chore: gitignore 015_patch.sql",
+    "chore: remove stray 015_patch.sql from commit",
+    "fix: Celery worker metric_catalog cache startup race - empty table retry + lazy reload",
+    "fix: deploy-cn.sh 内嵌compose同样修复 --log-config-json → --log-config",
+    "fix: --log-config-json → --log-config (uvicorn correct flag name)",
     "v2.10.32: fix traffic display bugs - counter reset misdetection + bytes fallback removal",
     "v2.10.31: metric closure过滤 + recommended_count实例计数 + LIMIT 5000 + 清理诊断prints",
     "v2.10.30: force rebuild logging handlers in lifespan + stderr traceback fallback",
-    "v2.10.29: fix uvicorn multi-worker logging loss - add logging_config.json + lifespan _setup_logging()",
-    "v2.10.28: fix PROBE_META_KEYS NameError in collect_tasks, uvicorn logging fix from v2.10.27",
-    "v2.10.27: 删除资产添加详细调试日志定位500根因",
-    "v2.10.26: 修复资产删除500、effectivePolicies空结果、relations降级查询",
-    "v2.10.25: 修复effective-policies/relations 500、流量值突变、counter位宽、CPU接口过滤",
-    "v2.10.24: 修复48端口交换机1208指标性能爆炸",
-    "v2.10.23: 修复新部署Alembic架构缺陷"
+    "v2.10.29: fix uvicorn multi-worker logging loss - add logging_config.json + lifespan _setup_logging()"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.10.32: v2.10.32: fix traffic display bugs - counter reset misdetection + bytes fallback removal + v2.10.31: metric closure过滤 + recommended_count实例计数 + LIMIT 5000 + 清理诊断prints + v2.10.30: force rebuild logging handlers in lifespan + stderr traceback fallback 等10项更新",
+  "notes": "v2.10.33: v2.10.33: fix compose log-config + celery cache race + chore: gitignore 015_patch.sql + chore: remove stray 015_patch.sql from commit 等10项更新",
   "versions": [
+    {
+      "version": "2.10.33",
+      "released_at": "2026-07-07T08:35:20Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.10.33: fix compose log-config + celery cache race",
+        "chore: gitignore 015_patch.sql",
+        "chore: remove stray 015_patch.sql from commit",
+        "fix: Celery worker metric_catalog cache startup race - empty table retry + lazy reload",
+        "fix: deploy-cn.sh 内嵌compose同样修复 --log-config-json → --log-config",
+        "fix: --log-config-json → --log-config (uvicorn correct flag name)",
+        "v2.10.32: fix traffic display bugs - counter reset misdetection + bytes fallback removal",
+        "v2.10.31: metric closure过滤 + recommended_count实例计数 + LIMIT 5000 + 清理诊断prints",
+        "v2.10.30: force rebuild logging handlers in lifespan + stderr traceback fallback",
+        "v2.10.29: fix uvicorn multi-worker logging loss - add logging_config.json + lifespan _setup_logging()"
+      ]
+    },
     {
       "version": "2.10.32",
       "released_at": "2026-07-07T06:48:37Z",
