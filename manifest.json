@@ -1,10 +1,11 @@
 {
-  "latest": "2.10.35",
-  "latest_version": "2.10.35",
+  "latest": "2.10.36",
+  "latest_version": "2.10.36",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-07",
   "changelog": [
+    "v2.10.36: 修复监听器多worker状态不一致 + 资产详情空状态引导 + Trap端口映射162",
     "bump: v2.10.35 (UTC timestamp fix)",
     "fix: TDengine时间戳加UTC标记，修复趋势图时间偏移8小时",
     "fix: network device metrics LIMIT 600→2000 + rate trend sanity filter",
@@ -13,8 +14,7 @@
     "chore: gitignore 015_patch.sql",
     "chore: remove stray 015_patch.sql from commit",
     "fix: Celery worker metric_catalog cache startup race - empty table retry + lazy reload",
-    "fix: deploy-cn.sh 内嵌compose同样修复 --log-config-json → --log-config",
-    "fix: --log-config-json → --log-config (uvicorn correct flag name)"
+    "fix: deploy-cn.sh 内嵌compose同样修复 --log-config-json → --log-config"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.10.35: bump: v2.10.35 (UTC timestamp fix) + fix: TDengine时间戳加UTC标记，修复趋势图时间偏移8小时 + fix: network device metrics LIMIT 600→2000 + rate trend sanity filter 等10项更新",
+  "notes": "v2.10.36: v2.10.36: 修复监听器多worker状态不一致 + 资产详情空状态引导 + Trap端口映射162 + bump: v2.10.35 (UTC timestamp fix) + fix: TDengine时间戳加UTC标记，修复趋势图时间偏移8小时 等10项更新",
   "versions": [
+    {
+      "version": "2.10.36",
+      "released_at": "2026-07-07T13:28:53Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.10.36: 修复监听器多worker状态不一致 + 资产详情空状态引导 + Trap端口映射162",
+        "bump: v2.10.35 (UTC timestamp fix)",
+        "fix: TDengine时间戳加UTC标记，修复趋势图时间偏移8小时",
+        "fix: network device metrics LIMIT 600→2000 + rate trend sanity filter",
+        "fix: entrypoint.sh compat --log-config-json→--log-config so old compose files work with new images",
+        "v2.10.33: fix compose log-config + celery cache race",
+        "chore: gitignore 015_patch.sql",
+        "chore: remove stray 015_patch.sql from commit",
+        "fix: Celery worker metric_catalog cache startup race - empty table retry + lazy reload",
+        "fix: deploy-cn.sh 内嵌compose同样修复 --log-config-json → --log-config"
+      ]
+    },
     {
       "version": "2.10.35",
       "released_at": "2026-07-07T11:04:36Z",
