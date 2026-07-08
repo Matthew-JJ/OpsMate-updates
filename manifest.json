@@ -1,10 +1,11 @@
 {
-  "latest": "2.10.46",
-  "latest_version": "2.10.46",
+  "latest": "2.10.47",
+  "latest_version": "2.10.47",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-08",
   "changelog": [
+    "v2.10.47: 存储设备全线支持（识别/告警模板/详情页）",
     "v2.10.46: fix SNMPv3 probe timeout - O(n2) password_to_key + engine discovery optimization",
     "fix: SNMPv3 probe timeout + auto_probe v3 params + ProbeRequest type",
     "fix(snmp): add VarBindList SEQUENCE wrapper in v3 PDU (9th bug)",
@@ -13,8 +14,7 @@
     "v2.10.41: fix v3 engine discovery - pass username to discovery packet",
     "v2.10.40: fix SNMPv3 SecurityParameters missing OCTET STRING wrapper",
     "v2.10.39: fix SNMPv3 HeaderData missing SEQUENCE wrapper",
-    "v2.10.38: fix SNMPv3 probe - DES encryption, v3 response parser, error message",
-    "v2.10.37: 修复中间件/数据库监控全链路BUG（接入+采集+呈现+告警）"
+    "v2.10.38: fix SNMPv3 probe - DES encryption, v3 response parser, error message"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.10.46: v2.10.46: fix SNMPv3 probe timeout - O(n2) password_to_key + engine discovery optimization + fix: SNMPv3 probe timeout + auto_probe v3 params + ProbeRequest type + fix(snmp): add VarBindList SEQUENCE wrapper in v3 PDU (9th bug) 等10项更新",
+  "notes": "v2.10.47: v2.10.47: 存储设备全线支持（识别/告警模板/详情页） + v2.10.46: fix SNMPv3 probe timeout - O(n2) password_to_key + engine discovery optimization + fix: SNMPv3 probe timeout + auto_probe v3 params + ProbeRequest type 等10项更新",
   "versions": [
+    {
+      "version": "2.10.47",
+      "released_at": "2026-07-08T22:41:03Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.10.47: 存储设备全线支持（识别/告警模板/详情页）",
+        "v2.10.46: fix SNMPv3 probe timeout - O(n2) password_to_key + engine discovery optimization",
+        "fix: SNMPv3 probe timeout + auto_probe v3 params + ProbeRequest type",
+        "fix(snmp): add VarBindList SEQUENCE wrapper in v3 PDU (9th bug)",
+        "fix: SNMPv3 BER minimal encoding + msgMaxSize + authParams/privParams conditional (v2.10.43)",
+        "v2.10.42: fix SNMPv3 msgFlags missing reportable bit",
+        "v2.10.41: fix v3 engine discovery - pass username to discovery packet",
+        "v2.10.40: fix SNMPv3 SecurityParameters missing OCTET STRING wrapper",
+        "v2.10.39: fix SNMPv3 HeaderData missing SEQUENCE wrapper",
+        "v2.10.38: fix SNMPv3 probe - DES encryption, v3 response parser, error message"
+      ]
+    },
     {
       "version": "2.10.46",
       "released_at": "2026-07-08T15:05:24Z",
