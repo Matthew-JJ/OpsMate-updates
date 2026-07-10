@@ -1,10 +1,11 @@
 {
-  "latest": "2.10.54",
-  "latest_version": "2.10.54",
+  "latest": "2.10.55",
+  "latest_version": "2.10.55",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-10",
   "changelog": [
+    "v2.10.55: enable storage_rest onboarding + fix fingerprint case sensitivity",
     "v2.10.54: fix storage overview + auto first collect + vendor matching + category field",
     "bump version to 2.10.53",
     "fix: remove hr_storage_used from storage.controller.mem source_names",
@@ -13,8 +14,7 @@
     "v2.10.50: Dell SC SNMP catalog映射 + gauge/gauge派生计算",
     "v2.10.49: Dell SC3020 SNMP OID字典补全",
     "feat: Dell SC3020 SNMP OID字典补全 — compellent设备类型(10子分类43指标) + 674.11000前缀 + catalog映射",
-    "v2.10.48: 存储REST API采集器修复 — Phase A/B/C/D",
-    "v2.10.47: 存储设备全线支持（识别/告警模板/详情页）"
+    "v2.10.48: 存储REST API采集器修复 — Phase A/B/C/D"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.10.54: v2.10.54: fix storage overview + auto first collect + vendor matching + category field + bump version to 2.10.53 + fix: remove hr_storage_used from storage.controller.mem source_names 等10项更新",
+  "notes": "v2.10.55: v2.10.55: enable storage_rest onboarding + fix fingerprint case sensitivity + v2.10.54: fix storage overview + auto first collect + vendor matching + category field + bump version to 2.10.53 等10项更新",
   "versions": [
+    {
+      "version": "2.10.55",
+      "released_at": "2026-07-10T08:29:21Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.10.55: enable storage_rest onboarding + fix fingerprint case sensitivity",
+        "v2.10.54: fix storage overview + auto first collect + vendor matching + category field",
+        "bump version to 2.10.53",
+        "fix: remove hr_storage_used from storage.controller.mem source_names",
+        "fix: Dell SC storage SNMP discovery and catalog mapping",
+        "v2.10.51: 修复catalog API protocol过滤排除any条目 + storage.alert.count协议改any",
+        "v2.10.50: Dell SC SNMP catalog映射 + gauge/gauge派生计算",
+        "v2.10.49: Dell SC3020 SNMP OID字典补全",
+        "feat: Dell SC3020 SNMP OID字典补全 — compellent设备类型(10子分类43指标) + 674.11000前缀 + catalog映射",
+        "v2.10.48: 存储REST API采集器修复 — Phase A/B/C/D"
+      ]
+    },
     {
       "version": "2.10.54",
       "released_at": "2026-07-10T04:01:05Z",
