@@ -1,10 +1,11 @@
 {
-  "latest": "2.10.57",
-  "latest_version": "2.10.57",
+  "latest": "2.10.58",
+  "latest_version": "2.10.58",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-11",
   "changelog": [
+    "v2.10.58: Dell SC REST API采集修复 + 存储详情页架构统一",
     "release: v2.10.57",
     "feat: P1报表系统改造 - 章节选择/封面升级/配置面板 + 修复4个bug",
     "fix: properly remove 10752 bytes of zero-width chars from requirements.txt line 1",
@@ -13,8 +14,7 @@
     "fix: report_type mapping bug + re-export STATUS_LABELS + async for all summary formats",
     "v2.10.56: report system overhaul - DOCX/HTML/Excel triple format + async generation",
     "v2.10.55: enable storage_rest onboarding + fix fingerprint case sensitivity",
-    "v2.10.54: fix storage overview + auto first collect + vendor matching + category field",
-    "bump version to 2.10.53"
+    "v2.10.54: fix storage overview + auto first collect + vendor matching + category field"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.10.57: release: v2.10.57 + feat: P1报表系统改造 - 章节选择/封面升级/配置面板 + 修复4个bug + fix: properly remove 10752 bytes of zero-width chars from requirements.txt line 1 等10项更新",
+  "notes": "v2.10.58: v2.10.58: Dell SC REST API采集修复 + 存储详情页架构统一 + release: v2.10.57 + feat: P1报表系统改造 - 章节选择/封面升级/配置面板 + 修复4个bug 等10项更新",
   "versions": [
+    {
+      "version": "2.10.58",
+      "released_at": "2026-07-11T07:20:56Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.10.58: Dell SC REST API采集修复 + 存储详情页架构统一",
+        "release: v2.10.57",
+        "feat: P1报表系统改造 - 章节选择/封面升级/配置面板 + 修复4个bug",
+        "fix: properly remove 10752 bytes of zero-width chars from requirements.txt line 1",
+        "fix: remove AIGC text watermark from requirements.txt (was causing CI/CD pip install failure)",
+        "fix: remove zero-width chars correctly (3-byte sequence match, not individual bytes)",
+        "fix: report_type mapping bug + re-export STATUS_LABELS + async for all summary formats",
+        "v2.10.56: report system overhaul - DOCX/HTML/Excel triple format + async generation",
+        "v2.10.55: enable storage_rest onboarding + fix fingerprint case sensitivity",
+        "v2.10.54: fix storage overview + auto first collect + vendor matching + category field"
+      ]
+    },
     {
       "version": "2.10.57",
       "released_at": "2026-07-11T03:54:12Z",
