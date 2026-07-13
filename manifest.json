@@ -1,10 +1,11 @@
 {
-  "latest": "2.10.71",
-  "latest_version": "2.10.71",
+  "latest": "2.10.72",
+  "latest_version": "2.10.72",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-13",
   "changelog": [
+    "v2.10.72: 修复health_score_engine导入路径 - get_sync_session在database_sync模块",
     "v2.10.71: 健康度评分引擎 - health_rules表 + 规则求值引擎 + 预置模板 + CRUD API",
     "v2.10.70: 修复存储资产健康字段缺失 - 映射表增加canonical名、JSONB原地修改持久化",
     "v2.10.69: fix health status display reversed (0=OK not 'abnormal')",
@@ -13,8 +14,7 @@
     "v2.10.66: fix batch mode string metrics→custom_fields + dashboard unit override revert",
     "v2.10.65: 版本号更新（含死锁修复）",
     "v2.10.64: 修复调度器PostgreSQL死锁——先commit next_run_at再分发任务",
-    "v2.10.64: 修复调度器链断裂+存储容量bytes→GB换算",
-    "v2.10.63: fix 4 storage asset detail issues"
+    "v2.10.64: 修复调度器链断裂+存储容量bytes→GB换算"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.10.71: v2.10.71: 健康度评分引擎 - health_rules表 + 规则求值引擎 + 预置模板 + CRUD API + v2.10.70: 修复存储资产健康字段缺失 - 映射表增加canonical名、JSONB原地修改持久化 + v2.10.69: fix health status display reversed (0=OK not 'abnormal') 等10项更新",
+  "notes": "v2.10.72: v2.10.72: 修复health_score_engine导入路径 - get_sync_session在database_sync模块 + v2.10.71: 健康度评分引擎 - health_rules表 + 规则求值引擎 + 预置模板 + CRUD API + v2.10.70: 修复存储资产健康字段缺失 - 映射表增加canonical名、JSONB原地修改持久化 等10项更新",
   "versions": [
+    {
+      "version": "2.10.72",
+      "released_at": "2026-07-13T14:23:17Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.10.72: 修复health_score_engine导入路径 - get_sync_session在database_sync模块",
+        "v2.10.71: 健康度评分引擎 - health_rules表 + 规则求值引擎 + 预置模板 + CRUD API",
+        "v2.10.70: 修复存储资产健康字段缺失 - 映射表增加canonical名、JSONB原地修改持久化",
+        "v2.10.69: fix health status display reversed (0=OK not 'abnormal')",
+        "v2.10.68: health score model (0-100) + gauge widget",
+        "v2.10.67: fix capacity value display - bytes mistakenly shown as GB",
+        "v2.10.66: fix batch mode string metrics→custom_fields + dashboard unit override revert",
+        "v2.10.65: 版本号更新（含死锁修复）",
+        "v2.10.64: 修复调度器PostgreSQL死锁——先commit next_run_at再分发任务",
+        "v2.10.64: 修复调度器链断裂+存储容量bytes→GB换算"
+      ]
+    },
     {
       "version": "2.10.71",
       "released_at": "2026-07-13T14:01:26Z",
