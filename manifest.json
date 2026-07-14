@@ -1,10 +1,11 @@
 {
-  "latest": "2.10.81",
-  "latest_version": "2.10.81",
+  "latest": "2.10.82",
+  "latest_version": "2.10.82",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-14",
   "changelog": [
+    "v2.10.82: 修复3个问题 - 采集状态显示/健康评分无数据扣分/vCenter环形图",
     "v2.10.81: 三阶段事务重构(execute_collect_task) - 事务持有时间从90s降至<600ms",
     "v2.10.80: 修复Celery异常路径session.rollback()缺失",
     "v2.10.79: 修复健康评分引擎异常时fallback不执行 + 添加virtualization规则 + SNMP部件采集修复",
@@ -13,8 +14,7 @@
     "v2.10.76: load_initial_rules支持upsert更新已有规则",
     "v2.10.75: 存储容量free_pct预计算 + CPU/容量动态扣分公式",
     "v2.10.74: load_initial_rules增加commit()确保数据持久化",
-    "v2.10.73: 修复load_initial_rules用ORM替代raw SQL解决NULL参数问题",
-    "v2.10.72: 修复health_score_engine导入路径 - get_sync_session在database_sync模块"
+    "v2.10.73: 修复load_initial_rules用ORM替代raw SQL解决NULL参数问题"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.10.81: v2.10.81: 三阶段事务重构(execute_collect_task) - 事务持有时间从90s降至<600ms + v2.10.80: 修复Celery异常路径session.rollback()缺失 + v2.10.79: 修复健康评分引擎异常时fallback不执行 + 添加virtualization规则 + SNMP部件采集修复 等10项更新",
+  "notes": "v2.10.82: v2.10.82: 修复3个问题 - 采集状态显示/健康评分无数据扣分/vCenter环形图 + v2.10.81: 三阶段事务重构(execute_collect_task) - 事务持有时间从90s降至<600ms + v2.10.80: 修复Celery异常路径session.rollback()缺失 等10项更新",
   "versions": [
+    {
+      "version": "2.10.82",
+      "released_at": "2026-07-14T12:05:46Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.10.82: 修复3个问题 - 采集状态显示/健康评分无数据扣分/vCenter环形图",
+        "v2.10.81: 三阶段事务重构(execute_collect_task) - 事务持有时间从90s降至<600ms",
+        "v2.10.80: 修复Celery异常路径session.rollback()缺失",
+        "v2.10.79: 修复健康评分引擎异常时fallback不执行 + 添加virtualization规则 + SNMP部件采集修复",
+        "v2.10.78: 全资产类型健康规则+待评估虚线环+齿轮按钮打开规则抽屉",
+        "v2.10.77: 前端健康度环形仪表盘全资产类型覆盖+扣分明细浮窗+健康规则API封装",
+        "v2.10.76: load_initial_rules支持upsert更新已有规则",
+        "v2.10.75: 存储容量free_pct预计算 + CPU/容量动态扣分公式",
+        "v2.10.74: load_initial_rules增加commit()确保数据持久化",
+        "v2.10.73: 修复load_initial_rules用ORM替代raw SQL解决NULL参数问题"
+      ]
+    },
     {
       "version": "2.10.81",
       "released_at": "2026-07-14T09:39:43Z",
