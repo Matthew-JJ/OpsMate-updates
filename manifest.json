@@ -1,10 +1,11 @@
 {
-  "latest": "2.10.91",
-  "latest_version": "2.10.91",
+  "latest": "2.10.92",
+  "latest_version": "2.10.92",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-15",
   "changelog": [
+    "v2.10.92: Fix SNMPv3 Report PDU handling + Huawei storage SNMP fixes",
     "v2.10.91: 修复SNMPv3时间同步+华为OceanStor指纹匹配+空OID walk bug",
     "v2.10.89: 修复告警API 500根因-time_start/time_end字符串与timestamptz类型不匹配",
     "v2.10.88: 升版本避免同tag镜像缓存混淆",
@@ -13,8 +14,7 @@
     "v2.10.85: 资产详情页新增告警信息Tab",
     "v2.10.84: 华为功耗修正+内存展示优化",
     "v2.10.83: 部件多协议去重 + SNMP名称归一化",
-    "v2.10.82: 修复3个问题 - 采集状态显示/健康评分无数据扣分/vCenter环形图",
-    "v2.10.81: 三阶段事务重构(execute_collect_task) - 事务持有时间从90s降至<600ms"
+    "v2.10.82: 修复3个问题 - 采集状态显示/健康评分无数据扣分/vCenter环形图"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.10.91: v2.10.91: 修复SNMPv3时间同步+华为OceanStor指纹匹配+空OID walk bug + v2.10.89: 修复告警API 500根因-time_start/time_end字符串与timestamptz类型不匹配 + v2.10.88: 升版本避免同tag镜像缓存混淆 等10项更新",
+  "notes": "v2.10.92: v2.10.92: Fix SNMPv3 Report PDU handling + Huawei storage SNMP fixes + v2.10.91: 修复SNMPv3时间同步+华为OceanStor指纹匹配+空OID walk bug + v2.10.89: 修复告警API 500根因-time_start/time_end字符串与timestamptz类型不匹配 等10项更新",
   "versions": [
+    {
+      "version": "2.10.92",
+      "released_at": "2026-07-15T12:32:48Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.10.92: Fix SNMPv3 Report PDU handling + Huawei storage SNMP fixes",
+        "v2.10.91: 修复SNMPv3时间同步+华为OceanStor指纹匹配+空OID walk bug",
+        "v2.10.89: 修复告警API 500根因-time_start/time_end字符串与timestamptz类型不匹配",
+        "v2.10.88: 升版本避免同tag镜像缓存混淆",
+        "v2.10.87: 修复资产详情页告警500(Component模块不存在+selectinload语法错误+全函数防御)",
+        "v2.10.86: 告警实例信息可读化翻译",
+        "v2.10.85: 资产详情页新增告警信息Tab",
+        "v2.10.84: 华为功耗修正+内存展示优化",
+        "v2.10.83: 部件多协议去重 + SNMP名称归一化",
+        "v2.10.82: 修复3个问题 - 采集状态显示/健康评分无数据扣分/vCenter环形图"
+      ]
+    },
     {
       "version": "2.10.91",
       "released_at": "2026-07-15T08:17:27Z",
