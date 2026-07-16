@@ -1,10 +1,11 @@
 {
-  "latest": "2.12.2",
-  "latest_version": "2.12.2",
+  "latest": "2.12.3",
+  "latest_version": "2.12.3",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-16",
   "changelog": [
+    "v2.12.3: 修复巡检推荐JSONB反序列化 + 指标归一化 + 单位冲突",
     "v2.12.2: 巡检管理重设计 + 告警批量操作 + 存储布局优化",
     "fix: 修复报告4大问题 v2.11.1",
     "feat: 通用巡检总报告（深色主题HTML）v2.11.0",
@@ -13,8 +14,7 @@
     "v2.10.92: Fix SNMPv3 Report PDU handling + Huawei storage SNMP fixes",
     "v2.10.91: 修复SNMPv3时间同步+华为OceanStor指纹匹配+空OID walk bug",
     "v2.10.89: 修复告警API 500根因-time_start/time_end字符串与timestamptz类型不匹配",
-    "v2.10.88: 升版本避免同tag镜像缓存混淆",
-    "v2.10.87: 修复资产详情页告警500(Component模块不存在+selectinload语法错误+全函数防御)"
+    "v2.10.88: 升版本避免同tag镜像缓存混淆"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.12.2: v2.12.2: 巡检管理重设计 + 告警批量操作 + 存储布局优化 + fix: 修复报告4大问题 v2.11.1 + feat: 通用巡检总报告（深色主题HTML）v2.11.0 等10项更新",
+  "notes": "v2.12.3: v2.12.3: 修复巡检推荐JSONB反序列化 + 指标归一化 + 单位冲突 + v2.12.2: 巡检管理重设计 + 告警批量操作 + 存储布局优化 + fix: 修复报告4大问题 v2.11.1 等10项更新",
   "versions": [
+    {
+      "version": "2.12.3",
+      "released_at": "2026-07-16T18:57:30Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.12.3: 修复巡检推荐JSONB反序列化 + 指标归一化 + 单位冲突",
+        "v2.12.2: 巡检管理重设计 + 告警批量操作 + 存储布局优化",
+        "fix: 修复报告4大问题 v2.11.1",
+        "feat: 通用巡检总报告（深色主题HTML）v2.11.0",
+        "v2.10.95: 修复华为SNMP存储健康评分不写入(死锁+session泄漏+字符串指标映射)",
+        "v2.10.93: fix OceanStor compound index flattening + instance name translation + overview UI",
+        "v2.10.92: Fix SNMPv3 Report PDU handling + Huawei storage SNMP fixes",
+        "v2.10.91: 修复SNMPv3时间同步+华为OceanStor指纹匹配+空OID walk bug",
+        "v2.10.89: 修复告警API 500根因-time_start/time_end字符串与timestamptz类型不匹配",
+        "v2.10.88: 升版本避免同tag镜像缓存混淆"
+      ]
+    },
     {
       "version": "2.12.2",
       "released_at": "2026-07-16T17:00:08Z",
