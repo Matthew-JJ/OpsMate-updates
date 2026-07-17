@@ -1,10 +1,11 @@
 {
-  "latest": "2.12.5",
-  "latest_version": "2.12.5",
+  "latest": "2.12.6",
+  "latest_version": "2.12.6",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-17",
   "changelog": [
+    "v2.12.6: 归一化最后一公里 — 全链路 canonical name 对齐",
     "v2.12.5: vCenter归一化改造(L2完整)",
     "v2.12.4: 彻底解决巡检归一化问题",
     "v2.12.3: 修复巡检推荐JSONB反序列化 + 指标归一化 + 单位冲突",
@@ -13,8 +14,7 @@
     "feat: 通用巡检总报告（深色主题HTML）v2.11.0",
     "v2.10.95: 修复华为SNMP存储健康评分不写入(死锁+session泄漏+字符串指标映射)",
     "v2.10.93: fix OceanStor compound index flattening + instance name translation + overview UI",
-    "v2.10.92: Fix SNMPv3 Report PDU handling + Huawei storage SNMP fixes",
-    "v2.10.91: 修复SNMPv3时间同步+华为OceanStor指纹匹配+空OID walk bug"
+    "v2.10.92: Fix SNMPv3 Report PDU handling + Huawei storage SNMP fixes"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.12.5: v2.12.5: vCenter归一化改造(L2完整) + v2.12.4: 彻底解决巡检归一化问题 + v2.12.3: 修复巡检推荐JSONB反序列化 + 指标归一化 + 单位冲突 等10项更新",
+  "notes": "v2.12.6: v2.12.6: 归一化最后一公里 — 全链路 canonical name 对齐 + v2.12.5: vCenter归一化改造(L2完整) + v2.12.4: 彻底解决巡检归一化问题 等10项更新",
   "versions": [
+    {
+      "version": "2.12.6",
+      "released_at": "2026-07-17T07:37:11Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.12.6: 归一化最后一公里 — 全链路 canonical name 对齐",
+        "v2.12.5: vCenter归一化改造(L2完整)",
+        "v2.12.4: 彻底解决巡检归一化问题",
+        "v2.12.3: 修复巡检推荐JSONB反序列化 + 指标归一化 + 单位冲突",
+        "v2.12.2: 巡检管理重设计 + 告警批量操作 + 存储布局优化",
+        "fix: 修复报告4大问题 v2.11.1",
+        "feat: 通用巡检总报告（深色主题HTML）v2.11.0",
+        "v2.10.95: 修复华为SNMP存储健康评分不写入(死锁+session泄漏+字符串指标映射)",
+        "v2.10.93: fix OceanStor compound index flattening + instance name translation + overview UI",
+        "v2.10.92: Fix SNMPv3 Report PDU handling + Huawei storage SNMP fixes"
+      ]
+    },
     {
       "version": "2.12.5",
       "released_at": "2026-07-17T05:57:28Z",
