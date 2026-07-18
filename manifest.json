@@ -1,10 +1,11 @@
 {
-  "latest": "2.12.8",
-  "latest_version": "2.12.8",
+  "latest": "2.12.9",
+  "latest_version": "2.12.9",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-07-17",
+  "release_date": "2026-07-18",
   "changelog": [
+    "v2.12.9: metric_catalog缓存失效+巡检单位/协议感知+任务轮询修复+告警批量删除+BBU折叠",
     "v2.12.8: Dell存储采集字段透传+磁盘实例incident资产过滤+告警聚合维度+采集轮询+vCenter内存+autoflush+告警跳转",
     "fix: statusLabel接受undefined参数，修复CI/CD构建失败",
     "fix: HostMapCanvas TS类型修复 (undefined→null for statusLabel)",
@@ -13,8 +14,7 @@
     "v2.12.5: vCenter归一化改造(L2完整)",
     "v2.12.4: 彻底解决巡检归一化问题",
     "v2.12.3: 修复巡检推荐JSONB反序列化 + 指标归一化 + 单位冲突",
-    "v2.12.2: 巡检管理重设计 + 告警批量操作 + 存储布局优化",
-    "fix: 修复报告4大问题 v2.11.1"
+    "v2.12.2: 巡检管理重设计 + 告警批量操作 + 存储布局优化"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.12.8: v2.12.8: Dell存储采集字段透传+磁盘实例incident资产过滤+告警聚合维度+采集轮询+vCenter内存+autoflush+告警跳转 + fix: statusLabel接受undefined参数，修复CI/CD构建失败 + fix: HostMapCanvas TS类型修复 (undefined→null for statusLabel) 等10项更新",
+  "notes": "v2.12.9: v2.12.9: metric_catalog缓存失效+巡检单位/协议感知+任务轮询修复+告警批量删除+BBU折叠 + v2.12.8: Dell存储采集字段透传+磁盘实例incident资产过滤+告警聚合维度+采集轮询+vCenter内存+autoflush+告警跳转 + fix: statusLabel接受undefined参数，修复CI/CD构建失败 等10项更新",
   "versions": [
+    {
+      "version": "2.12.9",
+      "released_at": "2026-07-18T07:06:21Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.12.9: metric_catalog缓存失效+巡检单位/协议感知+任务轮询修复+告警批量删除+BBU折叠",
+        "v2.12.8: Dell存储采集字段透传+磁盘实例incident资产过滤+告警聚合维度+采集轮询+vCenter内存+autoflush+告警跳转",
+        "fix: statusLabel接受undefined参数，修复CI/CD构建失败",
+        "fix: HostMapCanvas TS类型修复 (undefined→null for statusLabel)",
+        "v2.12.7: 归一化断裂修复 + 批量采集状态bug + SNMP日志/超时 + Dell SC端口采集",
+        "v2.12.6: 归一化最后一公里 — 全链路 canonical name 对齐",
+        "v2.12.5: vCenter归一化改造(L2完整)",
+        "v2.12.4: 彻底解决巡检归一化问题",
+        "v2.12.3: 修复巡检推荐JSONB反序列化 + 指标归一化 + 单位冲突",
+        "v2.12.2: 巡检管理重设计 + 告警批量操作 + 存储布局优化"
+      ]
+    },
     {
       "version": "2.12.8",
       "released_at": "2026-07-17T14:29:16Z",
