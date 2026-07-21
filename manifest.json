@@ -5,6 +5,7 @@
   "minimum_version": "2.0.0",
   "release_date": "2026-07-21",
   "changelog": [
+    "ci: Gitee mirror push also continue-on-error (network flaky)",
     "ci: split GHCR/ACR push steps - ACR resilient, GHCR must succeed",
     "release v2.13.2: patrol report export (dark theme HTML) + collect failure resilience + PatrolPanel extraction",
     "fix: power-control API paths (4 endpoints mismatched with backend routes)",
@@ -13,8 +14,7 @@
     "v2.12.10: metric_catalog补全11条server健康entry+契约校验脚本+CI闸",
     "v2.12.9: metric_catalog缓存失效+巡检单位/协议感知+任务轮询修复+告警批量删除+BBU折叠",
     "v2.12.8: Dell存储采集字段透传+磁盘实例incident资产过滤+告警聚合维度+采集轮询+vCenter内存+autoflush+告警跳转",
-    "fix: statusLabel接受undefined参数，修复CI/CD构建失败",
-    "fix: HostMapCanvas TS类型修复 (undefined→null for statusLabel)"
+    "fix: statusLabel接受undefined参数，修复CI/CD构建失败"
   ],
   "download": {
     "url": "",
@@ -41,11 +41,11 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.13.2: ci: split GHCR/ACR push steps - ACR resilient, GHCR must succeed + release v2.13.2: patrol report export (dark theme HTML) + collect failure resilience + PatrolPanel extraction + fix: power-control API paths (4 endpoints mismatched with backend routes) 等10项更新",
+  "notes": "v2.13.2: ci: Gitee mirror push also continue-on-error (network flaky) + ci: split GHCR/ACR push steps - ACR resilient, GHCR must succeed + release v2.13.2: patrol report export (dark theme HTML) + collect failure resilience + PatrolPanel extraction 等10项更新",
   "versions": [
     {
       "version": "2.13.2",
-      "released_at": "2026-07-21T08:08:15Z",
+      "released_at": "2026-07-21T09:32:20Z",
       "download_url": "",
       "sha256": "",
       "size_bytes": 0,
@@ -53,6 +53,7 @@
         "docker"
       ],
       "changelog": [
+        "ci: Gitee mirror push also continue-on-error (network flaky)",
         "ci: split GHCR/ACR push steps - ACR resilient, GHCR must succeed",
         "release v2.13.2: patrol report export (dark theme HTML) + collect failure resilience + PatrolPanel extraction",
         "fix: power-control API paths (4 endpoints mismatched with backend routes)",
@@ -61,8 +62,7 @@
         "v2.12.10: metric_catalog补全11条server健康entry+契约校验脚本+CI闸",
         "v2.12.9: metric_catalog缓存失效+巡检单位/协议感知+任务轮询修复+告警批量删除+BBU折叠",
         "v2.12.8: Dell存储采集字段透传+磁盘实例incident资产过滤+告警聚合维度+采集轮询+vCenter内存+autoflush+告警跳转",
-        "fix: statusLabel接受undefined参数，修复CI/CD构建失败",
-        "fix: HostMapCanvas TS类型修复 (undefined→null for statusLabel)"
+        "fix: statusLabel接受undefined参数，修复CI/CD构建失败"
       ]
     },
     {
