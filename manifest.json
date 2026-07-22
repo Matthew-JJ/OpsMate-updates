@@ -5,6 +5,7 @@
   "minimum_version": "2.0.0",
   "release_date": "2026-07-22",
   "changelog": [
+    "v2.13.4: 超时余量+NIC命名去双前缀",
     "Redfish NIC: 基于iDRAC NetworkPort真实数据修正速度读取和命名",
     "Redfish NIC发现: 请求NetworkPorts子资源获取真实链路状态和速度",
     "v2.13.4: Redfish发现超时修复+NIC发现质量修复",
@@ -13,8 +14,7 @@
     "ci: split GHCR/ACR push steps - ACR resilient, GHCR must succeed",
     "release v2.13.2: patrol report export (dark theme HTML) + collect failure resilience + PatrolPanel extraction",
     "fix: power-control API paths (4 endpoints mismatched with backend routes)",
-    "release v2.13.1: 7 new API modules + route order fixes",
-    "v2.13.0: Boss-A元数据驱动架构 + 多实例聚合"
+    "release v2.13.1: 7 new API modules + route order fixes"
   ],
   "download": {
     "url": "",
@@ -41,11 +41,11 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.13.4: Redfish NIC: 基于iDRAC NetworkPort真实数据修正速度读取和命名 + Redfish NIC发现: 请求NetworkPorts子资源获取真实链路状态和速度 + v2.13.4: Redfish发现超时修复+NIC发现质量修复 等10项更新",
+  "notes": "v2.13.4: v2.13.4: 超时余量+NIC命名去双前缀 + Redfish NIC: 基于iDRAC NetworkPort真实数据修正速度读取和命名 + Redfish NIC发现: 请求NetworkPorts子资源获取真实链路状态和速度 等10项更新",
   "versions": [
     {
       "version": "2.13.4",
-      "released_at": "2026-07-22T12:03:29Z",
+      "released_at": "2026-07-22T12:54:46Z",
       "download_url": "",
       "sha256": "",
       "size_bytes": 0,
@@ -53,6 +53,7 @@
         "docker"
       ],
       "changelog": [
+        "v2.13.4: 超时余量+NIC命名去双前缀",
         "Redfish NIC: 基于iDRAC NetworkPort真实数据修正速度读取和命名",
         "Redfish NIC发现: 请求NetworkPorts子资源获取真实链路状态和速度",
         "v2.13.4: Redfish发现超时修复+NIC发现质量修复",
@@ -61,8 +62,7 @@
         "ci: split GHCR/ACR push steps - ACR resilient, GHCR must succeed",
         "release v2.13.2: patrol report export (dark theme HTML) + collect failure resilience + PatrolPanel extraction",
         "fix: power-control API paths (4 endpoints mismatched with backend routes)",
-        "release v2.13.1: 7 new API modules + route order fixes",
-        "v2.13.0: Boss-A元数据驱动架构 + 多实例聚合"
+        "release v2.13.1: 7 new API modules + route order fixes"
       ]
     },
     {
