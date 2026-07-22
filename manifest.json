@@ -5,6 +5,7 @@
   "minimum_version": "2.0.0",
   "release_date": "2026-07-22",
   "changelog": [
+    "fix: 消除硬编码 + 修复潜在bug",
     "v2.13.7: 巡检报告可读性增强 + 指标覆盖补充",
     "fix: 巡检报告导出500修复 - td['count'] KeyError",
     "v2.13.6 巡检报告修复：P0枚举误报+P1分类汇总+P2阈值可读",
@@ -13,8 +14,7 @@
     "Redfish NIC: 基于iDRAC NetworkPort真实数据修正速度读取和命名",
     "Redfish NIC发现: 请求NetworkPorts子资源获取真实链路状态和速度",
     "v2.13.4: Redfish发现超时修复+NIC发现质量修复",
-    "release v2.13.3: fix entrypoint alembic/init_db ordering + logs dir + deploy down -v",
-    "ci: Gitee mirror push also continue-on-error (network flaky)"
+    "release v2.13.3: fix entrypoint alembic/init_db ordering + logs dir + deploy down -v"
   ],
   "download": {
     "url": "",
@@ -41,11 +41,11 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.13.7: v2.13.7: 巡检报告可读性增强 + 指标覆盖补充 + fix: 巡检报告导出500修复 - td['count'] KeyError + v2.13.6 巡检报告修复：P0枚举误报+P1分类汇总+P2阈值可读 等10项更新",
+  "notes": "v2.13.7: fix: 消除硬编码 + 修复潜在bug + v2.13.7: 巡检报告可读性增强 + 指标覆盖补充 + fix: 巡检报告导出500修复 - td['count'] KeyError 等10项更新",
   "versions": [
     {
       "version": "2.13.7",
-      "released_at": "2026-07-22T15:42:20Z",
+      "released_at": "2026-07-22T15:47:51Z",
       "download_url": "",
       "sha256": "",
       "size_bytes": 0,
@@ -53,6 +53,7 @@
         "docker"
       ],
       "changelog": [
+        "fix: 消除硬编码 + 修复潜在bug",
         "v2.13.7: 巡检报告可读性增强 + 指标覆盖补充",
         "fix: 巡检报告导出500修复 - td['count'] KeyError",
         "v2.13.6 巡检报告修复：P0枚举误报+P1分类汇总+P2阈值可读",
@@ -61,8 +62,7 @@
         "Redfish NIC: 基于iDRAC NetworkPort真实数据修正速度读取和命名",
         "Redfish NIC发现: 请求NetworkPorts子资源获取真实链路状态和速度",
         "v2.13.4: Redfish发现超时修复+NIC发现质量修复",
-        "release v2.13.3: fix entrypoint alembic/init_db ordering + logs dir + deploy down -v",
-        "ci: Gitee mirror push also continue-on-error (network flaky)"
+        "release v2.13.3: fix entrypoint alembic/init_db ordering + logs dir + deploy down -v"
       ]
     },
     {
