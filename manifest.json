@@ -1,10 +1,11 @@
 {
-  "latest": "2.13.18",
-  "latest_version": "2.13.18",
+  "latest": "2.13.19",
+  "latest_version": "2.13.19",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-23",
   "changelog": [
+    "v2.13.19: IPMI移除getattr硬编码兜底",
     "v2.13.18: IPMI discover专用超时-修复30s边界必爆",
     "v2.13.17: IPMI归一化彻底修复-尝试SDR+短超时保护",
     "v2.13.16: IPMI归一化修复-实测驱动发现+恢复fru",
@@ -13,8 +14,7 @@
     "v2.13.13: IPMI采集器从pyghmi迁移到ipmitool",
     "v2.13.12: 修复Watchtower自动更新token不匹配导致触发失败",
     "v2.13.11: 巡检报告C1-C14修复（容量格式/enum映射/iBMC string链路/aliases机制）",
-    "fix: 消除硬编码 + 修复潜在bug",
-    "v2.13.7: 巡检报告可读性增强 + 指标覆盖补充"
+    "fix: 消除硬编码 + 修复潜在bug"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.13.18: v2.13.18: IPMI discover专用超时-修复30s边界必爆 + v2.13.17: IPMI归一化彻底修复-尝试SDR+短超时保护 + v2.13.16: IPMI归一化修复-实测驱动发现+恢复fru 等10项更新",
+  "notes": "v2.13.19: v2.13.19: IPMI移除getattr硬编码兜底 + v2.13.18: IPMI discover专用超时-修复30s边界必爆 + v2.13.17: IPMI归一化彻底修复-尝试SDR+短超时保护 等10项更新",
   "versions": [
+    {
+      "version": "2.13.19",
+      "released_at": "2026-07-23T16:22:13Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.13.19: IPMI移除getattr硬编码兜底",
+        "v2.13.18: IPMI discover专用超时-修复30s边界必爆",
+        "v2.13.17: IPMI归一化彻底修复-尝试SDR+短超时保护",
+        "v2.13.16: IPMI归一化修复-实测驱动发现+恢复fru",
+        "v2.13.15: IPMI超时修复-华为iBMC兼容",
+        "v2.13.14: IPMI归一化补全 - 健康评分/告警模板/巡检阈值/catalog清理",
+        "v2.13.13: IPMI采集器从pyghmi迁移到ipmitool",
+        "v2.13.12: 修复Watchtower自动更新token不匹配导致触发失败",
+        "v2.13.11: 巡检报告C1-C14修复（容量格式/enum映射/iBMC string链路/aliases机制）",
+        "fix: 消除硬编码 + 修复潜在bug"
+      ]
+    },
     {
       "version": "2.13.18",
       "released_at": "2026-07-23T16:16:38Z",
