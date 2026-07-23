@@ -1,10 +1,11 @@
 {
-  "latest": "2.13.12",
-  "latest_version": "2.13.12",
+  "latest": "2.13.13",
+  "latest_version": "2.13.13",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-23",
   "changelog": [
+    "v2.13.13: IPMI采集器从pyghmi迁移到ipmitool",
     "v2.13.12: 修复Watchtower自动更新token不匹配导致触发失败",
     "v2.13.11: 巡检报告C1-C14修复（容量格式/enum映射/iBMC string链路/aliases机制）",
     "fix: 消除硬编码 + 修复潜在bug",
@@ -13,8 +14,7 @@
     "v2.13.6 巡检报告修复：P0枚举误报+P1分类汇总+P2阈值可读",
     "v2.13.5: 修复发现模块7个HIGH问题",
     "v2.13.4: 超时余量+NIC命名去双前缀",
-    "Redfish NIC: 基于iDRAC NetworkPort真实数据修正速度读取和命名",
-    "Redfish NIC发现: 请求NetworkPorts子资源获取真实链路状态和速度"
+    "Redfish NIC: 基于iDRAC NetworkPort真实数据修正速度读取和命名"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.13.12: v2.13.12: 修复Watchtower自动更新token不匹配导致触发失败 + v2.13.11: 巡检报告C1-C14修复（容量格式/enum映射/iBMC string链路/aliases机制） + fix: 消除硬编码 + 修复潜在bug 等10项更新",
+  "notes": "v2.13.13: v2.13.13: IPMI采集器从pyghmi迁移到ipmitool + v2.13.12: 修复Watchtower自动更新token不匹配导致触发失败 + v2.13.11: 巡检报告C1-C14修复（容量格式/enum映射/iBMC string链路/aliases机制） 等10项更新",
   "versions": [
+    {
+      "version": "2.13.13",
+      "released_at": "2026-07-23T14:13:33Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.13.13: IPMI采集器从pyghmi迁移到ipmitool",
+        "v2.13.12: 修复Watchtower自动更新token不匹配导致触发失败",
+        "v2.13.11: 巡检报告C1-C14修复（容量格式/enum映射/iBMC string链路/aliases机制）",
+        "fix: 消除硬编码 + 修复潜在bug",
+        "v2.13.7: 巡检报告可读性增强 + 指标覆盖补充",
+        "fix: 巡检报告导出500修复 - td['count'] KeyError",
+        "v2.13.6 巡检报告修复：P0枚举误报+P1分类汇总+P2阈值可读",
+        "v2.13.5: 修复发现模块7个HIGH问题",
+        "v2.13.4: 超时余量+NIC命名去双前缀",
+        "Redfish NIC: 基于iDRAC NetworkPort真实数据修正速度读取和命名"
+      ]
+    },
     {
       "version": "2.13.12",
       "released_at": "2026-07-23T12:38:18Z",
