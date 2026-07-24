@@ -1,10 +1,11 @@
 {
-  "latest": "2.13.32",
-  "latest_version": "2.13.32",
+  "latest": "2.13.33",
+  "latest_version": "2.13.33",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-24",
   "changelog": [
+    "v2.13.33: refactor batch_save - fix UnboundLocalError + discover failure handling",
     "v2.13.32: fix source_names nested format breakage in snmp.py + collect_tasks.py",
     "v2.13.31: fix catalog_contract.py for nested source_names format",
     "v2.13.30: Phase 2 source_names nested + 860 canonical entries",
@@ -13,8 +14,7 @@
     "v2.13.20: IPMI修复fru编码崩溃+超时基于实测数据",
     "v2.13.19: IPMI移除getattr硬编码兜底",
     "v2.13.18: IPMI discover专用超时-修复30s边界必爆",
-    "v2.13.17: IPMI归一化彻底修复-尝试SDR+短超时保护",
-    "v2.13.16: IPMI归一化修复-实测驱动发现+恢复fru"
+    "v2.13.17: IPMI归一化彻底修复-尝试SDR+短超时保护"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.13.32: v2.13.32: fix source_names nested format breakage in snmp.py + collect_tasks.py + v2.13.31: fix catalog_contract.py for nested source_names format + v2.13.30: Phase 2 source_names nested + 860 canonical entries 等10项更新",
+  "notes": "v2.13.33: v2.13.33: refactor batch_save - fix UnboundLocalError + discover failure handling + v2.13.32: fix source_names nested format breakage in snmp.py + collect_tasks.py + v2.13.31: fix catalog_contract.py for nested source_names format 等10项更新",
   "versions": [
+    {
+      "version": "2.13.33",
+      "released_at": "2026-07-24T14:20:51Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.13.33: refactor batch_save - fix UnboundLocalError + discover failure handling",
+        "v2.13.32: fix source_names nested format breakage in snmp.py + collect_tasks.py",
+        "v2.13.31: fix catalog_contract.py for nested source_names format",
+        "v2.13.30: Phase 2 source_names nested + 860 canonical entries",
+        "v2.13.22: IPMI归一化重构 - 动态传感器映射替代硬编码5类",
+        "v2.13.21: IPMI cipher suite自动探测+per-host缓存，fru print 0，sensor list优先，mc info降级，前端超时60s",
+        "v2.13.20: IPMI修复fru编码崩溃+超时基于实测数据",
+        "v2.13.19: IPMI移除getattr硬编码兜底",
+        "v2.13.18: IPMI discover专用超时-修复30s边界必爆",
+        "v2.13.17: IPMI归一化彻底修复-尝试SDR+短超时保护"
+      ]
+    },
     {
       "version": "2.13.32",
       "released_at": "2026-07-24T13:50:42Z",
