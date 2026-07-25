@@ -1,10 +1,11 @@
 {
-  "latest": "2.13.52",
-  "latest_version": "2.13.52",
+  "latest": "2.13.53",
+  "latest_version": "2.13.53",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-25",
   "changelog": [
+    "v2.13.53: fix metric_catalog API JSONB deserialization + catalog mapping补全",
     "v2.13.52: storage_rest discover改为实测设备，对每个api_path发请求只返回有数据的指标",
     "fix: storage_rest发现指标对齐SNMP归一化规范(v2.13.51)",
     "fix: save-onboarding selected_metrics max_length从5000提至10000(v2.13.50)",
@@ -13,8 +14,7 @@
     "fix: 用el-table内置row-key+reserve-selection重写跨页选择 (v2.13.47)",
     "fix: MetricsDiscoveryStep Map响应式修复 ref->reactive (v2.13.46)",
     "v2.13.45: 用自定义checkbox替代el-table内置selection，彻底解决跨页选中问题",
-    "v2.13.44: 发现指标表格分页——修复5000+指标全量渲染导致页面卡死",
-    "v2.13.43: 修复SNMP发现指标页面卡顿——O(n^2) DOM更新风暴"
+    "v2.13.44: 发现指标表格分页——修复5000+指标全量渲染导致页面卡死"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.13.52: v2.13.52: storage_rest discover改为实测设备，对每个api_path发请求只返回有数据的指标 + fix: storage_rest发现指标对齐SNMP归一化规范(v2.13.51) + fix: save-onboarding selected_metrics max_length从5000提至10000(v2.13.50) 等10项更新",
+  "notes": "v2.13.53: v2.13.53: fix metric_catalog API JSONB deserialization + catalog mapping补全 + v2.13.52: storage_rest discover改为实测设备，对每个api_path发请求只返回有数据的指标 + fix: storage_rest发现指标对齐SNMP归一化规范(v2.13.51) 等10项更新",
   "versions": [
+    {
+      "version": "2.13.53",
+      "released_at": "2026-07-25T16:58:43Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.13.53: fix metric_catalog API JSONB deserialization + catalog mapping补全",
+        "v2.13.52: storage_rest discover改为实测设备，对每个api_path发请求只返回有数据的指标",
+        "fix: storage_rest发现指标对齐SNMP归一化规范(v2.13.51)",
+        "fix: save-onboarding selected_metrics max_length从5000提至10000(v2.13.50)",
+        "fix: MetricsDiscoveryStep全选跨页+SNMP多实例row-key重复导致勾选混乱(v2.13.49)",
+        "v2.13.48: batch fix el-table cross-page selection bug across 8 files",
+        "fix: 用el-table内置row-key+reserve-selection重写跨页选择 (v2.13.47)",
+        "fix: MetricsDiscoveryStep Map响应式修复 ref->reactive (v2.13.46)",
+        "v2.13.45: 用自定义checkbox替代el-table内置selection，彻底解决跨页选中问题",
+        "v2.13.44: 发现指标表格分页——修复5000+指标全量渲染导致页面卡死"
+      ]
+    },
     {
       "version": "2.13.52",
       "released_at": "2026-07-25T16:09:35Z",
