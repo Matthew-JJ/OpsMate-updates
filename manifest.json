@@ -1,10 +1,11 @@
 {
-  "latest": "2.13.60",
-  "latest_version": "2.13.60",
+  "latest": "2.13.61",
+  "latest_version": "2.13.61",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-26",
   "changelog": [
+    "v2.13.61: JSON字段名大小写容错fallback(V3/V5/Dorado兼容), 多实例告警description补充逐盘/逐柜语义",
     "v2.13.60: 华为OceanStor指标14->23, catalog补9处source_names+4新canonical, 预设模板23->32条规则",
     "v2.13.59: 修复_json局部变量遮蔽导致华为认证报UnboundLocalError",
     "v2.13.58: 修复SSL握手失败(SECLEVEL=2拒绝旧密码套件)",
@@ -13,8 +14,7 @@
     "v2.13.54: 添加AlertConfigStep闭包诊断日志(定位storage_rest告警模板只匹配3条的根因)",
     "v2.13.53: fix metric_catalog API JSONB deserialization + catalog mapping补全",
     "v2.13.52: storage_rest discover改为实测设备，对每个api_path发请求只返回有数据的指标",
-    "fix: storage_rest发现指标对齐SNMP归一化规范(v2.13.51)",
-    "fix: save-onboarding selected_metrics max_length从5000提至10000(v2.13.50)"
+    "fix: storage_rest发现指标对齐SNMP归一化规范(v2.13.51)"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.13.60: v2.13.60: 华为OceanStor指标14->23, catalog补9处source_names+4新canonical, 预设模板23->32条规则 + v2.13.59: 修复_json局部变量遮蔽导致华为认证报UnboundLocalError + v2.13.58: 修复SSL握手失败(SECLEVEL=2拒绝旧密码套件) 等10项更新",
+  "notes": "v2.13.61: v2.13.61: JSON字段名大小写容错fallback(V3/V5/Dorado兼容), 多实例告警description补充逐盘/逐柜语义 + v2.13.60: 华为OceanStor指标14->23, catalog补9处source_names+4新canonical, 预设模板23->32条规则 + v2.13.59: 修复_json局部变量遮蔽导致华为认证报UnboundLocalError 等10项更新",
   "versions": [
+    {
+      "version": "2.13.61",
+      "released_at": "2026-07-26T06:59:04Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.13.61: JSON字段名大小写容错fallback(V3/V5/Dorado兼容), 多实例告警description补充逐盘/逐柜语义",
+        "v2.13.60: 华为OceanStor指标14->23, catalog补9处source_names+4新canonical, 预设模板23->32条规则",
+        "v2.13.59: 修复_json局部变量遮蔽导致华为认证报UnboundLocalError",
+        "v2.13.58: 修复SSL握手失败(SECLEVEL=2拒绝旧密码套件)",
+        "v2.13.57: 修复华为OceanStor REST API认证（6处根本错误）",
+        "v2.13.56: storage_rest discover日志升级warning+汇总+预设模板补齐10条规则",
+        "v2.13.54: 添加AlertConfigStep闭包诊断日志(定位storage_rest告警模板只匹配3条的根因)",
+        "v2.13.53: fix metric_catalog API JSONB deserialization + catalog mapping补全",
+        "v2.13.52: storage_rest discover改为实测设备，对每个api_path发请求只返回有数据的指标",
+        "fix: storage_rest发现指标对齐SNMP归一化规范(v2.13.51)"
+      ]
+    },
     {
       "version": "2.13.60",
       "released_at": "2026-07-26T06:48:52Z",
