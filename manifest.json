@@ -1,10 +1,11 @@
 {
-  "latest": "2.14.7",
-  "latest_version": "2.14.7",
+  "latest": "2.14.10",
+  "latest_version": "2.14.10",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-27",
   "changelog": [
+    "v2.14.10: 前端加console.log调试输出 + Redfish超时180s + 后端日志stdout",
     "v2.14.7: 修复调试日志不输出——print改为logger.info",
     "v2.14.6: Redfish发现阶段加调试打印（probe+discover各步骤带耗时输出）",
     "v2.14.5: 补修PG电压噪声过滤——兼容老iDRAC不返回MaxReadingRange的情况",
@@ -13,8 +14,7 @@
     "v2.14.2: fix LLDP man addr IP parsing with reverse OID approach",
     "v2.14.1: fix org_id leak + render port info + unmatched neighbor create asset + debug logs",
     "v2.14.0: Dell SC POST修复 + Redfish归一化合并 + 拓扑Phase1-5全面改造 + 审核修复",
-    "v2.13.67: 网络拓扑模块全面改造 - 8个后端bug修复 + 前端3项增强",
-    "fix: 巡检执行3处崩溃修复+catalog enum_normal_value数据修正 (v2.13.66)"
+    "v2.13.67: 网络拓扑模块全面改造 - 8个后端bug修复 + 前端3项增强"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.14.7: v2.14.7: 修复调试日志不输出——print改为logger.info + v2.14.6: Redfish发现阶段加调试打印（probe+discover各步骤带耗时输出） + v2.14.5: 补修PG电压噪声过滤——兼容老iDRAC不返回MaxReadingRange的情况 等10项更新",
+  "notes": "v2.14.10: v2.14.10: 前端加console.log调试输出 + Redfish超时180s + 后端日志stdout + v2.14.7: 修复调试日志不输出——print改为logger.info + v2.14.6: Redfish发现阶段加调试打印（probe+discover各步骤带耗时输出） 等10项更新",
   "versions": [
+    {
+      "version": "2.14.10",
+      "released_at": "2026-07-27T12:23:16Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.14.10: 前端加console.log调试输出 + Redfish超时180s + 后端日志stdout",
+        "v2.14.7: 修复调试日志不输出——print改为logger.info",
+        "v2.14.6: Redfish发现阶段加调试打印（probe+discover各步骤带耗时输出）",
+        "v2.14.5: 补修PG电压噪声过滤——兼容老iDRAC不返回MaxReadingRange的情况",
+        "v2.14.4: 修复Step4 Thermal+Power并发逻辑bug — 先await再gather导致TypeError被except吞掉，数据全部丢失",
+        "v2.14.3: Redfish采集器兼容性改造 - NIC双路径并发采集、风扇RPM回退、电压噪声过滤、timeout字段修复",
+        "v2.14.2: fix LLDP man addr IP parsing with reverse OID approach",
+        "v2.14.1: fix org_id leak + render port info + unmatched neighbor create asset + debug logs",
+        "v2.14.0: Dell SC POST修复 + Redfish归一化合并 + 拓扑Phase1-5全面改造 + 审核修复",
+        "v2.13.67: 网络拓扑模块全面改造 - 8个后端bug修复 + 前端3项增强"
+      ]
+    },
     {
       "version": "2.14.7",
       "released_at": "2026-07-27T08:08:13Z",
