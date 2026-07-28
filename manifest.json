@@ -1,10 +1,11 @@
 {
-  "latest": "2.14.14",
-  "latest_version": "2.14.14",
+  "latest": "2.14.15",
+  "latest_version": "2.14.15",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-07-28",
   "changelog": [
+    "fix: _redfish_get递归死锁+collect_single_task不存在 v2.14.15",
     "fix: Redfish采集器iDRAC7兼容性修复 v2.14.14",
     "v2.14.13: Redfish采集架构重构+3Bug修复+采集频率优化",
     "v2.14.11: 修复日志系统失效、添加logs卷映射、nginx discover-metrics超时",
@@ -13,8 +14,7 @@
     "v2.14.6: Redfish发现阶段加调试打印（probe+discover各步骤带耗时输出）",
     "v2.14.5: 补修PG电压噪声过滤——兼容老iDRAC不返回MaxReadingRange的情况",
     "v2.14.4: 修复Step4 Thermal+Power并发逻辑bug — 先await再gather导致TypeError被except吞掉，数据全部丢失",
-    "v2.14.3: Redfish采集器兼容性改造 - NIC双路径并发采集、风扇RPM回退、电压噪声过滤、timeout字段修复",
-    "v2.14.2: fix LLDP man addr IP parsing with reverse OID approach"
+    "v2.14.3: Redfish采集器兼容性改造 - NIC双路径并发采集、风扇RPM回退、电压噪声过滤、timeout字段修复"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.14.14: fix: Redfish采集器iDRAC7兼容性修复 v2.14.14 + v2.14.13: Redfish采集架构重构+3Bug修复+采集频率优化 + v2.14.11: 修复日志系统失效、添加logs卷映射、nginx discover-metrics超时 等10项更新",
+  "notes": "v2.14.15: fix: _redfish_get递归死锁+collect_single_task不存在 v2.14.15 + fix: Redfish采集器iDRAC7兼容性修复 v2.14.14 + v2.14.13: Redfish采集架构重构+3Bug修复+采集频率优化 等10项更新",
   "versions": [
+    {
+      "version": "2.14.15",
+      "released_at": "2026-07-28T10:46:59Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix: _redfish_get递归死锁+collect_single_task不存在 v2.14.15",
+        "fix: Redfish采集器iDRAC7兼容性修复 v2.14.14",
+        "v2.14.13: Redfish采集架构重构+3Bug修复+采集频率优化",
+        "v2.14.11: 修复日志系统失效、添加logs卷映射、nginx discover-metrics超时",
+        "v2.14.10: 前端加console.log调试输出 + Redfish超时180s + 后端日志stdout",
+        "v2.14.7: 修复调试日志不输出——print改为logger.info",
+        "v2.14.6: Redfish发现阶段加调试打印（probe+discover各步骤带耗时输出）",
+        "v2.14.5: 补修PG电压噪声过滤——兼容老iDRAC不返回MaxReadingRange的情况",
+        "v2.14.4: 修复Step4 Thermal+Power并发逻辑bug — 先await再gather导致TypeError被except吞掉，数据全部丢失",
+        "v2.14.3: Redfish采集器兼容性改造 - NIC双路径并发采集、风扇RPM回退、电压噪声过滤、timeout字段修复"
+      ]
+    },
     {
       "version": "2.14.14",
       "released_at": "2026-07-28T09:14:28Z",
