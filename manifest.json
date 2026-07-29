@@ -1,10 +1,11 @@
 {
-  "latest": "2.14.17",
-  "latest_version": "2.14.17",
+  "latest": "2.14.18",
+  "latest_version": "2.14.18",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-07-28",
+  "release_date": "2026-07-29",
   "changelog": [
+    "v2.14.18: P1-a Redfish unified collection + Bug20/22/23 fixes",
     "v2.14.17: fix Bug15-19 dict.get None trap, asyncio.run fallback, protocol_type before use",
     "fix: _collect_thermal_from_data和_collect_power_from_data缺少await v2.14.16",
     "fix: _redfish_get递归死锁+collect_single_task不存在 v2.14.15",
@@ -13,8 +14,7 @@
     "v2.14.11: 修复日志系统失效、添加logs卷映射、nginx discover-metrics超时",
     "v2.14.10: 前端加console.log调试输出 + Redfish超时180s + 后端日志stdout",
     "v2.14.7: 修复调试日志不输出——print改为logger.info",
-    "v2.14.6: Redfish发现阶段加调试打印（probe+discover各步骤带耗时输出）",
-    "v2.14.5: 补修PG电压噪声过滤——兼容老iDRAC不返回MaxReadingRange的情况"
+    "v2.14.6: Redfish发现阶段加调试打印（probe+discover各步骤带耗时输出）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.14.17: v2.14.17: fix Bug15-19 dict.get None trap, asyncio.run fallback, protocol_type before use + fix: _collect_thermal_from_data和_collect_power_from_data缺少await v2.14.16 + fix: _redfish_get递归死锁+collect_single_task不存在 v2.14.15 等10项更新",
+  "notes": "v2.14.18: v2.14.18: P1-a Redfish unified collection + Bug20/22/23 fixes + v2.14.17: fix Bug15-19 dict.get None trap, asyncio.run fallback, protocol_type before use + fix: _collect_thermal_from_data和_collect_power_from_data缺少await v2.14.16 等10项更新",
   "versions": [
+    {
+      "version": "2.14.18",
+      "released_at": "2026-07-29T03:37:57Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.14.18: P1-a Redfish unified collection + Bug20/22/23 fixes",
+        "v2.14.17: fix Bug15-19 dict.get None trap, asyncio.run fallback, protocol_type before use",
+        "fix: _collect_thermal_from_data和_collect_power_from_data缺少await v2.14.16",
+        "fix: _redfish_get递归死锁+collect_single_task不存在 v2.14.15",
+        "fix: Redfish采集器iDRAC7兼容性修复 v2.14.14",
+        "v2.14.13: Redfish采集架构重构+3Bug修复+采集频率优化",
+        "v2.14.11: 修复日志系统失效、添加logs卷映射、nginx discover-metrics超时",
+        "v2.14.10: 前端加console.log调试输出 + Redfish超时180s + 后端日志stdout",
+        "v2.14.7: 修复调试日志不输出——print改为logger.info",
+        "v2.14.6: Redfish发现阶段加调试打印（probe+discover各步骤带耗时输出）"
+      ]
+    },
     {
       "version": "2.14.17",
       "released_at": "2026-07-28T11:56:26Z",
