@@ -1,10 +1,11 @@
 {
-  "latest": "2.16.0",
-  "latest_version": "2.16.0",
+  "latest": "2.16.1",
+  "latest_version": "2.16.1",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-08-01",
   "changelog": [
+    "v2.16.1: opsmate管理脚本替代upgrade.sh，支持upgrade/restart/stop/status/logs",
     "v2.16.0: 一键升级脚本 + yml自动分发机制 + nginx端口环境变量化",
     "v2.15.9: Celery架构修复 - 队列隔离+防堆积+过期取消+审计日志修复",
     "v2.15.8: 修复电源控制两个关键bug - 1.Celery触发前先commit防竞态(操作不执行) 2.admin跳过审批路径补齐审计日志",
@@ -13,8 +14,7 @@
     "v2.15.5: 修复电源控制500错误 - RemoteOperationInfo添加from_attributes配置",
     "v2.15.4: 修复电源控制422 + 多实例指标告警描述补充实例ID",
     "v2.15.2: change detection description readability + Dell consecutive collection failure fix",
-    "v2.15.0: 变更管理深度改造(CM-1~CM-5) + 审计修复",
-    "fix: v2.14.26 fingerprint并发写入UniqueViolation + 变更告警排除voltage波动"
+    "v2.15.0: 变更管理深度改造(CM-1~CM-5) + 审计修复"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.16.0: v2.16.0: 一键升级脚本 + yml自动分发机制 + nginx端口环境变量化 + v2.15.9: Celery架构修复 - 队列隔离+防堆积+过期取消+审计日志修复 + v2.15.8: 修复电源控制两个关键bug - 1.Celery触发前先commit防竞态(操作不执行) 2.admin跳过审批路径补齐审计日志 等10项更新",
+  "notes": "v2.16.1: v2.16.1: opsmate管理脚本替代upgrade.sh，支持upgrade/restart/stop/status/logs + v2.16.0: 一键升级脚本 + yml自动分发机制 + nginx端口环境变量化 + v2.15.9: Celery架构修复 - 队列隔离+防堆积+过期取消+审计日志修复 等10项更新",
   "versions": [
+    {
+      "version": "2.16.1",
+      "released_at": "2026-08-01T09:09:45Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.16.1: opsmate管理脚本替代upgrade.sh，支持upgrade/restart/stop/status/logs",
+        "v2.16.0: 一键升级脚本 + yml自动分发机制 + nginx端口环境变量化",
+        "v2.15.9: Celery架构修复 - 队列隔离+防堆积+过期取消+审计日志修复",
+        "v2.15.8: 修复电源控制两个关键bug - 1.Celery触发前先commit防竞态(操作不执行) 2.admin跳过审批路径补齐审计日志",
+        "v2.15.7: pending操作1小时超时自动取消 + reject审批审计日志",
+        "v2.15.6: admin用户电源操作跳过审批直接执行",
+        "v2.15.5: 修复电源控制500错误 - RemoteOperationInfo添加from_attributes配置",
+        "v2.15.4: 修复电源控制422 + 多实例指标告警描述补充实例ID",
+        "v2.15.2: change detection description readability + Dell consecutive collection failure fix",
+        "v2.15.0: 变更管理深度改造(CM-1~CM-5) + 审计修复"
+      ]
+    },
     {
       "version": "2.16.0",
       "released_at": "2026-08-01T08:53:25Z",
