@@ -1,10 +1,11 @@
 {
-  "latest": "2.17.8",
-  "latest_version": "2.17.8",
+  "latest": "2.17.9",
+  "latest_version": "2.17.9",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-08-04",
   "changelog": [
+    "v2.17.9: 告警抑制UI入口迁移 — 频率抑制配置移至告警中心抑制规则页面",
     "chore: 递增版本号 2.17.7 → 2.17.8",
     "fix: 深度审查发现5个bug — throttle缓存刷新 + RunStatus warning副作用",
     "fix: 代码审查发现的两个严重bug",
@@ -13,8 +14,7 @@
     "v2.17.6: 告警描述实例名翻译 + -1值告警豁免",
     "v2.17.6: fix RunStatus缺少warning导致采集任务页面500",
     "v2.17.5: 数据中心CRUD + 500防御修复 + 拓扑图标替换 + 备份调度功能",
-    "v2.17.4: fix instance_name_path lost in storage REST onboarding chain",
-    "v2.17.3: fix walk mode instance name translation + add Dell SC SNMP instance_name_oid"
+    "v2.17.4: fix instance_name_path lost in storage REST onboarding chain"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.17.8: chore: 递增版本号 2.17.7 → 2.17.8 + fix: 深度审查发现5个bug — throttle缓存刷新 + RunStatus warning副作用 + fix: 代码审查发现的两个严重bug 等10项更新",
+  "notes": "v2.17.9: v2.17.9: 告警抑制UI入口迁移 — 频率抑制配置移至告警中心抑制规则页面 + chore: 递增版本号 2.17.7 → 2.17.8 + fix: 深度审查发现5个bug — throttle缓存刷新 + RunStatus warning副作用 等10项更新",
   "versions": [
+    {
+      "version": "2.17.9",
+      "released_at": "2026-08-04T13:26:46Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.17.9: 告警抑制UI入口迁移 — 频率抑制配置移至告警中心抑制规则页面",
+        "chore: 递增版本号 2.17.7 → 2.17.8",
+        "fix: 深度审查发现5个bug — throttle缓存刷新 + RunStatus warning副作用",
+        "fix: 代码审查发现的两个严重bug",
+        "feat: 告警治理全局默认配置 + settings API/前端UI",
+        "v2.17.7: 告警频率限制（Throttle）— 同一规则+资产窗口内最多N条告警",
+        "v2.17.6: 告警描述实例名翻译 + -1值告警豁免",
+        "v2.17.6: fix RunStatus缺少warning导致采集任务页面500",
+        "v2.17.5: 数据中心CRUD + 500防御修复 + 拓扑图标替换 + 备份调度功能",
+        "v2.17.4: fix instance_name_path lost in storage REST onboarding chain"
+      ]
+    },
     {
       "version": "2.17.8",
       "released_at": "2026-08-04T12:22:21Z",
