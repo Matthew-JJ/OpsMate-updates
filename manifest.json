@@ -1,10 +1,11 @@
 {
-  "latest": "2.17.4",
-  "latest_version": "2.17.4",
+  "latest": "2.17.5",
+  "latest_version": "2.17.5",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-08-03",
+  "release_date": "2026-08-04",
   "changelog": [
+    "v2.17.5: 数据中心CRUD + 500防御修复 + 拓扑图标替换 + 备份调度功能",
     "v2.17.4: fix instance_name_path lost in storage REST onboarding chain",
     "v2.17.3: fix walk mode instance name translation + add Dell SC SNMP instance_name_oid",
     "v2.17.2: 修复两个紧急bug",
@@ -13,8 +14,7 @@
     "v2.16.2: fix DetachedInstanceError, power history readability, metric instance residue cleanup",
     "v2.16.1: opsmate管理脚本替代upgrade.sh，支持upgrade/restart/stop/status/logs",
     "v2.16.0: 一键升级脚本 + yml自动分发机制 + nginx端口环境变量化",
-    "v2.15.9: Celery架构修复 - 队列隔离+防堆积+过期取消+审计日志修复",
-    "v2.15.8: 修复电源控制两个关键bug - 1.Celery触发前先commit防竞态(操作不执行) 2.admin跳过审批路径补齐审计日志"
+    "v2.15.9: Celery架构修复 - 队列隔离+防堆积+过期取消+审计日志修复"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.17.4: v2.17.4: fix instance_name_path lost in storage REST onboarding chain + v2.17.3: fix walk mode instance name translation + add Dell SC SNMP instance_name_oid + v2.17.2: 修复两个紧急bug 等10项更新",
+  "notes": "v2.17.5: v2.17.5: 数据中心CRUD + 500防御修复 + 拓扑图标替换 + 备份调度功能 + v2.17.4: fix instance_name_path lost in storage REST onboarding chain + v2.17.3: fix walk mode instance name translation + add Dell SC SNMP instance_name_oid 等10项更新",
   "versions": [
+    {
+      "version": "2.17.5",
+      "released_at": "2026-08-04T06:26:09Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.17.5: 数据中心CRUD + 500防御修复 + 拓扑图标替换 + 备份调度功能",
+        "v2.17.4: fix instance_name_path lost in storage REST onboarding chain",
+        "v2.17.3: fix walk mode instance name translation + add Dell SC SNMP instance_name_oid",
+        "v2.17.2: 修复两个紧急bug",
+        "v2.17.1: 修复蜂巢图health_score复用、存储端口实例ID可读性、离线端口告警策略、vendor推断改进",
+        "v2.17.0: add not_in operator, health_status from score, vendor mapping",
+        "v2.16.2: fix DetachedInstanceError, power history readability, metric instance residue cleanup",
+        "v2.16.1: opsmate管理脚本替代upgrade.sh，支持upgrade/restart/stop/status/logs",
+        "v2.16.0: 一键升级脚本 + yml自动分发机制 + nginx端口环境变量化",
+        "v2.15.9: Celery架构修复 - 队列隔离+防堆积+过期取消+审计日志修复"
+      ]
+    },
     {
       "version": "2.17.4",
       "released_at": "2026-08-03T15:06:45Z",
