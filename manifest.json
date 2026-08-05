@@ -1,20 +1,20 @@
 {
-  "latest": "2.17.11",
-  "latest_version": "2.17.11",
+  "latest": "2.17.14",
+  "latest_version": "2.17.14",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-08-05",
   "changelog": [
+    "bump: v2.17.14 前端SNMPv3凭证字段名修复(续v2.17.13 Bug5)",
+    "fix: 前端SNMPv3凭证字段名auth_key/priv_key→auth_pass/priv_pass匹配类型定义",
+    "bump: v2.17.13 修复拓扑发现5个Bug（标量OID.0后缀、traceroute解析+ICMP模式、Redis异步客户端）",
+    "fix: 标量OID必须加.0实例标识符 - dot1dBaseBridgeAddress 1.3.6.1.2.1.17.1.1 → 1.3.6.1.2.1.17.1.1.0 - SNMP GET对标量OID不带.0会返回noSuchName（RFC2578规定）",
+    "fix: 修复v2.17.12审核发现的4个Bug - Bug1: dot1dBaseBridgeAddress标量OID用snmp_get替代snmp_walk - Bug2: 重写traceroute输出解析逻辑(正确处理3次探测RTT和* * *行) - Bug3: Redis导入路径app.database→app.core.redis_pool.get_async_redis_client - Bug4: traceroute优先ICMP模式(-I)失败回退UDP",
+    "feat: v2.17.12 — AFT交叉推断+Traceroute逐跳+未匹配邻居持久化+凭证测试端点",
     "v2.17.11: topology multi-credential, unmanaged nodes, right-click menu, confidence filter",
     "refactor: 删除冗余的 useTopologyG6.ts composable (index.vue已内联G6逻辑)",
     "feat: 网络拓扑从ECharts+dagre迁移到AntV G6 v5.1.1 (v2.17.10)",
-    "v2.17.9: 告警抑制UI入口迁移 — 频率抑制配置移至告警中心抑制规则页面",
-    "chore: 递增版本号 2.17.7 → 2.17.8",
-    "fix: 深度审查发现5个bug — throttle缓存刷新 + RunStatus warning副作用",
-    "fix: 代码审查发现的两个严重bug",
-    "feat: 告警治理全局默认配置 + settings API/前端UI",
-    "v2.17.7: 告警频率限制（Throttle）— 同一规则+资产窗口内最多N条告警",
-    "v2.17.6: 告警描述实例名翻译 + -1值告警豁免"
+    "v2.17.9: 告警抑制UI入口迁移 — 频率抑制配置移至告警中心抑制规则页面"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.17.11: v2.17.11: topology multi-credential, unmanaged nodes, right-click menu, confidence filter + refactor: 删除冗余的 useTopologyG6.ts composable (index.vue已内联G6逻辑) + feat: 网络拓扑从ECharts+dagre迁移到AntV G6 v5.1.1 (v2.17.10) 等10项更新",
+  "notes": "v2.17.14: bump: v2.17.14 前端SNMPv3凭证字段名修复(续v2.17.13 Bug5) + fix: 前端SNMPv3凭证字段名auth_key/priv_key→auth_pass/priv_pass匹配类型定义 + bump: v2.17.13 修复拓扑发现5个Bug（标量OID.0后缀、traceroute解析+ICMP模式、Redis异步客户端） 等10项更新",
   "versions": [
+    {
+      "version": "2.17.14",
+      "released_at": "2026-08-05T09:39:47Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "bump: v2.17.14 前端SNMPv3凭证字段名修复(续v2.17.13 Bug5)",
+        "fix: 前端SNMPv3凭证字段名auth_key/priv_key→auth_pass/priv_pass匹配类型定义",
+        "bump: v2.17.13 修复拓扑发现5个Bug（标量OID.0后缀、traceroute解析+ICMP模式、Redis异步客户端）",
+        "fix: 标量OID必须加.0实例标识符 - dot1dBaseBridgeAddress 1.3.6.1.2.1.17.1.1 → 1.3.6.1.2.1.17.1.1.0 - SNMP GET对标量OID不带.0会返回noSuchName（RFC2578规定）",
+        "fix: 修复v2.17.12审核发现的4个Bug - Bug1: dot1dBaseBridgeAddress标量OID用snmp_get替代snmp_walk - Bug2: 重写traceroute输出解析逻辑(正确处理3次探测RTT和* * *行) - Bug3: Redis导入路径app.database→app.core.redis_pool.get_async_redis_client - Bug4: traceroute优先ICMP模式(-I)失败回退UDP",
+        "feat: v2.17.12 — AFT交叉推断+Traceroute逐跳+未匹配邻居持久化+凭证测试端点",
+        "v2.17.11: topology multi-credential, unmanaged nodes, right-click menu, confidence filter",
+        "refactor: 删除冗余的 useTopologyG6.ts composable (index.vue已内联G6逻辑)",
+        "feat: 网络拓扑从ECharts+dagre迁移到AntV G6 v5.1.1 (v2.17.10)",
+        "v2.17.9: 告警抑制UI入口迁移 — 频率抑制配置移至告警中心抑制规则页面"
+      ]
+    },
     {
       "version": "2.17.11",
       "released_at": "2026-08-05T06:36:26Z",
