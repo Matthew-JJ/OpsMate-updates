@@ -1,10 +1,11 @@
 {
-  "latest": "2.17.27",
-  "latest_version": "2.17.27",
+  "latest": "2.17.28",
+  "latest_version": "2.17.28",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-08-06",
   "changelog": [
+    "v2.17.28: 修复配置备份SSH测试连接对网络设备不兼容（exec_command→invoke_shell交互式shell）",
     "v2.17.27: 修复TabConfigBackup TS类型错误（CI构建失败）",
     "v2.17.26: 配置备份SSH凭证输入+指纹库扩展+device_type映射修复",
     "v2.17.25: 修复配置备份多个问题 - 凭证缺失/设备型号未设置时友好提示、400错误码、前端axios取message、补充Brocade/Arista设备映射",
@@ -13,8 +14,7 @@
     "v2.17.22: 新增网络设备配置备份功能（SSH采集+行级diff+基线管理）、资产详情页Tab按类型动态显示",
     "v2.17.21: 修复变更监测资产组列表为空、组织过滤Bug、新增资产生效规则展示",
     "v2.17.20: 新增Extreme Networks厂商支持（VENDOR_CODE_MAP映射+snmp_vendor_metrics.json指标数据+vendor_data空指针修复）",
-    "fix: 智能接入预填参数后不自动探测，由用户手动点击开始探测",
-    "fix: 拓扑右键菜单位置跟随鼠标 + 智能接入从拓扑跳转后指标发现为空"
+    "fix: 智能接入预填参数后不自动探测，由用户手动点击开始探测"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.17.27: v2.17.27: 修复TabConfigBackup TS类型错误（CI构建失败） + v2.17.26: 配置备份SSH凭证输入+指纹库扩展+device_type映射修复 + v2.17.25: 修复配置备份多个问题 - 凭证缺失/设备型号未设置时友好提示、400错误码、前端axios取message、补充Brocade/Arista设备映射 等10项更新",
+  "notes": "v2.17.28: v2.17.28: 修复配置备份SSH测试连接对网络设备不兼容（exec_command→invoke_shell交互式shell） + v2.17.27: 修复TabConfigBackup TS类型错误（CI构建失败） + v2.17.26: 配置备份SSH凭证输入+指纹库扩展+device_type映射修复 等10项更新",
   "versions": [
+    {
+      "version": "2.17.28",
+      "released_at": "2026-08-06T15:12:48Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.17.28: 修复配置备份SSH测试连接对网络设备不兼容（exec_command→invoke_shell交互式shell）",
+        "v2.17.27: 修复TabConfigBackup TS类型错误（CI构建失败）",
+        "v2.17.26: 配置备份SSH凭证输入+指纹库扩展+device_type映射修复",
+        "v2.17.25: 修复配置备份多个问题 - 凭证缺失/设备型号未设置时友好提示、400错误码、前端axios取message、补充Brocade/Arista设备映射",
+        "v2.17.24: 修复asset-rules API UnboundLocalError（all_rule_ids使用先于定义）",
+        "v2.17.23: 修复配置备份Tab编译错误（Compare图标不存在，替换为DocumentCopy）+ SSH采集改用prompt检测",
+        "v2.17.22: 新增网络设备配置备份功能（SSH采集+行级diff+基线管理）、资产详情页Tab按类型动态显示",
+        "v2.17.21: 修复变更监测资产组列表为空、组织过滤Bug、新增资产生效规则展示",
+        "v2.17.20: 新增Extreme Networks厂商支持（VENDOR_CODE_MAP映射+snmp_vendor_metrics.json指标数据+vendor_data空指针修复）",
+        "fix: 智能接入预填参数后不自动探测，由用户手动点击开始探测"
+      ]
+    },
     {
       "version": "2.17.27",
       "released_at": "2026-08-06T14:22:20Z",
