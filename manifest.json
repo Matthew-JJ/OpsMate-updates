@@ -1,10 +1,11 @@
 {
-  "latest": "2.17.39",
-  "latest_version": "2.17.39",
+  "latest": "2.17.40",
+  "latest_version": "2.17.40",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-08-09",
   "changelog": [
+    "v2.17.40: Dell交换机映射从dell_powerconnect改为dell_os6（修复认证失败）",
     "v2.17.39: paramiko 3.x ssh-rsa兼容补丁（支持Dell N1548等老旧网络设备）",
     "v2.17.38: enable失败直接终止采集，不再静默继续（对齐Netmiko标准行为）",
     "v2.17.37: 配置备份全面切换Netmiko（100+设备类型），修复enable密码检测bug",
@@ -13,8 +14,7 @@
     "v2.17.34: 配置备份增加Enable密码支持（SSH凭证表单+3个API+采集全链路）",
     "v2.17.33: 修复配置备份密码脱敏导致认证失败+自动检测enable模式",
     "v2.17.32: 修复CI nginx镜像缓存导致前端更新不生效，nginx构建禁用Docker层缓存",
-    "v2.17.31: re-trigger CI to fix nginx cache issue",
-    "v2.17.31: 修复时序字段触发变更快照+brocade_nos命令修正+配置快照Tab全资产可见"
+    "v2.17.31: re-trigger CI to fix nginx cache issue"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.17.39: v2.17.39: paramiko 3.x ssh-rsa兼容补丁（支持Dell N1548等老旧网络设备） + v2.17.38: enable失败直接终止采集，不再静默继续（对齐Netmiko标准行为） + v2.17.37: 配置备份全面切换Netmiko（100+设备类型），修复enable密码检测bug 等10项更新",
+  "notes": "v2.17.40: v2.17.40: Dell交换机映射从dell_powerconnect改为dell_os6（修复认证失败） + v2.17.39: paramiko 3.x ssh-rsa兼容补丁（支持Dell N1548等老旧网络设备） + v2.17.38: enable失败直接终止采集，不再静默继续（对齐Netmiko标准行为） 等10项更新",
   "versions": [
+    {
+      "version": "2.17.40",
+      "released_at": "2026-08-09T14:21:56Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.17.40: Dell交换机映射从dell_powerconnect改为dell_os6（修复认证失败）",
+        "v2.17.39: paramiko 3.x ssh-rsa兼容补丁（支持Dell N1548等老旧网络设备）",
+        "v2.17.38: enable失败直接终止采集，不再静默继续（对齐Netmiko标准行为）",
+        "v2.17.37: 配置备份全面切换Netmiko（100+设备类型），修复enable密码检测bug",
+        "v2.17.36: 配置备份设备型号覆盖从12种扩展到28种（对齐Netmiko CLASS_MAPPER，覆盖国产防火墙/国产交换机等客户常见设备）",
+        "v2.17.35: SSH交互式shell命令发送改用\\r替代\\n（兼容更多网络设备）；enable密码错误时明确提示而非'设备未响应'",
+        "v2.17.34: 配置备份增加Enable密码支持（SSH凭证表单+3个API+采集全链路）",
+        "v2.17.33: 修复配置备份密码脱敏导致认证失败+自动检测enable模式",
+        "v2.17.32: 修复CI nginx镜像缓存导致前端更新不生效，nginx构建禁用Docker层缓存",
+        "v2.17.31: re-trigger CI to fix nginx cache issue"
+      ]
+    },
     {
       "version": "2.17.39",
       "released_at": "2026-08-09T06:26:35Z",
