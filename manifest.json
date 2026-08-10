@@ -1,10 +1,11 @@
 {
-  "latest": "2.17.51",
-  "latest_version": "2.17.51",
+  "latest": "2.17.52",
+  "latest_version": "2.17.52",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-08-10",
   "changelog": [
+    "v2.17.52: 修复接口级告警/巡检三大系统性Bug——admin down豁免+虚拟接口过滤(Link Aggregate/Port-Channel)+采集层ifType补161",
     "v2.17.51: 修复巡检端口级明细两大Bug——虚拟接口膨胀(48→158)和端口名纯数字，同步修正fault_count计数",
     "v2.17.50: 群晖NAS完整接入（指纹/厂商指标OID/指标目录/类型映射/P0修复）",
     "v2.17.49: 定时配置备份功能——网络资产配置备份Tab增加定时备份按钮+弹窗+调度",
@@ -13,8 +14,7 @@
     "v2.17.46: counter wrap速率合理性校验+零流量端口错误标记+错误占比语义修正+oper_status阈值收紧",
     "v2.17.45: 百分比错误率——新增error_percent指标+unicast_rate分母+采集阶段2.5派生计算+巡检端口明细",
     "v2.17.44: 巡检端口明细v2——error_rate替代errors计数器+max聚合触发时查端口明细+oper_status策略补全asset_type+单位显示",
-    "v2.17.43: 巡检报告端口级明细——fault_count触发时查询异常端口实例+oper_status结合监控策略过滤+HTML渲染端口明细表",
-    "v2.17.42: SolarWinds风格双栏并列diff对比 - checkbox选版本/BEFORE&AFTER对齐/行级高亮"
+    "v2.17.43: 巡检报告端口级明细——fault_count触发时查询异常端口实例+oper_status结合监控策略过滤+HTML渲染端口明细表"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.17.51: v2.17.51: 修复巡检端口级明细两大Bug——虚拟接口膨胀(48→158)和端口名纯数字，同步修正fault_count计数 + v2.17.50: 群晖NAS完整接入（指纹/厂商指标OID/指标目录/类型映射/P0修复） + v2.17.49: 定时配置备份功能——网络资产配置备份Tab增加定时备份按钮+弹窗+调度 等10项更新",
+  "notes": "v2.17.52: v2.17.52: 修复接口级告警/巡检三大系统性Bug——admin down豁免+虚拟接口过滤(Link Aggregate/Port-Channel)+采集层ifType补161 + v2.17.51: 修复巡检端口级明细两大Bug——虚拟接口膨胀(48→158)和端口名纯数字，同步修正fault_count计数 + v2.17.50: 群晖NAS完整接入（指纹/厂商指标OID/指标目录/类型映射/P0修复） 等10项更新",
   "versions": [
+    {
+      "version": "2.17.52",
+      "released_at": "2026-08-10T12:05:33Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.17.52: 修复接口级告警/巡检三大系统性Bug——admin down豁免+虚拟接口过滤(Link Aggregate/Port-Channel)+采集层ifType补161",
+        "v2.17.51: 修复巡检端口级明细两大Bug——虚拟接口膨胀(48→158)和端口名纯数字，同步修正fault_count计数",
+        "v2.17.50: 群晖NAS完整接入（指纹/厂商指标OID/指标目录/类型映射/P0修复）",
+        "v2.17.49: 定时配置备份功能——网络资产配置备份Tab增加定时备份按钮+弹窗+调度",
+        "v2.17.48: 修复 identifier 旋转 bug，删除幽灵子资产 + Redfish 空槽位过滤",
+        "v2.17.47: Redfish采集器过滤风扇/电源空槽位(name=None/Absent/Disabled)",
+        "v2.17.46: counter wrap速率合理性校验+零流量端口错误标记+错误占比语义修正+oper_status阈值收紧",
+        "v2.17.45: 百分比错误率——新增error_percent指标+unicast_rate分母+采集阶段2.5派生计算+巡检端口明细",
+        "v2.17.44: 巡检端口明细v2——error_rate替代errors计数器+max聚合触发时查端口明细+oper_status策略补全asset_type+单位显示",
+        "v2.17.43: 巡检报告端口级明细——fault_count触发时查询异常端口实例+oper_status结合监控策略过滤+HTML渲染端口明细表"
+      ]
+    },
     {
       "version": "2.17.51",
       "released_at": "2026-08-10T11:28:51Z",
