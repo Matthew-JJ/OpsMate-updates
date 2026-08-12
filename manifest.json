@@ -1,10 +1,11 @@
 {
-  "latest": "2.18.4",
-  "latest_version": "2.18.4",
+  "latest": "2.18.5",
+  "latest_version": "2.18.5",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-08-12",
   "changelog": [
+    "v2.18.5: 修复total_checks=0（UnboundLocalError）",
     "v2.18.4: 修复total_checks=0的bug",
     "v2.18.3: not_applicable不计入total_checks，消除膨胀",
     "v2.18.3: 巡检阈值实时解析+check_items预过滤",
@@ -13,8 +14,7 @@
     "fix: remove invalid JSONB import from sqlalchemy top-level (was causing ImportError on container startup)",
     "v2.18.0: 巡检与告警体系架构改造 - 消除fault_count双层修正",
     "v2.17.60: fix elif trap in patrol fault_count, uptime unit guard, alert_details summary, enum normal value defense, alert instance name translation, errors aggregation→fault_count",
-    "v2.17.59: 接口状态误报根因修复—fault_count SQL层过滤虚拟接口+admin down+ifType兜底+降级阈值7天改24小时",
-    "v2.17.58: 巡检报告10项差距全面修复+三层深度审查+COALESCE反转+ifLastChange三层防御+操作建议22条+趋势对比+PDF导出+端口展开50+无数据原因区分+活跃告警详情"
+    "v2.17.59: 接口状态误报根因修复—fault_count SQL层过滤虚拟接口+admin down+ifType兜底+降级阈值7天改24小时"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.18.4: v2.18.4: 修复total_checks=0的bug + v2.18.3: not_applicable不计入total_checks，消除膨胀 + v2.18.3: 巡检阈值实时解析+check_items预过滤 等10项更新",
+  "notes": "v2.18.5: v2.18.5: 修复total_checks=0（UnboundLocalError） + v2.18.4: 修复total_checks=0的bug + v2.18.3: not_applicable不计入total_checks，消除膨胀 等10项更新",
   "versions": [
+    {
+      "version": "2.18.5",
+      "released_at": "2026-08-12T13:41:00Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.18.5: 修复total_checks=0（UnboundLocalError）",
+        "v2.18.4: 修复total_checks=0的bug",
+        "v2.18.3: not_applicable不计入total_checks，消除膨胀",
+        "v2.18.3: 巡检阈值实时解析+check_items预过滤",
+        "v2.18.2: 对标Zabbix最佳实践-修复阈值+移除不合理巡检指标+区分-1值message",
+        "v2.18.1: fix lookup_canonical() lazy reload - 缓存未加载时fault_count指标回退max导致误判",
+        "fix: remove invalid JSONB import from sqlalchemy top-level (was causing ImportError on container startup)",
+        "v2.18.0: 巡检与告警体系架构改造 - 消除fault_count双层修正",
+        "v2.17.60: fix elif trap in patrol fault_count, uptime unit guard, alert_details summary, enum normal value defense, alert instance name translation, errors aggregation→fault_count",
+        "v2.17.59: 接口状态误报根因修复—fault_count SQL层过滤虚拟接口+admin down+ifType兜底+降级阈值7天改24小时"
+      ]
+    },
     {
       "version": "2.18.4",
       "released_at": "2026-08-12T13:18:58Z",
