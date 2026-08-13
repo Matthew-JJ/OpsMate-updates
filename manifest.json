@@ -1,10 +1,11 @@
 {
-  "latest": "2.19.7",
-  "latest_version": "2.19.7",
+  "latest": "2.19.8",
+  "latest_version": "2.19.8",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-08-13",
   "changelog": [
+    "v2.19.8: 补全约87条recommended指标阈值(default_operator/default_warning/default_critical)",
     "v2.19.7: fix JSONB CAST syntax for SQLAlchemy param binding",
     "v2.19.6: fix _resolve_from_template JSONB query param binding",
     "v2.19.5: P0+P1巡检优化 - 注释修正/not_in运算符保留/批量SQL/僵尸清理/模板查询优化",
@@ -13,8 +14,7 @@
     "v2.19.2: 修复ACR推送 - 禁用provenance避免OCI empty manifest被拒",
     "v2.19.1: 修复CI ACR推送 - backend加no-cache + Dockerfile ARG前移打破缓存",
     "v2.19.0: catalog recommended体系重构 - 62个无阈值指标降级+新增thermal.temperature",
-    "v2.18.5: 修复total_checks=0（UnboundLocalError）",
-    "v2.18.4: 修复total_checks=0的bug"
+    "v2.18.5: 修复total_checks=0（UnboundLocalError）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.19.7: v2.19.7: fix JSONB CAST syntax for SQLAlchemy param binding + v2.19.6: fix _resolve_from_template JSONB query param binding + v2.19.5: P0+P1巡检优化 - 注释修正/not_in运算符保留/批量SQL/僵尸清理/模板查询优化 等10项更新",
+  "notes": "v2.19.8: v2.19.8: 补全约87条recommended指标阈值(default_operator/default_warning/default_critical) + v2.19.7: fix JSONB CAST syntax for SQLAlchemy param binding + v2.19.6: fix _resolve_from_template JSONB query param binding 等10项更新",
   "versions": [
+    {
+      "version": "2.19.8",
+      "released_at": "2026-08-13T07:56:18Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.19.8: 补全约87条recommended指标阈值(default_operator/default_warning/default_critical)",
+        "v2.19.7: fix JSONB CAST syntax for SQLAlchemy param binding",
+        "v2.19.6: fix _resolve_from_template JSONB query param binding",
+        "v2.19.5: P0+P1巡检优化 - 注释修正/not_in运算符保留/批量SQL/僵尸清理/模板查询优化",
+        "v2.19.4: 修复not_in运算符阻止阈值降级 + recommended=false无阈值指标不写入报告",
+        "v2.19.3: 修复catalog UPSERT不清空旧阈值 + not_applicable不写入报告",
+        "v2.19.2: 修复ACR推送 - 禁用provenance避免OCI empty manifest被拒",
+        "v2.19.1: 修复CI ACR推送 - backend加no-cache + Dockerfile ARG前移打破缓存",
+        "v2.19.0: catalog recommended体系重构 - 62个无阈值指标降级+新增thermal.temperature",
+        "v2.18.5: 修复total_checks=0（UnboundLocalError）"
+      ]
+    },
     {
       "version": "2.19.7",
       "released_at": "2026-08-13T06:03:52Z",
