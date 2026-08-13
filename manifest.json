@@ -5,6 +5,7 @@
   "minimum_version": "2.0.0",
   "release_date": "2026-08-13",
   "changelog": [
+    "v2.19.9: schema_version保护 + check_items孤儿过滤",
     "v2.19.9: 巡检报告TTL清理机制",
     "v2.19.8: 补全约87条recommended指标阈值(default_operator/default_warning/default_critical)",
     "v2.19.7: fix JSONB CAST syntax for SQLAlchemy param binding",
@@ -13,8 +14,7 @@
     "v2.19.4: 修复not_in运算符阻止阈值降级 + recommended=false无阈值指标不写入报告",
     "v2.19.3: 修复catalog UPSERT不清空旧阈值 + not_applicable不写入报告",
     "v2.19.2: 修复ACR推送 - 禁用provenance避免OCI empty manifest被拒",
-    "v2.19.1: 修复CI ACR推送 - backend加no-cache + Dockerfile ARG前移打破缓存",
-    "v2.19.0: catalog recommended体系重构 - 62个无阈值指标降级+新增thermal.temperature"
+    "v2.19.1: 修复CI ACR推送 - backend加no-cache + Dockerfile ARG前移打破缓存"
   ],
   "download": {
     "url": "",
@@ -41,11 +41,11 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.19.9: v2.19.9: 巡检报告TTL清理机制 + v2.19.8: 补全约87条recommended指标阈值(default_operator/default_warning/default_critical) + v2.19.7: fix JSONB CAST syntax for SQLAlchemy param binding 等10项更新",
+  "notes": "v2.19.9: v2.19.9: schema_version保护 + check_items孤儿过滤 + v2.19.9: 巡检报告TTL清理机制 + v2.19.8: 补全约87条recommended指标阈值(default_operator/default_warning/default_critical) 等10项更新",
   "versions": [
     {
       "version": "2.19.9",
-      "released_at": "2026-08-13T09:15:02Z",
+      "released_at": "2026-08-13T09:51:38Z",
       "download_url": "",
       "sha256": "",
       "size_bytes": 0,
@@ -53,6 +53,7 @@
         "docker"
       ],
       "changelog": [
+        "v2.19.9: schema_version保护 + check_items孤儿过滤",
         "v2.19.9: 巡检报告TTL清理机制",
         "v2.19.8: 补全约87条recommended指标阈值(default_operator/default_warning/default_critical)",
         "v2.19.7: fix JSONB CAST syntax for SQLAlchemy param binding",
@@ -61,8 +62,7 @@
         "v2.19.4: 修复not_in运算符阻止阈值降级 + recommended=false无阈值指标不写入报告",
         "v2.19.3: 修复catalog UPSERT不清空旧阈值 + not_applicable不写入报告",
         "v2.19.2: 修复ACR推送 - 禁用provenance避免OCI empty manifest被拒",
-        "v2.19.1: 修复CI ACR推送 - backend加no-cache + Dockerfile ARG前移打破缓存",
-        "v2.19.0: catalog recommended体系重构 - 62个无阈值指标降级+新增thermal.temperature"
+        "v2.19.1: 修复CI ACR推送 - backend加no-cache + Dockerfile ARG前移打破缓存"
       ]
     },
     {
