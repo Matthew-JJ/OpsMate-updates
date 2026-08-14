@@ -1,10 +1,11 @@
 {
-  "latest": "2.19.16",
-  "latest_version": "2.19.16",
+  "latest": "2.19.18",
+  "latest_version": "2.19.18",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-08-14",
   "changelog": [
+    "v2.19.18: smart_probe(协议顺序探测+降级) / 审计日志(before/after) / 批量导入导出+正则匹配",
     "v2.19.16: 厂商识别与资产类型推断关键词提取到JSON配置",
     "v2.19.15: 群晖NAS识别修复+专用预设模板+模板匹配增强",
     "v2.19.14: P5 scheduler硬编码提取到config + P6 is_interface_metric统一替换 + P2-2 Ping可达性指标+模板 + P2-3 vCenter主机连接状态/维护模式采集+模板",
@@ -13,8 +14,7 @@
     "v2.19.11: fix Dockerfile libgdk-pixbuf package name for Debian trixie",
     "v2.19.10: PDF generation (WeasyPrint) + BGP/OSPF/UPS preset templates",
     "v2.19.9: schema_version保护 + check_items孤儿过滤",
-    "v2.19.9: 巡检报告TTL清理机制",
-    "v2.19.8: 补全约87条recommended指标阈值(default_operator/default_warning/default_critical)"
+    "v2.19.9: 巡检报告TTL清理机制"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.19.16: v2.19.16: 厂商识别与资产类型推断关键词提取到JSON配置 + v2.19.15: 群晖NAS识别修复+专用预设模板+模板匹配增强 + v2.19.14: P5 scheduler硬编码提取到config + P6 is_interface_metric统一替换 + P2-2 Ping可达性指标+模板 + P2-3 vCenter主机连接状态/维护模式采集+模板 等10项更新",
+  "notes": "v2.19.18: v2.19.18: smart_probe(协议顺序探测+降级) / 审计日志(before/after) / 批量导入导出+正则匹配 + v2.19.16: 厂商识别与资产类型推断关键词提取到JSON配置 + v2.19.15: 群晖NAS识别修复+专用预设模板+模板匹配增强 等10项更新",
   "versions": [
+    {
+      "version": "2.19.18",
+      "released_at": "2026-08-14T10:44:43Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.19.18: smart_probe(协议顺序探测+降级) / 审计日志(before/after) / 批量导入导出+正则匹配",
+        "v2.19.16: 厂商识别与资产类型推断关键词提取到JSON配置",
+        "v2.19.15: 群晖NAS识别修复+专用预设模板+模板匹配增强",
+        "v2.19.14: P5 scheduler硬编码提取到config + P6 is_interface_metric统一替换 + P2-2 Ping可达性指标+模板 + P2-3 vCenter主机连接状态/维护模式采集+模板",
+        "v2.19.13: N+1查询修复 + Redis key前缀统一 + 静默异常加日志 + 弃用API替换",
+        "v2.19.12: 统一虚拟接口类型 + 消除重复查询 + 常量提取 + 硬编码可配化",
+        "v2.19.11: fix Dockerfile libgdk-pixbuf package name for Debian trixie",
+        "v2.19.10: PDF generation (WeasyPrint) + BGP/OSPF/UPS preset templates",
+        "v2.19.9: schema_version保护 + check_items孤儿过滤",
+        "v2.19.9: 巡检报告TTL清理机制"
+      ]
+    },
     {
       "version": "2.19.16",
       "released_at": "2026-08-14T02:42:44Z",
