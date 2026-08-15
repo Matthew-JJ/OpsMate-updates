@@ -1,10 +1,11 @@
 {
-  "latest": "2.20.1",
-  "latest_version": "2.20.1",
+  "latest": "2.20.2",
+  "latest_version": "2.20.2",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-08-15",
   "changelog": [
+    "fix(G3): remove duplicate delivery-stats routes + bump to v2.20.2",
     "feat(v2.20.1): G3 告警推送可靠性改造",
     "feat(v2.20.0): G12 TDengine显式配置KEEP 5460d(18个月)留存策略",
     "feat(v2.19.22): 前端适配smart-probe+导入导出+正则模式字段",
@@ -13,8 +14,7 @@
     "fix: smart_probe SNMP超时保护+种子数据补全access_protocol/sysdesc_regex_patterns (v2.19.19)",
     "fix: 041迁移 down_revision 修正为完整revision ID",
     "v2.19.18: smart_probe(协议顺序探测+降级) / 审计日志(before/after) / 批量导入导出+正则匹配",
-    "v2.19.16: 厂商识别与资产类型推断关键词提取到JSON配置",
-    "v2.19.15: 群晖NAS识别修复+专用预设模板+模板匹配增强"
+    "v2.19.16: 厂商识别与资产类型推断关键词提取到JSON配置"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.20.1: feat(v2.20.1): G3 告警推送可靠性改造 + feat(v2.20.0): G12 TDengine显式配置KEEP 5460d(18个月)留存策略 + feat(v2.19.22): 前端适配smart-probe+导入导出+正则模式字段 等10项更新",
+  "notes": "v2.20.2: fix(G3): remove duplicate delivery-stats routes + bump to v2.20.2 + feat(v2.20.1): G3 告警推送可靠性改造 + feat(v2.20.0): G12 TDengine显式配置KEEP 5460d(18个月)留存策略 等10项更新",
   "versions": [
+    {
+      "version": "2.20.2",
+      "released_at": "2026-08-15T06:33:06Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix(G3): remove duplicate delivery-stats routes + bump to v2.20.2",
+        "feat(v2.20.1): G3 告警推送可靠性改造",
+        "feat(v2.20.0): G12 TDengine显式配置KEEP 5460d(18个月)留存策略",
+        "feat(v2.19.22): 前端适配smart-probe+导入导出+正则模式字段",
+        "fix: auto_probe单协议15秒超时保护+迁移修复JSONB null条件 (v2.19.21)",
+        "fix: smart_probe快速SNMP探测(3秒超时)+数据迁移补全access_protocol/regex (v2.19.20)",
+        "fix: smart_probe SNMP超时保护+种子数据补全access_protocol/sysdesc_regex_patterns (v2.19.19)",
+        "fix: 041迁移 down_revision 修正为完整revision ID",
+        "v2.19.18: smart_probe(协议顺序探测+降级) / 审计日志(before/after) / 批量导入导出+正则匹配",
+        "v2.19.16: 厂商识别与资产类型推断关键词提取到JSON配置"
+      ]
+    },
     {
       "version": "2.20.1",
       "released_at": "2026-08-15T06:03:48Z",
