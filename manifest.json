@@ -1,10 +1,11 @@
 {
-  "latest": "2.20.10",
-  "latest_version": "2.20.10",
+  "latest": "2.20.11",
+  "latest_version": "2.20.11",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-08-16",
   "changelog": [
+    "fix(G9): 创建分组color增加pattern校验+迁移revision对齐 v2.20.11",
     "feat(G9): 业务拓扑定制-资产分组配色+拓扑图分组信息 v2.20.10",
     "fix(G7/G8): 统一月度资源趋势路由到 /analysis/monthly-trend v2.20.9",
     "feat(G7/G8): 季度资产使用分析+月度资源趋势报告 v2.20.8",
@@ -13,8 +14,7 @@
     "G5: 资产生命周期状态管理 v2.20.5",
     "feat(G2): On-Call值班排班表 + 用户手机号 + 升级联动值班人",
     "feat(G1): add SMS & voice_call notification channels + wire escalation notifications",
-    "fix(G3): remove duplicate delivery-stats routes + bump to v2.20.2",
-    "feat(v2.20.1): G3 告警推送可靠性改造"
+    "fix(G3): remove duplicate delivery-stats routes + bump to v2.20.2"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.20.10: feat(G9): 业务拓扑定制-资产分组配色+拓扑图分组信息 v2.20.10 + fix(G7/G8): 统一月度资源趋势路由到 /analysis/monthly-trend v2.20.9 + feat(G7/G8): 季度资产使用分析+月度资源趋势报告 v2.20.8 等10项更新",
+  "notes": "v2.20.11: fix(G9): 创建分组color增加pattern校验+迁移revision对齐 v2.20.11 + feat(G9): 业务拓扑定制-资产分组配色+拓扑图分组信息 v2.20.10 + fix(G7/G8): 统一月度资源趋势路由到 /analysis/monthly-trend v2.20.9 等10项更新",
   "versions": [
+    {
+      "version": "2.20.11",
+      "released_at": "2026-08-16T04:35:09Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix(G9): 创建分组color增加pattern校验+迁移revision对齐 v2.20.11",
+        "feat(G9): 业务拓扑定制-资产分组配色+拓扑图分组信息 v2.20.10",
+        "fix(G7/G8): 统一月度资源趋势路由到 /analysis/monthly-trend v2.20.9",
+        "feat(G7/G8): 季度资产使用分析+月度资源趋势报告 v2.20.8",
+        "feat(G6): 服务台账+故障通报报告 v2.20.7",
+        "G4: 知识库自动匹配处置方案 v2.20.6",
+        "G5: 资产生命周期状态管理 v2.20.5",
+        "feat(G2): On-Call值班排班表 + 用户手机号 + 升级联动值班人",
+        "feat(G1): add SMS & voice_call notification channels + wire escalation notifications",
+        "fix(G3): remove duplicate delivery-stats routes + bump to v2.20.2"
+      ]
+    },
     {
       "version": "2.20.10",
       "released_at": "2026-08-16T04:22:54Z",
