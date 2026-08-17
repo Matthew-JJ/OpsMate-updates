@@ -55,6 +55,7 @@ x-backend-env: &backend-env
   REDIS_SENTINEL_URL: sentinel://:${REDIS_PASSWORD:-redis_dev_2026}@redis-sentinel-1:26379,redis-sentinel-2:26379,redis-sentinel-3:26379/0
   TDENGINE_URL: tdengine
   TDENGINE_PORT: "6041"
+  TDENGINE_USER: ${TDENGINE_USER:-root}
   TDENGINE_PASSWORD: ${TDENGINE_PASSWORD:-taosdata}
   # 代理配置：如需通过代理访问外网，取消注释并填写代理地址
   # 留空字符串会导致 httpx 连接失败（httpx 会尝试解析空字符串为代理URL）
