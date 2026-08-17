@@ -1,10 +1,11 @@
 {
-  "latest": "2.20.16",
-  "latest_version": "2.20.16",
+  "latest": "2.20.17",
+  "latest_version": "2.20.17",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-08-16",
+  "release_date": "2026-08-17",
   "changelog": [
+    "fix(G11): 资产台账导出修复 MissingGreenlet-预加载organization关系 v2.20.17",
     "feat(G13): 分享管理页面-令牌CRUD/链接生成/移动端入口 v2.20.16",
     "feat(G13): 移动端H5页面-分享令牌无登录查看运维状态/告警/维保提醒 v2.20.15",
     "feat(G11): 资产台账独立导出 Excel v2.20.14",
@@ -13,8 +14,7 @@
     "fix(G9): 创建分组color增加pattern校验+迁移revision对齐 v2.20.11",
     "feat(G9): 业务拓扑定制-资产分组配色+拓扑图分组信息 v2.20.10",
     "fix(G7/G8): 统一月度资源趋势路由到 /analysis/monthly-trend v2.20.9",
-    "feat(G7/G8): 季度资产使用分析+月度资源趋势报告 v2.20.8",
-    "feat(G6): 服务台账+故障通报报告 v2.20.7"
+    "feat(G7/G8): 季度资产使用分析+月度资源趋势报告 v2.20.8"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.20.16: feat(G13): 分享管理页面-令牌CRUD/链接生成/移动端入口 v2.20.16 + feat(G13): 移动端H5页面-分享令牌无登录查看运维状态/告警/维保提醒 v2.20.15 + feat(G11): 资产台账独立导出 Excel v2.20.14 等10项更新",
+  "notes": "v2.20.17: fix(G11): 资产台账导出修复 MissingGreenlet-预加载organization关系 v2.20.17 + feat(G13): 分享管理页面-令牌CRUD/链接生成/移动端入口 v2.20.16 + feat(G13): 移动端H5页面-分享令牌无登录查看运维状态/告警/维保提醒 v2.20.15 等10项更新",
   "versions": [
+    {
+      "version": "2.20.17",
+      "released_at": "2026-08-17T04:17:04Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix(G11): 资产台账导出修复 MissingGreenlet-预加载organization关系 v2.20.17",
+        "feat(G13): 分享管理页面-令牌CRUD/链接生成/移动端入口 v2.20.16",
+        "feat(G13): 移动端H5页面-分享令牌无登录查看运维状态/告警/维保提醒 v2.20.15",
+        "feat(G11): 资产台账独立导出 Excel v2.20.14",
+        "fix(G10): work-log date range filter type cast fix v2.20.13",
+        "feat(G10): 运维工作日志-人工登记 CRUD v2.20.12",
+        "fix(G9): 创建分组color增加pattern校验+迁移revision对齐 v2.20.11",
+        "feat(G9): 业务拓扑定制-资产分组配色+拓扑图分组信息 v2.20.10",
+        "fix(G7/G8): 统一月度资源趋势路由到 /analysis/monthly-trend v2.20.9",
+        "feat(G7/G8): 季度资产使用分析+月度资源趋势报告 v2.20.8"
+      ]
+    },
     {
       "version": "2.20.16",
       "released_at": "2026-08-16T13:07:30Z",
