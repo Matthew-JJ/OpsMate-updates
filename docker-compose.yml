@@ -40,8 +40,6 @@ x-backend-common: &backend-common
   <<: *backend-image
   env_file:
     - ./backend/.env
-  extra_hosts:
-    - "host.docker.internal:host-gateway"
   networks:
     - opsmate-net
 
