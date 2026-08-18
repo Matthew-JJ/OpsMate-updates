@@ -1,10 +1,11 @@
 {
-  "latest": "2.23.1",
-  "latest_version": "2.23.1",
+  "latest": "2.23.2",
+  "latest_version": "2.23.2",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-08-18",
   "changelog": [
+    "v2.23.2: fix health_status overwritten by component sync + parse_llm_json thinking prefix",
     "fix(ai-nlp): alert status whitelist killing firing value; bump to v2.23.1",
     "v2.23.0: P0+P1代码审核修复 - AI提示词工程/安全加固/通知实现",
     "v2.21.1: P1 code quality fixes",
@@ -13,8 +14,7 @@
     "feat(G13): 分享管理页面-令牌CRUD/链接生成/移动端入口 v2.20.16",
     "feat(G13): 移动端H5页面-分享令牌无登录查看运维状态/告警/维保提醒 v2.20.15",
     "feat(G11): 资产台账独立导出 Excel v2.20.14",
-    "fix(G10): work-log date range filter type cast fix v2.20.13",
-    "feat(G10): 运维工作日志-人工登记 CRUD v2.20.12"
+    "fix(G10): work-log date range filter type cast fix v2.20.13"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.1: fix(ai-nlp): alert status whitelist killing firing value; bump to v2.23.1 + v2.23.0: P0+P1代码审核修复 - AI提示词工程/安全加固/通知实现 + v2.21.1: P1 code quality fixes 等10项更新",
+  "notes": "v2.23.2: v2.23.2: fix health_status overwritten by component sync + parse_llm_json thinking prefix + fix(ai-nlp): alert status whitelist killing firing value; bump to v2.23.1 + v2.23.0: P0+P1代码审核修复 - AI提示词工程/安全加固/通知实现 等10项更新",
   "versions": [
+    {
+      "version": "2.23.2",
+      "released_at": "2026-08-18T07:54:06Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.23.2: fix health_status overwritten by component sync + parse_llm_json thinking prefix",
+        "fix(ai-nlp): alert status whitelist killing firing value; bump to v2.23.1",
+        "v2.23.0: P0+P1代码审核修复 - AI提示词工程/安全加固/通知实现",
+        "v2.21.1: P1 code quality fixes",
+        "v2.21.0: P0代码审核修复 - silent fail/硬编码安全配置/CDN本地化",
+        "fix(G11): 资产台账导出修复 MissingGreenlet-预加载organization关系 v2.20.17",
+        "feat(G13): 分享管理页面-令牌CRUD/链接生成/移动端入口 v2.20.16",
+        "feat(G13): 移动端H5页面-分享令牌无登录查看运维状态/告警/维保提醒 v2.20.15",
+        "feat(G11): 资产台账独立导出 Excel v2.20.14",
+        "fix(G10): work-log date range filter type cast fix v2.20.13"
+      ]
+    },
     {
       "version": "2.23.1",
       "released_at": "2026-08-18T04:08:59Z",
