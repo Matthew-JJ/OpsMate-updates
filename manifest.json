@@ -1,10 +1,11 @@
 {
-  "latest": "2.23.5",
-  "latest_version": "2.23.5",
+  "latest": "2.23.6",
+  "latest_version": "2.23.6",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-08-18",
+  "release_date": "2026-08-20",
   "changelog": [
+    "fix(v2.23.6): TDengine凭据兜底+部署脚本补全TDengine变量",
     "v2.23.5: revert P1b - only use watchtower internal_url, drop extra_hosts",
     "v2.23.4: fix deploy-cn.sh celery command, build_update_info guard, watchtower external URL, step numbering",
     "v2.23.3: fix update check + auto upgrade + deploy-compose TDENGINE_USER",
@@ -13,8 +14,7 @@
     "v2.23.0: P0+P1代码审核修复 - AI提示词工程/安全加固/通知实现",
     "v2.21.1: P1 code quality fixes",
     "v2.21.0: P0代码审核修复 - silent fail/硬编码安全配置/CDN本地化",
-    "fix(G11): 资产台账导出修复 MissingGreenlet-预加载organization关系 v2.20.17",
-    "feat(G13): 分享管理页面-令牌CRUD/链接生成/移动端入口 v2.20.16"
+    "fix(G11): 资产台账导出修复 MissingGreenlet-预加载organization关系 v2.20.17"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.5: v2.23.5: revert P1b - only use watchtower internal_url, drop extra_hosts + v2.23.4: fix deploy-cn.sh celery command, build_update_info guard, watchtower external URL, step numbering + v2.23.3: fix update check + auto upgrade + deploy-compose TDENGINE_USER 等10项更新",
+  "notes": "v2.23.6: fix(v2.23.6): TDengine凭据兜底+部署脚本补全TDengine变量 + v2.23.5: revert P1b - only use watchtower internal_url, drop extra_hosts + v2.23.4: fix deploy-cn.sh celery command, build_update_info guard, watchtower external URL, step numbering 等10项更新",
   "versions": [
+    {
+      "version": "2.23.6",
+      "released_at": "2026-08-20T07:01:26Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix(v2.23.6): TDengine凭据兜底+部署脚本补全TDengine变量",
+        "v2.23.5: revert P1b - only use watchtower internal_url, drop extra_hosts",
+        "v2.23.4: fix deploy-cn.sh celery command, build_update_info guard, watchtower external URL, step numbering",
+        "v2.23.3: fix update check + auto upgrade + deploy-compose TDENGINE_USER",
+        "v2.23.2: fix health_status overwritten by component sync + parse_llm_json thinking prefix",
+        "fix(ai-nlp): alert status whitelist killing firing value; bump to v2.23.1",
+        "v2.23.0: P0+P1代码审核修复 - AI提示词工程/安全加固/通知实现",
+        "v2.21.1: P1 code quality fixes",
+        "v2.21.0: P0代码审核修复 - silent fail/硬编码安全配置/CDN本地化",
+        "fix(G11): 资产台账导出修复 MissingGreenlet-预加载organization关系 v2.20.17"
+      ]
+    },
     {
       "version": "2.23.5",
       "released_at": "2026-08-18T14:34:34Z",
