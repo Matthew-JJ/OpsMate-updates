@@ -1,10 +1,12 @@
 {
-  "latest": "2.23.15",
-  "latest_version": "2.23.15",
+  "latest": "2.23.17",
+  "latest_version": "2.23.17",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-08-25",
   "changelog": [
+    "v2.23.17: fix requirements.txt pymodbus==3.6.0不存在，改为3.15.0",
+    "v2.23.16: config.py强制TDengine凭据+workflow/alert/self-heal/notification等25项核心服务增强",
     "v2.23.15: 群晖NAS全功能支持 - DSM REST API采集器(认证/磁盘/存储池/卷/SMART/温度/剩余寿命) + SNMP采集器BUG修复(disk_status=5误判跳过) + 指标字典/指纹库/发现服务/catalog适配 + 前端REST指标匹配",
     "v2.23.14: 前后端一致性审核修复 - 后端新增4路由(告警导出/工单导出/OS补丁/OS用户) + 前端对接7项已实现API + openFormModal缺陷修复",
     "v2.23.13: 修复告警评估/温度采集/存储采集4个BUG+全站弹窗替换+前端原型对接API",
@@ -12,9 +14,7 @@
     "fix(v2.23.6): TDengine凭据兜底+部署脚本补全TDengine变量",
     "v2.23.5: revert P1b - only use watchtower internal_url, drop extra_hosts",
     "v2.23.4: fix deploy-cn.sh celery command, build_update_info guard, watchtower external URL, step numbering",
-    "v2.23.3: fix update check + auto upgrade + deploy-compose TDENGINE_USER",
-    "v2.23.2: fix health_status overwritten by component sync + parse_llm_json thinking prefix",
-    "fix(ai-nlp): alert status whitelist killing firing value; bump to v2.23.1"
+    "v2.23.3: fix update check + auto upgrade + deploy-compose TDENGINE_USER"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.15: v2.23.15: 群晖NAS全功能支持 - DSM REST API采集器(认证/磁盘/存储池/卷/SMART/温度/剩余寿命) + SNMP采集器BUG修复(disk_status=5误判跳过) + 指标字典/指纹库/发现服务/catalog适配 + 前端REST指标匹配 + v2.23.14: 前后端一致性审核修复 - 后端新增4路由(告警导出/工单导出/OS补丁/OS用户) + 前端对接7项已实现API + openFormModal缺陷修复 + v2.23.13: 修复告警评估/温度采集/存储采集4个BUG+全站弹窗替换+前端原型对接API 等10项更新",
+  "notes": "v2.23.17: v2.23.17: fix requirements.txt pymodbus==3.6.0不存在，改为3.15.0 + v2.23.16: config.py强制TDengine凭据+workflow/alert/self-heal/notification等25项核心服务增强 + v2.23.15: 群晖NAS全功能支持 - DSM REST API采集器(认证/磁盘/存储池/卷/SMART/温度/剩余寿命) + SNMP采集器BUG修复(disk_status=5误判跳过) + 指标字典/指纹库/发现服务/catalog适配 + 前端REST指标匹配 等10项更新",
   "versions": [
+    {
+      "version": "2.23.17",
+      "released_at": "2026-08-25T12:10:57Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.23.17: fix requirements.txt pymodbus==3.6.0不存在，改为3.15.0",
+        "v2.23.16: config.py强制TDengine凭据+workflow/alert/self-heal/notification等25项核心服务增强",
+        "v2.23.15: 群晖NAS全功能支持 - DSM REST API采集器(认证/磁盘/存储池/卷/SMART/温度/剩余寿命) + SNMP采集器BUG修复(disk_status=5误判跳过) + 指标字典/指纹库/发现服务/catalog适配 + 前端REST指标匹配",
+        "v2.23.14: 前后端一致性审核修复 - 后端新增4路由(告警导出/工单导出/OS补丁/OS用户) + 前端对接7项已实现API + openFormModal缺陷修复",
+        "v2.23.13: 修复告警评估/温度采集/存储采集4个BUG+全站弹窗替换+前端原型对接API",
+        "v2.23.7: 59个前端原型全部改造对接后端API + 后端补丁",
+        "fix(v2.23.6): TDengine凭据兜底+部署脚本补全TDengine变量",
+        "v2.23.5: revert P1b - only use watchtower internal_url, drop extra_hosts",
+        "v2.23.4: fix deploy-cn.sh celery command, build_update_info guard, watchtower external URL, step numbering",
+        "v2.23.3: fix update check + auto upgrade + deploy-compose TDENGINE_USER"
+      ]
+    },
     {
       "version": "2.23.15",
       "released_at": "2026-08-25T06:11:30Z",
