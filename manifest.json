@@ -1,10 +1,11 @@
 {
-  "latest": "2.23.7",
-  "latest_version": "2.23.7",
+  "latest": "2.23.13",
+  "latest_version": "2.23.13",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-08-24",
+  "release_date": "2026-08-25",
   "changelog": [
+    "v2.23.13: 修复告警评估/温度采集/存储采集4个BUG+全站弹窗替换+前端原型对接API",
     "v2.23.7: 59个前端原型全部改造对接后端API + 后端补丁",
     "fix(v2.23.6): TDengine凭据兜底+部署脚本补全TDengine变量",
     "v2.23.5: revert P1b - only use watchtower internal_url, drop extra_hosts",
@@ -13,8 +14,7 @@
     "v2.23.2: fix health_status overwritten by component sync + parse_llm_json thinking prefix",
     "fix(ai-nlp): alert status whitelist killing firing value; bump to v2.23.1",
     "v2.23.0: P0+P1代码审核修复 - AI提示词工程/安全加固/通知实现",
-    "v2.21.1: P1 code quality fixes",
-    "v2.21.0: P0代码审核修复 - silent fail/硬编码安全配置/CDN本地化"
+    "v2.21.1: P1 code quality fixes"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.7: v2.23.7: 59个前端原型全部改造对接后端API + 后端补丁 + fix(v2.23.6): TDengine凭据兜底+部署脚本补全TDengine变量 + v2.23.5: revert P1b - only use watchtower internal_url, drop extra_hosts 等10项更新",
+  "notes": "v2.23.13: v2.23.13: 修复告警评估/温度采集/存储采集4个BUG+全站弹窗替换+前端原型对接API + v2.23.7: 59个前端原型全部改造对接后端API + 后端补丁 + fix(v2.23.6): TDengine凭据兜底+部署脚本补全TDengine变量 等10项更新",
   "versions": [
+    {
+      "version": "2.23.13",
+      "released_at": "2026-08-25T00:57:50Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.23.13: 修复告警评估/温度采集/存储采集4个BUG+全站弹窗替换+前端原型对接API",
+        "v2.23.7: 59个前端原型全部改造对接后端API + 后端补丁",
+        "fix(v2.23.6): TDengine凭据兜底+部署脚本补全TDengine变量",
+        "v2.23.5: revert P1b - only use watchtower internal_url, drop extra_hosts",
+        "v2.23.4: fix deploy-cn.sh celery command, build_update_info guard, watchtower external URL, step numbering",
+        "v2.23.3: fix update check + auto upgrade + deploy-compose TDENGINE_USER",
+        "v2.23.2: fix health_status overwritten by component sync + parse_llm_json thinking prefix",
+        "fix(ai-nlp): alert status whitelist killing firing value; bump to v2.23.1",
+        "v2.23.0: P0+P1代码审核修复 - AI提示词工程/安全加固/通知实现",
+        "v2.21.1: P1 code quality fixes"
+      ]
+    },
     {
       "version": "2.23.7",
       "released_at": "2026-08-24T07:15:02Z",
