@@ -1,10 +1,11 @@
 {
-  "latest": "2.23.31",
-  "latest_version": "2.23.31",
+  "latest": "2.23.32",
+  "latest_version": "2.23.32",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-08-28",
   "changelog": [
+    "fix: 修复告警页面 alerts.html 抑制规则操作列 onclick 拼接语法错误 (v2.23.32)",
     "修复 Dell SC3020 可用容量显示为单盘值问题",
     "fix(存储详情页): 补 diskCountVal/totalGB 定义，修复存储池Tab磁盘总数行 ReferenceError 整块空白(v2.23.30)",
     "fix(存储详情页): 磁盘总数兜底竞态修复（全局缓存+延时重试）",
@@ -13,8 +14,7 @@
     "fix(storage): 华为存储详情页容量/使用率全池聚合修复（v2.23.26）",
     "fix(存储详情页): 6问题修复 v2.23.24",
     "v2.23.23: 存储详情页修复 - 华为可用空间单位换算+legacy指标兼容+性能Tab占位+Dell指标补齐",
-    "v2.23.22: 前后端空数据占位统一中文+SNMP错误计数采集+存储REST指标归一修复",
-    "v2.23.21: 存储详情页增强 - LUN所属池/已用容量+存储池汇总+健康状态归一化"
+    "v2.23.22: 前后端空数据占位统一中文+SNMP错误计数采集+存储REST指标归一修复"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.31: 修复 Dell SC3020 可用容量显示为单盘值问题 + fix(存储详情页): 补 diskCountVal/totalGB 定义，修复存储池Tab磁盘总数行 ReferenceError 整块空白(v2.23.30) + fix(存储详情页): 磁盘总数兜底竞态修复（全局缓存+延时重试） 等10项更新",
+  "notes": "v2.23.32: fix: 修复告警页面 alerts.html 抑制规则操作列 onclick 拼接语法错误 (v2.23.32) + 修复 Dell SC3020 可用容量显示为单盘值问题 + fix(存储详情页): 补 diskCountVal/totalGB 定义，修复存储池Tab磁盘总数行 ReferenceError 整块空白(v2.23.30) 等10项更新",
   "versions": [
+    {
+      "version": "2.23.32",
+      "released_at": "2026-08-28T12:35:17Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix: 修复告警页面 alerts.html 抑制规则操作列 onclick 拼接语法错误 (v2.23.32)",
+        "修复 Dell SC3020 可用容量显示为单盘值问题",
+        "fix(存储详情页): 补 diskCountVal/totalGB 定义，修复存储池Tab磁盘总数行 ReferenceError 整块空白(v2.23.30)",
+        "fix(存储详情页): 磁盘总数兜底竞态修复（全局缓存+延时重试）",
+        "fix(存储详情页): 存储池Tab顶部全池汇总优先 + 磁盘总数components兜底",
+        "fix(存储详情页): SUM_METRICS 补充标准指标名，修复使用率单实例假象",
+        "fix(storage): 华为存储详情页容量/使用率全池聚合修复（v2.23.26）",
+        "fix(存储详情页): 6问题修复 v2.23.24",
+        "v2.23.23: 存储详情页修复 - 华为可用空间单位换算+legacy指标兼容+性能Tab占位+Dell指标补齐",
+        "v2.23.22: 前后端空数据占位统一中文+SNMP错误计数采集+存储REST指标归一修复"
+      ]
+    },
     {
       "version": "2.23.31",
       "released_at": "2026-08-28T11:37:37Z",
