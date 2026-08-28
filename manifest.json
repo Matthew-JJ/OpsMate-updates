@@ -1,10 +1,11 @@
 {
-  "latest": "2.23.23",
-  "latest_version": "2.23.23",
+  "latest": "2.23.24",
+  "latest_version": "2.23.24",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-08-27",
+  "release_date": "2026-08-28",
   "changelog": [
+    "fix(存储详情页): 6问题修复 v2.23.24",
     "v2.23.23: 存储详情页修复 - 华为可用空间单位换算+legacy指标兼容+性能Tab占位+Dell指标补齐",
     "v2.23.22: 前后端空数据占位统一中文+SNMP错误计数采集+存储REST指标归一修复",
     "v2.23.21: 存储详情页增强 - LUN所属池/已用容量+存储池汇总+健康状态归一化",
@@ -13,8 +14,7 @@
     "v2.23.17: fix requirements.txt pymodbus==3.6.0不存在，改为3.15.0",
     "v2.23.16: config.py强制TDengine凭据+workflow/alert/self-heal/notification等25项核心服务增强",
     "v2.23.15: 群晖NAS全功能支持 - DSM REST API采集器(认证/磁盘/存储池/卷/SMART/温度/剩余寿命) + SNMP采集器BUG修复(disk_status=5误判跳过) + 指标字典/指纹库/发现服务/catalog适配 + 前端REST指标匹配",
-    "v2.23.14: 前后端一致性审核修复 - 后端新增4路由(告警导出/工单导出/OS补丁/OS用户) + 前端对接7项已实现API + openFormModal缺陷修复",
-    "v2.23.13: 修复告警评估/温度采集/存储采集4个BUG+全站弹窗替换+前端原型对接API"
+    "v2.23.14: 前后端一致性审核修复 - 后端新增4路由(告警导出/工单导出/OS补丁/OS用户) + 前端对接7项已实现API + openFormModal缺陷修复"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.23: v2.23.23: 存储详情页修复 - 华为可用空间单位换算+legacy指标兼容+性能Tab占位+Dell指标补齐 + v2.23.22: 前后端空数据占位统一中文+SNMP错误计数采集+存储REST指标归一修复 + v2.23.21: 存储详情页增强 - LUN所属池/已用容量+存储池汇总+健康状态归一化 等10项更新",
+  "notes": "v2.23.24: fix(存储详情页): 6问题修复 v2.23.24 + v2.23.23: 存储详情页修复 - 华为可用空间单位换算+legacy指标兼容+性能Tab占位+Dell指标补齐 + v2.23.22: 前后端空数据占位统一中文+SNMP错误计数采集+存储REST指标归一修复 等10项更新",
   "versions": [
+    {
+      "version": "2.23.24",
+      "released_at": "2026-08-28T02:48:20Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix(存储详情页): 6问题修复 v2.23.24",
+        "v2.23.23: 存储详情页修复 - 华为可用空间单位换算+legacy指标兼容+性能Tab占位+Dell指标补齐",
+        "v2.23.22: 前后端空数据占位统一中文+SNMP错误计数采集+存储REST指标归一修复",
+        "v2.23.21: 存储详情页增强 - LUN所属池/已用容量+存储池汇总+健康状态归一化",
+        "v2.23.20: 存储REST采集增强+热同步机制+前端磁盘容量单位修复",
+        "v2.23.18: 前后端API对齐修复6项GAP - maintenance路径/字段映射+auth/itsm/credential补函数+monitor-policy清理org_id",
+        "v2.23.17: fix requirements.txt pymodbus==3.6.0不存在，改为3.15.0",
+        "v2.23.16: config.py强制TDengine凭据+workflow/alert/self-heal/notification等25项核心服务增强",
+        "v2.23.15: 群晖NAS全功能支持 - DSM REST API采集器(认证/磁盘/存储池/卷/SMART/温度/剩余寿命) + SNMP采集器BUG修复(disk_status=5误判跳过) + 指标字典/指纹库/发现服务/catalog适配 + 前端REST指标匹配",
+        "v2.23.14: 前后端一致性审核修复 - 后端新增4路由(告警导出/工单导出/OS补丁/OS用户) + 前端对接7项已实现API + openFormModal缺陷修复"
+      ]
+    },
     {
       "version": "2.23.23",
       "released_at": "2026-08-27T14:44:55Z",
