@@ -1,10 +1,11 @@
 {
-  "latest": "2.23.37",
-  "latest_version": "2.23.37",
+  "latest": "2.23.38",
+  "latest_version": "2.23.38",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-08-29",
   "changelog": [
+    "feat: SNMP指标字典热同步 v2.23.38",
     "网络设备详情页: Dell N3048温度卡片真实数据(字典新增3路温度指标+前端data-key匹配); 临时凭证采集成功后自动持久化到凭证库 (v2.23.37)",
     "网络设备详情页修复: loadMetrics解析latest_metrics渲染真实指标+概览卡片真实值; 获取配置/创建快照对接trigger API+凭证录入弹窗 (v2.23.36)",
     "系统设置页移植: AI配置/授权管理/值守中心(Sentinel+Hub)上线 v2.23.35",
@@ -13,8 +14,7 @@
     "fix: 修复告警页面 alerts.html 抑制规则操作列 onclick 拼接语法错误 (v2.23.32)",
     "修复 Dell SC3020 可用容量显示为单盘值问题",
     "fix(存储详情页): 补 diskCountVal/totalGB 定义，修复存储池Tab磁盘总数行 ReferenceError 整块空白(v2.23.30)",
-    "fix(存储详情页): 磁盘总数兜底竞态修复（全局缓存+延时重试）",
-    "fix(存储详情页): 存储池Tab顶部全池汇总优先 + 磁盘总数components兜底"
+    "fix(存储详情页): 磁盘总数兜底竞态修复（全局缓存+延时重试）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.37: 网络设备详情页: Dell N3048温度卡片真实数据(字典新增3路温度指标+前端data-key匹配); 临时凭证采集成功后自动持久化到凭证库 (v2.23.37) + 网络设备详情页修复: loadMetrics解析latest_metrics渲染真实指标+概览卡片真实值; 获取配置/创建快照对接trigger API+凭证录入弹窗 (v2.23.36) + 系统设置页移植: AI配置/授权管理/值守中心(Sentinel+Hub)上线 v2.23.35 等10项更新",
+  "notes": "v2.23.38: feat: SNMP指标字典热同步 v2.23.38 + 网络设备详情页: Dell N3048温度卡片真实数据(字典新增3路温度指标+前端data-key匹配); 临时凭证采集成功后自动持久化到凭证库 (v2.23.37) + 网络设备详情页修复: loadMetrics解析latest_metrics渲染真实指标+概览卡片真实值; 获取配置/创建快照对接trigger API+凭证录入弹窗 (v2.23.36) 等10项更新",
   "versions": [
+    {
+      "version": "2.23.38",
+      "released_at": "2026-08-29T10:27:46Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "feat: SNMP指标字典热同步 v2.23.38",
+        "网络设备详情页: Dell N3048温度卡片真实数据(字典新增3路温度指标+前端data-key匹配); 临时凭证采集成功后自动持久化到凭证库 (v2.23.37)",
+        "网络设备详情页修复: loadMetrics解析latest_metrics渲染真实指标+概览卡片真实值; 获取配置/创建快照对接trigger API+凭证录入弹窗 (v2.23.36)",
+        "系统设置页移植: AI配置/授权管理/值守中心(Sentinel+Hub)上线 v2.23.35",
+        "fix(ci): 移除 ACR 镜像推送的 continue-on-error，推送失败时工作流标红，防止静默失败误导 upgrade (v2.23.34)",
+        "fix: alerts.html 补齐 tab-content 显隐 CSS，修复 4 个 Tab 点击后内容堆叠而非切换 (v2.23.33)",
+        "fix: 修复告警页面 alerts.html 抑制规则操作列 onclick 拼接语法错误 (v2.23.32)",
+        "修复 Dell SC3020 可用容量显示为单盘值问题",
+        "fix(存储详情页): 补 diskCountVal/totalGB 定义，修复存储池Tab磁盘总数行 ReferenceError 整块空白(v2.23.30)",
+        "fix(存储详情页): 磁盘总数兜底竞态修复（全局缓存+延时重试）"
+      ]
+    },
     {
       "version": "2.23.37",
       "released_at": "2026-08-29T06:04:49Z",
