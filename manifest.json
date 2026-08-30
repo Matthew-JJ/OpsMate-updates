@@ -1,10 +1,11 @@
 {
-  "latest": "2.23.43",
-  "latest_version": "2.23.43",
+  "latest": "2.23.44",
+  "latest_version": "2.23.44",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-08-30",
   "changelog": [
+    "v2.23.44 监控规则页面三处修复：①分类筛选tab对齐后端标准值 ②使用模板向导支持真实选择资产组/单个资产+展示规则明细，应用改走Query参数 ③预览按钮解析模板rules弹出规则明细表格",
     "feat(collect-tasks): 采集任务编辑功能+列表刷新修复",
     "v2.23.42 采集任务管理页功能补齐：新建任务完整弹窗（任务名称/资产/协议/间隔/凭证/测试连接）+ 批量导入弹窗（IP段解析->匹配已纳管资产->批量创建采集任务），纯前端实现",
     "v2.23.41 内存插槽统计修正：FreeIPMI分支只计DIMM插槽（排除CPU1/CPU2 Memory笼统传感器）",
@@ -13,8 +14,7 @@
     "feat: SNMP指标字典热同步 v2.23.38",
     "网络设备详情页: Dell N3048温度卡片真实数据(字典新增3路温度指标+前端data-key匹配); 临时凭证采集成功后自动持久化到凭证库 (v2.23.37)",
     "网络设备详情页修复: loadMetrics解析latest_metrics渲染真实指标+概览卡片真实值; 获取配置/创建快照对接trigger API+凭证录入弹窗 (v2.23.36)",
-    "系统设置页移植: AI配置/授权管理/值守中心(Sentinel+Hub)上线 v2.23.35",
-    "fix(ci): 移除 ACR 镜像推送的 continue-on-error，推送失败时工作流标红，防止静默失败误导 upgrade (v2.23.34)"
+    "系统设置页移植: AI配置/授权管理/值守中心(Sentinel+Hub)上线 v2.23.35"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.43: feat(collect-tasks): 采集任务编辑功能+列表刷新修复 + v2.23.42 采集任务管理页功能补齐：新建任务完整弹窗（任务名称/资产/协议/间隔/凭证/测试连接）+ 批量导入弹窗（IP段解析->匹配已纳管资产->批量创建采集任务），纯前端实现 + v2.23.41 内存插槽统计修正：FreeIPMI分支只计DIMM插槽（排除CPU1/CPU2 Memory笼统传感器） 等10项更新",
+  "notes": "v2.23.44: v2.23.44 监控规则页面三处修复：①分类筛选tab对齐后端标准值 ②使用模板向导支持真实选择资产组/单个资产+展示规则明细，应用改走Query参数 ③预览按钮解析模板rules弹出规则明细表格 + feat(collect-tasks): 采集任务编辑功能+列表刷新修复 + v2.23.42 采集任务管理页功能补齐：新建任务完整弹窗（任务名称/资产/协议/间隔/凭证/测试连接）+ 批量导入弹窗（IP段解析->匹配已纳管资产->批量创建采集任务），纯前端实现 等10项更新",
   "versions": [
+    {
+      "version": "2.23.44",
+      "released_at": "2026-08-30T13:29:31Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.23.44 监控规则页面三处修复：①分类筛选tab对齐后端标准值 ②使用模板向导支持真实选择资产组/单个资产+展示规则明细，应用改走Query参数 ③预览按钮解析模板rules弹出规则明细表格",
+        "feat(collect-tasks): 采集任务编辑功能+列表刷新修复",
+        "v2.23.42 采集任务管理页功能补齐：新建任务完整弹窗（任务名称/资产/协议/间隔/凭证/测试连接）+ 批量导入弹窗（IP段解析->匹配已纳管资产->批量创建采集任务），纯前端实现",
+        "v2.23.41 内存插槽统计修正：FreeIPMI分支只计DIMM插槽（排除CPU1/CPU2 Memory笼统传感器）",
+        "v2.23.40 华为iBMC硬件信息补齐：ipmi_collector从传感器统计processor_count/memory_slot_count（FRU无CPU/内存容量兜底）+ pyghmi降级路径同步 + 前端硬件tab内存插槽渲染",
+        "v2.23.39 服务器详情页前端修复：loadMetrics 解包 bug + 指标卡映射 canonical 健康状态、硬件信息 cpu_count 兼容 + 内存单位修正、iDRAC BMC IP 从 mgmt_nics 解析兜底 + 风扇 RPM 空数据提示",
+        "feat: SNMP指标字典热同步 v2.23.38",
+        "网络设备详情页: Dell N3048温度卡片真实数据(字典新增3路温度指标+前端data-key匹配); 临时凭证采集成功后自动持久化到凭证库 (v2.23.37)",
+        "网络设备详情页修复: loadMetrics解析latest_metrics渲染真实指标+概览卡片真实值; 获取配置/创建快照对接trigger API+凭证录入弹窗 (v2.23.36)",
+        "系统设置页移植: AI配置/授权管理/值守中心(Sentinel+Hub)上线 v2.23.35"
+      ]
+    },
     {
       "version": "2.23.43",
       "released_at": "2026-08-30T10:27:26Z",
