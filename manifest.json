@@ -1,10 +1,11 @@
 {
-  "latest": "2.23.46",
-  "latest_version": "2.23.46",
+  "latest": "2.23.47",
+  "latest_version": "2.23.47",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-08-31",
+  "release_date": "2026-09-01",
   "changelog": [
+    "v2.23.47 权限收紧+数据备份前端修复：①roles.py/auth.py 角色/用户管理改为 require_admin 仅管理员可操作（原 require_permission 存在越权风险）；②roles.html/users.html 非管理员前端隐藏新增/编辑/删除按钮并二次拦截；③backup.html 字段适配后端真实结构 type=postgresql|tdengine、size/filepath，恢复/删除改 encodeURIComponent；④backup-schedule.html 修复 schedule_type 语义错位（频率 daily/weekly/monthly），备份内容列改 include_tdengine，周几编码统一 0=周一…6=周日",
     "v2.23.46 大屏可视化全量改造+资产筛选增强",
     "v2.23.45 前端发布：①assets.html/cmdb.html 筛选条补搜索按钮+cmdb.html静态过滤；②design-system.css 弹窗下拉option白底深字+modal-overlay背景加深rgba(11,17,32,0.8)；③datacenter.html 上级组织下拉接入真实组织树+code字段规则提示；④organizations.html closeModal改名closeOrgModal解除同名冲突+layout.js closeModal兼容逻辑；⑤cmdb-push.html两个弹窗移入#page-content；⑥monitor.html使用模板参数顺序修正+scope切换toggle hide类；README价格表支持条款调整",
     "v2.23.44 监控规则页面三处修复：①分类筛选tab对齐后端标准值 ②使用模板向导支持真实选择资产组/单个资产+展示规则明细，应用改走Query参数 ③预览按钮解析模板rules弹出规则明细表格",
@@ -13,8 +14,7 @@
     "v2.23.41 内存插槽统计修正：FreeIPMI分支只计DIMM插槽（排除CPU1/CPU2 Memory笼统传感器）",
     "v2.23.40 华为iBMC硬件信息补齐：ipmi_collector从传感器统计processor_count/memory_slot_count（FRU无CPU/内存容量兜底）+ pyghmi降级路径同步 + 前端硬件tab内存插槽渲染",
     "v2.23.39 服务器详情页前端修复：loadMetrics 解包 bug + 指标卡映射 canonical 健康状态、硬件信息 cpu_count 兼容 + 内存单位修正、iDRAC BMC IP 从 mgmt_nics 解析兜底 + 风扇 RPM 空数据提示",
-    "feat: SNMP指标字典热同步 v2.23.38",
-    "网络设备详情页: Dell N3048温度卡片真实数据(字典新增3路温度指标+前端data-key匹配); 临时凭证采集成功后自动持久化到凭证库 (v2.23.37)"
+    "feat: SNMP指标字典热同步 v2.23.38"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.46: v2.23.46 大屏可视化全量改造+资产筛选增强 + v2.23.45 前端发布：①assets.html/cmdb.html 筛选条补搜索按钮+cmdb.html静态过滤；②design-system.css 弹窗下拉option白底深字+modal-overlay背景加深rgba(11,17,32,0.8)；③datacenter.html 上级组织下拉接入真实组织树+code字段规则提示；④organizations.html closeModal改名closeOrgModal解除同名冲突+layout.js closeModal兼容逻辑；⑤cmdb-push.html两个弹窗移入#page-content；⑥monitor.html使用模板参数顺序修正+scope切换toggle hide类；README价格表支持条款调整 + v2.23.44 监控规则页面三处修复：①分类筛选tab对齐后端标准值 ②使用模板向导支持真实选择资产组/单个资产+展示规则明细，应用改走Query参数 ③预览按钮解析模板rules弹出规则明细表格 等10项更新",
+  "notes": "v2.23.47: v2.23.47 权限收紧+数据备份前端修复：①roles.py/auth.py 角色/用户管理改为 require_admin 仅管理员可操作（原 require_permission 存在越权风险）；②roles.html/users.html 非管理员前端隐藏新增/编辑/删除按钮并二次拦截；③backup.html 字段适配后端真实结构 type=postgresql|tdengine、size/filepath，恢复/删除改 encodeURIComponent；④backup-schedule.html 修复 schedule_type 语义错位（频率 daily/weekly/monthly），备份内容列改 include_tdengine，周几编码统一 0=周一…6=周日 + v2.23.46 大屏可视化全量改造+资产筛选增强 + v2.23.45 前端发布：①assets.html/cmdb.html 筛选条补搜索按钮+cmdb.html静态过滤；②design-system.css 弹窗下拉option白底深字+modal-overlay背景加深rgba(11,17,32,0.8)；③datacenter.html 上级组织下拉接入真实组织树+code字段规则提示；④organizations.html closeModal改名closeOrgModal解除同名冲突+layout.js closeModal兼容逻辑；⑤cmdb-push.html两个弹窗移入#page-content；⑥monitor.html使用模板参数顺序修正+scope切换toggle hide类；README价格表支持条款调整 等10项更新",
   "versions": [
+    {
+      "version": "2.23.47",
+      "released_at": "2026-09-01T00:58:43Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.23.47 权限收紧+数据备份前端修复：①roles.py/auth.py 角色/用户管理改为 require_admin 仅管理员可操作（原 require_permission 存在越权风险）；②roles.html/users.html 非管理员前端隐藏新增/编辑/删除按钮并二次拦截；③backup.html 字段适配后端真实结构 type=postgresql|tdengine、size/filepath，恢复/删除改 encodeURIComponent；④backup-schedule.html 修复 schedule_type 语义错位（频率 daily/weekly/monthly），备份内容列改 include_tdengine，周几编码统一 0=周一…6=周日",
+        "v2.23.46 大屏可视化全量改造+资产筛选增强",
+        "v2.23.45 前端发布：①assets.html/cmdb.html 筛选条补搜索按钮+cmdb.html静态过滤；②design-system.css 弹窗下拉option白底深字+modal-overlay背景加深rgba(11,17,32,0.8)；③datacenter.html 上级组织下拉接入真实组织树+code字段规则提示；④organizations.html closeModal改名closeOrgModal解除同名冲突+layout.js closeModal兼容逻辑；⑤cmdb-push.html两个弹窗移入#page-content；⑥monitor.html使用模板参数顺序修正+scope切换toggle hide类；README价格表支持条款调整",
+        "v2.23.44 监控规则页面三处修复：①分类筛选tab对齐后端标准值 ②使用模板向导支持真实选择资产组/单个资产+展示规则明细，应用改走Query参数 ③预览按钮解析模板rules弹出规则明细表格",
+        "feat(collect-tasks): 采集任务编辑功能+列表刷新修复",
+        "v2.23.42 采集任务管理页功能补齐：新建任务完整弹窗（任务名称/资产/协议/间隔/凭证/测试连接）+ 批量导入弹窗（IP段解析->匹配已纳管资产->批量创建采集任务），纯前端实现",
+        "v2.23.41 内存插槽统计修正：FreeIPMI分支只计DIMM插槽（排除CPU1/CPU2 Memory笼统传感器）",
+        "v2.23.40 华为iBMC硬件信息补齐：ipmi_collector从传感器统计processor_count/memory_slot_count（FRU无CPU/内存容量兜底）+ pyghmi降级路径同步 + 前端硬件tab内存插槽渲染",
+        "v2.23.39 服务器详情页前端修复：loadMetrics 解包 bug + 指标卡映射 canonical 健康状态、硬件信息 cpu_count 兼容 + 内存单位修正、iDRAC BMC IP 从 mgmt_nics 解析兜底 + 风扇 RPM 空数据提示",
+        "feat: SNMP指标字典热同步 v2.23.38"
+      ]
+    },
     {
       "version": "2.23.46",
       "released_at": "2026-08-31T13:25:02Z",
