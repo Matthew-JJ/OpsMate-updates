@@ -135,7 +135,9 @@ services:
     restart: unless-stopped
     logging: *default-logging
     ports:
-      - "${HTTP_PORT:-8080}:80"
+      # ⚠️ 生产环境已强制 HTTPS：HTTP(8080) 端口映射已关闭，仅保留 HTTPS(8443) 入口
+      # 访问地址: https://<host>:8443 （HTTP 请求会被 nginx 301 到 HTTPS）
+      # - "${HTTP_PORT:-8080}:80"
       - "${HTTPS_PORT:-8443}:443"
     volumes:
       # SSL证书目录：为空时nginx自动生自签名证书；生产环境放真实证书
