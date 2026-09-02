@@ -1,10 +1,11 @@
 {
-  "latest": "2.23.62",
-  "latest_version": "2.23.62",
+  "latest": "2.23.63",
+  "latest_version": "2.23.63",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-09-02",
   "changelog": [
+    "v2.23.63 ITSM 权限与工单体验优化：新增 ticket:read 只读权限点（auditor/viewer/asset_mgr 可查工单），itsm/service_ledger 只读接口改用 ticket:read；工单详情页操作按钮图标/颜色美化与界面中文化；11 个资产详情页监控策略增加'自动创建工单'开关；工单列表操作列按状态扩展；面包屑可跳转",
     "fix(itsm): 问题聚合建单状态 open->draft（TicketStatus 枚举不含 open，修复 API 序列化 500）",
     "v2.23.61: fix ITSM chain bugs - alert resolve ticket linkage (sync impl + event draft->resolved path), SLA level1 response escalation short-circuit, problem aggregation group by rule_id not alert_id",
     "v2.23.60: fix Ticket self-ref relationship crash (add remote_side)",
@@ -13,8 +14,7 @@
     "v2.23.57: fix incident clear 500 (require_admin import), add POST /alerts/records/clear, fix incident detail page layout (no body.innerHTML overwrite, back button), add clear-all-alerts button on records tab",
     "v2.23.56: 告警中心体验修复-模板策略命名用metric_label中文名+事件详情页修复(嵌套结构解析+补字段)+告警总数卡片( stats补total_count)+清空全部事件按钮(仅admin,POST /alerts/incidents/clear)",
     "v2.23.55: 修复资产详情MissingGreenlet500(补selectinload organization)+监控策略列表throttle为NULL导致500(改Optional)",
-    "v2.23.54: 修复v2.23.53的Pydantic类属性无注解导致后端启动失败(改用ClassVar[set[str]])",
-    "v2.23.53: 监控策略应用模板500修复+资产详情跳转统一(六边形/告警详情)+告警描述列固定宽度"
+    "v2.23.54: 修复v2.23.53的Pydantic类属性无注解导致后端启动失败(改用ClassVar[set[str]])"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.62: fix(itsm): 问题聚合建单状态 open->draft（TicketStatus 枚举不含 open，修复 API 序列化 500） + v2.23.61: fix ITSM chain bugs - alert resolve ticket linkage (sync impl + event draft->resolved path), SLA level1 response escalation short-circuit, problem aggregation group by rule_id not alert_id + v2.23.60: fix Ticket self-ref relationship crash (add remote_side) 等10项更新",
+  "notes": "v2.23.63: v2.23.63 ITSM 权限与工单体验优化：新增 ticket:read 只读权限点（auditor/viewer/asset_mgr 可查工单），itsm/service_ledger 只读接口改用 ticket:read；工单详情页操作按钮图标/颜色美化与界面中文化；11 个资产详情页监控策略增加'自动创建工单'开关；工单列表操作列按状态扩展；面包屑可跳转 + fix(itsm): 问题聚合建单状态 open->draft（TicketStatus 枚举不含 open，修复 API 序列化 500） + v2.23.61: fix ITSM chain bugs - alert resolve ticket linkage (sync impl + event draft->resolved path), SLA level1 response escalation short-circuit, problem aggregation group by rule_id not alert_id 等10项更新",
   "versions": [
+    {
+      "version": "2.23.63",
+      "released_at": "2026-09-02T15:53:53Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.23.63 ITSM 权限与工单体验优化：新增 ticket:read 只读权限点（auditor/viewer/asset_mgr 可查工单），itsm/service_ledger 只读接口改用 ticket:read；工单详情页操作按钮图标/颜色美化与界面中文化；11 个资产详情页监控策略增加'自动创建工单'开关；工单列表操作列按状态扩展；面包屑可跳转",
+        "fix(itsm): 问题聚合建单状态 open->draft（TicketStatus 枚举不含 open，修复 API 序列化 500）",
+        "v2.23.61: fix ITSM chain bugs - alert resolve ticket linkage (sync impl + event draft->resolved path), SLA level1 response escalation short-circuit, problem aggregation group by rule_id not alert_id",
+        "v2.23.60: fix Ticket self-ref relationship crash (add remote_side)",
+        "v2.23.59: ITSM P0+P1+P2 - SLA自动升级/问题聚合/审计员权限/SLA策略落库修复",
+        "v2.23.58: fix dashboard hex grid label stats (add offline_count, healthy excludes offline, frontend label uses summary.offline_count)",
+        "v2.23.57: fix incident clear 500 (require_admin import), add POST /alerts/records/clear, fix incident detail page layout (no body.innerHTML overwrite, back button), add clear-all-alerts button on records tab",
+        "v2.23.56: 告警中心体验修复-模板策略命名用metric_label中文名+事件详情页修复(嵌套结构解析+补字段)+告警总数卡片( stats补total_count)+清空全部事件按钮(仅admin,POST /alerts/incidents/clear)",
+        "v2.23.55: 修复资产详情MissingGreenlet500(补selectinload organization)+监控策略列表throttle为NULL导致500(改Optional)",
+        "v2.23.54: 修复v2.23.53的Pydantic类属性无注解导致后端启动失败(改用ClassVar[set[str]])"
+      ]
+    },
     {
       "version": "2.23.62",
       "released_at": "2026-09-02T13:56:00Z",
