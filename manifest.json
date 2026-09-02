@@ -1,10 +1,11 @@
 {
-  "latest": "2.23.57",
-  "latest_version": "2.23.57",
+  "latest": "2.23.58",
+  "latest_version": "2.23.58",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-09-02",
   "changelog": [
+    "v2.23.58: fix dashboard hex grid label stats (add offline_count, healthy excludes offline, frontend label uses summary.offline_count)",
     "v2.23.57: fix incident clear 500 (require_admin import), add POST /alerts/records/clear, fix incident detail page layout (no body.innerHTML overwrite, back button), add clear-all-alerts button on records tab",
     "v2.23.56: 告警中心体验修复-模板策略命名用metric_label中文名+事件详情页修复(嵌套结构解析+补字段)+告警总数卡片( stats补total_count)+清空全部事件按钮(仅admin,POST /alerts/incidents/clear)",
     "v2.23.55: 修复资产详情MissingGreenlet500(补selectinload organization)+监控策略列表throttle为NULL导致500(改Optional)",
@@ -13,8 +14,7 @@
     "v2.23.52 HTTPS登录页修复：nginx.conf 443块 index 由 index.html 改 login.html（原型无 index.html，基础镜像默认欢迎页导致8443显示Welcome to nginx）；try_files兜底改/login.html；入口禁缓存改login.html",
     "ci: 发布流程增加静态站点同步步骤（docker-compose.yml+opsmate → 122.51.177.113:9090/static，保证 ./opsmate upgrade 首源拿到最新配置）",
     "v2.23.51 生产强制HTTPS：①nginx.conf HTTP块启用return 301强制跳转HTTPS明文不再提供内容；②docker-compose.yml注释8080端口映射仅保留8443->443 HTTPS入口；③scripts/opsmate健康检查与访问地址改HTTPS(8443,curl -k跳自签验证)",
-    "v2.23.50 Dell SC端口告警修复+监控策略tab推广11页+华为双控端口区分：①Dell SC端口Down/Offline告警修复 value_map改{Up:1,Down:4,Online:10,Offline:4,Starting:1} Down/Offline映射4(故障)不再落入canonical正常枚举1,2,6,10,11即可触发告警；②监控策略tab从storage样板推广到server/database/firewall/loadbalancer/nvr/os/security/switch/vcenter/vm共10个详情页；③华为双控端口instance_name_path改LOCATION(CTE0.A.MGMT/CTE0.B.MGMT) A/B双控同名端口不再写入同一子表",
-    "v2.23.49 监控策略前端接入：①backend monitor_policies.py 新增 GET /monitor-policies/presets 路由（返回预设模板含完整 rules，注册在 POST 之后、GET /{policy_id} 之前，避免 presets 被当作 policy_id）；②frontend assets-detail-storage.html 新增监控策略 tab：策略列表（scope=asset 查询）、新增/编辑弹窗（编辑回填/启停/删除）、推荐模板弹窗（一键套用模板规则逐条创建 scope=asset 策略）；③layout.js buildFieldInner 支持 select 默认选中与 textarea 内容回填（编辑表单回显）"
+    "v2.23.50 Dell SC端口告警修复+监控策略tab推广11页+华为双控端口区分：①Dell SC端口Down/Offline告警修复 value_map改{Up:1,Down:4,Online:10,Offline:4,Starting:1} Down/Offline映射4(故障)不再落入canonical正常枚举1,2,6,10,11即可触发告警；②监控策略tab从storage样板推广到server/database/firewall/loadbalancer/nvr/os/security/switch/vcenter/vm共10个详情页；③华为双控端口instance_name_path改LOCATION(CTE0.A.MGMT/CTE0.B.MGMT) A/B双控同名端口不再写入同一子表"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.57: v2.23.57: fix incident clear 500 (require_admin import), add POST /alerts/records/clear, fix incident detail page layout (no body.innerHTML overwrite, back button), add clear-all-alerts button on records tab + v2.23.56: 告警中心体验修复-模板策略命名用metric_label中文名+事件详情页修复(嵌套结构解析+补字段)+告警总数卡片( stats补total_count)+清空全部事件按钮(仅admin,POST /alerts/incidents/clear) + v2.23.55: 修复资产详情MissingGreenlet500(补selectinload organization)+监控策略列表throttle为NULL导致500(改Optional) 等10项更新",
+  "notes": "v2.23.58: v2.23.58: fix dashboard hex grid label stats (add offline_count, healthy excludes offline, frontend label uses summary.offline_count) + v2.23.57: fix incident clear 500 (require_admin import), add POST /alerts/records/clear, fix incident detail page layout (no body.innerHTML overwrite, back button), add clear-all-alerts button on records tab + v2.23.56: 告警中心体验修复-模板策略命名用metric_label中文名+事件详情页修复(嵌套结构解析+补字段)+告警总数卡片( stats补total_count)+清空全部事件按钮(仅admin,POST /alerts/incidents/clear) 等10项更新",
   "versions": [
+    {
+      "version": "2.23.58",
+      "released_at": "2026-09-02T08:57:23Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.23.58: fix dashboard hex grid label stats (add offline_count, healthy excludes offline, frontend label uses summary.offline_count)",
+        "v2.23.57: fix incident clear 500 (require_admin import), add POST /alerts/records/clear, fix incident detail page layout (no body.innerHTML overwrite, back button), add clear-all-alerts button on records tab",
+        "v2.23.56: 告警中心体验修复-模板策略命名用metric_label中文名+事件详情页修复(嵌套结构解析+补字段)+告警总数卡片( stats补total_count)+清空全部事件按钮(仅admin,POST /alerts/incidents/clear)",
+        "v2.23.55: 修复资产详情MissingGreenlet500(补selectinload organization)+监控策略列表throttle为NULL导致500(改Optional)",
+        "v2.23.54: 修复v2.23.53的Pydantic类属性无注解导致后端启动失败(改用ClassVar[set[str]])",
+        "v2.23.53: 监控策略应用模板500修复+资产详情跳转统一(六边形/告警详情)+告警描述列固定宽度",
+        "v2.23.52 HTTPS登录页修复：nginx.conf 443块 index 由 index.html 改 login.html（原型无 index.html，基础镜像默认欢迎页导致8443显示Welcome to nginx）；try_files兜底改/login.html；入口禁缓存改login.html",
+        "ci: 发布流程增加静态站点同步步骤（docker-compose.yml+opsmate → 122.51.177.113:9090/static，保证 ./opsmate upgrade 首源拿到最新配置）",
+        "v2.23.51 生产强制HTTPS：①nginx.conf HTTP块启用return 301强制跳转HTTPS明文不再提供内容；②docker-compose.yml注释8080端口映射仅保留8443->443 HTTPS入口；③scripts/opsmate健康检查与访问地址改HTTPS(8443,curl -k跳自签验证)",
+        "v2.23.50 Dell SC端口告警修复+监控策略tab推广11页+华为双控端口区分：①Dell SC端口Down/Offline告警修复 value_map改{Up:1,Down:4,Online:10,Offline:4,Starting:1} Down/Offline映射4(故障)不再落入canonical正常枚举1,2,6,10,11即可触发告警；②监控策略tab从storage样板推广到server/database/firewall/loadbalancer/nvr/os/security/switch/vcenter/vm共10个详情页；③华为双控端口instance_name_path改LOCATION(CTE0.A.MGMT/CTE0.B.MGMT) A/B双控同名端口不再写入同一子表"
+      ]
+    },
     {
       "version": "2.23.57",
       "released_at": "2026-09-02T07:38:15Z",
