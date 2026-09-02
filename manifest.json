@@ -1,10 +1,11 @@
 {
-  "latest": "2.23.52",
-  "latest_version": "2.23.52",
+  "latest": "2.23.53",
+  "latest_version": "2.23.53",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-09-01",
+  "release_date": "2026-09-02",
   "changelog": [
+    "v2.23.53: 监控策略应用模板500修复+资产详情跳转统一(六边形/告警详情)+告警描述列固定宽度",
     "v2.23.52 HTTPS登录页修复：nginx.conf 443块 index 由 index.html 改 login.html（原型无 index.html，基础镜像默认欢迎页导致8443显示Welcome to nginx）；try_files兜底改/login.html；入口禁缓存改login.html",
     "ci: 发布流程增加静态站点同步步骤（docker-compose.yml+opsmate → 122.51.177.113:9090/static，保证 ./opsmate upgrade 首源拿到最新配置）",
     "v2.23.51 生产强制HTTPS：①nginx.conf HTTP块启用return 301强制跳转HTTPS明文不再提供内容；②docker-compose.yml注释8080端口映射仅保留8443->443 HTTPS入口；③scripts/opsmate健康检查与访问地址改HTTPS(8443,curl -k跳自签验证)",
@@ -13,8 +14,7 @@
     "fix(metrics): 华为REST健康类value_map透传修复",
     "v2.23.47 权限收紧+数据备份前端修复：①roles.py/auth.py 角色/用户管理改为 require_admin 仅管理员可操作（原 require_permission 存在越权风险）；②roles.html/users.html 非管理员前端隐藏新增/编辑/删除按钮并二次拦截；③backup.html 字段适配后端真实结构 type=postgresql|tdengine、size/filepath，恢复/删除改 encodeURIComponent；④backup-schedule.html 修复 schedule_type 语义错位（频率 daily/weekly/monthly），备份内容列改 include_tdengine，周几编码统一 0=周一…6=周日",
     "v2.23.46 大屏可视化全量改造+资产筛选增强",
-    "v2.23.45 前端发布：①assets.html/cmdb.html 筛选条补搜索按钮+cmdb.html静态过滤；②design-system.css 弹窗下拉option白底深字+modal-overlay背景加深rgba(11,17,32,0.8)；③datacenter.html 上级组织下拉接入真实组织树+code字段规则提示；④organizations.html closeModal改名closeOrgModal解除同名冲突+layout.js closeModal兼容逻辑；⑤cmdb-push.html两个弹窗移入#page-content；⑥monitor.html使用模板参数顺序修正+scope切换toggle hide类；README价格表支持条款调整",
-    "v2.23.44 监控规则页面三处修复：①分类筛选tab对齐后端标准值 ②使用模板向导支持真实选择资产组/单个资产+展示规则明细，应用改走Query参数 ③预览按钮解析模板rules弹出规则明细表格"
+    "v2.23.45 前端发布：①assets.html/cmdb.html 筛选条补搜索按钮+cmdb.html静态过滤；②design-system.css 弹窗下拉option白底深字+modal-overlay背景加深rgba(11,17,32,0.8)；③datacenter.html 上级组织下拉接入真实组织树+code字段规则提示；④organizations.html closeModal改名closeOrgModal解除同名冲突+layout.js closeModal兼容逻辑；⑤cmdb-push.html两个弹窗移入#page-content；⑥monitor.html使用模板参数顺序修正+scope切换toggle hide类；README价格表支持条款调整"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.52: v2.23.52 HTTPS登录页修复：nginx.conf 443块 index 由 index.html 改 login.html（原型无 index.html，基础镜像默认欢迎页导致8443显示Welcome to nginx）；try_files兜底改/login.html；入口禁缓存改login.html + ci: 发布流程增加静态站点同步步骤（docker-compose.yml+opsmate → 122.51.177.113:9090/static，保证 ./opsmate upgrade 首源拿到最新配置） + v2.23.51 生产强制HTTPS：①nginx.conf HTTP块启用return 301强制跳转HTTPS明文不再提供内容；②docker-compose.yml注释8080端口映射仅保留8443->443 HTTPS入口；③scripts/opsmate健康检查与访问地址改HTTPS(8443,curl -k跳自签验证) 等10项更新",
+  "notes": "v2.23.53: v2.23.53: 监控策略应用模板500修复+资产详情跳转统一(六边形/告警详情)+告警描述列固定宽度 + v2.23.52 HTTPS登录页修复：nginx.conf 443块 index 由 index.html 改 login.html（原型无 index.html，基础镜像默认欢迎页导致8443显示Welcome to nginx）；try_files兜底改/login.html；入口禁缓存改login.html + ci: 发布流程增加静态站点同步步骤（docker-compose.yml+opsmate → 122.51.177.113:9090/static，保证 ./opsmate upgrade 首源拿到最新配置） 等10项更新",
   "versions": [
+    {
+      "version": "2.23.53",
+      "released_at": "2026-09-02T01:56:48Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.23.53: 监控策略应用模板500修复+资产详情跳转统一(六边形/告警详情)+告警描述列固定宽度",
+        "v2.23.52 HTTPS登录页修复：nginx.conf 443块 index 由 index.html 改 login.html（原型无 index.html，基础镜像默认欢迎页导致8443显示Welcome to nginx）；try_files兜底改/login.html；入口禁缓存改login.html",
+        "ci: 发布流程增加静态站点同步步骤（docker-compose.yml+opsmate → 122.51.177.113:9090/static，保证 ./opsmate upgrade 首源拿到最新配置）",
+        "v2.23.51 生产强制HTTPS：①nginx.conf HTTP块启用return 301强制跳转HTTPS明文不再提供内容；②docker-compose.yml注释8080端口映射仅保留8443->443 HTTPS入口；③scripts/opsmate健康检查与访问地址改HTTPS(8443,curl -k跳自签验证)",
+        "v2.23.50 Dell SC端口告警修复+监控策略tab推广11页+华为双控端口区分：①Dell SC端口Down/Offline告警修复 value_map改{Up:1,Down:4,Online:10,Offline:4,Starting:1} Down/Offline映射4(故障)不再落入canonical正常枚举1,2,6,10,11即可触发告警；②监控策略tab从storage样板推广到server/database/firewall/loadbalancer/nvr/os/security/switch/vcenter/vm共10个详情页；③华为双控端口instance_name_path改LOCATION(CTE0.A.MGMT/CTE0.B.MGMT) A/B双控同名端口不再写入同一子表",
+        "v2.23.49 监控策略前端接入：①backend monitor_policies.py 新增 GET /monitor-policies/presets 路由（返回预设模板含完整 rules，注册在 POST 之后、GET /{policy_id} 之前，避免 presets 被当作 policy_id）；②frontend assets-detail-storage.html 新增监控策略 tab：策略列表（scope=asset 查询）、新增/编辑弹窗（编辑回填/启停/删除）、推荐模板弹窗（一键套用模板规则逐条创建 scope=asset 策略）；③layout.js buildFieldInner 支持 select 默认选中与 textarea 内容回填（编辑表单回显）",
+        "fix(metrics): 华为REST健康类value_map透传修复",
+        "v2.23.47 权限收紧+数据备份前端修复：①roles.py/auth.py 角色/用户管理改为 require_admin 仅管理员可操作（原 require_permission 存在越权风险）；②roles.html/users.html 非管理员前端隐藏新增/编辑/删除按钮并二次拦截；③backup.html 字段适配后端真实结构 type=postgresql|tdengine、size/filepath，恢复/删除改 encodeURIComponent；④backup-schedule.html 修复 schedule_type 语义错位（频率 daily/weekly/monthly），备份内容列改 include_tdengine，周几编码统一 0=周一…6=周日",
+        "v2.23.46 大屏可视化全量改造+资产筛选增强",
+        "v2.23.45 前端发布：①assets.html/cmdb.html 筛选条补搜索按钮+cmdb.html静态过滤；②design-system.css 弹窗下拉option白底深字+modal-overlay背景加深rgba(11,17,32,0.8)；③datacenter.html 上级组织下拉接入真实组织树+code字段规则提示；④organizations.html closeModal改名closeOrgModal解除同名冲突+layout.js closeModal兼容逻辑；⑤cmdb-push.html两个弹窗移入#page-content；⑥monitor.html使用模板参数顺序修正+scope切换toggle hide类；README价格表支持条款调整"
+      ]
+    },
     {
       "version": "2.23.52",
       "released_at": "2026-09-01T13:44:53Z",
