@@ -1,10 +1,11 @@
 {
-  "latest": "2.23.70",
-  "latest_version": "2.23.70",
+  "latest": "2.23.71",
+  "latest_version": "2.23.71",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-09-03",
   "changelog": [
+    "fix(notification): 通知渠道前端配置字段与后端发送函数对齐",
     "feat: SLA monitoring loop hardening - response deadline tracking, configurable escalation role/priorities, dual progress bars in ticket list (v2.23.70)",
     "fix: nginx static assets cache to no-cache (ETag revalidation); upgrade shows new layout.js without Ctrl+F5 (v2.23.69)",
     "fix: SLA policy edit loses multi-value ticket_types/priorities; layout.js select supports multiple (v2.23.68)",
@@ -13,8 +14,7 @@
     "fix: itsm export 401 (fetch with token) + itsm-detail Chinese localization; bump v2.23.65",
     "v2.23.64 修复权限回归：operator(运维工程师)/alert_op(告警值班员)默认权限补 ticket:read，避免只读接口切换后无法查看工单；前端 roles.html 工单管理权限点补充 ticket:read(查看)",
     "v2.23.63 ITSM 权限与工单体验优化：新增 ticket:read 只读权限点（auditor/viewer/asset_mgr 可查工单），itsm/service_ledger 只读接口改用 ticket:read；工单详情页操作按钮图标/颜色美化与界面中文化；11 个资产详情页监控策略增加'自动创建工单'开关；工单列表操作列按状态扩展；面包屑可跳转",
-    "fix(itsm): 问题聚合建单状态 open->draft（TicketStatus 枚举不含 open，修复 API 序列化 500）",
-    "v2.23.61: fix ITSM chain bugs - alert resolve ticket linkage (sync impl + event draft->resolved path), SLA level1 response escalation short-circuit, problem aggregation group by rule_id not alert_id"
+    "fix(itsm): 问题聚合建单状态 open->draft（TicketStatus 枚举不含 open，修复 API 序列化 500）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.70: feat: SLA monitoring loop hardening - response deadline tracking, configurable escalation role/priorities, dual progress bars in ticket list (v2.23.70) + fix: nginx static assets cache to no-cache (ETag revalidation); upgrade shows new layout.js without Ctrl+F5 (v2.23.69) + fix: SLA policy edit loses multi-value ticket_types/priorities; layout.js select supports multiple (v2.23.68) 等10项更新",
+  "notes": "v2.23.71: fix(notification): 通知渠道前端配置字段与后端发送函数对齐 + feat: SLA monitoring loop hardening - response deadline tracking, configurable escalation role/priorities, dual progress bars in ticket list (v2.23.70) + fix: nginx static assets cache to no-cache (ETag revalidation); upgrade shows new layout.js without Ctrl+F5 (v2.23.69) 等10项更新",
   "versions": [
+    {
+      "version": "2.23.71",
+      "released_at": "2026-09-03T09:35:52Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix(notification): 通知渠道前端配置字段与后端发送函数对齐",
+        "feat: SLA monitoring loop hardening - response deadline tracking, configurable escalation role/priorities, dual progress bars in ticket list (v2.23.70)",
+        "fix: nginx static assets cache to no-cache (ETag revalidation); upgrade shows new layout.js without Ctrl+F5 (v2.23.69)",
+        "fix: SLA policy edit loses multi-value ticket_types/priorities; layout.js select supports multiple (v2.23.68)",
+        "feat: ITSM semantic transitions + assign UI + work-log link + SLA policy edit; fix openFormModal name attr (v2.23.67)",
+        "fix: users.html pagination null bug; alerts/patrol export 401 (fetch with token); bump v2.23.66",
+        "fix: itsm export 401 (fetch with token) + itsm-detail Chinese localization; bump v2.23.65",
+        "v2.23.64 修复权限回归：operator(运维工程师)/alert_op(告警值班员)默认权限补 ticket:read，避免只读接口切换后无法查看工单；前端 roles.html 工单管理权限点补充 ticket:read(查看)",
+        "v2.23.63 ITSM 权限与工单体验优化：新增 ticket:read 只读权限点（auditor/viewer/asset_mgr 可查工单），itsm/service_ledger 只读接口改用 ticket:read；工单详情页操作按钮图标/颜色美化与界面中文化；11 个资产详情页监控策略增加'自动创建工单'开关；工单列表操作列按状态扩展；面包屑可跳转",
+        "fix(itsm): 问题聚合建单状态 open->draft（TicketStatus 枚举不含 open，修复 API 序列化 500）"
+      ]
+    },
     {
       "version": "2.23.70",
       "released_at": "2026-09-03T08:13:12Z",
