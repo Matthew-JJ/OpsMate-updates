@@ -1,20 +1,20 @@
 {
-  "latest": "2.23.79",
-  "latest_version": "2.23.79",
+  "latest": "2.23.80",
+  "latest_version": "2.23.80",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-09-04",
   "changelog": [
+    "Bump to v2.23.80",
+    "fix(ci): add HUB secrets + deploy-cn.sh to static sync; upgrade verify logic",
+    "fix(deploy): deploy-cn.sh tdengine密码修复+优先网络下载yml",
     "v2.23.79: 触发CI重建latest镜像（v2.23.78旧yml未同步镜像站）",
     "v2.23.78: 升级脚本修复+tdengine healthcheck密码+force-recreate",
     "opsmate脚本升级：force-recreate所有容器+双健康检查",
     "v2.23.77: 4 P0 Bug修复 + 第一轮安全修复 + tdengine healthcheck加固",
     "feat(AI): v2.23.76 AI功能补全 - thinking模型兼容+RCA上级链路+前端P0修复",
     "fix: production-grade hardening for SIPG delivery (2.23.75)",
-    "fix(alerts): available-metrics-with-instances LIMIT 5000 截断修复 - 多实例资产分组超限致整组指标随机丢失 (v2.23.74)",
-    "fix(alerts): 告警三问题修复 - 计数继承/实例排除配置/排除后旧告警自动恢复 (v2.23.73)",
-    "fix(notification): 通知渠道页二次刷新崩溃修复",
-    "fix(notification): 通知渠道前端配置字段与后端发送函数对齐"
+    "fix(alerts): available-metrics-with-instances LIMIT 5000 截断修复 - 多实例资产分组超限致整组指标随机丢失 (v2.23.74)"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.79: v2.23.79: 触发CI重建latest镜像（v2.23.78旧yml未同步镜像站） + v2.23.78: 升级脚本修复+tdengine healthcheck密码+force-recreate + opsmate脚本升级：force-recreate所有容器+双健康检查 等10项更新",
+  "notes": "v2.23.80: Bump to v2.23.80 + fix(ci): add HUB secrets + deploy-cn.sh to static sync; upgrade verify logic + fix(deploy): deploy-cn.sh tdengine密码修复+优先网络下载yml 等10项更新",
   "versions": [
+    {
+      "version": "2.23.80",
+      "released_at": "2026-09-04T17:26:48Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "Bump to v2.23.80",
+        "fix(ci): add HUB secrets + deploy-cn.sh to static sync; upgrade verify logic",
+        "fix(deploy): deploy-cn.sh tdengine密码修复+优先网络下载yml",
+        "v2.23.79: 触发CI重建latest镜像（v2.23.78旧yml未同步镜像站）",
+        "v2.23.78: 升级脚本修复+tdengine healthcheck密码+force-recreate",
+        "opsmate脚本升级：force-recreate所有容器+双健康检查",
+        "v2.23.77: 4 P0 Bug修复 + 第一轮安全修复 + tdengine healthcheck加固",
+        "feat(AI): v2.23.76 AI功能补全 - thinking模型兼容+RCA上级链路+前端P0修复",
+        "fix: production-grade hardening for SIPG delivery (2.23.75)",
+        "fix(alerts): available-metrics-with-instances LIMIT 5000 截断修复 - 多实例资产分组超限致整组指标随机丢失 (v2.23.74)"
+      ]
+    },
     {
       "version": "2.23.79",
       "released_at": "2026-09-04T15:36:03Z",
