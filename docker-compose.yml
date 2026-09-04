@@ -272,10 +272,13 @@ services:
     ports:
       - "6030:6030"  # ⚠️ 生产环境应关闭
       - "6041:6041"  # ⚠️ 生产环境应关闭
+    environment:
+      # 探活脚本用：taos CLI 需要与 TDengine root 密码一致，密码由 .env 的 TDENGINE_PASSWORD 提供
+      TDENGINE_PASSWORD: ${TDENGINE_PASSWORD:-taosdata}
     volumes:
       - tdengine_data:/var/lib/taos
     healthcheck:
-      test: ["CMD-SHELL", "taos -s 'SELECT server_version()'"]
+      test: ["CMD-SHELL", "taos -u root -p$$TDENGINE_PASSWORD -s 'SELECT server_version()'"]
       interval: 10s
       timeout: 5s
       retries: 5
