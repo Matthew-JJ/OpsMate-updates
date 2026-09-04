@@ -1,10 +1,11 @@
 {
-  "latest": "2.23.76",
-  "latest_version": "2.23.76",
+  "latest": "2.23.77",
+  "latest_version": "2.23.77",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-09-04",
   "changelog": [
+    "v2.23.77: 4 P0 Bug修复 + 第一轮安全修复 + tdengine healthcheck加固",
     "feat(AI): v2.23.76 AI功能补全 - thinking模型兼容+RCA上级链路+前端P0修复",
     "fix: production-grade hardening for SIPG delivery (2.23.75)",
     "fix(alerts): available-metrics-with-instances LIMIT 5000 截断修复 - 多实例资产分组超限致整组指标随机丢失 (v2.23.74)",
@@ -13,8 +14,7 @@
     "fix(notification): 通知渠道前端配置字段与后端发送函数对齐",
     "feat: SLA monitoring loop hardening - response deadline tracking, configurable escalation role/priorities, dual progress bars in ticket list (v2.23.70)",
     "fix: nginx static assets cache to no-cache (ETag revalidation); upgrade shows new layout.js without Ctrl+F5 (v2.23.69)",
-    "fix: SLA policy edit loses multi-value ticket_types/priorities; layout.js select supports multiple (v2.23.68)",
-    "feat: ITSM semantic transitions + assign UI + work-log link + SLA policy edit; fix openFormModal name attr (v2.23.67)"
+    "fix: SLA policy edit loses multi-value ticket_types/priorities; layout.js select supports multiple (v2.23.68)"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.76: feat(AI): v2.23.76 AI功能补全 - thinking模型兼容+RCA上级链路+前端P0修复 + fix: production-grade hardening for SIPG delivery (2.23.75) + fix(alerts): available-metrics-with-instances LIMIT 5000 截断修复 - 多实例资产分组超限致整组指标随机丢失 (v2.23.74) 等10项更新",
+  "notes": "v2.23.77: v2.23.77: 4 P0 Bug修复 + 第一轮安全修复 + tdengine healthcheck加固 + feat(AI): v2.23.76 AI功能补全 - thinking模型兼容+RCA上级链路+前端P0修复 + fix: production-grade hardening for SIPG delivery (2.23.75) 等10项更新",
   "versions": [
+    {
+      "version": "2.23.77",
+      "released_at": "2026-09-04T13:29:43Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.23.77: 4 P0 Bug修复 + 第一轮安全修复 + tdengine healthcheck加固",
+        "feat(AI): v2.23.76 AI功能补全 - thinking模型兼容+RCA上级链路+前端P0修复",
+        "fix: production-grade hardening for SIPG delivery (2.23.75)",
+        "fix(alerts): available-metrics-with-instances LIMIT 5000 截断修复 - 多实例资产分组超限致整组指标随机丢失 (v2.23.74)",
+        "fix(alerts): 告警三问题修复 - 计数继承/实例排除配置/排除后旧告警自动恢复 (v2.23.73)",
+        "fix(notification): 通知渠道页二次刷新崩溃修复",
+        "fix(notification): 通知渠道前端配置字段与后端发送函数对齐",
+        "feat: SLA monitoring loop hardening - response deadline tracking, configurable escalation role/priorities, dual progress bars in ticket list (v2.23.70)",
+        "fix: nginx static assets cache to no-cache (ETag revalidation); upgrade shows new layout.js without Ctrl+F5 (v2.23.69)",
+        "fix: SLA policy edit loses multi-value ticket_types/priorities; layout.js select supports multiple (v2.23.68)"
+      ]
+    },
     {
       "version": "2.23.76",
       "released_at": "2026-09-04T09:57:07Z",
