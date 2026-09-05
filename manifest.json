@@ -1,20 +1,20 @@
 {
-  "latest": "2.23.80",
-  "latest_version": "2.23.80",
+  "latest": "2.23.99",
+  "latest_version": "2.23.99",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-09-04",
+  "release_date": "2026-09-05",
   "changelog": [
-    "Bump to v2.23.80",
-    "fix(ci): add HUB secrets + deploy-cn.sh to static sync; upgrade verify logic",
-    "fix(deploy): deploy-cn.sh tdengine密码修复+优先网络下载yml",
-    "v2.23.79: 触发CI重建latest镜像（v2.23.78旧yml未同步镜像站）",
-    "v2.23.78: 升级脚本修复+tdengine healthcheck密码+force-recreate",
-    "opsmate脚本升级：force-recreate所有容器+双健康检查",
-    "v2.23.77: 4 P0 Bug修复 + 第一轮安全修复 + tdengine healthcheck加固",
-    "feat(AI): v2.23.76 AI功能补全 - thinking模型兼容+RCA上级链路+前端P0修复",
-    "fix: production-grade hardening for SIPG delivery (2.23.75)",
-    "fix(alerts): available-metrics-with-instances LIMIT 5000 截断修复 - 多实例资产分组超限致整组指标随机丢失 (v2.23.74)"
+    "v2.23.99: 架构优化大版本发布",
+    "v2.23.98: assets.py重写为聚合路由(2032→100行), _cleanup_asset_relations迁至asset_utils解决循环导入",
+    "v2.23.97: assets.py拆分-asset_crud.py(核心8端点:列表创建CRUD+导出+关系)双份保留",
+    "v2.23.96: assets.py拆分-asset_ai.py(AI资产解读1端点)双份保留",
+    "v2.23.95: assets.py拆分-asset_lifecycle.py(质保+生命周期3端点)双份保留",
+    "v2.23.94: assets.py拆分-asset_policies.py(规则排除+变更检测4端点)双份保留",
+    "v2.23.93: alert_evaluator._handle_resolve迁至alert_tracker.py, 562→438行",
+    "v2.23.92: assets.py拆分-asset_components.py(部件/层级/父子关联4端点)双份保留",
+    "v2.23.91: assets.py拆分-asset_maintenance.py(维护模式2端点)双份保留",
+    "v2.23.90: assets.py拆分-asset_datacenter.py(数据中心树+CRUD 4端点)双份保留"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.80: Bump to v2.23.80 + fix(ci): add HUB secrets + deploy-cn.sh to static sync; upgrade verify logic + fix(deploy): deploy-cn.sh tdengine密码修复+优先网络下载yml 等10项更新",
+  "notes": "v2.23.99: v2.23.99: 架构优化大版本发布 + v2.23.98: assets.py重写为聚合路由(2032→100行), _cleanup_asset_relations迁至asset_utils解决循环导入 + v2.23.97: assets.py拆分-asset_crud.py(核心8端点:列表创建CRUD+导出+关系)双份保留 等10项更新",
   "versions": [
+    {
+      "version": "2.23.99",
+      "released_at": "2026-09-05T10:17:30Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.23.99: 架构优化大版本发布",
+        "v2.23.98: assets.py重写为聚合路由(2032→100行), _cleanup_asset_relations迁至asset_utils解决循环导入",
+        "v2.23.97: assets.py拆分-asset_crud.py(核心8端点:列表创建CRUD+导出+关系)双份保留",
+        "v2.23.96: assets.py拆分-asset_ai.py(AI资产解读1端点)双份保留",
+        "v2.23.95: assets.py拆分-asset_lifecycle.py(质保+生命周期3端点)双份保留",
+        "v2.23.94: assets.py拆分-asset_policies.py(规则排除+变更检测4端点)双份保留",
+        "v2.23.93: alert_evaluator._handle_resolve迁至alert_tracker.py, 562→438行",
+        "v2.23.92: assets.py拆分-asset_components.py(部件/层级/父子关联4端点)双份保留",
+        "v2.23.91: assets.py拆分-asset_maintenance.py(维护模式2端点)双份保留",
+        "v2.23.90: assets.py拆分-asset_datacenter.py(数据中心树+CRUD 4端点)双份保留"
+      ]
+    },
     {
       "version": "2.23.80",
       "released_at": "2026-09-04T17:26:48Z",
