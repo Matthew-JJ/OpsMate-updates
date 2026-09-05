@@ -81,13 +81,13 @@ x-redis-image: &redis-image
   image: ${BASE_REGISTRY:-docker.io}/${BASE_NAMESPACE:-library}/redis:7-alpine
 
 x-postgres-image: &postgres-image
-  image: ${BASE_REGISTRY:-docker.io}/${BASE_NAMESPACE:-library}/postgres:16-alpine
+  image: ${BASE_REGISTRY:-docker.io}/${BASE_NAMESPACE:-library}/postgres:16.4-alpine
 
 x-tdengine-image: &tdengine-image
-  image: ${BASE_REGISTRY:-docker.io}/${BASE_NAMESPACE:-library}/tdengine:latest
+  image: ${BASE_REGISTRY:-docker.io}/${BASE_NAMESPACE:-library}/tdengine:3.2.4.0
 
 x-watchtower-image: &watchtower-image
-  image: ${BASE_REGISTRY:-docker.io}/${BASE_NAMESPACE:-library}/watchtower:latest
+  image: ${BASE_REGISTRY:-docker.io}/${BASE_NAMESPACE:-library}/watchtower:1.7.3
 
 x-logging: &default-logging
   driver: json-file
