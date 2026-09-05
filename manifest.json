@@ -1,10 +1,11 @@
 {
-  "latest": "2.23.102",
-  "latest_version": "2.23.102",
+  "latest": "2.23.103",
+  "latest_version": "2.23.103",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-09-05",
   "changelog": [
+    "v2.23.103: asset_crud routes fix path from empty string to /",
     "v2.23.102: fix asset_crud empty-path routes and include_router prefix",
     "v2.23.101: fix include_router prefix= for empty-path aggregation routes",
     "v2.23.100: 架构优化-assets.py拆分8子模块(2032→100行),alert_evaluator拆分(562→438行),Pydantic模型修复,workflow回退tag-only",
@@ -13,8 +14,7 @@
     "v2.23.97: assets.py拆分-asset_crud.py(核心8端点:列表创建CRUD+导出+关系)双份保留",
     "v2.23.96: assets.py拆分-asset_ai.py(AI资产解读1端点)双份保留",
     "v2.23.95: assets.py拆分-asset_lifecycle.py(质保+生命周期3端点)双份保留",
-    "v2.23.94: assets.py拆分-asset_policies.py(规则排除+变更检测4端点)双份保留",
-    "v2.23.93: alert_evaluator._handle_resolve迁至alert_tracker.py, 562→438行"
+    "v2.23.94: assets.py拆分-asset_policies.py(规则排除+变更检测4端点)双份保留"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.102: v2.23.102: fix asset_crud empty-path routes and include_router prefix + v2.23.101: fix include_router prefix= for empty-path aggregation routes + v2.23.100: 架构优化-assets.py拆分8子模块(2032→100行),alert_evaluator拆分(562→438行),Pydantic模型修复,workflow回退tag-only 等10项更新",
+  "notes": "v2.23.103: v2.23.103: asset_crud routes fix path from empty string to / + v2.23.102: fix asset_crud empty-path routes and include_router prefix + v2.23.101: fix include_router prefix= for empty-path aggregation routes 等10项更新",
   "versions": [
+    {
+      "version": "2.23.103",
+      "released_at": "2026-09-05T14:34:45Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.23.103: asset_crud routes fix path from empty string to /",
+        "v2.23.102: fix asset_crud empty-path routes and include_router prefix",
+        "v2.23.101: fix include_router prefix= for empty-path aggregation routes",
+        "v2.23.100: 架构优化-assets.py拆分8子模块(2032→100行),alert_evaluator拆分(562→438行),Pydantic模型修复,workflow回退tag-only",
+        "v2.23.99: 架构优化大版本发布",
+        "v2.23.98: assets.py重写为聚合路由(2032→100行), _cleanup_asset_relations迁至asset_utils解决循环导入",
+        "v2.23.97: assets.py拆分-asset_crud.py(核心8端点:列表创建CRUD+导出+关系)双份保留",
+        "v2.23.96: assets.py拆分-asset_ai.py(AI资产解读1端点)双份保留",
+        "v2.23.95: assets.py拆分-asset_lifecycle.py(质保+生命周期3端点)双份保留",
+        "v2.23.94: assets.py拆分-asset_policies.py(规则排除+变更检测4端点)双份保留"
+      ]
+    },
     {
       "version": "2.23.102",
       "released_at": "2026-09-05T13:37:37Z",
