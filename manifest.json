@@ -1,10 +1,11 @@
 {
-  "latest": "2.23.110",
-  "latest_version": "2.23.110",
+  "latest": "2.23.111",
+  "latest_version": "2.23.111",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-09-06",
   "changelog": [
+    "v2.23.111",
     "v2.23.110",
     "fix: code review 16 issues v2.23.109",
     "fix: cmdb-query ORM query missing device_type column (v2.23.108)",
@@ -13,8 +14,7 @@
     "fix: reorder include_router to give static paths priority over /{asset_id}",
     "bump version to v2.23.104",
     "fix: attribute_templates.py indentation errors in cmdb_query function (sort_dir and try/except block)",
-    "v2.23.103: asset_crud routes fix path from empty string to /",
-    "v2.23.102: fix asset_crud empty-path routes and include_router prefix"
+    "v2.23.103: asset_crud routes fix path from empty string to /"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.110: v2.23.110 + fix: code review 16 issues v2.23.109 + fix: cmdb-query ORM query missing device_type column (v2.23.108) 等10项更新",
+  "notes": "v2.23.111: v2.23.111 + v2.23.110 + fix: code review 16 issues v2.23.109 等10项更新",
   "versions": [
+    {
+      "version": "2.23.111",
+      "released_at": "2026-09-06T06:59:28Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.23.111",
+        "v2.23.110",
+        "fix: code review 16 issues v2.23.109",
+        "fix: cmdb-query ORM query missing device_type column (v2.23.108)",
+        "fix: cmdb-query add device_type column to SELECT list to avoid KeyError",
+        "fix: asset_crud {asset_id:uuid} constraint + attribute_templates where_text scope",
+        "fix: reorder include_router to give static paths priority over /{asset_id}",
+        "bump version to v2.23.104",
+        "fix: attribute_templates.py indentation errors in cmdb_query function (sort_dir and try/except block)",
+        "v2.23.103: asset_crud routes fix path from empty string to /"
+      ]
+    },
     {
       "version": "2.23.110",
       "released_at": "2026-09-06T06:24:23Z",
