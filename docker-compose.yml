@@ -81,13 +81,13 @@ x-redis-image: &redis-image
   image: ${BASE_REGISTRY:-docker.io}/${BASE_NAMESPACE:-library}/redis:7-alpine
 
 x-postgres-image: &postgres-image
-  image: ${BASE_REGISTRY:-docker.io}/${BASE_NAMESPACE:-library}/postgres:16.4-alpine
+  image: ${BASE_REGISTRY:-docker.io}/${BASE_NAMESPACE:-library}/postgres:16-alpine
 
 x-tdengine-image: &tdengine-image
-  image: ${BASE_REGISTRY:-docker.io}/${BASE_NAMESPACE:-library}/tdengine:3.2.4.0
+  image: ${BASE_REGISTRY:-docker.io}/${BASE_NAMESPACE:-library}/tdengine:3.3.6.13
 
 x-watchtower-image: &watchtower-image
-  image: ${BASE_REGISTRY:-docker.io}/${BASE_NAMESPACE:-library}/watchtower:1.7.3
+  image: ${BASE_REGISTRY:-docker.io}/${BASE_NAMESPACE:-library}/watchtower:1.7.1
 
 x-logging: &default-logging
   driver: json-file
@@ -124,6 +124,12 @@ x-sentinel-common: &sentinel-common
       condition: service_healthy
     redis-replica:
       condition: service_started
+  healthcheck:
+    test: ["CMD-SHELL", "redis-cli -p 26379 sentinel get-master-addr-by-name opsmate-master | grep -q . || exit 1"]
+    interval: 10s
+    timeout: 5s
+    retries: 5
+    start_period: 15s
   networks:
     - opsmate-net
 
@@ -364,11 +370,14 @@ services:
       - "1514:514/udp"   # Syslog（非root Docker需用高端口映射）
     environment:
       <<: *backend-env
+      MIGRATION_ROLE: primary   # entrypoint.sh 迁移失败硬退出（celery/flow-receiver 用 entrypoint:[] 不受影响）
       DISCOVERY_FULL_TIMEOUT: "180"
     depends_on:
       postgres:
         condition: service_healthy
       redis:
+        condition: service_healthy
+      redis-sentinel-1:
         condition: service_healthy
       tdengine:
         condition: service_healthy
@@ -404,6 +413,8 @@ services:
       postgres:
         condition: service_healthy
       redis:
+        condition: service_healthy
+      redis-sentinel-1:
         condition: service_healthy
       tdengine:
         condition: service_healthy
@@ -444,6 +455,8 @@ services:
       postgres:
         condition: service_healthy
       redis:
+        condition: service_healthy
+      redis-sentinel-1:
         condition: service_healthy
       tdengine:
         condition: service_healthy
