@@ -1,10 +1,11 @@
 {
-  "latest": "2.23.124",
-  "latest_version": "2.23.124",
+  "latest": "2.23.125",
+  "latest_version": "2.23.125",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-09-09",
   "changelog": [
+    "v2.23.125: P2日志黑洞根治(alembic env.py删fileConfig) + P6 redfish内存统一存字节+迁移脚本",
     "fix: 告警评估全链路断裂根因 - collect_tasks.py三处import错位(L1121/L1318/L1587从app.services.alert_evaluator导入evaluate_alerts/evaluate_inventory_changes,函数实际定义在alert_orchestrator),致采集告警评估+inventory变更告警+资产编辑变更告警全部import失败失效(alert_records落0行),已全部改指alert_orchestrator并本地py_compile验证; 版本递增2.23.123->2.23.124",
     "fix: 资产详情编辑保存422两处根因 - 缺陷五: _customDefs误改数组致Object.keys返回数字索引custom_fields提交成{0:}，恢复字段字典对象并renderCustomFields兼容数组/对象; 缺陷六: purchase_cost空串转null避免float解析422",
     "fix: 资产详情页自定义字段卡空白(缺陷四) - renderCustomFields对defs加Array.isArray防御避免空对象forEach抛TypeError, _customDefs初始及回退统一为空数组",
@@ -13,8 +14,7 @@
     "v2.23.119 SSH指标发现超时修复：命令执行串行改并行(ThreadPoolExecutor)，对齐ssh_collector采集模式",
     "v2.23.118 存储设备接入全流程真实化：厂商下拉+端口联动+vendor透传+storage分支接入保存链路",
     "v2.23.117: 智能接入单设备链路修复 - SSH/BMC向导步骤2/3/4凭证丢失(表单卸载读DOM为null,退回空密码致认证失败/静默return)改为startProbe存scanState.wizardCredentials后续从state读取; discoverMetricsSingle字段名对齐后端扁平字段(credential_config→username/password/port修422); BMC步骤1新增带外协议选择Redfish(443)/IPMI(623)端口联动; IPMI asset_type=server+默认用户名admin对齐后端",
-    "v2.23.116: 设备适配页AI辅助录入指纹(三步弹窗,规则优先命中不调LLM,草稿校验防幻觉); 新增后端extract-fingerprint端点(admin限定); 弹窗二次打开假死修复(closeModal残留内联display:none盖过.show)",
-    "fix(layout): 修复弹窗二次打开假死bug - closeModal兼容代码残留内联display:none盖过.show class,改为关闭时清空内联样式回归class控制; 兜底清理历史残留的display:none内联; 影响10个同模式页面(device-adapt/attribute-templates/change-monitor/cmdb-push/command-templates/datacenter/metric-catalog/pollers/settings等)"
+    "v2.23.116: 设备适配页AI辅助录入指纹(三步弹窗,规则优先命中不调LLM,草稿校验防幻觉); 新增后端extract-fingerprint端点(admin限定); 弹窗二次打开假死修复(closeModal残留内联display:none盖过.show)"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.124: fix: 告警评估全链路断裂根因 - collect_tasks.py三处import错位(L1121/L1318/L1587从app.services.alert_evaluator导入evaluate_alerts/evaluate_inventory_changes,函数实际定义在alert_orchestrator),致采集告警评估+inventory变更告警+资产编辑变更告警全部import失败失效(alert_records落0行),已全部改指alert_orchestrator并本地py_compile验证; 版本递增2.23.123->2.23.124 + fix: 资产详情编辑保存422两处根因 - 缺陷五: _customDefs误改数组致Object.keys返回数字索引custom_fields提交成{0:}，恢复字段字典对象并renderCustomFields兼容数组/对象; 缺陷六: purchase_cost空串转null避免float解析422 + fix: 资产详情页自定义字段卡空白(缺陷四) - renderCustomFields对defs加Array.isArray防御避免空对象forEach抛TypeError, _customDefs初始及回退统一为空数组 等10项更新",
+  "notes": "v2.23.125: v2.23.125: P2日志黑洞根治(alembic env.py删fileConfig) + P6 redfish内存统一存字节+迁移脚本 + fix: 告警评估全链路断裂根因 - collect_tasks.py三处import错位(L1121/L1318/L1587从app.services.alert_evaluator导入evaluate_alerts/evaluate_inventory_changes,函数实际定义在alert_orchestrator),致采集告警评估+inventory变更告警+资产编辑变更告警全部import失败失效(alert_records落0行),已全部改指alert_orchestrator并本地py_compile验证; 版本递增2.23.123->2.23.124 + fix: 资产详情编辑保存422两处根因 - 缺陷五: _customDefs误改数组致Object.keys返回数字索引custom_fields提交成{0:}，恢复字段字典对象并renderCustomFields兼容数组/对象; 缺陷六: purchase_cost空串转null避免float解析422 等10项更新",
   "versions": [
+    {
+      "version": "2.23.125",
+      "released_at": "2026-09-09T11:24:22Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.23.125: P2日志黑洞根治(alembic env.py删fileConfig) + P6 redfish内存统一存字节+迁移脚本",
+        "fix: 告警评估全链路断裂根因 - collect_tasks.py三处import错位(L1121/L1318/L1587从app.services.alert_evaluator导入evaluate_alerts/evaluate_inventory_changes,函数实际定义在alert_orchestrator),致采集告警评估+inventory变更告警+资产编辑变更告警全部import失败失效(alert_records落0行),已全部改指alert_orchestrator并本地py_compile验证; 版本递增2.23.123->2.23.124",
+        "fix: 资产详情编辑保存422两处根因 - 缺陷五: _customDefs误改数组致Object.keys返回数字索引custom_fields提交成{0:}，恢复字段字典对象并renderCustomFields兼容数组/对象; 缺陷六: purchase_cost空串转null避免float解析422",
+        "fix: 资产详情页自定义字段卡空白(缺陷四) - renderCustomFields对defs加Array.isArray防御避免空对象forEach抛TypeError, _customDefs初始及回退统一为空数组",
+        "fix: 资产详情页3处缺陷 - 动态基本信息tab补click绑定、自定义字段只以属性模板可见字段为准、日期字段空串转null清空避免422",
+        "v2.23.120 资产静态属性功能前端根治：通用详情页真实接线+全入口收敛到通用页",
+        "v2.23.119 SSH指标发现超时修复：命令执行串行改并行(ThreadPoolExecutor)，对齐ssh_collector采集模式",
+        "v2.23.118 存储设备接入全流程真实化：厂商下拉+端口联动+vendor透传+storage分支接入保存链路",
+        "v2.23.117: 智能接入单设备链路修复 - SSH/BMC向导步骤2/3/4凭证丢失(表单卸载读DOM为null,退回空密码致认证失败/静默return)改为startProbe存scanState.wizardCredentials后续从state读取; discoverMetricsSingle字段名对齐后端扁平字段(credential_config→username/password/port修422); BMC步骤1新增带外协议选择Redfish(443)/IPMI(623)端口联动; IPMI asset_type=server+默认用户名admin对齐后端",
+        "v2.23.116: 设备适配页AI辅助录入指纹(三步弹窗,规则优先命中不调LLM,草稿校验防幻觉); 新增后端extract-fingerprint端点(admin限定); 弹窗二次打开假死修复(closeModal残留内联display:none盖过.show)"
+      ]
+    },
     {
       "version": "2.23.124",
       "released_at": "2026-09-09T08:39:35Z",
