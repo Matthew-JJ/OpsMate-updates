@@ -1,10 +1,11 @@
 {
-  "latest": "2.23.119",
-  "latest_version": "2.23.119",
+  "latest": "2.23.120",
+  "latest_version": "2.23.120",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-09-08",
+  "release_date": "2026-09-09",
   "changelog": [
+    "v2.23.120 资产静态属性功能前端根治：通用详情页真实接线+全入口收敛到通用页",
     "v2.23.119 SSH指标发现超时修复：命令执行串行改并行(ThreadPoolExecutor)，对齐ssh_collector采集模式",
     "v2.23.118 存储设备接入全流程真实化：厂商下拉+端口联动+vendor透传+storage分支接入保存链路",
     "v2.23.117: 智能接入单设备链路修复 - SSH/BMC向导步骤2/3/4凭证丢失(表单卸载读DOM为null,退回空密码致认证失败/静默return)改为startProbe存scanState.wizardCredentials后续从state读取; discoverMetricsSingle字段名对齐后端扁平字段(credential_config→username/password/port修422); BMC步骤1新增带外协议选择Redfish(443)/IPMI(623)端口联动; IPMI asset_type=server+默认用户名admin对齐后端",
@@ -13,8 +14,7 @@
     "v2.23.115: 修复HTTPS下307重定向Mixed Content(nginx proxy_redirect http→https); 步骤4接入后动作接线(仅采集不建告警/采集并启用告警); 单设备接入自动匹配监控策略模板; 设备指纹库权限收紧仅admin可改+页面中文化+编辑回显接口",
     "fix(discovery): 智能接入板块全量修复 v2.23.114",
     "v2.23.113: 黄金基线dump重建+部署加固（全新部署开箱即用）",
-    "fix(compose): add sentinel healthcheck + backend/celery/flow-receiver depend on redis-sentinel-1 healthy - prevents Redis client permanently falling back to direct mode when sentinels are not ready at backend startup (same fix in deploy-cn.sh embedded compose)",
-    "fix(docker-compose): pin base images to verified versions available in ACR - postgres:16.4-alpine->16.15-alpine, tdengine:3.2.4.0->3.3.6.13, watchtower:1.7.3->1.7.1 (matches currently running prod versions; fixes ./opsmate upgrade pull failures)"
+    "fix(compose): add sentinel healthcheck + backend/celery/flow-receiver depend on redis-sentinel-1 healthy - prevents Redis client permanently falling back to direct mode when sentinels are not ready at backend startup (same fix in deploy-cn.sh embedded compose)"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.23.119: v2.23.119 SSH指标发现超时修复：命令执行串行改并行(ThreadPoolExecutor)，对齐ssh_collector采集模式 + v2.23.118 存储设备接入全流程真实化：厂商下拉+端口联动+vendor透传+storage分支接入保存链路 + v2.23.117: 智能接入单设备链路修复 - SSH/BMC向导步骤2/3/4凭证丢失(表单卸载读DOM为null,退回空密码致认证失败/静默return)改为startProbe存scanState.wizardCredentials后续从state读取; discoverMetricsSingle字段名对齐后端扁平字段(credential_config→username/password/port修422); BMC步骤1新增带外协议选择Redfish(443)/IPMI(623)端口联动; IPMI asset_type=server+默认用户名admin对齐后端 等10项更新",
+  "notes": "v2.23.120: v2.23.120 资产静态属性功能前端根治：通用详情页真实接线+全入口收敛到通用页 + v2.23.119 SSH指标发现超时修复：命令执行串行改并行(ThreadPoolExecutor)，对齐ssh_collector采集模式 + v2.23.118 存储设备接入全流程真实化：厂商下拉+端口联动+vendor透传+storage分支接入保存链路 等10项更新",
   "versions": [
+    {
+      "version": "2.23.120",
+      "released_at": "2026-09-09T03:41:38Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.23.120 资产静态属性功能前端根治：通用详情页真实接线+全入口收敛到通用页",
+        "v2.23.119 SSH指标发现超时修复：命令执行串行改并行(ThreadPoolExecutor)，对齐ssh_collector采集模式",
+        "v2.23.118 存储设备接入全流程真实化：厂商下拉+端口联动+vendor透传+storage分支接入保存链路",
+        "v2.23.117: 智能接入单设备链路修复 - SSH/BMC向导步骤2/3/4凭证丢失(表单卸载读DOM为null,退回空密码致认证失败/静默return)改为startProbe存scanState.wizardCredentials后续从state读取; discoverMetricsSingle字段名对齐后端扁平字段(credential_config→username/password/port修422); BMC步骤1新增带外协议选择Redfish(443)/IPMI(623)端口联动; IPMI asset_type=server+默认用户名admin对齐后端",
+        "v2.23.116: 设备适配页AI辅助录入指纹(三步弹窗,规则优先命中不调LLM,草稿校验防幻觉); 新增后端extract-fingerprint端点(admin限定); 弹窗二次打开假死修复(closeModal残留内联display:none盖过.show)",
+        "fix(layout): 修复弹窗二次打开假死bug - closeModal兼容代码残留内联display:none盖过.show class,改为关闭时清空内联样式回归class控制; 兜底清理历史残留的display:none内联; 影响10个同模式页面(device-adapt/attribute-templates/change-monitor/cmdb-push/command-templates/datacenter/metric-catalog/pollers/settings等)",
+        "v2.23.115: 修复HTTPS下307重定向Mixed Content(nginx proxy_redirect http→https); 步骤4接入后动作接线(仅采集不建告警/采集并启用告警); 单设备接入自动匹配监控策略模板; 设备指纹库权限收紧仅admin可改+页面中文化+编辑回显接口",
+        "fix(discovery): 智能接入板块全量修复 v2.23.114",
+        "v2.23.113: 黄金基线dump重建+部署加固（全新部署开箱即用）",
+        "fix(compose): add sentinel healthcheck + backend/celery/flow-receiver depend on redis-sentinel-1 healthy - prevents Redis client permanently falling back to direct mode when sentinels are not ready at backend startup (same fix in deploy-cn.sh embedded compose)"
+      ]
+    },
     {
       "version": "2.23.119",
       "released_at": "2026-09-08T11:03:55Z",
