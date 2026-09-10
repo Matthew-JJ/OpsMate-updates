@@ -1,10 +1,11 @@
 {
-  "latest": "2.24.03",
-  "latest_version": "2.24.03",
+  "latest": "2.24.04",
+  "latest_version": "2.24.04",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-09-10",
   "changelog": [
+    "feat(warranty,change-monitor): 质保到期告警+自动工单 + 变更监测页面重写 + 华为iBMC FRU字段兼容 (v2.24.04)",
     "v2.24.03 SIPG联想IPMI第二轮修复: 序列号显示/电源误告警not_in/策略管理UI实例多选/Redfish 308 follow_redirects",
     "fix(assets,alerts): SIPG联想服务器(IPMI)接入6问题根治 + 孤儿指纹清理 (v2.24.02)",
     "fix(itsm,assets): 工单模块操作按钮/详情页渲染根治 + 资产详情假数据清零 (v2.24.01)",
@@ -13,8 +14,7 @@
     "feat: 前端字节字段可读单位换算 + 属性模板 memory_bytes 单位 GB->B 统一",
     "v2.23.125: P2日志黑洞根治(alembic env.py删fileConfig) + P6 redfish内存统一存字节+迁移脚本",
     "fix: 告警评估全链路断裂根因 - collect_tasks.py三处import错位(L1121/L1318/L1587从app.services.alert_evaluator导入evaluate_alerts/evaluate_inventory_changes,函数实际定义在alert_orchestrator),致采集告警评估+inventory变更告警+资产编辑变更告警全部import失败失效(alert_records落0行),已全部改指alert_orchestrator并本地py_compile验证; 版本递增2.23.123->2.23.124",
-    "fix: 资产详情编辑保存422两处根因 - 缺陷五: _customDefs误改数组致Object.keys返回数字索引custom_fields提交成{0:}，恢复字段字典对象并renderCustomFields兼容数组/对象; 缺陷六: purchase_cost空串转null避免float解析422",
-    "fix: 资产详情页自定义字段卡空白(缺陷四) - renderCustomFields对defs加Array.isArray防御避免空对象forEach抛TypeError, _customDefs初始及回退统一为空数组"
+    "fix: 资产详情编辑保存422两处根因 - 缺陷五: _customDefs误改数组致Object.keys返回数字索引custom_fields提交成{0:}，恢复字段字典对象并renderCustomFields兼容数组/对象; 缺陷六: purchase_cost空串转null避免float解析422"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.24.03: v2.24.03 SIPG联想IPMI第二轮修复: 序列号显示/电源误告警not_in/策略管理UI实例多选/Redfish 308 follow_redirects + fix(assets,alerts): SIPG联想服务器(IPMI)接入6问题根治 + 孤儿指纹清理 (v2.24.02) + fix(itsm,assets): 工单模块操作按钮/详情页渲染根治 + 资产详情假数据清零 (v2.24.01) 等10项更新",
+  "notes": "v2.24.04: feat(warranty,change-monitor): 质保到期告警+自动工单 + 变更监测页面重写 + 华为iBMC FRU字段兼容 (v2.24.04) + v2.24.03 SIPG联想IPMI第二轮修复: 序列号显示/电源误告警not_in/策略管理UI实例多选/Redfish 308 follow_redirects + fix(assets,alerts): SIPG联想服务器(IPMI)接入6问题根治 + 孤儿指纹清理 (v2.24.02) 等10项更新",
   "versions": [
+    {
+      "version": "2.24.04",
+      "released_at": "2026-09-10T15:38:21Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "feat(warranty,change-monitor): 质保到期告警+自动工单 + 变更监测页面重写 + 华为iBMC FRU字段兼容 (v2.24.04)",
+        "v2.24.03 SIPG联想IPMI第二轮修复: 序列号显示/电源误告警not_in/策略管理UI实例多选/Redfish 308 follow_redirects",
+        "fix(assets,alerts): SIPG联想服务器(IPMI)接入6问题根治 + 孤儿指纹清理 (v2.24.02)",
+        "fix(itsm,assets): 工单模块操作按钮/详情页渲染根治 + 资产详情假数据清零 (v2.24.01)",
+        "fix(alerts,screen): 告警指标列叠显根治 + 大屏告警口径统一 + 死代码清理 (v2.24.00)",
+        "fix(assets): 修复资产新增/编辑保存空body 400缺陷 (v2.23.127)",
+        "feat: 前端字节字段可读单位换算 + 属性模板 memory_bytes 单位 GB->B 统一",
+        "v2.23.125: P2日志黑洞根治(alembic env.py删fileConfig) + P6 redfish内存统一存字节+迁移脚本",
+        "fix: 告警评估全链路断裂根因 - collect_tasks.py三处import错位(L1121/L1318/L1587从app.services.alert_evaluator导入evaluate_alerts/evaluate_inventory_changes,函数实际定义在alert_orchestrator),致采集告警评估+inventory变更告警+资产编辑变更告警全部import失败失效(alert_records落0行),已全部改指alert_orchestrator并本地py_compile验证; 版本递增2.23.123->2.23.124",
+        "fix: 资产详情编辑保存422两处根因 - 缺陷五: _customDefs误改数组致Object.keys返回数字索引custom_fields提交成{0:}，恢复字段字典对象并renderCustomFields兼容数组/对象; 缺陷六: purchase_cost空串转null避免float解析422"
+      ]
+    },
     {
       "version": "2.24.03",
       "released_at": "2026-09-10T12:04:03Z",
