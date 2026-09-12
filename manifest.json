@@ -1,10 +1,11 @@
 {
-  "latest": "2.24.09",
-  "latest_version": "2.24.09",
+  "latest": "2.24.10",
+  "latest_version": "2.24.10",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-09-12",
   "changelog": [
+    "v2.24.10 增强：NetApp ONTAB指标补全+前端渲染增强",
     "fix(discovery): v2.24.09 厂商识别真实值优先+内存显示双重保护",
     "feat(workflow,fixes): v2.24.08 工作流P0/P1+六问题修复",
     "fix(frontend): v2.24.07 表单多选自绘复选框组+策略实例过滤开关+用户角色动态加载",
@@ -13,8 +14,7 @@
     "feat(warranty,change-monitor): 质保到期告警+自动工单 + 变更监测页面重写 + 华为iBMC FRU字段兼容 (v2.24.04)",
     "v2.24.03 SIPG联想IPMI第二轮修复: 序列号显示/电源误告警not_in/策略管理UI实例多选/Redfish 308 follow_redirects",
     "fix(assets,alerts): SIPG联想服务器(IPMI)接入6问题根治 + 孤儿指纹清理 (v2.24.02)",
-    "fix(itsm,assets): 工单模块操作按钮/详情页渲染根治 + 资产详情假数据清零 (v2.24.01)",
-    "fix(alerts,screen): 告警指标列叠显根治 + 大屏告警口径统一 + 死代码清理 (v2.24.00)"
+    "fix(itsm,assets): 工单模块操作按钮/详情页渲染根治 + 资产详情假数据清零 (v2.24.01)"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.24.09: fix(discovery): v2.24.09 厂商识别真实值优先+内存显示双重保护 + feat(workflow,fixes): v2.24.08 工作流P0/P1+六问题修复 + fix(frontend): v2.24.07 表单多选自绘复选框组+策略实例过滤开关+用户角色动态加载 等10项更新",
+  "notes": "v2.24.10: v2.24.10 增强：NetApp ONTAB指标补全+前端渲染增强 + fix(discovery): v2.24.09 厂商识别真实值优先+内存显示双重保护 + feat(workflow,fixes): v2.24.08 工作流P0/P1+六问题修复 等10项更新",
   "versions": [
+    {
+      "version": "2.24.10",
+      "released_at": "2026-09-12T05:27:21Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.24.10 增强：NetApp ONTAB指标补全+前端渲染增强",
+        "fix(discovery): v2.24.09 厂商识别真实值优先+内存显示双重保护",
+        "feat(workflow,fixes): v2.24.08 工作流P0/P1+六问题修复",
+        "fix(frontend): v2.24.07 表单多选自绘复选框组+策略实例过滤开关+用户角色动态加载",
+        "fix(change-monitor): v2.24.06 三组字段重构+FreeIPMI统计翻倍修复+引擎前缀漏检修复",
+        "feat(change-monitor): 三步向导重做+列表交互修复 (v2.24.05)",
+        "feat(warranty,change-monitor): 质保到期告警+自动工单 + 变更监测页面重写 + 华为iBMC FRU字段兼容 (v2.24.04)",
+        "v2.24.03 SIPG联想IPMI第二轮修复: 序列号显示/电源误告警not_in/策略管理UI实例多选/Redfish 308 follow_redirects",
+        "fix(assets,alerts): SIPG联想服务器(IPMI)接入6问题根治 + 孤儿指纹清理 (v2.24.02)",
+        "fix(itsm,assets): 工单模块操作按钮/详情页渲染根治 + 资产详情假数据清零 (v2.24.01)"
+      ]
+    },
     {
       "version": "2.24.09",
       "released_at": "2026-09-12T04:42:43Z",
