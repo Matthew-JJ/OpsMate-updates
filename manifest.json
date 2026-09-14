@@ -1,10 +1,11 @@
 {
-  "latest": "2.24.14",
-  "latest_version": "2.24.14",
+  "latest": "2.25.00",
+  "latest_version": "2.25.00",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-09-14",
   "changelog": [
+    "v2.25.00: 服务器部件信息大改造——CPU/DIMM/RAID控制器逐条部件化、RAID逻辑卷与物理盘分离、部件详情弹窗、RAID健康告警、磁盘温度入部件、SSH磁盘序列号修复、多协议部件隔离",
     "v2.24.14: 新增网络设备详情页配置备份/配置快照单个删除与全选删除功能；修复配置备份查看接口 /config-backups/content/{id} 漏传 asset_id 导致的 422 报错",
     "v2.24.13 修复：网络设备详情页配置管理/配置快照功能拆分——区分配置备份(行级diff)与配置快照(字段级diff)两条真实链路，移除硬编码假数据",
     "v2.24.12 修复：厂商/型号/设备类型显示逻辑",
@@ -13,8 +14,7 @@
     "fix(discovery): v2.24.09 厂商识别真实值优先+内存显示双重保护",
     "feat(workflow,fixes): v2.24.08 工作流P0/P1+六问题修复",
     "fix(frontend): v2.24.07 表单多选自绘复选框组+策略实例过滤开关+用户角色动态加载",
-    "fix(change-monitor): v2.24.06 三组字段重构+FreeIPMI统计翻倍修复+引擎前缀漏检修复",
-    "feat(change-monitor): 三步向导重做+列表交互修复 (v2.24.05)"
+    "fix(change-monitor): v2.24.06 三组字段重构+FreeIPMI统计翻倍修复+引擎前缀漏检修复"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.24.14: v2.24.14: 新增网络设备详情页配置备份/配置快照单个删除与全选删除功能；修复配置备份查看接口 /config-backups/content/{id} 漏传 asset_id 导致的 422 报错 + v2.24.13 修复：网络设备详情页配置管理/配置快照功能拆分——区分配置备份(行级diff)与配置快照(字段级diff)两条真实链路，移除硬编码假数据 + v2.24.12 修复：厂商/型号/设备类型显示逻辑 等10项更新",
+  "notes": "v2.25.00: v2.25.00: 服务器部件信息大改造——CPU/DIMM/RAID控制器逐条部件化、RAID逻辑卷与物理盘分离、部件详情弹窗、RAID健康告警、磁盘温度入部件、SSH磁盘序列号修复、多协议部件隔离 + v2.24.14: 新增网络设备详情页配置备份/配置快照单个删除与全选删除功能；修复配置备份查看接口 /config-backups/content/{id} 漏传 asset_id 导致的 422 报错 + v2.24.13 修复：网络设备详情页配置管理/配置快照功能拆分——区分配置备份(行级diff)与配置快照(字段级diff)两条真实链路，移除硬编码假数据 等10项更新",
   "versions": [
+    {
+      "version": "2.25.00",
+      "released_at": "2026-09-14T07:41:38Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.25.00: 服务器部件信息大改造——CPU/DIMM/RAID控制器逐条部件化、RAID逻辑卷与物理盘分离、部件详情弹窗、RAID健康告警、磁盘温度入部件、SSH磁盘序列号修复、多协议部件隔离",
+        "v2.24.14: 新增网络设备详情页配置备份/配置快照单个删除与全选删除功能；修复配置备份查看接口 /config-backups/content/{id} 漏传 asset_id 导致的 422 报错",
+        "v2.24.13 修复：网络设备详情页配置管理/配置快照功能拆分——区分配置备份(行级diff)与配置快照(字段级diff)两条真实链路，移除硬编码假数据",
+        "v2.24.12 修复：厂商/型号/设备类型显示逻辑",
+        "fix: 存储REST采集0数据修复 + vendor识别无硬编码兜底 (v2.24.11)",
+        "v2.24.10 增强：NetApp ONTAB指标补全+前端渲染增强",
+        "fix(discovery): v2.24.09 厂商识别真实值优先+内存显示双重保护",
+        "feat(workflow,fixes): v2.24.08 工作流P0/P1+六问题修复",
+        "fix(frontend): v2.24.07 表单多选自绘复选框组+策略实例过滤开关+用户角色动态加载",
+        "fix(change-monitor): v2.24.06 三组字段重构+FreeIPMI统计翻倍修复+引擎前缀漏检修复"
+      ]
+    },
     {
       "version": "2.24.14",
       "released_at": "2026-09-14T05:02:45Z",
