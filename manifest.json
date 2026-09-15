@@ -1,10 +1,11 @@
 {
-  "latest": "2.25.07",
-  "latest_version": "2.25.07",
+  "latest": "2.25.08",
+  "latest_version": "2.25.08",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-09-15",
   "changelog": [
+    "v2.25.08，修复新前端批量接入资产问题，资产OID问题等",
     "v2.25.07,RestAPI账号权限不足，测试连接假成功",
     "v2.25.06 指标推荐表对标业界+采集模板同步+巡检自动合并+存储REST发现并发化",
     "v2.25.04: Dell SC磁盘部件信息补全——ScDisk接口不暴露serial/model，补diskClass/endurance/powerOnHours/controlType/ssd等运行字段，容量字符串解析为GB数值",
@@ -13,8 +14,7 @@
     "v2.25.01: 修复首采竞态与NIC部件名下钻",
     "v2.25.00: 服务器部件信息大改造——CPU/DIMM/RAID控制器逐条部件化、RAID逻辑卷与物理盘分离、部件详情弹窗、RAID健康告警、磁盘温度入部件、SSH磁盘序列号修复、多协议部件隔离",
     "v2.24.14: 新增网络设备详情页配置备份/配置快照单个删除与全选删除功能；修复配置备份查看接口 /config-backups/content/{id} 漏传 asset_id 导致的 422 报错",
-    "v2.24.13 修复：网络设备详情页配置管理/配置快照功能拆分——区分配置备份(行级diff)与配置快照(字段级diff)两条真实链路，移除硬编码假数据",
-    "v2.24.12 修复：厂商/型号/设备类型显示逻辑"
+    "v2.24.13 修复：网络设备详情页配置管理/配置快照功能拆分——区分配置备份(行级diff)与配置快照(字段级diff)两条真实链路，移除硬编码假数据"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.25.07: v2.25.07,RestAPI账号权限不足，测试连接假成功 + v2.25.06 指标推荐表对标业界+采集模板同步+巡检自动合并+存储REST发现并发化 + v2.25.04: Dell SC磁盘部件信息补全——ScDisk接口不暴露serial/model，补diskClass/endurance/powerOnHours/controlType/ssd等运行字段，容量字符串解析为GB数值 等10项更新",
+  "notes": "v2.25.08: v2.25.08，修复新前端批量接入资产问题，资产OID问题等 + v2.25.07,RestAPI账号权限不足，测试连接假成功 + v2.25.06 指标推荐表对标业界+采集模板同步+巡检自动合并+存储REST发现并发化 等10项更新",
   "versions": [
+    {
+      "version": "2.25.08",
+      "released_at": "2026-09-15T08:08:07Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.25.08，修复新前端批量接入资产问题，资产OID问题等",
+        "v2.25.07,RestAPI账号权限不足，测试连接假成功",
+        "v2.25.06 指标推荐表对标业界+采集模板同步+巡检自动合并+存储REST发现并发化",
+        "v2.25.04: Dell SC磁盘部件信息补全——ScDisk接口不暴露serial/model，补diskClass/endurance/powerOnHours/controlType/ssd等运行字段，容量字符串解析为GB数值",
+        "v2.25.03: 修复厂商信息丢失——前端批量发现传探测data本体（根修）；后端protocols嵌套防呆；展示端manufacturer兜底；Redfish周期采集补manufacturer/model回写",
+        "v2.25.02: SNMP 32/64位计数器写入层去重（64位优先+64位零值降级32位），修复同子表同分钟双值污染rate差分",
+        "v2.25.01: 修复首采竞态与NIC部件名下钻",
+        "v2.25.00: 服务器部件信息大改造——CPU/DIMM/RAID控制器逐条部件化、RAID逻辑卷与物理盘分离、部件详情弹窗、RAID健康告警、磁盘温度入部件、SSH磁盘序列号修复、多协议部件隔离",
+        "v2.24.14: 新增网络设备详情页配置备份/配置快照单个删除与全选删除功能；修复配置备份查看接口 /config-backups/content/{id} 漏传 asset_id 导致的 422 报错",
+        "v2.24.13 修复：网络设备详情页配置管理/配置快照功能拆分——区分配置备份(行级diff)与配置快照(字段级diff)两条真实链路，移除硬编码假数据"
+      ]
+    },
     {
       "version": "2.25.07",
       "released_at": "2026-09-15T04:27:13Z",
