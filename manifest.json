@@ -1,10 +1,11 @@
 {
-  "latest": "2.25.14",
-  "latest_version": "2.25.14",
+  "latest": "2.25.15",
+  "latest_version": "2.25.15",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-09-17",
   "changelog": [
+    "v2.25.15: 工作流并行分支全链路修复 + license持久化 + Excel导入优化 + CMDB查询索引",
     "fix(v2.25.14): nginx给assets/import加300s location，修复大Excel导入504掐断响应",
     "refactor(v2.25.13): 拆分discovery_onboarding.py 1944行超标文件为5个模块，全部<=500行",
     "fix(v2.25.12): 智能接入假超时根修 + 凭证测试假成功/500 + 用户下拉修复",
@@ -13,8 +14,7 @@
     "fix(v2.25.10): 修复datacenter-tree树构建bug + 资产列表排除容器节点",
     "v2.25.09 数据中心层级真实实现：组织资产管理3端点+数据中心树绑组织过滤+机柜U位挂载/冲突校验/竖向可视化+资产编辑表单恢复所属组织+资产分组瘦身is_all+修link-parent uuid NameError",
     "v2.25.08，修复新前端批量接入资产问题，资产OID问题等",
-    "v2.25.07,RestAPI账号权限不足，测试连接假成功",
-    "v2.25.06 指标推荐表对标业界+采集模板同步+巡检自动合并+存储REST发现并发化"
+    "v2.25.07,RestAPI账号权限不足，测试连接假成功"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.25.14: fix(v2.25.14): nginx给assets/import加300s location，修复大Excel导入504掐断响应 + refactor(v2.25.13): 拆分discovery_onboarding.py 1944行超标文件为5个模块，全部<=500行 + fix(v2.25.12): 智能接入假超时根修 + 凭证测试假成功/500 + 用户下拉修复 等10项更新",
+  "notes": "v2.25.15: v2.25.15: 工作流并行分支全链路修复 + license持久化 + Excel导入优化 + CMDB查询索引 + fix(v2.25.14): nginx给assets/import加300s location，修复大Excel导入504掐断响应 + refactor(v2.25.13): 拆分discovery_onboarding.py 1944行超标文件为5个模块，全部<=500行 等10项更新",
   "versions": [
+    {
+      "version": "2.25.15",
+      "released_at": "2026-09-17T14:07:36Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.25.15: 工作流并行分支全链路修复 + license持久化 + Excel导入优化 + CMDB查询索引",
+        "fix(v2.25.14): nginx给assets/import加300s location，修复大Excel导入504掐断响应",
+        "refactor(v2.25.13): 拆分discovery_onboarding.py 1944行超标文件为5个模块，全部<=500行",
+        "fix(v2.25.12): 智能接入假超时根修 + 凭证测试假成功/500 + 用户下拉修复",
+        "fix(license): 资产计数恒为0 + 多worker激活后版本跳变 + 缓存污染 + 告警按钮500",
+        "fix(license): max_assets=0被falsy误判为缺少必填字段，旗舰版激活后回退社区版",
+        "fix(v2.25.10): 修复datacenter-tree树构建bug + 资产列表排除容器节点",
+        "v2.25.09 数据中心层级真实实现：组织资产管理3端点+数据中心树绑组织过滤+机柜U位挂载/冲突校验/竖向可视化+资产编辑表单恢复所属组织+资产分组瘦身is_all+修link-parent uuid NameError",
+        "v2.25.08，修复新前端批量接入资产问题，资产OID问题等",
+        "v2.25.07,RestAPI账号权限不足，测试连接假成功"
+      ]
+    },
     {
       "version": "2.25.14",
       "released_at": "2026-09-17T01:53:33Z",
