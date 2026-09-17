@@ -64,6 +64,8 @@ x-backend-env: &backend-env
   # http_proxy: "http://proxy.example.com:8080"
   # https_proxy: "http://proxy.example.com:8080"
   NO_PROXY: ${NO_PROXY:-localhost,127.0.0.1,*.internal,172.16.0.0/16,10.0.0.0/8,192.168.0.0/16}
+  # License 持久化目录（挂载到 /opt/opsmate/license，避免容器重建丢失 license.lic）
+  LICENSE_DIR: /opt/opsmate/license
   # LLM 配置：通过环境变量传入，避免前端配置在容器重启后丢失
   # 留空表示未配置，AI功能将提示用户前往系统设置配置
   LLM_PROVIDER: ${LLM_PROVIDER:-}
@@ -364,6 +366,7 @@ services:
     volumes:
       - ${OPSMATE_DIR:-/opt/opsmate}/reports:/opt/opsmate/reports
       - ${OPSMATE_DIR:-/opt/opsmate}/logs:/opt/opsmate/logs
+      - ${OPSMATE_DIR:-/opt/opsmate}/license:/opt/opsmate/license
     ports:
       # - "8000:8000"  # ⚠️ 已禁用：绕过nginx安全头/限速，生产环境勿开
       - "162:162/udp"   # SNMP Trap
@@ -408,6 +411,7 @@ services:
     volumes:
       - ${OPSMATE_DIR:-/opt/opsmate}/reports:/opt/opsmate/reports
       - ${OPSMATE_DIR:-/opt/opsmate}/logs:/opt/opsmate/logs
+      - ${OPSMATE_DIR:-/opt/opsmate}/license:/opt/opsmate/license
     environment:
       <<: *backend-env
     depends_on:
@@ -429,7 +433,7 @@ services:
       -c 16
       --max-tasks-per-child=100
       -Q celery,power
-      -I app.tasks.collect_tasks,app.tasks.capacity_tasks,app.tasks.patrol_tasks,app.tasks.scheduler,app.tasks.sentinel_tasks,app.tasks.link_tasks,app.tasks.sla_tasks,app.tasks.alert_escalation,app.tasks.report_tasks,app.tasks.topology_tasks,app.tasks.power_tasks,app.tasks.workflow_tasks,app.tasks.problem_aggregation
+      -I app.tasks.collect_tasks,app.tasks.capacity_tasks,app.tasks.patrol_tasks,app.tasks.scheduler,app.tasks.sentinel_tasks,app.tasks.link_tasks,app.tasks.sla_tasks,app.tasks.alert_escalation,app.tasks.report_tasks,app.tasks.topology_tasks,app.tasks.power_tasks,app.tasks.workflow_tasks,app.tasks.workflow_action_tasks,app.tasks.workflow_branch_tasks,app.tasks.problem_aggregation,app.tasks.asset_import_tasks
     healthcheck:
       test: ["CMD-SHELL", "celery -A app.celery_app inspect ping --timeout 5 2>/dev/null | grep -q pong || (pgrep -f 'celery.*worker' > /dev/null && exit 0) || exit 1"]
       interval: 30s
@@ -445,6 +449,8 @@ services:
     container_name: opsmate-flow-receiver
     restart: unless-stopped
     logging: *default-logging
+    volumes:
+      - ${OPSMATE_DIR:-/opt/opsmate}/license:/opt/opsmate/license
     ports:
       - "2055:2055/udp"
       - "2056:2056/udp"
