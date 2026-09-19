@@ -1,10 +1,12 @@
 {
-  "latest": "2.26.03",
-  "latest_version": "2.26.03",
+  "latest": "2.26.05",
+  "latest_version": "2.26.05",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-09-19",
   "changelog": [
+    "v2.26.05: NetApp磁盘健康修复：①磁盘列表URL追加fields=*（ONTAP 9.8不带fields仅返回name/_links，state全空导致36盘全显示故障）；②容量字段size改为usable_size（ONTAP 9.8实际字段名）兼容fallback、shelf嵌套对象取uid；③通用state兜底改厂商感知——NetApp保留分支归一化结果（spare→warning热备盘），华为走归一化，其他厂商维持原逻辑，修复spare盘被覆盖回unknown的覆盖bug；④前端存储详情页磁盘健康四态化（正常/预警/故障/未知），新增未知统计卡，unknown不再误显示为红色故障；⑤存储池CPU利用率行NetApp与Dell SC对齐显示'设备不支持'（ONTAP 9.8实测无任何REST CPU端点）。156实测：172.17.99.111共36盘=35正常+1预警（热备盘spare），故障0；存储池CPU行显示设备不支持",
+    "v2.26.04: 存储资产详情页专用化——全站8个资产详情入口按asset_type分发：storage→assets-detail-storage.html（存储池/卷LUN/快照/性能IOPS延迟/磁盘健康专用Tab），其他类型仍走通用详情页。入口覆盖：资产列表/CMDB/资产分组/组织/数据中心/拓扑/ITSM工单/layout公共函数（dashboard/告警详情自动生效）。156实测通过：NetApp存储资产跳转专用页且数据渲染正常（21指标/存储池/性能/36磁盘），非存储资产仍走通用页",
     "v2.26.03: 群晖DSM发现与采集修复：①discovery _fetch_one增加群晖HTTP200+success=false应用层错误检查（105无权限不再误报为可用指标）；②discovery非array_walk指标sample_value为空时跳过；③collector同步增加群晖success=false检查+响应缓存None跳过（156实测：发现从误报5项变为正确0项）",
     "v2.26.02: fix 056 migration revision ID overflow + NetApp ONTAP 9.8 perf metrics",
     "v2.26.01: 工作流批次3健壮性修复：①validate_dag新校验（非condition/approval/parallel节点多出边拒存防静默丢分支、approval必须approved+rejected双出边、parallel分支必须沿链可达end）；②_check_workflow_completion根修（存在running/waiting活跃节点不终结，防并行未汇聚提前completed，断链兜底收尾防永久挂起）；③审批权限对齐（审批工单创建时approver_roles角色名解析为approver_role_ids写入custom_fields，itsm校验优先读custom_fields再回退TicketFlowConfig，前端配置角色名首次真正生效）；④cancel执行自动关闭waiting审批节点的pending_approval工单；⑤async审批工单补timeout_hours超时自动拒绝；⑥condition fail-open可观测（评估异常默认true但记录condition_error到节点result，async+sync双路径覆盖）；⑦告警触发工作流按trigger_config过滤metric_names/severities（空=全部触发向后兼容，前端新增告警触发配置表单）。233实测30/30 PASS+回归batch2 34/34、batch1b 6/6、batch1 17项通过。",
@@ -12,9 +14,7 @@
     "v2.25.20: Redfish事件订阅（EventDestination）+ HttpHeaders Token鉴权 + listener.py import bug修复",
     "v2.25.19: 修复collect-tasks.html残余损坏并重建页面结构",
     "v2.25.18: 采集任务批量操作 - 后端3个批量端点(batch-update/batch-delete/batch-create)+前端批量选择栏+5个批量操作+双任务创建弹窗; schemas新增BatchUpdateRequest/BatchDeleteRequest/BatchCreateRequest; collect-tasks.html内联JS迁出到独立JS文件",
-    "v2.25.17: SIPG生产Redfish采集offline根修+智能接入提速6项，233验证通过",
-    "v2.25.16: 工作流触发器与动作修复，全部功能链233实测通过",
-    "v2.25.15: 工作流并行分支全链路修复 + license持久化 + Excel导入优化 + CMDB查询索引"
+    "v2.25.17: SIPG生产Redfish采集offline根修+智能接入提速6项，233验证通过"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.26.03: v2.26.03: 群晖DSM发现与采集修复：①discovery _fetch_one增加群晖HTTP200+success=false应用层错误检查（105无权限不再误报为可用指标）；②discovery非array_walk指标sample_value为空时跳过；③collector同步增加群晖success=false检查+响应缓存None跳过（156实测：发现从误报5项变为正确0项） + v2.26.02: fix 056 migration revision ID overflow + NetApp ONTAP 9.8 perf metrics + v2.26.01: 工作流批次3健壮性修复：①validate_dag新校验（非condition/approval/parallel节点多出边拒存防静默丢分支、approval必须approved+rejected双出边、parallel分支必须沿链可达end）；②_check_workflow_completion根修（存在running/waiting活跃节点不终结，防并行未汇聚提前completed，断链兜底收尾防永久挂起）；③审批权限对齐（审批工单创建时approver_roles角色名解析为approver_role_ids写入custom_fields，itsm校验优先读custom_fields再回退TicketFlowConfig，前端配置角色名首次真正生效）；④cancel执行自动关闭waiting审批节点的pending_approval工单；⑤async审批工单补timeout_hours超时自动拒绝；⑥condition fail-open可观测（评估异常默认true但记录condition_error到节点result，async+sync双路径覆盖）；⑦告警触发工作流按trigger_config过滤metric_names/severities（空=全部触发向后兼容，前端新增告警触发配置表单）。233实测30/30 PASS+回归batch2 34/34、batch1b 6/6、batch1 17项通过。 等10项更新",
+  "notes": "v2.26.05: v2.26.05: NetApp磁盘健康修复：①磁盘列表URL追加fields=*（ONTAP 9.8不带fields仅返回name/_links，state全空导致36盘全显示故障）；②容量字段size改为usable_size（ONTAP 9.8实际字段名）兼容fallback、shelf嵌套对象取uid；③通用state兜底改厂商感知——NetApp保留分支归一化结果（spare→warning热备盘），华为走归一化，其他厂商维持原逻辑，修复spare盘被覆盖回unknown的覆盖bug；④前端存储详情页磁盘健康四态化（正常/预警/故障/未知），新增未知统计卡，unknown不再误显示为红色故障；⑤存储池CPU利用率行NetApp与Dell SC对齐显示'设备不支持'（ONTAP 9.8实测无任何REST CPU端点）。156实测：172.17.99.111共36盘=35正常+1预警（热备盘spare），故障0；存储池CPU行显示设备不支持 + v2.26.04: 存储资产详情页专用化——全站8个资产详情入口按asset_type分发：storage→assets-detail-storage.html（存储池/卷LUN/快照/性能IOPS延迟/磁盘健康专用Tab），其他类型仍走通用详情页。入口覆盖：资产列表/CMDB/资产分组/组织/数据中心/拓扑/ITSM工单/layout公共函数（dashboard/告警详情自动生效）。156实测通过：NetApp存储资产跳转专用页且数据渲染正常（21指标/存储池/性能/36磁盘），非存储资产仍走通用页 + v2.26.03: 群晖DSM发现与采集修复：①discovery _fetch_one增加群晖HTTP200+success=false应用层错误检查（105无权限不再误报为可用指标）；②discovery非array_walk指标sample_value为空时跳过；③collector同步增加群晖success=false检查+响应缓存None跳过（156实测：发现从误报5项变为正确0项） 等10项更新",
   "versions": [
+    {
+      "version": "2.26.05",
+      "released_at": "2026-09-19T14:24:23Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.26.05: NetApp磁盘健康修复：①磁盘列表URL追加fields=*（ONTAP 9.8不带fields仅返回name/_links，state全空导致36盘全显示故障）；②容量字段size改为usable_size（ONTAP 9.8实际字段名）兼容fallback、shelf嵌套对象取uid；③通用state兜底改厂商感知——NetApp保留分支归一化结果（spare→warning热备盘），华为走归一化，其他厂商维持原逻辑，修复spare盘被覆盖回unknown的覆盖bug；④前端存储详情页磁盘健康四态化（正常/预警/故障/未知），新增未知统计卡，unknown不再误显示为红色故障；⑤存储池CPU利用率行NetApp与Dell SC对齐显示'设备不支持'（ONTAP 9.8实测无任何REST CPU端点）。156实测：172.17.99.111共36盘=35正常+1预警（热备盘spare），故障0；存储池CPU行显示设备不支持",
+        "v2.26.04: 存储资产详情页专用化——全站8个资产详情入口按asset_type分发：storage→assets-detail-storage.html（存储池/卷LUN/快照/性能IOPS延迟/磁盘健康专用Tab），其他类型仍走通用详情页。入口覆盖：资产列表/CMDB/资产分组/组织/数据中心/拓扑/ITSM工单/layout公共函数（dashboard/告警详情自动生效）。156实测通过：NetApp存储资产跳转专用页且数据渲染正常（21指标/存储池/性能/36磁盘），非存储资产仍走通用页",
+        "v2.26.03: 群晖DSM发现与采集修复：①discovery _fetch_one增加群晖HTTP200+success=false应用层错误检查（105无权限不再误报为可用指标）；②discovery非array_walk指标sample_value为空时跳过；③collector同步增加群晖success=false检查+响应缓存None跳过（156实测：发现从误报5项变为正确0项）",
+        "v2.26.02: fix 056 migration revision ID overflow + NetApp ONTAP 9.8 perf metrics",
+        "v2.26.01: 工作流批次3健壮性修复：①validate_dag新校验（非condition/approval/parallel节点多出边拒存防静默丢分支、approval必须approved+rejected双出边、parallel分支必须沿链可达end）；②_check_workflow_completion根修（存在running/waiting活跃节点不终结，防并行未汇聚提前completed，断链兜底收尾防永久挂起）；③审批权限对齐（审批工单创建时approver_roles角色名解析为approver_role_ids写入custom_fields，itsm校验优先读custom_fields再回退TicketFlowConfig，前端配置角色名首次真正生效）；④cancel执行自动关闭waiting审批节点的pending_approval工单；⑤async审批工单补timeout_hours超时自动拒绝；⑥condition fail-open可观测（评估异常默认true但记录condition_error到节点result，async+sync双路径覆盖）；⑦告警触发工作流按trigger_config过滤metric_names/severities（空=全部触发向后兼容，前端新增告警触发配置表单）。233实测30/30 PASS+回归batch2 34/34、batch1b 6/6、batch1 17项通过。",
+        "v2.26.00: Redfish订阅兼容性实测修复：Token双通道（HttpHeaders头+Destination?rt=参数，老iDRAC拒收HttpHeaders字段）+ ingest端点双通道校验 + main.py路由注册顺序修复（Redfish推送端点移到通用Webhook {slug}路由之前）+ collector订阅集合路径动态发现与href前缀剥除（233实测全链路通过）",
+        "v2.25.20: Redfish事件订阅（EventDestination）+ HttpHeaders Token鉴权 + listener.py import bug修复",
+        "v2.25.19: 修复collect-tasks.html残余损坏并重建页面结构",
+        "v2.25.18: 采集任务批量操作 - 后端3个批量端点(batch-update/batch-delete/batch-create)+前端批量选择栏+5个批量操作+双任务创建弹窗; schemas新增BatchUpdateRequest/BatchDeleteRequest/BatchCreateRequest; collect-tasks.html内联JS迁出到独立JS文件",
+        "v2.25.17: SIPG生产Redfish采集offline根修+智能接入提速6项，233验证通过"
+      ]
+    },
     {
       "version": "2.26.03",
       "released_at": "2026-09-19T08:41:14Z",
