@@ -470,7 +470,10 @@ services:
     entrypoint: []
     command: python -m app.services.npm.receiver
     healthcheck:
-      test: ["CMD-SHELL", "cat /proc/1/cmdline | tr '\\0' ' ' | grep -q 'receiver' || exit 1"]
+      # v2.26.07: 二进制安全探针。旧写法 cat /proc/1/cmdline | tr '\0' ' ' 中
+      # YAML 双引号会把 \0 解析成真实 NUL 字节注入命令串，sh 收到含 NUL 的命令
+      # 直接报 exec /bin/sh: invalid argument 导致容器 unhealthy（130/SIPG 实锤）
+      test: ["CMD-SHELL", "grep -aq receiver /proc/1/cmdline || exit 1"]
       interval: 20s
       timeout: 5s
       retries: 3
