@@ -433,7 +433,7 @@ services:
       -c 16
       --max-tasks-per-child=100
       -Q celery,power
-      -I app.tasks.collect_tasks,app.tasks.capacity_tasks,app.tasks.patrol_tasks,app.tasks.scheduler,app.tasks.sentinel_tasks,app.tasks.link_tasks,app.tasks.sla_tasks,app.tasks.alert_escalation,app.tasks.report_tasks,app.tasks.topology_tasks,app.tasks.power_tasks,app.tasks.workflow_tasks,app.tasks.workflow_action_tasks,app.tasks.workflow_branch_tasks,app.tasks.problem_aggregation,app.tasks.asset_import_tasks
+      -I app.tasks.collect_tasks,app.tasks.capacity_tasks,app.tasks.patrol_tasks,app.tasks.scheduler,app.tasks.sentinel_tasks,app.tasks.link_tasks,app.tasks.sla_tasks,app.tasks.alert_escalation,app.tasks.report_tasks,app.tasks.topology_tasks,app.tasks.power_tasks,app.tasks.workflow_tasks,app.tasks.workflow_action_tasks,app.tasks.workflow_branch_tasks,app.tasks.problem_aggregation,app.tasks.asset_import_tasks,app.tasks.onboarding_tasks
     healthcheck:
       test: ["CMD-SHELL", "celery -A app.celery_app inspect ping --timeout 5 2>/dev/null | grep -q pong || (pgrep -f 'celery.*worker' > /dev/null && exit 0) || exit 1"]
       interval: 30s
