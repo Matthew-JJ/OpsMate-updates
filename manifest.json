@@ -3,7 +3,7 @@
   "latest_version": "2.26.17",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-09-23",
+  "release_date": "2026-09-24",
   "changelog": [
     "v2.26.17: 问题批遗留4项——大屏右列健康度面板矮视口保底+collect_tasks.metrics 4项if_*自指canonical_name根修+SNMP两层接口过滤统一保留Eth-Trunk聚合口+接口名称前缀白名单扩展七类Linux风格并大小写不敏感，3文件 12+/6-",
     "v2.26.16: 问题批(浅色温润米色护眼底token三档边框暖调字体+hex-tooltip无效token修复+监控采集接口过滤ifType白名单交换机90→60+可视化大屏双主题重构KPI卡带设备状态网格+拓扑大屏设备图标徽章卡片8类矢量+G6 label文本截断缺陷SVG文字根修两页含问题4遗留+大屏矮视口退化保底) + topology/screen内联JS迁出独立文件, 11文件 1299+/1025-",
@@ -45,7 +45,7 @@
   "versions": [
     {
       "version": "2.26.17",
-      "released_at": "2026-09-23T16:21:13Z",
+      "released_at": "2026-09-24T03:55:39Z",
       "download_url": "",
       "sha256": "",
       "size_bytes": 0,
