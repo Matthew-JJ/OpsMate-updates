@@ -1,20 +1,20 @@
 {
-  "latest": "2.26.21",
-  "latest_version": "2.26.21",
+  "latest": "2.26.26",
+  "latest_version": "2.26.26",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-09-28",
   "changelog": [
+    "fix(ci): v2.26.26 冒烟补占位环境变量——import app.main触发get_settings() fail-fast且解析DATABASE_URL建引擎，空值炸ArgumentError；233双分支实测定准5占位项，CI预期首次完整跑通两阶段构建",
+    "fix(ci): GitHub Actions表达式无lower()函数热修——GHCR命名空间改ghcr-ns步骤shell小写化经outputs传递(v2.26.25)",
+    "ci(双账号轮换): GHCR命名空间自适应——GHCR_NAMESPACE按发布账号owner小写+GHCR推送continue-on-error不阻断ACR主渠道+deploy链双命名空间按版本探测(v2.26.24)",
+    "版本递增 v2.26.23：发布物同步自动化消灭人肉漏步(sync-static.sh五步法+CI hub-sync重写+static-sync.yml手动补跑+host key固化+CI密钥入Secrets)+根修补提交(89a1e28五项根修+本次自动化改造),推送前红线要求",
+    "ci(static-sync): 发布物同步自动化消灭人肉漏步——新增scripts/sync-static.sh(本地/CI共用五步法: scp→sudo落位/opt/opsmate-hub/static→同步/opt/sentinel-hub/static备用目录→MD5双侧比对→HTTP 200验证,任一步失败exit1)；build-and-push.yml hub-sync步骤重写为调用脚本(旧内联三缺陷根修: StrictHostKeyChecking=no无防MITM/仅grep验证WARN不算失败=假成功,9月5日后v2.26.16/17/18/21发版静默失败实锤/漏同步sentinel备用目录)；新增static-sync.yml workflow_dispatch手动补跑通道(不发版也能同步/漏步后补跑)；host key固化scripts/static-hosts.known_hosts(防MITM)；RELEASE-GUIDELINES.md §5.4标注自动化优先+手动步骤降为兜底。WSL+CI密钥实测全流程通过(MD5双侧一致+HTTP 200)",
+    "fix(upgrade-chain): 升级链系统性根修补提交——v2.26.22(1be7cc5)漏提交实际修复,仅含版本行;本提交入库5项根修: (1)topology_tasks导入回归:celery_app.py对象名是app,写成from app.celery_app import celery_app致celery启动import_default_modules即崩(233崩溃循环实锤,py_compile抓不到); (2)两份compose新增init一次性服务root chown挂载卷1000:1000,backend/celery/flow-receiver挂depends_on service_completed_successfully,权限自愈挂每次启动必然入口不依赖升级脚本时序; (3)entrypoint.sh日志可写预检给出FATAL+可行动指引,替代PermissionError天书traceback; (4)升级脚本自更新陷阱:mv覆盖正在执行的自己致新逻辑本次不生效(chown被漏跑),改为OPSMATE_SELF_UPDATE=1 exec bash ./opsmate upgrade续跑新脚本;健康等待补celery;升级未过健康验证exit 1响亮失败替代warn后假报升级完成; (5)CI运行时导入冒烟:真实执行import app.main + celery import_default_modules,编译过但跑不起来的模块级错误在CI现形。233已全量实测(bash -n/compose config/渲染检查/行为双分支)",
+    "版本递增 v2.26.22：升级链系统性根修(topology_tasks导入回归+compose init权限自愈+entrypoint可写预检+升级脚本自更新陷阱/假成功根修+CI运行时导入冒烟)，推送前红线要求",
     "版本递增 v2.26.21：CI构建修复——snmp_data.sql.gz恢复入库(v2.26.19仓库卫生误分类回归致v2.26.20 postgres镜像构建失败),推送前红线要求",
     "fix(ci): snmp_data.sql.gz恢复入库——它是Dockerfile.postgres构建输入(CI必需),v2.26.19仓库卫生误将其归类v2.10.0遗留大件拉黑致v2.26.20 CI postgres构建COPY失败;恢复的正是v2.26.18 CI所用黄金基线blob(f3eb057,.temp/baseline-check哈希一致),backend/旧副本仍忽略",
-    "版本递增 v2.26.20：审计全量修复+决策2 flow写入根修+决策1 Docker非root(setcap根修特权端口)+决策6a demo默认关闭（推送前红线要求，Boss已确认推送）",
-    "决策6a：demo-login保留但默认关闭——fail-closed修正(getattr兜底True改False) + 新增公开状态端点GET /auth/demo-login/status + demo-access.html三个死按钮真实接线(demo-login获取viewer只读会话)并随开关联动隐藏（233实测关闭/开启双态+Playwright UI验证全绿）",
-    "决策1根修：非root容器233实测发现cap_add对非root无效(能力不落effective set)改为镜像setcap文件能力(旧Docker模拟下514/162绑定通过) + 4个部署/升级脚本补齐挂载卷chown 1000:1000 + deploy-offline.sh被.gitignore deploy-*.sh误伤补入库",
-    "决策2根修：pollers ingest_flows废弃手拼SQL统一委托FlowWriter + write_flows同主键合并求和修复upsert覆盖丢数据（233实测4条输入落库3行全量回收）",
-    "审计报告全量修复：P1×15 + P2×24 + P3×30（待Boss确认推送，未递增版本号）",
-    "批次6续：★5 AUTO_BIND_MAP假接管拆除（拍板③）",
-    "批次6续：全站ID-only拼接点转义收口（拍板②）+basicRows索引错位修复（拍板①）",
-    "批次6修复：★1/★2/★3/★4/★6/★7 清零（★5 待拍板，未推送）"
+    "版本递增 v2.26.20：审计全量修复+决策2 flow写入根修+决策1 Docker非root(setcap根修特权端口)+决策6a demo默认关闭（推送前红线要求，Boss已确认推送）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.26.21: 版本递增 v2.26.21：CI构建修复——snmp_data.sql.gz恢复入库(v2.26.19仓库卫生误分类回归致v2.26.20 postgres镜像构建失败),推送前红线要求 + fix(ci): snmp_data.sql.gz恢复入库——它是Dockerfile.postgres构建输入(CI必需),v2.26.19仓库卫生误将其归类v2.10.0遗留大件拉黑致v2.26.20 CI postgres构建COPY失败;恢复的正是v2.26.18 CI所用黄金基线blob(f3eb057,.temp/baseline-check哈希一致),backend/旧副本仍忽略 + 版本递增 v2.26.20：审计全量修复+决策2 flow写入根修+决策1 Docker非root(setcap根修特权端口)+决策6a demo默认关闭（推送前红线要求，Boss已确认推送） 等10项更新",
+  "notes": "v2.26.26: fix(ci): v2.26.26 冒烟补占位环境变量——import app.main触发get_settings() fail-fast且解析DATABASE_URL建引擎，空值炸ArgumentError；233双分支实测定准5占位项，CI预期首次完整跑通两阶段构建 + fix(ci): GitHub Actions表达式无lower()函数热修——GHCR命名空间改ghcr-ns步骤shell小写化经outputs传递(v2.26.25) + ci(双账号轮换): GHCR命名空间自适应——GHCR_NAMESPACE按发布账号owner小写+GHCR推送continue-on-error不阻断ACR主渠道+deploy链双命名空间按版本探测(v2.26.24) 等10项更新",
   "versions": [
+    {
+      "version": "2.26.26",
+      "released_at": "2026-09-28T10:24:00Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix(ci): v2.26.26 冒烟补占位环境变量——import app.main触发get_settings() fail-fast且解析DATABASE_URL建引擎，空值炸ArgumentError；233双分支实测定准5占位项，CI预期首次完整跑通两阶段构建",
+        "fix(ci): GitHub Actions表达式无lower()函数热修——GHCR命名空间改ghcr-ns步骤shell小写化经outputs传递(v2.26.25)",
+        "ci(双账号轮换): GHCR命名空间自适应——GHCR_NAMESPACE按发布账号owner小写+GHCR推送continue-on-error不阻断ACR主渠道+deploy链双命名空间按版本探测(v2.26.24)",
+        "版本递增 v2.26.23：发布物同步自动化消灭人肉漏步(sync-static.sh五步法+CI hub-sync重写+static-sync.yml手动补跑+host key固化+CI密钥入Secrets)+根修补提交(89a1e28五项根修+本次自动化改造),推送前红线要求",
+        "ci(static-sync): 发布物同步自动化消灭人肉漏步——新增scripts/sync-static.sh(本地/CI共用五步法: scp→sudo落位/opt/opsmate-hub/static→同步/opt/sentinel-hub/static备用目录→MD5双侧比对→HTTP 200验证,任一步失败exit1)；build-and-push.yml hub-sync步骤重写为调用脚本(旧内联三缺陷根修: StrictHostKeyChecking=no无防MITM/仅grep验证WARN不算失败=假成功,9月5日后v2.26.16/17/18/21发版静默失败实锤/漏同步sentinel备用目录)；新增static-sync.yml workflow_dispatch手动补跑通道(不发版也能同步/漏步后补跑)；host key固化scripts/static-hosts.known_hosts(防MITM)；RELEASE-GUIDELINES.md §5.4标注自动化优先+手动步骤降为兜底。WSL+CI密钥实测全流程通过(MD5双侧一致+HTTP 200)",
+        "fix(upgrade-chain): 升级链系统性根修补提交——v2.26.22(1be7cc5)漏提交实际修复,仅含版本行;本提交入库5项根修: (1)topology_tasks导入回归:celery_app.py对象名是app,写成from app.celery_app import celery_app致celery启动import_default_modules即崩(233崩溃循环实锤,py_compile抓不到); (2)两份compose新增init一次性服务root chown挂载卷1000:1000,backend/celery/flow-receiver挂depends_on service_completed_successfully,权限自愈挂每次启动必然入口不依赖升级脚本时序; (3)entrypoint.sh日志可写预检给出FATAL+可行动指引,替代PermissionError天书traceback; (4)升级脚本自更新陷阱:mv覆盖正在执行的自己致新逻辑本次不生效(chown被漏跑),改为OPSMATE_SELF_UPDATE=1 exec bash ./opsmate upgrade续跑新脚本;健康等待补celery;升级未过健康验证exit 1响亮失败替代warn后假报升级完成; (5)CI运行时导入冒烟:真实执行import app.main + celery import_default_modules,编译过但跑不起来的模块级错误在CI现形。233已全量实测(bash -n/compose config/渲染检查/行为双分支)",
+        "版本递增 v2.26.22：升级链系统性根修(topology_tasks导入回归+compose init权限自愈+entrypoint可写预检+升级脚本自更新陷阱/假成功根修+CI运行时导入冒烟)，推送前红线要求",
+        "版本递增 v2.26.21：CI构建修复——snmp_data.sql.gz恢复入库(v2.26.19仓库卫生误分类回归致v2.26.20 postgres镜像构建失败),推送前红线要求",
+        "fix(ci): snmp_data.sql.gz恢复入库——它是Dockerfile.postgres构建输入(CI必需),v2.26.19仓库卫生误将其归类v2.10.0遗留大件拉黑致v2.26.20 CI postgres构建COPY失败;恢复的正是v2.26.18 CI所用黄金基线blob(f3eb057,.temp/baseline-check哈希一致),backend/旧副本仍忽略",
+        "版本递增 v2.26.20：审计全量修复+决策2 flow写入根修+决策1 Docker非root(setcap根修特权端口)+决策6a demo默认关闭（推送前红线要求，Boss已确认推送）"
+      ]
+    },
     {
       "version": "2.26.21",
       "released_at": "2026-09-28T03:26:19Z",
