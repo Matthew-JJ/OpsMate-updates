@@ -181,10 +181,10 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-opsmate_dev_2026}
       POSTGRES_REPLICATION_USER: replicator
       POSTGRES_REPLICATION_PASSWORD: ${POSTGRES_REPLICATION_PASSWORD:-repl_dev_2026}
-    # ⚠️ 生产环境安全警告：以下端口映射会暴露数据库到宿主机网络
-    # 部署到公网前务必注释掉 ports 段，仅通过 Docker 内部网络访问
-    ports:
-      - "5432:5432"  # ⚠️ 生产环境应关闭，仅开发/调试使用
+    # ⚠️ 审计 P1-2：默认已注释——数据库/缓存端口不暴露到宿主机，公网部署零暴露面；
+    # 本地调试需要直连时取消下行注释
+    # ports:
+    #   - "5432:5432"  # 仅开发/调试使用
     volumes:
       - postgres_data:/var/lib/postgresql/data
     entrypoint: []
@@ -219,9 +219,9 @@ services:
       POSTGRES_REPLICATION_PASSWORD: ${POSTGRES_REPLICATION_PASSWORD:-repl_dev_2026}
       POSTGRES_PRIMARY_HOST: postgres
       POSTGRES_PRIMARY_PORT: "5432"
-    # ⚠️ 生产环境安全警告：从库端口映射同主库，公网部署前务必注释
-    ports:
-      - "5433:5432"  # ⚠️ 生产环境应关闭，仅开发/调试使用
+    # ⚠️ 审计 P1-2：默认已注释——从库端口不暴露到宿主机；本地调试需要时取消下行注释
+    # ports:
+    #   - "5433:5432"  # 仅开发/调试使用
     volumes:
       - postgres_replica_data:/var/lib/postgresql/data
     entrypoint: []
@@ -275,18 +275,19 @@ services:
     container_name: opsmate-tdengine
     restart: unless-stopped
     logging: *default-logging
-    # ⚠️ 生产环境安全警告：6030/6041暴露到宿主机网络
-    # 公网部署前务必注释掉 ports 段，仅通过 Docker 内部网络访问
-    ports:
-      - "6030:6030"  # ⚠️ 生产环境应关闭
-      - "6041:6041"  # ⚠️ 生产环境应关闭
+    # ⚠️ 审计 P1-2：默认已注释——时序库端口不暴露到宿主机；本地调试需要时取消下行注释
+    # ports:
+    #   - "6030:6030"  # 仅开发/调试使用
+    #   - "6041:6041"  # 仅开发/调试使用
     environment:
       # 探活脚本用：taos CLI 需要与 TDengine root 密码一致，密码由 .env 的 TDENGINE_PASSWORD 提供
       TDENGINE_PASSWORD: ${TDENGINE_PASSWORD:-taosdata}
     volumes:
       - tdengine_data:/var/lib/taos
     healthcheck:
-      test: ["CMD-SHELL", "taos -u root -p$$TDENGINE_PASSWORD -s 'SELECT server_version()'"]
+      # 双密码探测：新密码或初始密码 taosdata 任一可连即 healthy。
+      # 新装首启时密码同步（ALTER）由部署脚本在 healthy 后执行，期间用初始密码探活避免死锁等待（审计 P1-2）
+      test: ["CMD-SHELL", "taos -u root -p\"$${TDENGINE_PASSWORD}\" -s 'SELECT server_version();' 2>/dev/null || taos -u root -ptaosdata -s 'SELECT server_version();' 2>/dev/null || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -302,10 +303,9 @@ services:
     command: redis-server --requirepass ${REDIS_PASSWORD:-redis_dev_2026} --maxmemory 512mb --maxmemory-policy allkeys-lru
     environment:
       REDIS_PASSWORD: ${REDIS_PASSWORD:-redis_dev_2026}
-    # ⚠️ 生产环境安全警告：Redis端口暴露到宿主机网络
-    # 公网部署前务必注释掉 ports 段
-    ports:
-      - "6379:6379"  # ⚠️ 生产环境应关闭
+    # ⚠️ 审计 P1-2：默认已注释——Redis端口不暴露到宿主机；本地调试需要时取消下行注释
+    # ports:
+    #   - "6379:6379"  # 仅开发/调试使用
     volumes:
       - redis_data:/data
     healthcheck:
@@ -371,6 +371,12 @@ services:
       # - "8000:8000"  # ⚠️ 已禁用：绕过nginx安全头/限速，生产环境勿开
       - "162:162/udp"   # SNMP Trap
       - "1514:514/udp"   # Syslog（非root Docker需用高端口映射）
+    # 审计 P1-1：非 root（uid 1000）绑定 162/514 特权端口。
+    # 233 实测：cap_add 对非 root 进程无效（能力不落 effective set），实际机制是
+    # 镜像内 setcap 文件能力（Dockerfile 给 python 授 CAP_NET_BIND_SERVICE）；
+    # cap_add 保留作运行时差异时的补充，无副作用
+    cap_add:
+      - NET_BIND_SERVICE
     environment:
       <<: *backend-env
       MIGRATION_ROLE: primary   # entrypoint.sh 迁移失败硬退出（celery/flow-receiver 用 entrypoint:[] 不受影响）
@@ -433,7 +439,6 @@ services:
       -c 16
       --max-tasks-per-child=100
       -Q celery,power
-      -I app.tasks.collect_tasks,app.tasks.capacity_tasks,app.tasks.patrol_tasks,app.tasks.scheduler,app.tasks.sentinel_tasks,app.tasks.link_tasks,app.tasks.sla_tasks,app.tasks.alert_escalation,app.tasks.report_tasks,app.tasks.topology_tasks,app.tasks.power_tasks,app.tasks.workflow_tasks,app.tasks.workflow_action_tasks,app.tasks.workflow_branch_tasks,app.tasks.problem_aggregation,app.tasks.asset_import_tasks,app.tasks.onboarding_tasks
     healthcheck:
       test: ["CMD-SHELL", "celery -A app.celery_app inspect ping --timeout 5 2>/dev/null | grep -q pong || (pgrep -f 'celery.*worker' > /dev/null && exit 0) || exit 1"]
       interval: 30s
