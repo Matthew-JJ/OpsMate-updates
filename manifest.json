@@ -1,20 +1,20 @@
 {
-  "latest": "2.26.18",
-  "latest_version": "2.26.18",
+  "latest": "2.26.21",
+  "latest_version": "2.26.21",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-09-25",
+  "release_date": "2026-09-28",
   "changelog": [
-    "v2.26.18: 拓扑正常态节点描边绿色统一——topology.js正常分支nodeStroke改success，与大屏在线绿语义及本页图例/详情面板一致，告警红橙/离线灰不变，1文件 2+/1-",
-    "v2.26.18: 采集日志降噪——snmp_collector无OID条目warning降为debug（计算/派生指标rate/percent等无OID属正常设计由后处理计算产出），消除每轮9条误报警告，2文件 4+/2-",
-    "v2.26.17: 问题批遗留4项——大屏右列健康度面板矮视口保底+collect_tasks.metrics 4项if_*自指canonical_name根修+SNMP两层接口过滤统一保留Eth-Trunk聚合口+接口名称前缀白名单扩展七类Linux风格并大小写不敏感，3文件 12+/6-",
-    "v2.26.16: 问题批(浅色温润米色护眼底token三档边框暖调字体+hex-tooltip无效token修复+监控采集接口过滤ifType白名单交换机90→60+可视化大屏双主题重构KPI卡带设备状态网格+拓扑大屏设备图标徽章卡片8类矢量+G6 label文本截断缺陷SVG文字根修两页含问题4遗留+大屏矮视口退化保底) + topology/screen内联JS迁出独立文件, 11文件 1299+/1025-",
-    "v2.26.15: 实测问题修复批(P1×3端点500根修: available-metrics补实现/config-backups统计date_trunc绑定参数/capacity-risks IN(None); P2×2: 卷LUN状态对象归一+badge-danger/报表在线下载跳过AI Sheet 0.29s; 顺带修snapState) + 前端配色重构Ant Design基准(双主题token三组+topo两页跟随+浅色徽标WCAG加深+57点量化+双主题走查), 17文件 388+/145-",
-    "v2.26.14: 前端深浅主题切换(62页data-theme双主题+顶栏切换按钮+防闪烁内联脚本+topology/screen G6色板token化) + Redfish事件筛选(事件级别可配置+info事件治理,新增迁移058与event_filters/event_logs表), 71文件 1198+/52-",
-    "v2.26.13: cmdb_push白名单字段映射修复(description/owner别名映射到remark/responsible不再静默丢弃,兼容已有工作流配置;前端fields示例改真实字段) 3文件",
-    "v2.26.13: cmdb_push tags写入归一化(字符串/非法类型不再穿透入库,防脏数据把资产列表接口打挂) 2文件 24+/0-",
-    "v2.26.12: 温度传感器语义修复(CPU_Tjmax结温上限误报+进风温度Riser抢占)，5文件 83+/12-",
-    "v2.26.11: 采集任务连续认证失败自动禁用开关(防BMC被锁)"
+    "版本递增 v2.26.21：CI构建修复——snmp_data.sql.gz恢复入库(v2.26.19仓库卫生误分类回归致v2.26.20 postgres镜像构建失败),推送前红线要求",
+    "fix(ci): snmp_data.sql.gz恢复入库——它是Dockerfile.postgres构建输入(CI必需),v2.26.19仓库卫生误将其归类v2.10.0遗留大件拉黑致v2.26.20 CI postgres构建COPY失败;恢复的正是v2.26.18 CI所用黄金基线blob(f3eb057,.temp/baseline-check哈希一致),backend/旧副本仍忽略",
+    "版本递增 v2.26.20：审计全量修复+决策2 flow写入根修+决策1 Docker非root(setcap根修特权端口)+决策6a demo默认关闭（推送前红线要求，Boss已确认推送）",
+    "决策6a：demo-login保留但默认关闭——fail-closed修正(getattr兜底True改False) + 新增公开状态端点GET /auth/demo-login/status + demo-access.html三个死按钮真实接线(demo-login获取viewer只读会话)并随开关联动隐藏（233实测关闭/开启双态+Playwright UI验证全绿）",
+    "决策1根修：非root容器233实测发现cap_add对非root无效(能力不落effective set)改为镜像setcap文件能力(旧Docker模拟下514/162绑定通过) + 4个部署/升级脚本补齐挂载卷chown 1000:1000 + deploy-offline.sh被.gitignore deploy-*.sh误伤补入库",
+    "决策2根修：pollers ingest_flows废弃手拼SQL统一委托FlowWriter + write_flows同主键合并求和修复upsert覆盖丢数据（233实测4条输入落库3行全量回收）",
+    "审计报告全量修复：P1×15 + P2×24 + P3×30（待Boss确认推送，未递增版本号）",
+    "批次6续：★5 AUTO_BIND_MAP假接管拆除（拍板③）",
+    "批次6续：全站ID-only拼接点转义收口（拍板②）+basicRows索引错位修复（拍板①）",
+    "批次6修复：★1/★2/★3/★4/★6/★7 清零（★5 待拍板，未推送）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.26.18: v2.26.18: 拓扑正常态节点描边绿色统一——topology.js正常分支nodeStroke改success，与大屏在线绿语义及本页图例/详情面板一致，告警红橙/离线灰不变，1文件 2+/1- + v2.26.18: 采集日志降噪——snmp_collector无OID条目warning降为debug（计算/派生指标rate/percent等无OID属正常设计由后处理计算产出），消除每轮9条误报警告，2文件 4+/2- + v2.26.17: 问题批遗留4项——大屏右列健康度面板矮视口保底+collect_tasks.metrics 4项if_*自指canonical_name根修+SNMP两层接口过滤统一保留Eth-Trunk聚合口+接口名称前缀白名单扩展七类Linux风格并大小写不敏感，3文件 12+/6- 等10项更新",
+  "notes": "v2.26.21: 版本递增 v2.26.21：CI构建修复——snmp_data.sql.gz恢复入库(v2.26.19仓库卫生误分类回归致v2.26.20 postgres镜像构建失败),推送前红线要求 + fix(ci): snmp_data.sql.gz恢复入库——它是Dockerfile.postgres构建输入(CI必需),v2.26.19仓库卫生误将其归类v2.10.0遗留大件拉黑致v2.26.20 CI postgres构建COPY失败;恢复的正是v2.26.18 CI所用黄金基线blob(f3eb057,.temp/baseline-check哈希一致),backend/旧副本仍忽略 + 版本递增 v2.26.20：审计全量修复+决策2 flow写入根修+决策1 Docker非root(setcap根修特权端口)+决策6a demo默认关闭（推送前红线要求，Boss已确认推送） 等10项更新",
   "versions": [
+    {
+      "version": "2.26.21",
+      "released_at": "2026-09-28T03:26:19Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "版本递增 v2.26.21：CI构建修复——snmp_data.sql.gz恢复入库(v2.26.19仓库卫生误分类回归致v2.26.20 postgres镜像构建失败),推送前红线要求",
+        "fix(ci): snmp_data.sql.gz恢复入库——它是Dockerfile.postgres构建输入(CI必需),v2.26.19仓库卫生误将其归类v2.10.0遗留大件拉黑致v2.26.20 CI postgres构建COPY失败;恢复的正是v2.26.18 CI所用黄金基线blob(f3eb057,.temp/baseline-check哈希一致),backend/旧副本仍忽略",
+        "版本递增 v2.26.20：审计全量修复+决策2 flow写入根修+决策1 Docker非root(setcap根修特权端口)+决策6a demo默认关闭（推送前红线要求，Boss已确认推送）",
+        "决策6a：demo-login保留但默认关闭——fail-closed修正(getattr兜底True改False) + 新增公开状态端点GET /auth/demo-login/status + demo-access.html三个死按钮真实接线(demo-login获取viewer只读会话)并随开关联动隐藏（233实测关闭/开启双态+Playwright UI验证全绿）",
+        "决策1根修：非root容器233实测发现cap_add对非root无效(能力不落effective set)改为镜像setcap文件能力(旧Docker模拟下514/162绑定通过) + 4个部署/升级脚本补齐挂载卷chown 1000:1000 + deploy-offline.sh被.gitignore deploy-*.sh误伤补入库",
+        "决策2根修：pollers ingest_flows废弃手拼SQL统一委托FlowWriter + write_flows同主键合并求和修复upsert覆盖丢数据（233实测4条输入落库3行全量回收）",
+        "审计报告全量修复：P1×15 + P2×24 + P3×30（待Boss确认推送，未递增版本号）",
+        "批次6续：★5 AUTO_BIND_MAP假接管拆除（拍板③）",
+        "批次6续：全站ID-only拼接点转义收口（拍板②）+basicRows索引错位修复（拍板①）",
+        "批次6修复：★1/★2/★3/★4/★6/★7 清零（★5 待拍板，未推送）"
+      ]
+    },
     {
       "version": "2.26.18",
       "released_at": "2026-09-25T04:56:21Z",
