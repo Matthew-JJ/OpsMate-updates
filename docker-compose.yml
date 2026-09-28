@@ -19,7 +19,7 @@
 #
 # 常用配置：
 #   国内用户（ACR全量）：IMAGE_REGISTRY=crpi-xxx  IMAGE_NAMESPACE=opsmate  BASE_REGISTRY=crpi-xxx  BASE_NAMESPACE=opsmate
-#   国内用户（GHCR镜像站）：IMAGE_REGISTRY=ghcr.nju.edu.cn  IMAGE_NAMESPACE=matthew-jj
+#   国内用户（GHCR镜像站）：IMAGE_REGISTRY=ghcr.nju.edu.cn  IMAGE_NAMESPACE=matthew-jj 或 matthew-jiang-cn（v2.26.24 双账号轮换，按发布账号）
 #   海外用户：无需配置，默认 ghcr.io + docker.io
 x-backend-image: &backend-image
   image: ${IMAGE_REGISTRY:-ghcr.io}/${IMAGE_NAMESPACE:-matthew-jj}/opsmate-backend:${OPSMATE_VERSION:-latest}
@@ -357,6 +357,32 @@ services:
     <<: *sentinel-common
     container_name: opsmate-sentinel-3
 
+  # ========== Init：挂载卷权限自愈（v2.26.22 根修，一次性服务） ==========
+  # 每次 docker compose up 必然先把挂载卷 chown 给 uid 1000，再拉起业务容器。
+  # 根因（2026-09-28 233 升级翻车）：升级脚本"5/8 自我更新"时 mv 覆盖正在执行的自己，
+  # bash 继续执行旧脚本逻辑，新加的 chown 步骤本次不生效；非 root 新镜像接管 root 属主
+  # 旧日志文件后 PermissionError 崩溃循环。权限修复必须挂在"每次启动必然执行"的入口，
+  # 不能依赖升级脚本的执行时序。init 完成后 backend/celery/flow-receiver 才会启动。
+  init:
+    <<: *backend-image
+    container_name: opsmate-init
+    user: root
+    restart: "no"
+    networks:
+      - opsmate-net
+    logging: *default-logging
+    entrypoint: ["/bin/sh", "-c"]
+    command:
+      - |
+        echo "[init] chown 挂载卷 -> 1000:1000 (ssl/reports/logs/license)"
+        chown -R 1000:1000 /opt/opsmate/ssl /opt/opsmate/reports /opt/opsmate/logs /opt/opsmate/license || echo "[init] WARN: chown 部分失败（对应卷可能未挂载），继续启动"
+        echo "[init] done"
+    volumes:
+      - ${OPSMATE_DIR:-/opt/opsmate}/ssl:/opt/opsmate/ssl
+      - ${OPSMATE_DIR:-/opt/opsmate}/reports:/opt/opsmate/reports
+      - ${OPSMATE_DIR:-/opt/opsmate}/logs:/opt/opsmate/logs
+      - ${OPSMATE_DIR:-/opt/opsmate}/license:/opt/opsmate/license
+
   # ========== Backend API (FastAPI + Uvicorn 4 Workers) ==========
   backend:
     <<: *backend-common
@@ -382,6 +408,8 @@ services:
       MIGRATION_ROLE: primary   # entrypoint.sh 迁移失败硬退出（celery/flow-receiver 用 entrypoint:[] 不受影响）
       DISCOVERY_FULL_TIMEOUT: "180"
     depends_on:
+      init:
+        condition: service_completed_successfully
       postgres:
         condition: service_healthy
       redis:
@@ -421,6 +449,8 @@ services:
     environment:
       <<: *backend-env
     depends_on:
+      init:
+        condition: service_completed_successfully
       postgres:
         condition: service_healthy
       redis:
@@ -464,6 +494,8 @@ services:
     environment:
       <<: *backend-env
     depends_on:
+      init:
+        condition: service_completed_successfully
       postgres:
         condition: service_healthy
       redis:
