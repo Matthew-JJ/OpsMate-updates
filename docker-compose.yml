@@ -368,9 +368,16 @@ services:
     container_name: opsmate-init
     user: root
     restart: "no"
+    # v2.26.28 根修（233升级实测）：init 之前缺 env，persist_machine_fingerprint
+    # 调 get_settings() fail-fast（JWT_SECRET_KEY/DATABASE_URL 未配置）后走免底，
+    # 根相位指纹在 DMI 仅 root 可读的机器上退化；与 backend 同源注入环境
+    env_file:
+      - ./backend/.env
     networks:
       - opsmate-net
     logging: *default-logging
+    environment:
+      <<: *backend-env
     entrypoint: ["/bin/sh", "-c"]
     command:
       - |
