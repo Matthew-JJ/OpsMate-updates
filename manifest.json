@@ -1,10 +1,11 @@
 {
-  "latest": "2.26.32",
-  "latest_version": "2.26.32",
+  "latest": "2.26.33",
+  "latest_version": "2.26.33",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-10-02",
   "changelog": [
+    "fix(regression): 门槛②回归4项新增条目根修——workflow-editor LogicFlow尺寸字符串致画布塌陷/节点越界+季度报表Q4月份进位必崩500+screen fullscreen异步拒绝未捕获pageerror+org descendants存在性泄露(v2.26.33)",
     "fix(p1): W2-W3批次P1根修——license 8处fromisoformat崩溃+指纹持久化原子写+资产台账导出单元格清洗(v2.26.32)",
     "fix(security): W2安全P1x3+功能P1x2根修——asset_policies跨租户写+org_scope/self_heal组织越权+listener回调UnboundLocal全断+redfish None解引用(v2.26.31)",
     "fix(scripts): 假升级全族根修——pull/load吞退出码、假成功横幅、无tar死代码、缺镜像一致性校验(v2.26.30)",
@@ -13,8 +14,7 @@
     "fix(全量): 233全功能测试问题修复(P1x1+P2x3+P3x3)+维护记录时区根修(v2.26.27)",
     "fix(ci): v2.26.26 冒烟补占位环境变量——import app.main触发get_settings() fail-fast且解析DATABASE_URL建引擎，空值炸ArgumentError；233双分支实测定准5占位项，CI预期首次完整跑通两阶段构建",
     "fix(ci): GitHub Actions表达式无lower()函数热修——GHCR命名空间改ghcr-ns步骤shell小写化经outputs传递(v2.26.25)",
-    "ci(双账号轮换): GHCR命名空间自适应——GHCR_NAMESPACE按发布账号owner小写+GHCR推送continue-on-error不阻断ACR主渠道+deploy链双命名空间按版本探测(v2.26.24)",
-    "版本递增 v2.26.23：发布物同步自动化消灭人肉漏步(sync-static.sh五步法+CI hub-sync重写+static-sync.yml手动补跑+host key固化+CI密钥入Secrets)+根修补提交(89a1e28五项根修+本次自动化改造),推送前红线要求"
+    "ci(双账号轮换): GHCR命名空间自适应——GHCR_NAMESPACE按发布账号owner小写+GHCR推送continue-on-error不阻断ACR主渠道+deploy链双命名空间按版本探测(v2.26.24)"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.26.32: fix(p1): W2-W3批次P1根修——license 8处fromisoformat崩溃+指纹持久化原子写+资产台账导出单元格清洗(v2.26.32) + fix(security): W2安全P1x3+功能P1x2根修——asset_policies跨租户写+org_scope/self_heal组织越权+listener回调UnboundLocal全断+redfish None解引用(v2.26.31) + fix(scripts): 假升级全族根修——pull/load吞退出码、假成功横幅、无tar死代码、缺镜像一致性校验(v2.26.30) 等10项更新",
+  "notes": "v2.26.33: fix(regression): 门槛②回归4项新增条目根修——workflow-editor LogicFlow尺寸字符串致画布塌陷/节点越界+季度报表Q4月份进位必崩500+screen fullscreen异步拒绝未捕获pageerror+org descendants存在性泄露(v2.26.33) + fix(p1): W2-W3批次P1根修——license 8处fromisoformat崩溃+指纹持久化原子写+资产台账导出单元格清洗(v2.26.32) + fix(security): W2安全P1x3+功能P1x2根修——asset_policies跨租户写+org_scope/self_heal组织越权+listener回调UnboundLocal全断+redfish None解引用(v2.26.31) 等10项更新",
   "versions": [
+    {
+      "version": "2.26.33",
+      "released_at": "2026-10-02T09:13:55Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix(regression): 门槛②回归4项新增条目根修——workflow-editor LogicFlow尺寸字符串致画布塌陷/节点越界+季度报表Q4月份进位必崩500+screen fullscreen异步拒绝未捕获pageerror+org descendants存在性泄露(v2.26.33)",
+        "fix(p1): W2-W3批次P1根修——license 8处fromisoformat崩溃+指纹持久化原子写+资产台账导出单元格清洗(v2.26.32)",
+        "fix(security): W2安全P1x3+功能P1x2根修——asset_policies跨租户写+org_scope/self_heal组织越权+listener回调UnboundLocal全断+redfish None解引用(v2.26.31)",
+        "fix(scripts): 假升级全族根修——pull/load吞退出码、假成功横幅、无tar死代码、缺镜像一致性校验(v2.26.30)",
+        "fix(alert_evaluator): 抑制告警记录构造根修——UUID二次包装/非列键ORM构造/脏数据多条三处必崩(v2.26.29)",
+        "fix(init): init服务环境注入根修——补env_file/environment与backend同源(v2.26.28)",
+        "fix(全量): 233全功能测试问题修复(P1x1+P2x3+P3x3)+维护记录时区根修(v2.26.27)",
+        "fix(ci): v2.26.26 冒烟补占位环境变量——import app.main触发get_settings() fail-fast且解析DATABASE_URL建引擎，空值炸ArgumentError；233双分支实测定准5占位项，CI预期首次完整跑通两阶段构建",
+        "fix(ci): GitHub Actions表达式无lower()函数热修——GHCR命名空间改ghcr-ns步骤shell小写化经outputs传递(v2.26.25)",
+        "ci(双账号轮换): GHCR命名空间自适应——GHCR_NAMESPACE按发布账号owner小写+GHCR推送continue-on-error不阻断ACR主渠道+deploy链双命名空间按版本探测(v2.26.24)"
+      ]
+    },
     {
       "version": "2.26.32",
       "released_at": "2026-10-02T03:32:03Z",
