@@ -1,10 +1,11 @@
 {
-  "latest": "2.26.40",
-  "latest_version": "2.26.40",
+  "latest": "2.26.41",
+  "latest_version": "2.26.41",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-10-06",
   "changelog": [
+    "v2.26.41: 233三大功能实测挖出3缺陷根修（A工作流软删除/B节点失败如实上报/C自愈SSH退出码+超时对齐）",
     "v2.26.40: vibe审核P2重复字典键修复——initial_metric_catalog source_names.snmp两处重复键(battery_status/temp_status后写覆盖丢厂商提示,改拼接惯例apc_dell/dell_ibm对齐cisco_ruijie/huawei_h3c先例);零功能影响三重实证(反向索引_build_reverse_indices只用键建索引/has_vendor_hint全库仅消费generic_64bit/alembic031复合hint前缀推断兼容);AST复扫dup_dict_key归零,py_compile过,233真机app包导入验证ALL PASS(931条目录)",
     "v2.26.39: vibe审核4项P1根修——topology_service补导入RELATION_TYPE_GROUP/RELATION_TYPE_LABELS(漏导入致拓扑图有关系即500,v2.14.1引入,233行为测试200->建关系仍200);patrol_service补导入Asset(L202先用后绑UnboundLocalError被吞致巡检自动合并推荐指标从未生效,v2.25.06引入,233行为测试->成功合并3指标53->56);anomaly_detection补import uuid(peer_compare同类资产比对静默失效,v2.23.16引入);dashboard补导入get_settings(vCenter集群视图指标恒空,v2.0引入);绑定验证5/5,模块导入OK,233行为测试2项通过",
     "v2.26.38: 源码审查11项P1全根修(P1x10+F-P2-04假数据页升P1)——P1-2段级失败豁免(redfish产_incomplete_types:power/thermal间歇500->psu/fan、Chassis失败->nic/mgmt_nic/psu/fan、预算耗尽->该段起、异常中断->全部;sync_components(_sync)豁免移除/R1缓冲/幽灵清理,233测试12/12)+P1-1快照守卫接批量路径(抽取_apply_missing_strike_guard两路共用,原仅单任务路径致调度器走批量时守卫未生效,233测试11/11)+P1-3资产分组双租户校验+P1-4租户树过滤+P1-5 ai_ops递归崩溃+P1-6拓扑多凭证逐个尝试+P1-7 report_html XSS+markdown弃用改纯文本(233测试16/16)+P1-8工单动作租户过滤+P1-9 ACK风暴防复发+P1-10 workflow.html XSS+F-P2-04假数据页改提示卡;14文件编译全绿,行为测试45项全过",
@@ -13,8 +14,7 @@
     "v2.26.35: 两项存量缺陷根修——webhooks带asset_id创建/更新必500+str路径参数非法值进SQL必500（14接口422/404化，A1 279端点FAIL 0/A2/A3回归全绿）",
     "v2.26.34: upgrade-offline 加数据库自动备份与回滚恢复提示（跨版本回滚须镜像+DB双动作，130演练实证）",
     "fix(regression): 门槛②回归4项新增条目根修——workflow-editor LogicFlow尺寸字符串致画布塌陷/节点越界+季度报表Q4月份进位必崩500+screen fullscreen异步拒绝未捕获pageerror+org descendants存在性泄露(v2.26.33)",
-    "fix(p1): W2-W3批次P1根修——license 8处fromisoformat崩溃+指纹持久化原子写+资产台账导出单元格清洗(v2.26.32)",
-    "fix(security): W2安全P1x3+功能P1x2根修——asset_policies跨租户写+org_scope/self_heal组织越权+listener回调UnboundLocal全断+redfish None解引用(v2.26.31)"
+    "fix(p1): W2-W3批次P1根修——license 8处fromisoformat崩溃+指纹持久化原子写+资产台账导出单元格清洗(v2.26.32)"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.26.40: v2.26.40: vibe审核P2重复字典键修复——initial_metric_catalog source_names.snmp两处重复键(battery_status/temp_status后写覆盖丢厂商提示,改拼接惯例apc_dell/dell_ibm对齐cisco_ruijie/huawei_h3c先例);零功能影响三重实证(反向索引_build_reverse_indices只用键建索引/has_vendor_hint全库仅消费generic_64bit/alembic031复合hint前缀推断兼容);AST复扫dup_dict_key归零,py_compile过,233真机app包导入验证ALL PASS(931条目录) + v2.26.39: vibe审核4项P1根修——topology_service补导入RELATION_TYPE_GROUP/RELATION_TYPE_LABELS(漏导入致拓扑图有关系即500,v2.14.1引入,233行为测试200->建关系仍200);patrol_service补导入Asset(L202先用后绑UnboundLocalError被吞致巡检自动合并推荐指标从未生效,v2.25.06引入,233行为测试->成功合并3指标53->56);anomaly_detection补import uuid(peer_compare同类资产比对静默失效,v2.23.16引入);dashboard补导入get_settings(vCenter集群视图指标恒空,v2.0引入);绑定验证5/5,模块导入OK,233行为测试2项通过 + v2.26.38: 源码审查11项P1全根修(P1x10+F-P2-04假数据页升P1)——P1-2段级失败豁免(redfish产_incomplete_types:power/thermal间歇500->psu/fan、Chassis失败->nic/mgmt_nic/psu/fan、预算耗尽->该段起、异常中断->全部;sync_components(_sync)豁免移除/R1缓冲/幽灵清理,233测试12/12)+P1-1快照守卫接批量路径(抽取_apply_missing_strike_guard两路共用,原仅单任务路径致调度器走批量时守卫未生效,233测试11/11)+P1-3资产分组双租户校验+P1-4租户树过滤+P1-5 ai_ops递归崩溃+P1-6拓扑多凭证逐个尝试+P1-7 report_html XSS+markdown弃用改纯文本(233测试16/16)+P1-8工单动作租户过滤+P1-9 ACK风暴防复发+P1-10 workflow.html XSS+F-P2-04假数据页改提示卡;14文件编译全绿,行为测试45项全过 等10项更新",
+  "notes": "v2.26.41: v2.26.41: 233三大功能实测挖出3缺陷根修（A工作流软删除/B节点失败如实上报/C自愈SSH退出码+超时对齐） + v2.26.40: vibe审核P2重复字典键修复——initial_metric_catalog source_names.snmp两处重复键(battery_status/temp_status后写覆盖丢厂商提示,改拼接惯例apc_dell/dell_ibm对齐cisco_ruijie/huawei_h3c先例);零功能影响三重实证(反向索引_build_reverse_indices只用键建索引/has_vendor_hint全库仅消费generic_64bit/alembic031复合hint前缀推断兼容);AST复扫dup_dict_key归零,py_compile过,233真机app包导入验证ALL PASS(931条目录) + v2.26.39: vibe审核4项P1根修——topology_service补导入RELATION_TYPE_GROUP/RELATION_TYPE_LABELS(漏导入致拓扑图有关系即500,v2.14.1引入,233行为测试200->建关系仍200);patrol_service补导入Asset(L202先用后绑UnboundLocalError被吞致巡检自动合并推荐指标从未生效,v2.25.06引入,233行为测试->成功合并3指标53->56);anomaly_detection补import uuid(peer_compare同类资产比对静默失效,v2.23.16引入);dashboard补导入get_settings(vCenter集群视图指标恒空,v2.0引入);绑定验证5/5,模块导入OK,233行为测试2项通过 等10项更新",
   "versions": [
+    {
+      "version": "2.26.41",
+      "released_at": "2026-10-06T11:20:14Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.26.41: 233三大功能实测挖出3缺陷根修（A工作流软删除/B节点失败如实上报/C自愈SSH退出码+超时对齐）",
+        "v2.26.40: vibe审核P2重复字典键修复——initial_metric_catalog source_names.snmp两处重复键(battery_status/temp_status后写覆盖丢厂商提示,改拼接惯例apc_dell/dell_ibm对齐cisco_ruijie/huawei_h3c先例);零功能影响三重实证(反向索引_build_reverse_indices只用键建索引/has_vendor_hint全库仅消费generic_64bit/alembic031复合hint前缀推断兼容);AST复扫dup_dict_key归零,py_compile过,233真机app包导入验证ALL PASS(931条目录)",
+        "v2.26.39: vibe审核4项P1根修——topology_service补导入RELATION_TYPE_GROUP/RELATION_TYPE_LABELS(漏导入致拓扑图有关系即500,v2.14.1引入,233行为测试200->建关系仍200);patrol_service补导入Asset(L202先用后绑UnboundLocalError被吞致巡检自动合并推荐指标从未生效,v2.25.06引入,233行为测试->成功合并3指标53->56);anomaly_detection补import uuid(peer_compare同类资产比对静默失效,v2.23.16引入);dashboard补导入get_settings(vCenter集群视图指标恒空,v2.0引入);绑定验证5/5,模块导入OK,233行为测试2项通过",
+        "v2.26.38: 源码审查11项P1全根修(P1x10+F-P2-04假数据页升P1)——P1-2段级失败豁免(redfish产_incomplete_types:power/thermal间歇500->psu/fan、Chassis失败->nic/mgmt_nic/psu/fan、预算耗尽->该段起、异常中断->全部;sync_components(_sync)豁免移除/R1缓冲/幽灵清理,233测试12/12)+P1-1快照守卫接批量路径(抽取_apply_missing_strike_guard两路共用,原仅单任务路径致调度器走批量时守卫未生效,233测试11/11)+P1-3资产分组双租户校验+P1-4租户树过滤+P1-5 ai_ops递归崩溃+P1-6拓扑多凭证逐个尝试+P1-7 report_html XSS+markdown弃用改纯文本(233测试16/16)+P1-8工单动作租户过滤+P1-9 ACK风暴防复发+P1-10 workflow.html XSS+F-P2-04假数据页改提示卡;14文件编译全绿,行为测试45项全过",
+        "v2.26.37: 部件变更误报根修(SIPG实证93%移除是BMC抖动翻飞)——R1移除连击确认(component_discovery首次缺失静默标offline、连续2次缺失才写移除+删行、幽灵清理不触碰当轮缓冲件；collect_tasks守卫升级逐项连击+pending记账、_count计数镜像不双报)+R2空标识/空名脏条目双层过滤(深信服HCI脏盘disk:)+R3整组骤降连击守卫(首轮补回跳过diff、连续2轮才确认)；233行为测试20/20+Playwright UI冒烟零JS报错",
+        "v2.26.36: SIPG资产核对产品侧5项根修——P1慢线超时整台丢弃(采集预算内部段边界感知,耗尽提前收尾部分清单落库_partial标记,233真机预算截断实验11/11)+P2 BMC功耗传感器混入PSU清单归一化+P2占位型号标注〔BMC占位值〕+P3带外盲区提示+P3脏盘条目标注(Playwright UI实测全绿零回归)",
+        "v2.26.35: 两项存量缺陷根修——webhooks带asset_id创建/更新必500+str路径参数非法值进SQL必500（14接口422/404化，A1 279端点FAIL 0/A2/A3回归全绿）",
+        "v2.26.34: upgrade-offline 加数据库自动备份与回滚恢复提示（跨版本回滚须镜像+DB双动作，130演练实证）",
+        "fix(regression): 门槛②回归4项新增条目根修——workflow-editor LogicFlow尺寸字符串致画布塌陷/节点越界+季度报表Q4月份进位必崩500+screen fullscreen异步拒绝未捕获pageerror+org descendants存在性泄露(v2.26.33)",
+        "fix(p1): W2-W3批次P1根修——license 8处fromisoformat崩溃+指纹持久化原子写+资产台账导出单元格清洗(v2.26.32)"
+      ]
+    },
     {
       "version": "2.26.40",
       "released_at": "2026-10-06T09:46:50Z",
