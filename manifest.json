@@ -1,10 +1,11 @@
 {
-  "latest": "2.26.43",
-  "latest_version": "2.26.43",
+  "latest": "2.26.44",
+  "latest_version": "2.26.44",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-10-07",
+  "release_date": "2026-10-08",
   "changelog": [
+    "v2.26.44: 批次①确定性bug四组根修（Boss拍板第一批）——①温度传感器语义修复（redfish_collector/ipmi_collector/_ipmitool/discovery redfish）：margin/rem余量传感器跳过+温度负值哨兵+Power Supply Inlet排除机箱进风+inlet精确名空格兼容（SIPG 172.23.33.55实锤：CPU温度-47℃=CPU1 Core Rem/Cpu1 Margin余量传感器混入cpu_temperature聚合，TDengine 18.9万条负值；PSU进风53℃被inlet子串误配机箱进风触发35℃阈值4186次告警）②拓扑严重度MAX字典序bug（topology_service）：func.max(severity)字符串比较critical<'warning'被降级橙色，改case数值映射③蜂巢/大屏颜色口径统一（dashboard.html/screen-topo.js）：告警>离线>正常，补health_status判定通道④功率warning阈值500→600（preset_templates×3/initial_metric_catalog，critical 800不变；SIPG现场131条存量+文案已同步，备份表monitor_policies_bak_power500_20261008）+监控概览异常指标置顶（asset-detail-real.js/assets-detail-storage.html，statusRank告警>警告>正常>未监控同档保持原序）。233实测：md5 12/12、版本2.26.44、功率预设600/800、MAX bug构造验证PASS、Playwright UI实测监控概览warning置顶第一+大屏11节点渲染色全部符合统一口径。已知残留（批次②）：蜂巢vs大屏2/11不一致=_alert_severity预计算字段离线冻结（事件驱动刷新根修Boss已拍板）；SIPG取证探针运行中（BMC间歇HTTP 500实锤+34.15瞬态缺盘实锤）",
     "v2.26.43: 复核v2.26.42审查报告35条全量修复+同族安全根修",
     "v2.26.42: winrm退出码+超时判定对齐+参数边界修复（Boss指令：仔细检查并修复）",
     "v2.26.41: 233三大功能实测挖出3缺陷根修（A工作流软删除/B节点失败如实上报/C自愈SSH退出码+超时对齐）",
@@ -13,8 +14,7 @@
     "v2.26.38: 源码审查11项P1全根修(P1x10+F-P2-04假数据页升P1)——P1-2段级失败豁免(redfish产_incomplete_types:power/thermal间歇500->psu/fan、Chassis失败->nic/mgmt_nic/psu/fan、预算耗尽->该段起、异常中断->全部;sync_components(_sync)豁免移除/R1缓冲/幽灵清理,233测试12/12)+P1-1快照守卫接批量路径(抽取_apply_missing_strike_guard两路共用,原仅单任务路径致调度器走批量时守卫未生效,233测试11/11)+P1-3资产分组双租户校验+P1-4租户树过滤+P1-5 ai_ops递归崩溃+P1-6拓扑多凭证逐个尝试+P1-7 report_html XSS+markdown弃用改纯文本(233测试16/16)+P1-8工单动作租户过滤+P1-9 ACK风暴防复发+P1-10 workflow.html XSS+F-P2-04假数据页改提示卡;14文件编译全绿,行为测试45项全过",
     "v2.26.37: 部件变更误报根修(SIPG实证93%移除是BMC抖动翻飞)——R1移除连击确认(component_discovery首次缺失静默标offline、连续2次缺失才写移除+删行、幽灵清理不触碰当轮缓冲件；collect_tasks守卫升级逐项连击+pending记账、_count计数镜像不双报)+R2空标识/空名脏条目双层过滤(深信服HCI脏盘disk:)+R3整组骤降连击守卫(首轮补回跳过diff、连续2轮才确认)；233行为测试20/20+Playwright UI冒烟零JS报错",
     "v2.26.36: SIPG资产核对产品侧5项根修——P1慢线超时整台丢弃(采集预算内部段边界感知,耗尽提前收尾部分清单落库_partial标记,233真机预算截断实验11/11)+P2 BMC功耗传感器混入PSU清单归一化+P2占位型号标注〔BMC占位值〕+P3带外盲区提示+P3脏盘条目标注(Playwright UI实测全绿零回归)",
-    "v2.26.35: 两项存量缺陷根修——webhooks带asset_id创建/更新必500+str路径参数非法值进SQL必500（14接口422/404化，A1 279端点FAIL 0/A2/A3回归全绿）",
-    "v2.26.34: upgrade-offline 加数据库自动备份与回滚恢复提示（跨版本回滚须镜像+DB双动作，130演练实证）"
+    "v2.26.35: 两项存量缺陷根修——webhooks带asset_id创建/更新必500+str路径参数非法值进SQL必500（14接口422/404化，A1 279端点FAIL 0/A2/A3回归全绿）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.26.43: v2.26.43: 复核v2.26.42审查报告35条全量修复+同族安全根修 + v2.26.42: winrm退出码+超时判定对齐+参数边界修复（Boss指令：仔细检查并修复） + v2.26.41: 233三大功能实测挖出3缺陷根修（A工作流软删除/B节点失败如实上报/C自愈SSH退出码+超时对齐） 等10项更新",
+  "notes": "v2.26.44: v2.26.44: 批次①确定性bug四组根修（Boss拍板第一批）——①温度传感器语义修复（redfish_collector/ipmi_collector/_ipmitool/discovery redfish）：margin/rem余量传感器跳过+温度负值哨兵+Power Supply Inlet排除机箱进风+inlet精确名空格兼容（SIPG 172.23.33.55实锤：CPU温度-47℃=CPU1 Core Rem/Cpu1 Margin余量传感器混入cpu_temperature聚合，TDengine 18.9万条负值；PSU进风53℃被inlet子串误配机箱进风触发35℃阈值4186次告警）②拓扑严重度MAX字典序bug（topology_service）：func.max(severity)字符串比较critical<'warning'被降级橙色，改case数值映射③蜂巢/大屏颜色口径统一（dashboard.html/screen-topo.js）：告警>离线>正常，补health_status判定通道④功率warning阈值500→600（preset_templates×3/initial_metric_catalog，critical 800不变；SIPG现场131条存量+文案已同步，备份表monitor_policies_bak_power500_20261008）+监控概览异常指标置顶（asset-detail-real.js/assets-detail-storage.html，statusRank告警>警告>正常>未监控同档保持原序）。233实测：md5 12/12、版本2.26.44、功率预设600/800、MAX bug构造验证PASS、Playwright UI实测监控概览warning置顶第一+大屏11节点渲染色全部符合统一口径。已知残留（批次②）：蜂巢vs大屏2/11不一致=_alert_severity预计算字段离线冻结（事件驱动刷新根修Boss已拍板）；SIPG取证探针运行中（BMC间歇HTTP 500实锤+34.15瞬态缺盘实锤） + v2.26.43: 复核v2.26.42审查报告35条全量修复+同族安全根修 + v2.26.42: winrm退出码+超时判定对齐+参数边界修复（Boss指令：仔细检查并修复） 等10项更新",
   "versions": [
+    {
+      "version": "2.26.44",
+      "released_at": "2026-10-08T11:07:57Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.26.44: 批次①确定性bug四组根修（Boss拍板第一批）——①温度传感器语义修复（redfish_collector/ipmi_collector/_ipmitool/discovery redfish）：margin/rem余量传感器跳过+温度负值哨兵+Power Supply Inlet排除机箱进风+inlet精确名空格兼容（SIPG 172.23.33.55实锤：CPU温度-47℃=CPU1 Core Rem/Cpu1 Margin余量传感器混入cpu_temperature聚合，TDengine 18.9万条负值；PSU进风53℃被inlet子串误配机箱进风触发35℃阈值4186次告警）②拓扑严重度MAX字典序bug（topology_service）：func.max(severity)字符串比较critical<'warning'被降级橙色，改case数值映射③蜂巢/大屏颜色口径统一（dashboard.html/screen-topo.js）：告警>离线>正常，补health_status判定通道④功率warning阈值500→600（preset_templates×3/initial_metric_catalog，critical 800不变；SIPG现场131条存量+文案已同步，备份表monitor_policies_bak_power500_20261008）+监控概览异常指标置顶（asset-detail-real.js/assets-detail-storage.html，statusRank告警>警告>正常>未监控同档保持原序）。233实测：md5 12/12、版本2.26.44、功率预设600/800、MAX bug构造验证PASS、Playwright UI实测监控概览warning置顶第一+大屏11节点渲染色全部符合统一口径。已知残留（批次②）：蜂巢vs大屏2/11不一致=_alert_severity预计算字段离线冻结（事件驱动刷新根修Boss已拍板）；SIPG取证探针运行中（BMC间歇HTTP 500实锤+34.15瞬态缺盘实锤）",
+        "v2.26.43: 复核v2.26.42审查报告35条全量修复+同族安全根修",
+        "v2.26.42: winrm退出码+超时判定对齐+参数边界修复（Boss指令：仔细检查并修复）",
+        "v2.26.41: 233三大功能实测挖出3缺陷根修（A工作流软删除/B节点失败如实上报/C自愈SSH退出码+超时对齐）",
+        "v2.26.40: vibe审核P2重复字典键修复——initial_metric_catalog source_names.snmp两处重复键(battery_status/temp_status后写覆盖丢厂商提示,改拼接惯例apc_dell/dell_ibm对齐cisco_ruijie/huawei_h3c先例);零功能影响三重实证(反向索引_build_reverse_indices只用键建索引/has_vendor_hint全库仅消费generic_64bit/alembic031复合hint前缀推断兼容);AST复扫dup_dict_key归零,py_compile过,233真机app包导入验证ALL PASS(931条目录)",
+        "v2.26.39: vibe审核4项P1根修——topology_service补导入RELATION_TYPE_GROUP/RELATION_TYPE_LABELS(漏导入致拓扑图有关系即500,v2.14.1引入,233行为测试200->建关系仍200);patrol_service补导入Asset(L202先用后绑UnboundLocalError被吞致巡检自动合并推荐指标从未生效,v2.25.06引入,233行为测试->成功合并3指标53->56);anomaly_detection补import uuid(peer_compare同类资产比对静默失效,v2.23.16引入);dashboard补导入get_settings(vCenter集群视图指标恒空,v2.0引入);绑定验证5/5,模块导入OK,233行为测试2项通过",
+        "v2.26.38: 源码审查11项P1全根修(P1x10+F-P2-04假数据页升P1)——P1-2段级失败豁免(redfish产_incomplete_types:power/thermal间歇500->psu/fan、Chassis失败->nic/mgmt_nic/psu/fan、预算耗尽->该段起、异常中断->全部;sync_components(_sync)豁免移除/R1缓冲/幽灵清理,233测试12/12)+P1-1快照守卫接批量路径(抽取_apply_missing_strike_guard两路共用,原仅单任务路径致调度器走批量时守卫未生效,233测试11/11)+P1-3资产分组双租户校验+P1-4租户树过滤+P1-5 ai_ops递归崩溃+P1-6拓扑多凭证逐个尝试+P1-7 report_html XSS+markdown弃用改纯文本(233测试16/16)+P1-8工单动作租户过滤+P1-9 ACK风暴防复发+P1-10 workflow.html XSS+F-P2-04假数据页改提示卡;14文件编译全绿,行为测试45项全过",
+        "v2.26.37: 部件变更误报根修(SIPG实证93%移除是BMC抖动翻飞)——R1移除连击确认(component_discovery首次缺失静默标offline、连续2次缺失才写移除+删行、幽灵清理不触碰当轮缓冲件；collect_tasks守卫升级逐项连击+pending记账、_count计数镜像不双报)+R2空标识/空名脏条目双层过滤(深信服HCI脏盘disk:)+R3整组骤降连击守卫(首轮补回跳过diff、连续2轮才确认)；233行为测试20/20+Playwright UI冒烟零JS报错",
+        "v2.26.36: SIPG资产核对产品侧5项根修——P1慢线超时整台丢弃(采集预算内部段边界感知,耗尽提前收尾部分清单落库_partial标记,233真机预算截断实验11/11)+P2 BMC功耗传感器混入PSU清单归一化+P2占位型号标注〔BMC占位值〕+P3带外盲区提示+P3脏盘条目标注(Playwright UI实测全绿零回归)",
+        "v2.26.35: 两项存量缺陷根修——webhooks带asset_id创建/更新必500+str路径参数非法值进SQL必500（14接口422/404化，A1 279端点FAIL 0/A2/A3回归全绿）"
+      ]
+    },
     {
       "version": "2.26.43",
       "released_at": "2026-10-07T06:30:22Z",
