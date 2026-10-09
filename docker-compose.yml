@@ -280,14 +280,15 @@ services:
     #   - "6030:6030"  # 仅开发/调试使用
     #   - "6041:6041"  # 仅开发/调试使用
     environment:
-      # 探活脚本用：taos CLI 需要与 TDengine root 密码一致，密码由 .env 的 TDENGINE_PASSWORD 提供
+      # 探活脚本用：taos CLI 凭据须与 .env 的 TDENGINE_USER/TDENGINE_PASSWORD 一致（专用用户须允许本机登录）
+      TDENGINE_USER: ${TDENGINE_USER:-root}
       TDENGINE_PASSWORD: ${TDENGINE_PASSWORD:-taosdata}
     volumes:
       - tdengine_data:/var/lib/taos
     healthcheck:
       # 双密码探测：新密码或初始密码 taosdata 任一可连即 healthy。
       # 新装首启时密码同步（ALTER）由部署脚本在 healthy 后执行，期间用初始密码探活避免死锁等待（审计 P1-2）
-      test: ["CMD-SHELL", "taos -u root -p\"$${TDENGINE_PASSWORD}\" -s 'SELECT server_version();' 2>/dev/null || taos -u root -ptaosdata -s 'SELECT server_version();' 2>/dev/null || exit 1"]
+      test: ["CMD-SHELL", "taos -u $$TDENGINE_USER -p\"$${TDENGINE_PASSWORD}\" -s 'SELECT server_version();' 2>/dev/null || taos -u $$TDENGINE_USER -ptaosdata -s 'SELECT server_version();' 2>/dev/null || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
