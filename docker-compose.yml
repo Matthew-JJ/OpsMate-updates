@@ -44,6 +44,9 @@ x-backend-common: &backend-common
     - opsmate-net
 
 x-backend-env: &backend-env
+  # 审计 D-11：进程时区显式绑定 Asia/Shanghai，与 celery/PD 会话时区契约一致，
+  # 防止运维单独给容器加 TZ 造成日界统计窗口静默错 8 小时
+  TZ: Asia/Shanghai
   DISABLE_CAPTCHA: ${DISABLE_CAPTCHA:-true}
   # ENCRYPTION_KEY 和 JWT_SECRET_KEY 必须在 backend/.env 中设置
   # 不在此处设默认值，避免空字符串覆盖 .env 中的有效值
@@ -181,6 +184,8 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-opsmate_dev_2026}
       POSTGRES_REPLICATION_USER: replicator
       POSTGRES_REPLICATION_PASSWORD: ${POSTGRES_REPLICATION_PASSWORD:-repl_dev_2026}
+      # 审计 D-11：日界双时钟源显式绑定，主从与应用层统一 Asia/Shanghai
+      TZ: Asia/Shanghai
     # ⚠️ 审计 P1-2：默认已注释——数据库/缓存端口不暴露到宿主机，公网部署零暴露面；
     # 本地调试需要直连时取消下行注释
     # ports:
@@ -192,7 +197,7 @@ services:
       - bash
       - -c
       - |
-        docker-entrypoint.sh postgres -c shared_buffers=512MB -c effective_cache_size=1536MB -c work_mem=16MB -c maintenance_work_mem=256MB -c max_connections=200 -c random_page_cost=1.1 -c checkpoint_completion_target=0.9 -c wal_buffers=16MB -c default_statistics_target=100 -c log_min_duration_statement=1000 -c wal_level=replica -c max_wal_senders=3 -c wal_keep_size=64MB -c hot_standby=on &
+        docker-entrypoint.sh postgres -c shared_buffers=512MB -c effective_cache_size=1536MB -c work_mem=16MB -c maintenance_work_mem=256MB -c max_connections=200 -c random_page_cost=1.1 -c checkpoint_completion_target=0.9 -c wal_buffers=16MB -c default_statistics_target=100 -c log_min_duration_statement=1000 -c wal_level=replica -c max_wal_senders=3 -c wal_keep_size=64MB -c hot_standby=on -c timezone=Asia/Shanghai -c log_timezone=Asia/Shanghai &
         POSTGRES_PID=$$!
         until pg_isready -U "$${POSTGRES_USER:-opsmate}" -d "$${POSTGRES_DB:-opsmate}" 2>/dev/null; do sleep 1; done
         printf "ALTER USER \"$${POSTGRES_USER:-opsmate}\" WITH PASSWORD '$${POSTGRES_PASSWORD}';\\n" | psql -v ON_ERROR_STOP=1 --username "$${POSTGRES_USER:-opsmate}" --dbname "$${POSTGRES_DB:-opsmate}" >/dev/null 2>&1 || true
@@ -219,6 +224,8 @@ services:
       POSTGRES_REPLICATION_PASSWORD: ${POSTGRES_REPLICATION_PASSWORD:-repl_dev_2026}
       POSTGRES_PRIMARY_HOST: postgres
       POSTGRES_PRIMARY_PORT: "5432"
+      # 审计 D-11：与主库/应用层统一 Asia/Shanghai
+      TZ: Asia/Shanghai
     # ⚠️ 审计 P1-2：默认已注释——从库端口不暴露到宿主机；本地调试需要时取消下行注释
     # ports:
     #   - "5433:5432"  # 仅开发/调试使用
@@ -250,13 +257,17 @@ services:
         shared_buffers = 256MB
         effective_cache_size = 768MB
         work_mem = 16MB
+        timezone = 'Asia/Shanghai'
+        log_timezone = 'Asia/Shanghai'
         EOF
         exec /usr/local/bin/docker-entrypoint.sh postgres \
           -c hot_standby=on \
           -c max_connections=200 \
           -c shared_buffers=256MB \
           -c effective_cache_size=768MB \
-          -c work_mem=16MB
+          -c work_mem=16MB \
+          -c timezone=Asia/Shanghai \
+          -c log_timezone=Asia/Shanghai
     depends_on:
       postgres:
         condition: service_healthy
