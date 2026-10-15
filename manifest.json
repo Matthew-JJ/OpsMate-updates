@@ -1,10 +1,11 @@
 {
-  "latest": "2.29.02",
-  "latest_version": "2.29.02",
+  "latest": "2.29.03",
+  "latest_version": "2.29.03",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-10-15",
   "changelog": [
+    "v2.29.03: 同型号部件交叉配对假变更根修(碰撞组确定性认领) - existing_components改dict[str,list]保留碰撞组全部行+组内序列号/名称稳定排序,行级claimed_rows认领,claim_group_match优先序列号一致配对; 修复旧dict键碰撞丢行+双重认领致枚举顺序一变即交叉写假更新部件(SIPG实证每采集+2条,104碰撞组308部件); 移除检测重构为剩余未认领行R1流程; 新增test_component_sync_collision.py 9用例, 233全量回归250+8零回归",
     "v2.29.02: 风扇转速变更误触根修(标注补齐不再算部件变更) - component_sync_utils新增structural_fields_changed豁免_TS_FIELD_EXEMPT标注字段(rpm_unit)的补齐/缺失差异,component_discovery两处变更判定改调新函数+import修正; 根因=升级后采集给风扇档案补写rpm_unit标注致每台刷6条更新部件噪音; 新增test_component_change_noise.py 13用例, 233全量回归241+8零回归; 历史噪音清理已执行(SIPG删829/233删4508,含备份表)",
     "v2.29.01: 采集告警风暴热修(Mixin继承顺序遮蔽根修) - 7个采集器入口类BaseCollector移至继承列表最后, 修复abstractmethod遮蔽Mixin实现致Snmp/Redfish实例化失败(告警风暴)与Winrm/VCenter/Snmp/Redfish的collect_inventory被空默认遮蔽; 新增test_collector_instantiation.py实例化冒烟堵盲区, pytest 228+8零回归, 233实测采集全部恢复数据落库",
     "chore(version): 递增 app_version 2.28.00→2.29.00（500行红线治理批次3收尾，待Boss确认后推送）",
@@ -13,8 +14,7 @@
     "refactor(b3-28): report_html.py 1856行拆为7文件（C+D混合模式，行为零变化）",
     "refactor(b3-27): patrol_service.py 1555行拆为5文件（D模式，行为零变化）",
     "refactor(b3-26): snmp.py 1129行拆为6文件（D模式+状态仓，行为零变化）",
-    "refactor(b3-25): metric_catalog_service 1109行拆为6文件（D模式，行为零变化）",
-    "refactor(b3-24): D模式拆分discovery/redfish.py 1162行为4文件(拆函数体试点)"
+    "refactor(b3-25): metric_catalog_service 1109行拆为6文件（D模式，行为零变化）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.29.02: v2.29.02: 风扇转速变更误触根修(标注补齐不再算部件变更) - component_sync_utils新增structural_fields_changed豁免_TS_FIELD_EXEMPT标注字段(rpm_unit)的补齐/缺失差异,component_discovery两处变更判定改调新函数+import修正; 根因=升级后采集给风扇档案补写rpm_unit标注致每台刷6条更新部件噪音; 新增test_component_change_noise.py 13用例, 233全量回归241+8零回归; 历史噪音清理已执行(SIPG删829/233删4508,含备份表) + v2.29.01: 采集告警风暴热修(Mixin继承顺序遮蔽根修) - 7个采集器入口类BaseCollector移至继承列表最后, 修复abstractmethod遮蔽Mixin实现致Snmp/Redfish实例化失败(告警风暴)与Winrm/VCenter/Snmp/Redfish的collect_inventory被空默认遮蔽; 新增test_collector_instantiation.py实例化冒烟堵盲区, pytest 228+8零回归, 233实测采集全部恢复数据落库 + chore(version): 递增 app_version 2.28.00→2.29.00（500行红线治理批次3收尾，待Boss确认后推送） 等10项更新",
+  "notes": "v2.29.03: v2.29.03: 同型号部件交叉配对假变更根修(碰撞组确定性认领) - existing_components改dict[str,list]保留碰撞组全部行+组内序列号/名称稳定排序,行级claimed_rows认领,claim_group_match优先序列号一致配对; 修复旧dict键碰撞丢行+双重认领致枚举顺序一变即交叉写假更新部件(SIPG实证每采集+2条,104碰撞组308部件); 移除检测重构为剩余未认领行R1流程; 新增test_component_sync_collision.py 9用例, 233全量回归250+8零回归 + v2.29.02: 风扇转速变更误触根修(标注补齐不再算部件变更) - component_sync_utils新增structural_fields_changed豁免_TS_FIELD_EXEMPT标注字段(rpm_unit)的补齐/缺失差异,component_discovery两处变更判定改调新函数+import修正; 根因=升级后采集给风扇档案补写rpm_unit标注致每台刷6条更新部件噪音; 新增test_component_change_noise.py 13用例, 233全量回归241+8零回归; 历史噪音清理已执行(SIPG删829/233删4508,含备份表) + v2.29.01: 采集告警风暴热修(Mixin继承顺序遮蔽根修) - 7个采集器入口类BaseCollector移至继承列表最后, 修复abstractmethod遮蔽Mixin实现致Snmp/Redfish实例化失败(告警风暴)与Winrm/VCenter/Snmp/Redfish的collect_inventory被空默认遮蔽; 新增test_collector_instantiation.py实例化冒烟堵盲区, pytest 228+8零回归, 233实测采集全部恢复数据落库 等10项更新",
   "versions": [
+    {
+      "version": "2.29.03",
+      "released_at": "2026-10-15T08:06:47Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.29.03: 同型号部件交叉配对假变更根修(碰撞组确定性认领) - existing_components改dict[str,list]保留碰撞组全部行+组内序列号/名称稳定排序,行级claimed_rows认领,claim_group_match优先序列号一致配对; 修复旧dict键碰撞丢行+双重认领致枚举顺序一变即交叉写假更新部件(SIPG实证每采集+2条,104碰撞组308部件); 移除检测重构为剩余未认领行R1流程; 新增test_component_sync_collision.py 9用例, 233全量回归250+8零回归",
+        "v2.29.02: 风扇转速变更误触根修(标注补齐不再算部件变更) - component_sync_utils新增structural_fields_changed豁免_TS_FIELD_EXEMPT标注字段(rpm_unit)的补齐/缺失差异,component_discovery两处变更判定改调新函数+import修正; 根因=升级后采集给风扇档案补写rpm_unit标注致每台刷6条更新部件噪音; 新增test_component_change_noise.py 13用例, 233全量回归241+8零回归; 历史噪音清理已执行(SIPG删829/233删4508,含备份表)",
+        "v2.29.01: 采集告警风暴热修(Mixin继承顺序遮蔽根修) - 7个采集器入口类BaseCollector移至继承列表最后, 修复abstractmethod遮蔽Mixin实现致Snmp/Redfish实例化失败(告警风暴)与Winrm/VCenter/Snmp/Redfish的collect_inventory被空默认遮蔽; 新增test_collector_instantiation.py实例化冒烟堵盲区, pytest 228+8零回归, 233实测采集全部恢复数据落库",
+        "chore(version): 递增 app_version 2.28.00→2.29.00（500行红线治理批次3收尾，待Boss确认后推送）",
+        "refactor(b3-30): topology_service.py 3575行拆为14文件（纯C模式，行为零变化）",
+        "refactor(b3-29): collect_tasks.py 4453行拆为17文件（C+D混合模式，行为零变化）",
+        "refactor(b3-28): report_html.py 1856行拆为7文件（C+D混合模式，行为零变化）",
+        "refactor(b3-27): patrol_service.py 1555行拆为5文件（D模式，行为零变化）",
+        "refactor(b3-26): snmp.py 1129行拆为6文件（D模式+状态仓，行为零变化）",
+        "refactor(b3-25): metric_catalog_service 1109行拆为6文件（D模式，行为零变化）"
+      ]
+    },
     {
       "version": "2.29.02",
       "released_at": "2026-10-15T06:42:55Z",
