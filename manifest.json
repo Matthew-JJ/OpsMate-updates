@@ -1,20 +1,20 @@
 {
-  "latest": "2.27.01",
-  "latest_version": "2.27.01",
+  "latest": "2.29.00",
+  "latest_version": "2.29.00",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-10-12",
+  "release_date": "2026-10-15",
   "changelog": [
-    "fix(b1-ci): 契约检查器适配拆分结构——extract_catalog_source_names改metric_catalog/part*.py多文件AST解析（兼容拆分前后双结构，修复后931条/1237与基准逐字一致PASSED），contract-check.yml触发路径补metric_catalog/**；递增版本号 2.27.01",
-    "chore(b1): 递增版本号 2.26.54 -> 2.27.00（500行红线治理批次1收尾，六道门禁全绿）",
-    "refactor(b1-1): 清理拆分新制造的门面死导入 typing.Any（ruff F401 对照基准树零新增）",
-    "refactor(b1-3): 拆分 initial_health_rules.py (554行) -> app/data/health_rules/ (part01-02 + 聚合), 原文件改 re-export 门面, 8条规则等价校验 PASS",
-    "refactor(b1-2): preset_templates.py 2920行拆分为8个数据分块（500行红线治理·数据拆分·顺序等价）——app/services/preset_templates_data/part01..08.py各≤474行+__init__.py按序解包聚合PRESET_TEMPLATES，19个模板dict按原列表顺序以模板为原子单元机械切分（前置组注释随模板走），原文件保留get_preset_templates/get_preset_by_key两函数零改动+_PRESET_TEMPLATES改为包导入别名（8处调用方零改动）。验证：literal_eval深度等价校验19个模板逐条一致PASS+py_compile 546文件0错误+符号解析unresolved=11与基线持平",
-    "refactor(b1-1): initial_metric_catalog.py 15064行拆分为33个数据分块（500行红线治理·数据拆分·顺序等价）——app/data/metric_catalog/part01..33.py各≤480行+__init__.py按序解包聚合INITIAL_METRIC_CATALOG，931条entry按原列表顺序以entry为原子单元机械切分（domain交错74游程禁止按域重排），entry前置注释随条目走防组级注释丢失，原initial_metric_catalog.py改re-export门面（from app.data.initial_metric_catalog import INITIAL_METRIC_CATALOG零改动）。验证：literal_eval深度等价校验931条逐条一致PASS+py_compile 537文件0错误+符号解析unresolved=11与基线持平零新增",
-    "v2.26.54: TDengine 幻觉语法根修 + 全前端筛选区下拉同行化——【Q3 TDengine 幻觉语法定性根修（233实测TDengine 3.3.6.13）】①tdengine_service删除CREATE SMA INDEX...(FULLTEXT(message))死代码块（FULLTEXT为SQL Server/OceanBase概念，TDengine无此语法恒报0x2600启动警告；SMA INDEX老语法3.3.x已整体废弃，实测聚合语法(avg(v))INTERVAL(1h)亦报0x2600；无功能影响纯噪音），原位留注释防回归②log_service日志关键字搜索主路径match(message,...)同为幻觉函数（实测同报0x2600，上线起从未成功，每次搜索必失败→error日志→静默LIKE回退=假实现+双倍请求）：主路径改LIKE子串匹配直连（与原实际生效行为完全一致），删除从不执行的_search_logs_with_like死函数（净-95行）。验证：233容器功能脚本搜索链路正常返回+启动日志零警告+pytest 226passed/8skipped与基线一致【Q2 全前端筛选区下拉同行化】根因：全局.design-system .form-select宽100%与筛选条flex布局冲突，下拉挤爆换行各占一行；统一补.filter-bar .form-select{width:auto}覆盖（13页：alerts/assets/audit/credentials/notification-channels/self-heal/shares/users/work-log/workflow补规则行、npm规则行移出.filter-bar块内误插、traffic/cmdb既有规则补width:auto；monitor行内已有width:auto复核免修、command-templates/discovery筛选区无下拉免修），Playwright几何实测下拉同行（同y坐标+自适应宽度+筛选条单行）；弹窗表单下拉保持单列不动（多字段表单单列为主流设计）【Q1 核验结论无代码改动】资产详情页开关机按钮/tab已于v2.26.49移除，本次DOM级复核零残留（bindPowerButtons/loadPowerStatus/tab-power/power-control全无，仅存电源/电源状态只读信息行）",
-    "v2.26.53: 安全审计修复全量收官（P0x21+P1常规+假实现整治九项拍板批次）——【P0安全21项】①前端12处存储型XSS治理：firewall/server变更日志表、switch接口/备份表、listeners监听表、monitor模板按钮，SNMP/Redfish外部可控数据统一esc()/escOnclick()三层防护②pollers全8管理端点补require_permission+终端WebSocket子协议JWT鉴权（缺/无效令牌WS_1008断开）③traffic接口流量/趋势补_require_asset_access租户+组织域IDOR校验④demo_login全资产组授权补tenant过滤、kick_session补租户归属校验（防跨租户踢会话）⑤license厂商签名重置密码端点补settings:write权限（原仅登录即可重置admin密码）⑥SSH/Enable敏感凭证URL Query改JSON Body（config_backups三端点CredentialIn模型，前端switch同步改Body并修api.put params静默丢弃bug）⑦knowledge_service prompt注入治理：message/status补_prompt_sanitize长度限制⑧websocket_manager广播快照迭代防Set changed size并发崩溃+防御式清理。【P1常规】⑨alert_rules资产可用指标查询补tenant过滤、规则改绑补目标资产归属及write权限校验⑩change_monitor规则创建/更新_bind_targets校验资产/资产组归属（防跨租户绑定）⑪capacity_tasks告警创建SAVEPOINT行级隔离+_get_or_create_capacity_policy并发创建二级SAVEPOINT（禁session.rollback()连坐外层批量）⑫sentinel三任务接真重试（default_retry_delay=30，retries<max_retries才raise retry、耗尽显式放弃；转发未确认改抛错at-least-once，原失败当成功吞掉）⑬A2保守去重聚合（Boss拍板零延迟）：窗口首条立即通知、第2条合并汇总通知、第3+条contained抑制，N条恒降2条渠道通知，get_window_alerts不清空窗口。【九项拍板批次】⑭pollers指令下发真实现：poller_commands队列（POST写入type三型校验/GET拉取即回写delivered/POST result回写succeeded|failed/管理端GET列表，迁移061）+注册响应恒空credentials/metric_definitions占位移除改not_implemented显式声明（B方案不做凭证托管）⑮itsm工单删除审计真实现（create_audit_log同告警规则款ticket:delete/ticket:clear替换假logger审计块）+顺修alert_records/alert_governance两处resource_id=\"all\"致审计静默降级永不入DB⑯A2聚合去重复核补2缺口：alert_orchestrator硬件变更第2条合并汇总通知+test_alert_evaluator mock契约值single→waiting⑰settings.py SLA升级ROLE_META幻觉字段.get(\"name\")→display_name⑱权限词表甲方案归一化：init_setup/system.py种子统一引ROLE_DEFAULT_PERMISSIONS/ROLE_META（6角，admin假[\"*\"]通配根除）+self_heal幽灵alert:write→alert:manage+迁移062存量角色权限归一化（旧串映射/幽灵剔除/*展开/幂等，含SIPG生产数据）⑲/reset恒死分支甲方案（Boss拍板）：删SYSTEM_TENANT_ID永假UUID校验，改校验调用者本人（JWT对应users行）username=='admin'+str归一化+动态首租户（tenants.created_at最早），顺修原查任意admin的bug，防任意租户admin全库TRUNCATE越权。验证：本地真实执行脚本全过（itsm审计12/12、pollers指令队列20/20、权限词表24/24、reset身份11/11、A2语义4/4、sentinel重试4/4）+compileall全过。另：config.py版本注释块修复（v2.26.53注释扩写覆盖全版本范围；还原被并入26.53行尾的v2.26.52注释、恢复51→52递增时截断丢失的v2.26.51注释，原文均自git历史提取）",
-    "v2.26.52: 工单清空功能+离线包模板禁拉取修复——①itsm.py新增DELETE /itsm/tickets清空当前租户全部工单（require_admin权限口径fail-closed；Core bulk delete走DB外键CASCADE同步删流转/升级记录，复用单删A-6/A-9审批回调语义：先收集pending_approval回调信息、提交后派发防状态分叉；审计日志记录删除数量/操作人/原因；返回data.deleted计数适配api.js取数口径）②itsm.html新增\"清空工单\"danger按钮（admin专属默认隐藏fail-closed显隐+双步危险确认弹窗防误触，删除计数实时反馈）③既有单删工单功能（v2.24.01）保留不动④scripts/offline/deploy-offline.sh启动命令红线修复：docker compose up加--pull never禁拉取（旧版compose不识别--no-pull兼容写法）+PIPESTATUS保留退出码失败即中止（原管道tail吞错误码违反不吞退出码红线）。验证：py_compile全过、路由共存验证通过（DELETE /tickets与/tickets/{ticket_id}不冲突）、bash -n语法通过、LF无BOM",
-    "v2.26.51: 全局代码审计（故障模式审计）42项收官——P1x10/P2x16/P3x16逐项一手复核后手术式根修+5疑点定性。①并发竞态原子化：B-1告警创建pg_advisory_xact_lock资产粒度锁+_upsert_firing_alert_serialized独立短事务、B-2 custom_fields竞态9处编辑diff校验+expire+P3-N13批量重构、B-4任务原子认领UPDATE...RETURNING+API /run显式commit+consecutive_failures原子自增+调度超龄running清扫、B-8状态机行锁、B-11限流键incr前SET NX EX兜底TTL、B-12锁值uuid防同秒误删+单实例边界文档。②状态机/任务可靠性：A-1工作流外层兜底、A-2电源操作重投不重执行、A-4 retry透传语义、A-5自愈卡死、A-6审批不回调、A-7启动对账stale_recovery 9表COALESCE兜NULL、A-8外层异常落终态+next_run推进、A-9流转回调先快照响应→提交→再send_task防崩溃分叉、A-11 execution前置绑定防except NameError。③时区时序契约显式化：D-1备份/报表调度北京语义、D-2自实现cron解析器cron_utils、D-3 cron_next_after到期比较+推进（错过合并一次补偿）、D-4 TDengine时序坐标_ts_sql_literal/_ts_to_iso_utc两助手5调用点收敛（裸文本按服务端UTC/strftime丢偏移/str强加Z三大坑根治）、D-5统计窗口UTC日切、D-6删自伤正则改严格fromisoformat、D-7前端localDateStr本地分量、D-8统一_parse_reported_time转aware UTC、D-9 API Key过期校验Update补漏、D-10月调度日历月推进+月末钳制（dom=31按月末）、D-11三份compose TZ=Asia/Shanghai+PG主从timezone显式+alert_health_service双时钟源钉死北京口径。④资源/清理：C-1 SSH密钥句柄泄漏try/finally、C-2 TDengine保留期546天、C-3 PG大表清理retention_cleanup、C-4子进程超时kill、C-6登录审计session嵌套try/finally、C-7 snmp引擎缓存写入清过期、C-8巡检明细N+1批量预取、B-5建单去重、B-6远程操作清扫TOCTOU条件更新、B-7 Incident重复聚合、B-9升级去重。⑤C-5疑点定性有险并根修：本地harness实证全局httpx.AsyncClient跨new_event_loop复用池内连接必抛RuntimeError: Event loop is closed（代理改写干扰查明致此前不入池），edge_reporter._get_http_client加max_keepalive_connections=0连接同循环生灭不入池。⑥疑点定性：A-9竞态坐实已修、D-4实锤已修（233实测TDengine容器UTC/宿主CST坐标+写读回环铁证）、D-8代码已修schema无历史数据佐证不动、B-10定性维持现状（asset_current_metrics唯一键无protocol列现网未触发互删，Boss拍板一指标一当前值语义不动schema）。新增6文件：cron_utils/schedule_utils/retention_cleanup/stale_recovery/cleanup_tasks/test_collect_retry。验证：233全量单测226passed/8skipped、D-4双时区回归（UTC/CST）全过、D-11容器TZ与PG主从Asia/Shanghai实测生效、py_compile 46变更文件全过、md5本地=部署包=容器三方一致"
+    "chore(version): 递增 app_version 2.28.00→2.29.00（500行红线治理批次3收尾，待Boss确认后推送）",
+    "refactor(b3-30): topology_service.py 3575行拆为14文件（纯C模式，行为零变化）",
+    "refactor(b3-29): collect_tasks.py 4453行拆为17文件（C+D混合模式，行为零变化）",
+    "refactor(b3-28): report_html.py 1856行拆为7文件（C+D混合模式，行为零变化）",
+    "refactor(b3-27): patrol_service.py 1555行拆为5文件（D模式，行为零变化）",
+    "refactor(b3-26): snmp.py 1129行拆为6文件（D模式+状态仓，行为零变化）",
+    "refactor(b3-25): metric_catalog_service 1109行拆为6文件（D模式，行为零变化）",
+    "refactor(b3-24): D模式拆分discovery/redfish.py 1162行为4文件(拆函数体试点)",
+    "refactor(b3-23): 拆分discovery/storage_rest.py 1100行为5文件",
+    "refactor(b3-22): alert_orchestrator 935行拆分为5文件（纯搬移零行为）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.27.01: fix(b1-ci): 契约检查器适配拆分结构——extract_catalog_source_names改metric_catalog/part*.py多文件AST解析（兼容拆分前后双结构，修复后931条/1237与基准逐字一致PASSED），contract-check.yml触发路径补metric_catalog/**；递增版本号 2.27.01 + chore(b1): 递增版本号 2.26.54 -> 2.27.00（500行红线治理批次1收尾，六道门禁全绿） + refactor(b1-1): 清理拆分新制造的门面死导入 typing.Any（ruff F401 对照基准树零新增） 等10项更新",
+  "notes": "v2.29.00: chore(version): 递增 app_version 2.28.00→2.29.00（500行红线治理批次3收尾，待Boss确认后推送） + refactor(b3-30): topology_service.py 3575行拆为14文件（纯C模式，行为零变化） + refactor(b3-29): collect_tasks.py 4453行拆为17文件（C+D混合模式，行为零变化） 等10项更新",
   "versions": [
+    {
+      "version": "2.29.00",
+      "released_at": "2026-10-15T01:36:08Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "chore(version): 递增 app_version 2.28.00→2.29.00（500行红线治理批次3收尾，待Boss确认后推送）",
+        "refactor(b3-30): topology_service.py 3575行拆为14文件（纯C模式，行为零变化）",
+        "refactor(b3-29): collect_tasks.py 4453行拆为17文件（C+D混合模式，行为零变化）",
+        "refactor(b3-28): report_html.py 1856行拆为7文件（C+D混合模式，行为零变化）",
+        "refactor(b3-27): patrol_service.py 1555行拆为5文件（D模式，行为零变化）",
+        "refactor(b3-26): snmp.py 1129行拆为6文件（D模式+状态仓，行为零变化）",
+        "refactor(b3-25): metric_catalog_service 1109行拆为6文件（D模式，行为零变化）",
+        "refactor(b3-24): D模式拆分discovery/redfish.py 1162行为4文件(拆函数体试点)",
+        "refactor(b3-23): 拆分discovery/storage_rest.py 1100行为5文件",
+        "refactor(b3-22): alert_orchestrator 935行拆分为5文件（纯搬移零行为）"
+      ]
+    },
     {
       "version": "2.27.01",
       "released_at": "2026-10-12T14:59:33Z",
