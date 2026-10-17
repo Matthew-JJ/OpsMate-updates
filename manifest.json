@@ -1,10 +1,11 @@
 {
-  "latest": "2.29.08",
-  "latest_version": "2.29.08",
+  "latest": "2.29.09",
+  "latest_version": "2.29.09",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-10-17",
   "changelog": [
+    "v2.29.09: 网络设备监控概览\"满屏0+裸数字实例\"两问修复（A+B组合）",
     "v2.29.08: SNMP预算超时\"整台丢弃\"根修（gather蒸发根修）+预算默认120→240",
     "fix(采集): v2.29.07 批量采集批次超时丢数据连环故障两味药根修",
     "v2.29.06: 修复SIPG批量采集Lock跨事件循环连环故障+热同步enum_map占位缺口。①根修snmp.py _v3_engine_locks跨循环RuntimeError：SNMPv3引擎发现锁为模块级全局dict[str,asyncio.Lock]，批量采集每轮asyncio.new_event_loop()换新循环后复用旧循环绑定锁，acquire必抛RuntimeError('bound to a different event loop')且锁卡locked不释放，导致后续每轮每次调用连续炸（SIPG 5204条错误、19台华为SNMPv3任务consecutive_failures 38~55）。修法照抄redis_pool v2.29.04跨循环重建模式：锁表值改(loop,lock)元组，新增_get_v3_engine_lock(host)取锁时校验绑定循环、换循环即重建；_put_engine_cache prune逻辑适配新结构。定性：错误最早13:17早于2.29.05升级（13:38），与2.29.05字典/热同步修改无关，系2.29.04修复redis跨循环后采集走得更深暴露的连环第二雷（锁为v2.26.51审计引入老代码）；数据未断流（TDengine 19台持续落库），GET类主指标不受影响，walk类接口指标失败。②热同步enum_map:null占位缺口：_sync_snmp_definitions/_sync_storage_rest_definitions补字段判据k not in merged对None占位键失效，任务条目enum_map:null挡掉字典枚举值（19台风扇/电源状态枚举丢失根因）。修法：None占位视同缺失（merged.get(k) is None and v is not None），条目已有真实值仍保留任务定制。验证：.temp/test_v22906_fix.py 20项全过（30轮换循环压力+同循环互斥语义+prune兼容+enum占位覆盖/定制保留+2.29.05全16项回归），test_hot_sync_fix.py旧16项全过，py_compile全过。",
@@ -13,8 +14,7 @@
     "v2.29.03: 同型号部件交叉配对假变更根修(碰撞组确定性认领) - existing_components改dict[str,list]保留碰撞组全部行+组内序列号/名称稳定排序,行级claimed_rows认领,claim_group_match优先序列号一致配对; 修复旧dict键碰撞丢行+双重认领致枚举顺序一变即交叉写假更新部件(SIPG实证每采集+2条,104碰撞组308部件); 移除检测重构为剩余未认领行R1流程; 新增test_component_sync_collision.py 9用例, 233全量回归250+8零回归",
     "v2.29.02: 风扇转速变更误触根修(标注补齐不再算部件变更) - component_sync_utils新增structural_fields_changed豁免_TS_FIELD_EXEMPT标注字段(rpm_unit)的补齐/缺失差异,component_discovery两处变更判定改调新函数+import修正; 根因=升级后采集给风扇档案补写rpm_unit标注致每台刷6条更新部件噪音; 新增test_component_change_noise.py 13用例, 233全量回归241+8零回归; 历史噪音清理已执行(SIPG删829/233删4508,含备份表)",
     "v2.29.01: 采集告警风暴热修(Mixin继承顺序遮蔽根修) - 7个采集器入口类BaseCollector移至继承列表最后, 修复abstractmethod遮蔽Mixin实现致Snmp/Redfish实例化失败(告警风暴)与Winrm/VCenter/Snmp/Redfish的collect_inventory被空默认遮蔽; 新增test_collector_instantiation.py实例化冒烟堵盲区, pytest 228+8零回归, 233实测采集全部恢复数据落库",
-    "chore(version): 递增 app_version 2.28.00→2.29.00（500行红线治理批次3收尾，待Boss确认后推送）",
-    "refactor(b3-30): topology_service.py 3575行拆为14文件（纯C模式，行为零变化）"
+    "chore(version): 递增 app_version 2.28.00→2.29.00（500行红线治理批次3收尾，待Boss确认后推送）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.29.08: v2.29.08: SNMP预算超时\"整台丢弃\"根修（gather蒸发根修）+预算默认120→240 + fix(采集): v2.29.07 批量采集批次超时丢数据连环故障两味药根修 + v2.29.06: 修复SIPG批量采集Lock跨事件循环连环故障+热同步enum_map占位缺口。①根修snmp.py _v3_engine_locks跨循环RuntimeError：SNMPv3引擎发现锁为模块级全局dict[str,asyncio.Lock]，批量采集每轮asyncio.new_event_loop()换新循环后复用旧循环绑定锁，acquire必抛RuntimeError('bound to a different event loop')且锁卡locked不释放，导致后续每轮每次调用连续炸（SIPG 5204条错误、19台华为SNMPv3任务consecutive_failures 38~55）。修法照抄redis_pool v2.29.04跨循环重建模式：锁表值改(loop,lock)元组，新增_get_v3_engine_lock(host)取锁时校验绑定循环、换循环即重建；_put_engine_cache prune逻辑适配新结构。定性：错误最早13:17早于2.29.05升级（13:38），与2.29.05字典/热同步修改无关，系2.29.04修复redis跨循环后采集走得更深暴露的连环第二雷（锁为v2.26.51审计引入老代码）；数据未断流（TDengine 19台持续落库），GET类主指标不受影响，walk类接口指标失败。②热同步enum_map:null占位缺口：_sync_snmp_definitions/_sync_storage_rest_definitions补字段判据k not in merged对None占位键失效，任务条目enum_map:null挡掉字典枚举值（19台风扇/电源状态枚举丢失根因）。修法：None占位视同缺失（merged.get(k) is None and v is not None），条目已有真实值仍保留任务定制。验证：.temp/test_v22906_fix.py 20项全过（30轮换循环压力+同循环互斥语义+prune兼容+enum占位覆盖/定制保留+2.29.05全16项回归），test_hot_sync_fix.py旧16项全过，py_compile全过。 等10项更新",
+  "notes": "v2.29.09: v2.29.09: 网络设备监控概览\"满屏0+裸数字实例\"两问修复（A+B组合） + v2.29.08: SNMP预算超时\"整台丢弃\"根修（gather蒸发根修）+预算默认120→240 + fix(采集): v2.29.07 批量采集批次超时丢数据连环故障两味药根修 等10项更新",
   "versions": [
+    {
+      "version": "2.29.09",
+      "released_at": "2026-10-17T16:18:09Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.29.09: 网络设备监控概览\"满屏0+裸数字实例\"两问修复（A+B组合）",
+        "v2.29.08: SNMP预算超时\"整台丢弃\"根修（gather蒸发根修）+预算默认120→240",
+        "fix(采集): v2.29.07 批量采集批次超时丢数据连环故障两味药根修",
+        "v2.29.06: 修复SIPG批量采集Lock跨事件循环连环故障+热同步enum_map占位缺口。①根修snmp.py _v3_engine_locks跨循环RuntimeError：SNMPv3引擎发现锁为模块级全局dict[str,asyncio.Lock]，批量采集每轮asyncio.new_event_loop()换新循环后复用旧循环绑定锁，acquire必抛RuntimeError('bound to a different event loop')且锁卡locked不释放，导致后续每轮每次调用连续炸（SIPG 5204条错误、19台华为SNMPv3任务consecutive_failures 38~55）。修法照抄redis_pool v2.29.04跨循环重建模式：锁表值改(loop,lock)元组，新增_get_v3_engine_lock(host)取锁时校验绑定循环、换循环即重建；_put_engine_cache prune逻辑适配新结构。定性：错误最早13:17早于2.29.05升级（13:38），与2.29.05字典/热同步修改无关，系2.29.04修复redis跨循环后采集走得更深暴露的连环第二雷（锁为v2.26.51审计引入老代码）；数据未断流（TDengine 19台持续落库），GET类主指标不受影响，walk类接口指标失败。②热同步enum_map:null占位缺口：_sync_snmp_definitions/_sync_storage_rest_definitions补字段判据k not in merged对None占位键失效，任务条目enum_map:null挡掉字典枚举值（19台风扇/电源状态枚举丢失根因）。修法：None占位视同缺失（merged.get(k) is None and v is not None），条目已有真实值仍保留任务定制。验证：.temp/test_v22906_fix.py 20项全过（30轮换循环压力+同循环互斥语义+prune兼容+enum占位覆盖/定制保留+2.29.05全16项回归），test_hot_sync_fix.py旧16项全过，py_compile全过。",
+        "v2.29.05: 华为SNMP指标字典官方MIB修正+热同步device_type匹配缺陷根修 - snmp_vendor_metrics.json huawei.switch段13处手术修正(官方MIB库18版跨版本比对+10.23.3.151/155真机双验证): sfp_template实为光模块温度非型号(.3.1.5 hwEntityOpticalTemperature), sfp_rx/tx_power单位uW→0.01dBm(MIB明文dBm放大100倍,真机-247=-2.47dBm实证), .13~.16实为收/发光功率低高门限非最小最大值(hwEntityOpticalRx/TxLow/HighThreshold), mpu_mem_size单位KB→bytes(18版MIB UNITS一致), mpu_cpu_temp实为实体温度非CPU专属(hwEntityTemperature), power_status补enum{1:供电2:不供电3:休眠4:未知}, fan_status补enum{1:正常2:异常}, 新增fan_present(默认勾选,真机151/155全在位)与mpu_temp_threshold(非默认,真机85/60℃); metric_name一律不动防断metric_catalog映射,description标注历史命名误导,候选.45/.65/.18.1.10真机rows=0不支持未采纳; 根修collect_defs._sync_snmp_definitions device_type精确相等致huawei_switch≠switch热同步空转, 放宽为厂商前缀后缀匹配(huawei_switch命中switch段,7厂商共用switch段仍由oid命中判据选正确段), 16项定向测试全过(label/unit/enum覆盖+recommended过滤+canonical_name保留+dell_switch/裸switch回归)",
+        "v2.29.04: Redfish会话复用A方案+跨事件循环Redis根修(会话token跨采集复用零event噪音) - 新增redfish_session_cache.py(Redis缓存token, key=origin+账号, TTL24h用即续期), redfish_session.py新增try_reuse/release/destroy+创建POST显式auth=None根修iDRAC拒带Basic头POST致静默降级Basic每请求刷event, orchestrate_mixin与discovery两处finally改release不再每轮真删会话; 233插桩实证缓存复用失效真根因=collect_batch每轮asyncio.new_event_loop()+redis_pool._async_client单例绑死旧循环, 跨循环RuntimeError('Event loop is closed')被except静默吞致load恒None每轮新建→会话泄漏打满BMC会话池→503→Basic降级恶性循环; 根修redis_pool.py客户端/asyncio.Lock记录绑定事件循环, get_async_redis_client检测换循环即作废旧连接池重建; 233实测8轮(含干净版4轮)三会话ID跨轮稳定复用、零新建零503零降级、TDengine 33/33x3落库、iDRAC Lclog对照13:25起零REDFISH会话事件(故障期LOG007重复157次登录噪音消失)",
+        "v2.29.03: 同型号部件交叉配对假变更根修(碰撞组确定性认领) - existing_components改dict[str,list]保留碰撞组全部行+组内序列号/名称稳定排序,行级claimed_rows认领,claim_group_match优先序列号一致配对; 修复旧dict键碰撞丢行+双重认领致枚举顺序一变即交叉写假更新部件(SIPG实证每采集+2条,104碰撞组308部件); 移除检测重构为剩余未认领行R1流程; 新增test_component_sync_collision.py 9用例, 233全量回归250+8零回归",
+        "v2.29.02: 风扇转速变更误触根修(标注补齐不再算部件变更) - component_sync_utils新增structural_fields_changed豁免_TS_FIELD_EXEMPT标注字段(rpm_unit)的补齐/缺失差异,component_discovery两处变更判定改调新函数+import修正; 根因=升级后采集给风扇档案补写rpm_unit标注致每台刷6条更新部件噪音; 新增test_component_change_noise.py 13用例, 233全量回归241+8零回归; 历史噪音清理已执行(SIPG删829/233删4508,含备份表)",
+        "v2.29.01: 采集告警风暴热修(Mixin继承顺序遮蔽根修) - 7个采集器入口类BaseCollector移至继承列表最后, 修复abstractmethod遮蔽Mixin实现致Snmp/Redfish实例化失败(告警风暴)与Winrm/VCenter/Snmp/Redfish的collect_inventory被空默认遮蔽; 新增test_collector_instantiation.py实例化冒烟堵盲区, pytest 228+8零回归, 233实测采集全部恢复数据落库",
+        "chore(version): 递增 app_version 2.28.00→2.29.00（500行红线治理批次3收尾，待Boss确认后推送）"
+      ]
+    },
     {
       "version": "2.29.08",
       "released_at": "2026-10-17T13:00:17Z",
