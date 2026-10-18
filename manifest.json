@@ -1,10 +1,11 @@
 {
-  "latest": "2.29.16",
-  "latest_version": "2.29.16",
+  "latest": "2.29.17",
+  "latest_version": "2.29.17",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-10-18",
   "changelog": [
+    "v2.29.17: 网络资产详情页路由恢复方案A批次一（network→交换机专用页，assets.html+layout.js 两处同步）",
     "v2.29.16: 资产详情页配置内容 422 根修（content API 补传 asset_id，通用页两处+防火墙页）",
     "v2.29.15: http ip_address validator URL 端口/路径丢失根修（PrivateAttr 暂存完整 URL）",
     "v2.29.14: http 匿名凭证 URL 裸 host 兜底补 scheme（2.29.13 T2 实测边界缺口根修）",
@@ -13,8 +14,7 @@
     "v2.29.11: 告警/工单四问治理（rpm豁免/丢包阈值/端口down两bug/工单矩阵）",
     "v2.29.10: 监控概览继续收敛——-1 无效值折叠(F1) + 接口类指标分组折叠(G1)",
     "v2.29.09: 网络设备监控概览\"满屏0+裸数字实例\"两问修复（A+B组合）",
-    "v2.29.08: SNMP预算超时\"整台丢弃\"根修（gather蒸发根修）+预算默认120→240",
-    "fix(采集): v2.29.07 批量采集批次超时丢数据连环故障两味药根修"
+    "v2.29.08: SNMP预算超时\"整台丢弃\"根修（gather蒸发根修）+预算默认120→240"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.29.16: v2.29.16: 资产详情页配置内容 422 根修（content API 补传 asset_id，通用页两处+防火墙页） + v2.29.15: http ip_address validator URL 端口/路径丢失根修（PrivateAttr 暂存完整 URL） + v2.29.14: http 匿名凭证 URL 裸 host 兜底补 scheme（2.29.13 T2 实测边界缺口根修） 等10项更新",
+  "notes": "v2.29.17: v2.29.17: 网络资产详情页路由恢复方案A批次一（network→交换机专用页，assets.html+layout.js 两处同步） + v2.29.16: 资产详情页配置内容 422 根修（content API 补传 asset_id，通用页两处+防火墙页） + v2.29.15: http ip_address validator URL 端口/路径丢失根修（PrivateAttr 暂存完整 URL） 等10项更新",
   "versions": [
+    {
+      "version": "2.29.17",
+      "released_at": "2026-10-18T16:28:42Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.29.17: 网络资产详情页路由恢复方案A批次一（network→交换机专用页，assets.html+layout.js 两处同步）",
+        "v2.29.16: 资产详情页配置内容 422 根修（content API 补传 asset_id，通用页两处+防火墙页）",
+        "v2.29.15: http ip_address validator URL 端口/路径丢失根修（PrivateAttr 暂存完整 URL）",
+        "v2.29.14: http 匿名凭证 URL 裸 host 兜底补 scheme（2.29.13 T2 实测边界缺口根修）",
+        "v2.29.13: http 接入链四缺陷根修+Excel 模板 HTTP Sheet+前端向导接线+部署脚本 TDengine 密码根修",
+        "v2.29.12: HTTP 探活采集器（Web 应用/网站 URL 监控，唯一能力缺口补齐）",
+        "v2.29.11: 告警/工单四问治理（rpm豁免/丢包阈值/端口down两bug/工单矩阵）",
+        "v2.29.10: 监控概览继续收敛——-1 无效值折叠(F1) + 接口类指标分组折叠(G1)",
+        "v2.29.09: 网络设备监控概览\"满屏0+裸数字实例\"两问修复（A+B组合）",
+        "v2.29.08: SNMP预算超时\"整台丢弃\"根修（gather蒸发根修）+预算默认120→240"
+      ]
+    },
     {
       "version": "2.29.16",
       "released_at": "2026-10-18T15:47:43Z",
