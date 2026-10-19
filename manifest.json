@@ -1,10 +1,11 @@
 {
-  "latest": "2.29.21",
-  "latest_version": "2.29.21",
+  "latest": "2.29.22",
+  "latest_version": "2.29.22",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-10-19",
   "changelog": [
+    "v2.29.22: 资产详情页配置备份三体验改进——①Diff行内差异高亮（行级红绿看不出vlan3100→vlan3101类微小差异，新增公共前后缀法配对-/+行标出变化字符段diff-chg，头行灰显，各段esc转义防XSS）②查看变更尊重勾选（原固定取最新两条忽略勾选=bug，勾选框补data-version/data-config-type，恰好2条按其version对比、类型不一致拦截、非2条提示、未勾选回退最新两条）③SSH凭证常驻入口（原藏在采集失败后弹窗链首次必失败一次，配置管理Tab头新增凭证状态徽标+录入/更新凭证PUT+测试连通性POST两常驻按钮，失败弹窗链保留）——纯前端assets-detail-switch.html零后端改动，verify_v22922_ui.py 15/15（结构13+JS语法+diff单测6含XSS转义/高亮段/落单行/多行配对/上下文/全差异边界）",
     "v2.29.21: 三项待办根修+TLS旧套件兼容——①IANA映射8条硬错误修正（对照官方注册表2026-10-15逐条核实：删2021/8072/1139/1041/3325/6027/37947错误映射+新增6574Synology/39165Hikvision/37496Dahua/12356Fortinet/35047Sangfor/37945Inspur+30065改Arista）②DB预设补oid_prefix_alt（迁移065+模型+loader，v2.29.18贴牌回退DB路径闭环）③超龄running清扫分档（通用600s/Redfish慢线1500s）+compose celery加stop_grace_period 330s（升级重启任务卡死根修）④TLS SECLEVEL=1兼容（31.2/31.3 AES256-SHA旧套件接入阻塞根修，verify=False复用storage_rest_util._build_ssl_context）⑤compose DNS配置位（242内网域名接入预备）",
     "v2.29.20: 预设模板电源/风扇告警规则枚举阈值语义根修——模板4处 ne 0/ne ok 改 gt 1（catalog枚举0=ok/1=normal均正常，242实证36条Critical误报风暴源头+风扇哑规则）+迁移064统一修存量规则快照",
     "v2.29.19: 两项遗留修复——①power_status canonical误映射根修（part28删群晖snmp撞名映射+alembic迁移063清DB残留，snmp.power_status唯一归power.psu.status，10条电源告警规则恢复触发）②华为sysobjectid_prefixes补FutureMatrix贴牌前缀56813（新接入自动匹配华为段+oid_prefix_alt回退）",
@@ -13,8 +14,7 @@
     "v2.29.16: 资产详情页配置内容 422 根修（content API 补传 asset_id，通用页两处+防火墙页）",
     "v2.29.15: http ip_address validator URL 端口/路径丢失根修（PrivateAttr 暂存完整 URL）",
     "v2.29.14: http 匿名凭证 URL 裸 host 兜底补 scheme（2.29.13 T2 实测边界缺口根修）",
-    "v2.29.13: http 接入链四缺陷根修+Excel 模板 HTTP Sheet+前端向导接线+部署脚本 TDengine 密码根修",
-    "v2.29.12: HTTP 探活采集器（Web 应用/网站 URL 监控，唯一能力缺口补齐）"
+    "v2.29.13: http 接入链四缺陷根修+Excel 模板 HTTP Sheet+前端向导接线+部署脚本 TDengine 密码根修"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.29.21: v2.29.21: 三项待办根修+TLS旧套件兼容——①IANA映射8条硬错误修正（对照官方注册表2026-10-15逐条核实：删2021/8072/1139/1041/3325/6027/37947错误映射+新增6574Synology/39165Hikvision/37496Dahua/12356Fortinet/35047Sangfor/37945Inspur+30065改Arista）②DB预设补oid_prefix_alt（迁移065+模型+loader，v2.29.18贴牌回退DB路径闭环）③超龄running清扫分档（通用600s/Redfish慢线1500s）+compose celery加stop_grace_period 330s（升级重启任务卡死根修）④TLS SECLEVEL=1兼容（31.2/31.3 AES256-SHA旧套件接入阻塞根修，verify=False复用storage_rest_util._build_ssl_context）⑤compose DNS配置位（242内网域名接入预备） + v2.29.20: 预设模板电源/风扇告警规则枚举阈值语义根修——模板4处 ne 0/ne ok 改 gt 1（catalog枚举0=ok/1=normal均正常，242实证36条Critical误报风暴源头+风扇哑规则）+迁移064统一修存量规则快照 + v2.29.19: 两项遗留修复——①power_status canonical误映射根修（part28删群晖snmp撞名映射+alembic迁移063清DB残留，snmp.power_status唯一归power.psu.status，10条电源告警规则恢复触发）②华为sysobjectid_prefixes补FutureMatrix贴牌前缀56813（新接入自动匹配华为段+oid_prefix_alt回退） 等10项更新",
+  "notes": "v2.29.22: v2.29.22: 资产详情页配置备份三体验改进——①Diff行内差异高亮（行级红绿看不出vlan3100→vlan3101类微小差异，新增公共前后缀法配对-/+行标出变化字符段diff-chg，头行灰显，各段esc转义防XSS）②查看变更尊重勾选（原固定取最新两条忽略勾选=bug，勾选框补data-version/data-config-type，恰好2条按其version对比、类型不一致拦截、非2条提示、未勾选回退最新两条）③SSH凭证常驻入口（原藏在采集失败后弹窗链首次必失败一次，配置管理Tab头新增凭证状态徽标+录入/更新凭证PUT+测试连通性POST两常驻按钮，失败弹窗链保留）——纯前端assets-detail-switch.html零后端改动，verify_v22922_ui.py 15/15（结构13+JS语法+diff单测6含XSS转义/高亮段/落单行/多行配对/上下文/全差异边界） + v2.29.21: 三项待办根修+TLS旧套件兼容——①IANA映射8条硬错误修正（对照官方注册表2026-10-15逐条核实：删2021/8072/1139/1041/3325/6027/37947错误映射+新增6574Synology/39165Hikvision/37496Dahua/12356Fortinet/35047Sangfor/37945Inspur+30065改Arista）②DB预设补oid_prefix_alt（迁移065+模型+loader，v2.29.18贴牌回退DB路径闭环）③超龄running清扫分档（通用600s/Redfish慢线1500s）+compose celery加stop_grace_period 330s（升级重启任务卡死根修）④TLS SECLEVEL=1兼容（31.2/31.3 AES256-SHA旧套件接入阻塞根修，verify=False复用storage_rest_util._build_ssl_context）⑤compose DNS配置位（242内网域名接入预备） + v2.29.20: 预设模板电源/风扇告警规则枚举阈值语义根修——模板4处 ne 0/ne ok 改 gt 1（catalog枚举0=ok/1=normal均正常，242实证36条Critical误报风暴源头+风扇哑规则）+迁移064统一修存量规则快照 等10项更新",
   "versions": [
+    {
+      "version": "2.29.22",
+      "released_at": "2026-10-19T11:02:57Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.29.22: 资产详情页配置备份三体验改进——①Diff行内差异高亮（行级红绿看不出vlan3100→vlan3101类微小差异，新增公共前后缀法配对-/+行标出变化字符段diff-chg，头行灰显，各段esc转义防XSS）②查看变更尊重勾选（原固定取最新两条忽略勾选=bug，勾选框补data-version/data-config-type，恰好2条按其version对比、类型不一致拦截、非2条提示、未勾选回退最新两条）③SSH凭证常驻入口（原藏在采集失败后弹窗链首次必失败一次，配置管理Tab头新增凭证状态徽标+录入/更新凭证PUT+测试连通性POST两常驻按钮，失败弹窗链保留）——纯前端assets-detail-switch.html零后端改动，verify_v22922_ui.py 15/15（结构13+JS语法+diff单测6含XSS转义/高亮段/落单行/多行配对/上下文/全差异边界）",
+        "v2.29.21: 三项待办根修+TLS旧套件兼容——①IANA映射8条硬错误修正（对照官方注册表2026-10-15逐条核实：删2021/8072/1139/1041/3325/6027/37947错误映射+新增6574Synology/39165Hikvision/37496Dahua/12356Fortinet/35047Sangfor/37945Inspur+30065改Arista）②DB预设补oid_prefix_alt（迁移065+模型+loader，v2.29.18贴牌回退DB路径闭环）③超龄running清扫分档（通用600s/Redfish慢线1500s）+compose celery加stop_grace_period 330s（升级重启任务卡死根修）④TLS SECLEVEL=1兼容（31.2/31.3 AES256-SHA旧套件接入阻塞根修，verify=False复用storage_rest_util._build_ssl_context）⑤compose DNS配置位（242内网域名接入预备）",
+        "v2.29.20: 预设模板电源/风扇告警规则枚举阈值语义根修——模板4处 ne 0/ne ok 改 gt 1（catalog枚举0=ok/1=normal均正常，242实证36条Critical误报风暴源头+风扇哑规则）+迁移064统一修存量规则快照",
+        "v2.29.19: 两项遗留修复——①power_status canonical误映射根修（part28删群晖snmp撞名映射+alembic迁移063清DB残留，snmp.power_status唯一归power.psu.status，10条电源告警规则恢复触发）②华为sysobjectid_prefixes补FutureMatrix贴牌前缀56813（新接入自动匹配华为段+oid_prefix_alt回退）",
+        "v2.29.18: 华为交换机概览卡片三层根修——①OID备选回退机制（FutureMatrix 56813贴牌华为，字典oid_prefix_alt+热同步oid_alt+采集/discover回退）②dashboard network limit 2000→10000可配（uptime等标量被接口组挤出截断）③前端卡片key对齐canonical+metricMaxVal最大值+uptime按TimeTicks换算",
+        "v2.29.17: 网络资产详情页路由恢复方案A批次一（network→交换机专用页，assets.html+layout.js 两处同步）",
+        "v2.29.16: 资产详情页配置内容 422 根修（content API 补传 asset_id，通用页两处+防火墙页）",
+        "v2.29.15: http ip_address validator URL 端口/路径丢失根修（PrivateAttr 暂存完整 URL）",
+        "v2.29.14: http 匿名凭证 URL 裸 host 兜底补 scheme（2.29.13 T2 实测边界缺口根修）",
+        "v2.29.13: http 接入链四缺陷根修+Excel 模板 HTTP Sheet+前端向导接线+部署脚本 TDengine 密码根修"
+      ]
+    },
     {
       "version": "2.29.21",
       "released_at": "2026-10-19T07:37:34Z",
