@@ -409,6 +409,11 @@ services:
     <<: *backend-common
     container_name: opsmate-backend
     restart: unless-stopped
+    # 内网 DNS 场景（需解析内网域名，如客户内网 OA/门户）：取消注释并指定容器 DNS；
+    # 不配置时继承 Docker daemon DNS（v2.29.21 起提供此配置位）
+    # dns:
+    #   - "${DNS_PRIMARY:-223.5.5.5}"
+    #   - "${DNS_SECONDARY:-223.5.5.5}"
     logging: *default-logging
     volumes:
       - ${OPSMATE_DIR:-/opt/opsmate}/reports:/opt/opsmate/reports
@@ -462,6 +467,15 @@ services:
     <<: *backend-common
     container_name: opsmate-celery
     restart: unless-stopped
+    # v2.29.21: 停止宽限期 330s（SIGTERM 后 warm shutdown 等在跑批次收尾），
+    # 默认 10s SIGKILL 会杀掉在跑批次致任务残留 running 被原子认领互锁
+    # （通用批次 300s 硬超时+30s 缓冲；Redfish 慢线极端残留由清扫分档/升级脚本释放兜底）
+    stop_grace_period: 330s
+    # 内网 DNS 场景（需解析内网域名，如客户内网 OA/门户）：取消注释并指定容器 DNS；
+    # 不配置时继承 Docker daemon DNS（v2.29.21 起提供此配置位）
+    # dns:
+    #   - "${DNS_PRIMARY:-223.5.5.5}"
+    #   - "${DNS_SECONDARY:-223.5.5.5}"
     logging: *default-logging
     volumes:
       - ${OPSMATE_DIR:-/opt/opsmate}/reports:/opt/opsmate/reports
