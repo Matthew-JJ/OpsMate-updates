@@ -592,3 +592,7 @@ networks:
   opsmate-net:
     driver: bridge
     name: opsmate-network
+    # 网段固化：避开企业内网常用段（172.18.x/172.17.x），根修自动分配撞客户内网（242 实证 172.18.0.0/16 劫持 172.18.2.x）
+    ipam:
+      config:
+        - subnet: 172.31.229.0/24
