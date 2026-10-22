@@ -395,8 +395,9 @@ services:
       - |
         echo "[init] 计算机器指纹（root 相位，DMI 仅 root 可读）-> license/machine_fingerprint.raw"
         LICENSE_DIR=/opt/opsmate/license python3 -c "from app.core.license import persist_machine_fingerprint; persist_machine_fingerprint()" || echo "[init] WARN: 机器指纹计算失败（非致命，应用层将现场采集，非 root 下指纹可能退化）"
-        echo "[init] chown 挂载卷 -> 1000:1000 (ssl/reports/logs/license)"
-        chown -R 1000:1000 /opt/opsmate/ssl /opt/opsmate/reports /opt/opsmate/logs /opt/opsmate/license || echo "[init] WARN: chown 部分失败（对应卷可能未挂载），继续启动"
+        echo "[init] chown 挂载卷 -> 1000:1000 (ssl/reports/logs/license/models)"
+        mkdir -p /opt/opsmate/models/embedding
+        chown -R 1000:1000 /opt/opsmate/ssl /opt/opsmate/reports /opt/opsmate/logs /opt/opsmate/license /opt/opsmate/models || echo "[init] WARN: chown 部分失败（对应卷可能未挂载），继续启动"
         echo "[init] done"
     volumes:
       - ${OPSMATE_DIR:-/opt/opsmate}/ssl:/opt/opsmate/ssl
@@ -419,6 +420,9 @@ services:
       - ${OPSMATE_DIR:-/opt/opsmate}/reports:/opt/opsmate/reports
       - ${OPSMATE_DIR:-/opt/opsmate}/logs:/opt/opsmate/logs
       - ${OPSMATE_DIR:-/opt/opsmate}/license:/opt/opsmate/license
+      # v2.29.28: 模型缓存持久化（fastembed/bge-small-zh 约 100MB）——容器重建不丢，
+      # 升级后无网络也可本地加载（Boss 拍板：挂载宿主机卷方案）
+      - ${OPSMATE_DIR:-/opt/opsmate}/models/embedding:/app/models/embedding
     ports:
       # - "8000:8000"  # ⚠️ 已禁用：绕过nginx安全头/限速，生产环境勿开
       - "162:162/udp"   # SNMP Trap
@@ -481,6 +485,8 @@ services:
       - ${OPSMATE_DIR:-/opt/opsmate}/reports:/opt/opsmate/reports
       - ${OPSMATE_DIR:-/opt/opsmate}/logs:/opt/opsmate/logs
       - ${OPSMATE_DIR:-/opt/opsmate}/license:/opt/opsmate/license
+      # v2.29.28: 模型缓存持久化（celery 同步任务也需加载）
+      - ${OPSMATE_DIR:-/opt/opsmate}/models/embedding:/app/models/embedding
     environment:
       <<: *backend-env
     depends_on:
