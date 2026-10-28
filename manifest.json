@@ -1,10 +1,11 @@
 {
-  "latest": "2.29.86",
-  "latest_version": "2.29.86",
+  "latest": "2.29.87",
+  "latest_version": "2.29.87",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-10-27",
+  "release_date": "2026-10-28",
   "changelog": [
+    "fix: IPMI风扇假告警根修+collect_failure存量收口补丁+SNMP快慢线分层采集（v2.29.87）",
     "fix: SIPG 告警误报系统性根修批次1-6（采集失败/变更假阳性/排程/断链语义/双阈值折叠/工单闭环，v2.29.86）",
     "fix: Redfish 全通道 TLS 握手降级失败根修（旧密码套件设备 SECLEVEL=1 兼容，v2.29.85）",
     "chore: P2-2d 233 全树部署漂移统一同步 24 文件至 HEAD + config_fields（v2.29.84）",
@@ -13,8 +14,7 @@
     "refactor: P2-2a 单文件≤500 行红线拆分 remote_inspect.py 510→3 子模块+面板（v2.29.81）",
     "refactor: P2-1z 单文件≤500 行红线拆分 power_control.py 515→2 子模块+面板（v2.29.80）",
     "refactor: P2-1y 单文件≤500 行红线拆分 share_tokens.py 516→2 子模块+面板（v2.29.79）",
-    "fix: ai_ops 智能工单/变更影响请求体 ID 非法值 500→422 根修（v2.29.78）",
-    "refactor: P2-1x 单文件≤500 行红线拆分 ai_ops.py 533→3 子模块+面板（v2.29.77）"
+    "fix: ai_ops 智能工单/变更影响请求体 ID 非法值 500→422 根修（v2.29.78）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.29.86: fix: SIPG 告警误报系统性根修批次1-6（采集失败/变更假阳性/排程/断链语义/双阈值折叠/工单闭环，v2.29.86） + fix: Redfish 全通道 TLS 握手降级失败根修（旧密码套件设备 SECLEVEL=1 兼容，v2.29.85） + chore: P2-2d 233 全树部署漂移统一同步 24 文件至 HEAD + config_fields（v2.29.84） 等10项更新",
+  "notes": "v2.29.87: fix: IPMI风扇假告警根修+collect_failure存量收口补丁+SNMP快慢线分层采集（v2.29.87） + fix: SIPG 告警误报系统性根修批次1-6（采集失败/变更假阳性/排程/断链语义/双阈值折叠/工单闭环，v2.29.86） + fix: Redfish 全通道 TLS 握手降级失败根修（旧密码套件设备 SECLEVEL=1 兼容，v2.29.85） 等10项更新",
   "versions": [
+    {
+      "version": "2.29.87",
+      "released_at": "2026-10-28T09:22:07Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix: IPMI风扇假告警根修+collect_failure存量收口补丁+SNMP快慢线分层采集（v2.29.87）",
+        "fix: SIPG 告警误报系统性根修批次1-6（采集失败/变更假阳性/排程/断链语义/双阈值折叠/工单闭环，v2.29.86）",
+        "fix: Redfish 全通道 TLS 握手降级失败根修（旧密码套件设备 SECLEVEL=1 兼容，v2.29.85）",
+        "chore: P2-2d 233 全树部署漂移统一同步 24 文件至 HEAD + config_fields（v2.29.84）",
+        "refactor: P2-2c 单文件≤500 行红线拆分 metric_catalog_core.py 524→最小抽取 stateless（v2.29.83）",
+        "refactor: P2-2b 单文件≤500 行红线拆分 npm.py 507→3 子模块+面板（v2.29.82）",
+        "refactor: P2-2a 单文件≤500 行红线拆分 remote_inspect.py 510→3 子模块+面板（v2.29.81）",
+        "refactor: P2-1z 单文件≤500 行红线拆分 power_control.py 515→2 子模块+面板（v2.29.80）",
+        "refactor: P2-1y 单文件≤500 行红线拆分 share_tokens.py 516→2 子模块+面板（v2.29.79）",
+        "fix: ai_ops 智能工单/变更影响请求体 ID 非法值 500→422 根修（v2.29.78）"
+      ]
+    },
     {
       "version": "2.29.86",
       "released_at": "2026-10-27T14:25:46Z",
