@@ -312,7 +312,9 @@ services:
     container_name: opsmate-redis
     restart: unless-stopped
     logging: *default-logging
-    command: redis-server --requirepass ${REDIS_PASSWORD:?未在.env中配置} --maxmemory 512mb --maxmemory-policy allkeys-lru
+    # P1-4（S4）：noeviction 防 broker 消息被 LRU 静默逐出（第二漏采通道）；
+    # maxmemory 可经 REDIS_MAXMEMORY 调整（默认 768mb），noeviction 下写满报错可控可观测
+    command: redis-server --requirepass ${REDIS_PASSWORD:?未在.env中配置} --maxmemory ${REDIS_MAXMEMORY:-768mb} --maxmemory-policy noeviction
     environment:
       REDIS_PASSWORD: ${REDIS_PASSWORD:?未在.env中配置}
     # ⚠️ 审计 P1-2：默认已注释——Redis端口不暴露到宿主机；本地调试需要时取消下行注释
@@ -337,8 +339,8 @@ services:
     command: >
       redis-server
       --requirepass ${REDIS_PASSWORD:?未在.env中配置}
-      --maxmemory 512mb
-      --maxmemory-policy allkeys-lru
+      --maxmemory ${REDIS_MAXMEMORY:-768mb}
+      --maxmemory-policy noeviction
       --replicaof redis 6379
       --masterauth ${REDIS_PASSWORD:?未在.env中配置}
       --replica-read-only yes
@@ -466,10 +468,13 @@ services:
     labels:
       - "com.centurylinklabs.watchtower.enable=true"
 
-  # ========== Celery Worker (16并发) ==========
-  celery:
+  # ========== Celery Worker 采集池（S5 v2.29.93 P1-1 队列隔离） ==========
+  # 队列分工：worker=celery（采集/调度池）、worker-power=power（电源操作池，保低延迟）、
+  # worker-report=report（报表/巡检池，长任务不挤占采集槽位）；路由见 app/celery_app.py task_routes。
+  # 并发经 .env 可配：CELERY_CONCURRENCY / CELERY_POWER_CONCURRENCY / CELERY_REPORT_CONCURRENCY
+  worker:
     <<: *backend-common
-    container_name: opsmate-celery
+    container_name: opsmate-worker
     restart: unless-stopped
     # v2.29.21: 停止宽限期 330s（SIGTERM 后 warm shutdown 等在跑批次收尾），
     # 默认 10s SIGKILL 会杀掉在跑批次致任务残留 running 被原子认领互锁
@@ -507,11 +512,102 @@ services:
       celery -A app.celery_app worker
       -l info
       -P prefork
-      -c 16
+      -c ${CELERY_CONCURRENCY:-16}
       --max-tasks-per-child=100
-      -Q celery,power
+      -Q celery
     healthcheck:
-      test: ["CMD-SHELL", "celery -A app.celery_app inspect ping --timeout 5 2>/dev/null | grep -q pong || (pgrep -f 'celery.*worker' > /dev/null && exit 0) || exit 1"]
+      # -d celery@$$HOSTNAME 定向 ping 本容器 worker（拆分后不加 -d 会被其他 worker 的 pong 掩盖本容器故障）；
+      # $$ 是 compose 转义，落容器后由 shell 展开为容器主机名
+      test: ["CMD-SHELL", "celery -A app.celery_app inspect ping -d celery@$$HOSTNAME --timeout 5 2>/dev/null | grep -q pong || (pgrep -f 'celery.*worker' > /dev/null && exit 0) || exit 1"]
+      interval: 30s
+      timeout: 15s
+      retries: 3
+      start_period: 45s
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  # ========== Celery Worker 电源池（S5 v2.29.93 P1-1 队列隔离） ==========
+  worker-power:
+    <<: *backend-common
+    container_name: opsmate-worker-power
+    restart: unless-stopped
+    stop_grace_period: 330s
+    logging: *default-logging
+    volumes:
+      - ${OPSMATE_DIR:-/opt/opsmate}/reports:/opt/opsmate/reports
+      - ${OPSMATE_DIR:-/opt/opsmate}/logs:/opt/opsmate/logs
+      - ${OPSMATE_DIR:-/opt/opsmate}/license:/opt/opsmate/license
+      - ${OPSMATE_DIR:-/opt/opsmate}/models/embedding:/app/models/embedding
+    environment:
+      <<: *backend-env
+    depends_on:
+      init:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      redis-sentinel-1:
+        condition: service_healthy
+      tdengine:
+        condition: service_healthy
+      backend:
+        condition: service_started
+    entrypoint: []
+    command: >
+      celery -A app.celery_app worker
+      -l info
+      -P prefork
+      -c ${CELERY_POWER_CONCURRENCY:-2}
+      --max-tasks-per-child=100
+      -Q power
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A app.celery_app inspect ping -d celery@$$HOSTNAME --timeout 5 2>/dev/null | grep -q pong || (pgrep -f 'celery.*worker' > /dev/null && exit 0) || exit 1"]
+      interval: 30s
+      timeout: 15s
+      retries: 3
+      start_period: 45s
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  # ========== Celery Worker 报表池（S5 v2.29.93 P1-1 队列隔离） ==========
+  worker-report:
+    <<: *backend-common
+    container_name: opsmate-worker-report
+    restart: unless-stopped
+    # 报表任务硬上限 600s（execute_report_schedule time_limit=600），宽限期 600+60 缓冲
+    stop_grace_period: 660s
+    logging: *default-logging
+    volumes:
+      - ${OPSMATE_DIR:-/opt/opsmate}/reports:/opt/opsmate/reports
+      - ${OPSMATE_DIR:-/opt/opsmate}/logs:/opt/opsmate/logs
+      - ${OPSMATE_DIR:-/opt/opsmate}/license:/opt/opsmate/license
+      - ${OPSMATE_DIR:-/opt/opsmate}/models/embedding:/app/models/embedding
+    environment:
+      <<: *backend-env
+    depends_on:
+      init:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      redis-sentinel-1:
+        condition: service_healthy
+      tdengine:
+        condition: service_healthy
+      backend:
+        condition: service_started
+    entrypoint: []
+    command: >
+      celery -A app.celery_app worker
+      -l info
+      -P prefork
+      -c ${CELERY_REPORT_CONCURRENCY:-4}
+      --max-tasks-per-child=100
+      -Q report
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A app.celery_app inspect ping -d celery@$$HOSTNAME --timeout 5 2>/dev/null | grep -q pong || (pgrep -f 'celery.*worker' > /dev/null && exit 0) || exit 1"]
       interval: 30s
       timeout: 15s
       retries: 3
