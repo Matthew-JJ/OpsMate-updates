@@ -183,7 +183,8 @@ services:
       POSTGRES_USER: opsmate
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?未在.env中配置}
       POSTGRES_REPLICATION_USER: replicator
-      POSTGRES_REPLICATION_PASSWORD: ${POSTGRES_REPLICATION_PASSWORD:-repl_dev_2026}
+      # v2.29.97 R6-④：复制口令强制 .env 显式配置，禁弱口令兜底
+      POSTGRES_REPLICATION_PASSWORD: ${POSTGRES_REPLICATION_PASSWORD:?未在.env中配置}
       # 审计 D-11：日界双时钟源显式绑定，主从与应用层统一 Asia/Shanghai
       TZ: Asia/Shanghai
     # ⚠️ 审计 P1-2：默认已注释——数据库/缓存端口不暴露到宿主机，公网部署零暴露面；
@@ -221,7 +222,8 @@ services:
       PGUSER: opsmate
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?未在.env中配置}
       POSTGRES_REPLICATION_USER: replicator
-      POSTGRES_REPLICATION_PASSWORD: ${POSTGRES_REPLICATION_PASSWORD:-repl_dev_2026}
+      # v2.29.97 R6-④：复制口令强制 .env 显式配置，禁弱口令兜底
+      POSTGRES_REPLICATION_PASSWORD: ${POSTGRES_REPLICATION_PASSWORD:?未在.env中配置}
       POSTGRES_PRIMARY_HOST: postgres
       POSTGRES_PRIMARY_PORT: "5432"
       # 审计 D-11：与主库/应用层统一 Asia/Shanghai
@@ -299,7 +301,8 @@ services:
     healthcheck:
       # 双密码探测：新密码或初始密码 taosdata 任一可连即 healthy。
       # 新装首启时密码同步（ALTER）由部署脚本在 healthy 后执行，期间用初始密码探活避免死锁等待（审计 P1-2）
-      test: ["CMD-SHELL", "taos -u $$TDENGINE_USER -p\"$${TDENGINE_PASSWORD}\" -s 'SELECT server_version();' 2>/dev/null || taos -u $$TDENGINE_USER -ptaosdata -s 'SELECT server_version();' 2>/dev/null || exit 1"]
+      # v2.29.97 R6-② 口令走 stdin（printf 内建管道），防 taos 进程 argv 泄露；taosdata 为公开初始口令不涉敏
+      test: ["CMD-SHELL", "printf '%s\\n' \"$${TDENGINE_PASSWORD}\" | taos -u $$TDENGINE_USER -p -s 'SELECT server_version();' 2>/dev/null || taos -u $$TDENGINE_USER -ptaosdata -s 'SELECT server_version();' 2>/dev/null || exit 1"]
       interval: 10s
       timeout: 5s
       retries: 5
