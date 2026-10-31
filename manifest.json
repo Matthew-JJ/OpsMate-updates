@@ -1,10 +1,11 @@
 {
-  "latest": "2.29.95",
-  "latest_version": "2.29.95",
+  "latest": "2.29.97",
+  "latest_version": "2.29.97",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-10-29",
+  "release_date": "2026-10-31",
   "changelog": [
+    "fix: 全面审核 R1-R6 全量安全修复——越权隔离/并发原子性/前端XSS/数据正确性/采集防护/部署供应链加固（repl弱口令收口+pg_hba双类覆盖+离线包SHA256+内嵌compose漂移对齐+manifest信任根拦截+.sha256发布链）+deploy全新安装校验时序回归收口（v2.29.97）",
     "refactor: 采集架构 S0-S6 整改（SNMP拆分+GetBulk化+引擎负缓存止损+TDengine跨子表合并写入+调度背压与漏采对账+三池队列隔离+设备互斥与SNMP请求节流）+删除历史遗留 docker-compose.lite.yml（v2.29.95）",
     "feat: 监控总览蜂巢图着色与分组真实现+按所属组织分组+批量最新指标接口（v2.29.88）",
     "fix: IPMI风扇假告警根修+collect_failure存量收口补丁+SNMP快慢线分层采集（v2.29.87）",
@@ -13,8 +14,7 @@
     "chore: P2-2d 233 全树部署漂移统一同步 24 文件至 HEAD + config_fields（v2.29.84）",
     "refactor: P2-2c 单文件≤500 行红线拆分 metric_catalog_core.py 524→最小抽取 stateless（v2.29.83）",
     "refactor: P2-2b 单文件≤500 行红线拆分 npm.py 507→3 子模块+面板（v2.29.82）",
-    "refactor: P2-2a 单文件≤500 行红线拆分 remote_inspect.py 510→3 子模块+面板（v2.29.81）",
-    "refactor: P2-1z 单文件≤500 行红线拆分 power_control.py 515→2 子模块+面板（v2.29.80）"
+    "refactor: P2-2a 单文件≤500 行红线拆分 remote_inspect.py 510→3 子模块+面板（v2.29.81）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.29.95: refactor: 采集架构 S0-S6 整改（SNMP拆分+GetBulk化+引擎负缓存止损+TDengine跨子表合并写入+调度背压与漏采对账+三池队列隔离+设备互斥与SNMP请求节流）+删除历史遗留 docker-compose.lite.yml（v2.29.95） + feat: 监控总览蜂巢图着色与分组真实现+按所属组织分组+批量最新指标接口（v2.29.88） + fix: IPMI风扇假告警根修+collect_failure存量收口补丁+SNMP快慢线分层采集（v2.29.87） 等10项更新",
+  "notes": "v2.29.97: fix: 全面审核 R1-R6 全量安全修复——越权隔离/并发原子性/前端XSS/数据正确性/采集防护/部署供应链加固（repl弱口令收口+pg_hba双类覆盖+离线包SHA256+内嵌compose漂移对齐+manifest信任根拦截+.sha256发布链）+deploy全新安装校验时序回归收口（v2.29.97） + refactor: 采集架构 S0-S6 整改（SNMP拆分+GetBulk化+引擎负缓存止损+TDengine跨子表合并写入+调度背压与漏采对账+三池队列隔离+设备互斥与SNMP请求节流）+删除历史遗留 docker-compose.lite.yml（v2.29.95） + feat: 监控总览蜂巢图着色与分组真实现+按所属组织分组+批量最新指标接口（v2.29.88） 等10项更新",
   "versions": [
+    {
+      "version": "2.29.97",
+      "released_at": "2026-10-31T12:50:18Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix: 全面审核 R1-R6 全量安全修复——越权隔离/并发原子性/前端XSS/数据正确性/采集防护/部署供应链加固（repl弱口令收口+pg_hba双类覆盖+离线包SHA256+内嵌compose漂移对齐+manifest信任根拦截+.sha256发布链）+deploy全新安装校验时序回归收口（v2.29.97）",
+        "refactor: 采集架构 S0-S6 整改（SNMP拆分+GetBulk化+引擎负缓存止损+TDengine跨子表合并写入+调度背压与漏采对账+三池队列隔离+设备互斥与SNMP请求节流）+删除历史遗留 docker-compose.lite.yml（v2.29.95）",
+        "feat: 监控总览蜂巢图着色与分组真实现+按所属组织分组+批量最新指标接口（v2.29.88）",
+        "fix: IPMI风扇假告警根修+collect_failure存量收口补丁+SNMP快慢线分层采集（v2.29.87）",
+        "fix: SIPG 告警误报系统性根修批次1-6（采集失败/变更假阳性/排程/断链语义/双阈值折叠/工单闭环，v2.29.86）",
+        "fix: Redfish 全通道 TLS 握手降级失败根修（旧密码套件设备 SECLEVEL=1 兼容，v2.29.85）",
+        "chore: P2-2d 233 全树部署漂移统一同步 24 文件至 HEAD + config_fields（v2.29.84）",
+        "refactor: P2-2c 单文件≤500 行红线拆分 metric_catalog_core.py 524→最小抽取 stateless（v2.29.83）",
+        "refactor: P2-2b 单文件≤500 行红线拆分 npm.py 507→3 子模块+面板（v2.29.82）",
+        "refactor: P2-2a 单文件≤500 行红线拆分 remote_inspect.py 510→3 子模块+面板（v2.29.81）"
+      ]
+    },
     {
       "version": "2.29.95",
       "released_at": "2026-10-29T09:44:41Z",
@@ -11579,7 +11601,7 @@
     }
   ],
   "files": {
-    "docker-compose.yml": "9004d63dbd65e9673ba872a6b859d0b18cffabe177633a74560f2efe96bfd683",
-    "opsmate": "71e50a61c098823596184bfa587e3c84afc48f115a679e5a320f675128c8ff6c"
+    "docker-compose.yml": "20ab0393c4090d9238c44aa0a5727c9b3b0dd09bdf16a575349fc6743b38b781",
+    "opsmate": "da21f32b8b82bd11c6155ee66f1c120412ecd6c3c4cc8cf4763f4994dabdbd27"
   }
 }
