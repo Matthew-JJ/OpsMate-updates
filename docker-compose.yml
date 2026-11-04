@@ -75,12 +75,12 @@ x-backend-env: &backend-env
   LLM_BASE_URL: ${LLM_BASE_URL:-}
   LLM_API_KEY: ${LLM_API_KEY:-}
   LLM_MODEL: ${LLM_MODEL:-}
-  # Watchtower API Token：与Watchtower --http-api-token一致，后端触发自动升级时使用
-  WATCHTOWER_API_TOKEN: ${WATCHTOWER_API_TOKEN:-opsmate-watchtower-2026}
-  # 版本更新检查源（多镜像回退：主源→镜像→备用）
-  UPDATE_CHECK_URL: ${UPDATE_CHECK_URL:-https://ghfast.top/https://raw.githubusercontent.com/MatthewJ-JJ/OpsMate-updates/main/manifest.json}
-  UPDATE_CHECK_MIRROR_URL: ${UPDATE_CHECK_MIRROR_URL:-https://raw.githubusercontent.com/MatthewJ-JJ/OpsMate-updates/main/manifest.json}
-  UPDATE_CHECK_FALLBACK_URL: ${UPDATE_CHECK_FALLBACK_URL:-http://122.51.177.113:9090/static/manifest.json}
+  # Watchtower API Token：与Watchtower --http-api-token一致，后端触发自动升级时使用；必须配置（部署脚本自动生成写入 .env，无默认口令）
+  WATCHTOWER_API_TOKEN: ${WATCHTOWER_API_TOKEN:?WATCHTOWER_API_TOKEN 未配置}
+  # 版本更新检查源（多镜像回退：主源→镜像→备用）；可选配置联网检查，默认空=内网不外联，后端优雅跳过更新检查
+  UPDATE_CHECK_URL: ${UPDATE_CHECK_URL:-}
+  UPDATE_CHECK_MIRROR_URL: ${UPDATE_CHECK_MIRROR_URL:-}
+  UPDATE_CHECK_FALLBACK_URL: ${UPDATE_CHECK_FALLBACK_URL:-}
 
 x-redis-image: &redis-image
   image: ${BASE_REGISTRY:-docker.io}/${BASE_NAMESPACE:-library}/redis:7-alpine
@@ -675,7 +675,7 @@ services:
       DOCKER_API_VERSION: ${DOCKER_API_VERSION:-1.43}
     command: >
       --http-api-update
-      --http-api-token ${WATCHTOWER_API_TOKEN:-opsmate-watchtower-2026}
+      --http-api-token ${WATCHTOWER_API_TOKEN:?WATCHTOWER_API_TOKEN 未配置}
       --cleanup
       --label-enable
     ports:
