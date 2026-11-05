@@ -1,10 +1,12 @@
 {
-  "latest": "2.30.06",
-  "latest_version": "2.30.06",
+  "latest": "2.30.07",
+  "latest_version": "2.30.07",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-11-04",
+  "release_date": "2026-11-05",
   "changelog": [
+    "fix: traffic.html 关注端口清单两处根修（v2.30.07）",
+    "fix: assets.html 批量调用错路由根修——漏 /batch 前缀致批量监控开关/批量绑定策略 404（v2.30.07）",
     "v2.30.06: 采集质量告警、资产级监控开关、蜂巢离线口径、链路管理补全、关注端口清单",
     "fix(release): v2.30.05 P0 制品一致性根修 + 依赖全量锁版",
     "ci: 冒烟增加 celery worker 真实起活 + inspect ping（根修 CI 验证盲区）",
@@ -12,9 +14,7 @@
     "fix: CI smoke 补 ENCRYPTION_KEY 占位适配 P1-40 强校验 + 递增 2.30.03",
     "feat: 交付前审查81项修复收官——五级化契约/租户风暴/维护统一准入/导出三连/工单SLA升级链/拓扑染色坐标 (v2.30.02)",
     "feat: 拓扑图hover两级信息制+蜂巢分组布局统一——连线\"网络连接\"静态标签删除(图面太杂)改由hover浮层承接，新增节点摘要卡(名称/IP/类型/状态/告警数)+连线关系卡(关系类型/两端/端口明细/链路状态)对齐业界两级制，150ms防闪/跟随鼠标/右缘翻转/移出兜底/命中区加宽；蜂巢分组标签一律另起一行(每组独占整行)（v2.30.01）",
-    "fix: 拓扑发现SNMP字符串NUL清洗根修——LLDP/CDP邻居组装5字段统一过sanitize_snmp_text，防二进制端口ID(lldpRemPortId含\\x00)直接入库触发PG UTF8拒收致discover-all批量flush整体500回滚(SIPG 1737连接实证1条污染致全批失败)；helper收口topo_common与_v3_kwargs同模式(v2.29.103)",
-    "fix: SNMPv3拓扑发现认证参数透传根修——v3六字段(用户名/认证/加密)在拓扑/巡检/凭证测试链路全丢失致纯v3环境全灭，统一helper透传五引擎22处调用点；Dockerfile补traceroute包激活死引擎(topo_traceroute依赖)；凭证测试SNMP补version+v3参数(v2.29.102)",
-    "fix: 孤儿指纹根修——resolve全路径按记录指针精确删除+采集指纹指针跟随+每日指纹对账巡检，存量测试mock补齐（v2.29.101）"
+    "fix: 拓扑发现SNMP字符串NUL清洗根修——LLDP/CDP邻居组装5字段统一过sanitize_snmp_text，防二进制端口ID(lldpRemPortId含\\x00)直接入库触发PG UTF8拒收致discover-all批量flush整体500回滚(SIPG 1737连接实证1条污染致全批失败)；helper收口topo_common与_v3_kwargs同模式(v2.29.103)"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.30.06: v2.30.06: 采集质量告警、资产级监控开关、蜂巢离线口径、链路管理补全、关注端口清单 + fix(release): v2.30.05 P0 制品一致性根修 + 依赖全量锁版 + ci: 冒烟增加 celery worker 真实起活 + inspect ping（根修 CI 验证盲区） 等10项更新",
+  "notes": "v2.30.07: fix: traffic.html 关注端口清单两处根修（v2.30.07） + fix: assets.html 批量调用错路由根修——漏 /batch 前缀致批量监控开关/批量绑定策略 404（v2.30.07） + v2.30.06: 采集质量告警、资产级监控开关、蜂巢离线口径、链路管理补全、关注端口清单 等10项更新",
   "versions": [
+    {
+      "version": "2.30.07",
+      "released_at": "2026-11-05T02:21:56Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix: traffic.html 关注端口清单两处根修（v2.30.07）",
+        "fix: assets.html 批量调用错路由根修——漏 /batch 前缀致批量监控开关/批量绑定策略 404（v2.30.07）",
+        "v2.30.06: 采集质量告警、资产级监控开关、蜂巢离线口径、链路管理补全、关注端口清单",
+        "fix(release): v2.30.05 P0 制品一致性根修 + 依赖全量锁版",
+        "ci: 冒烟增加 celery worker 真实起活 + inspect ping（根修 CI 验证盲区）",
+        "fix(deps): 锁版 kombu==5.6.2，修复 celery worker 启动崩溃循环（v2.30.04）",
+        "fix: CI smoke 补 ENCRYPTION_KEY 占位适配 P1-40 强校验 + 递增 2.30.03",
+        "feat: 交付前审查81项修复收官——五级化契约/租户风暴/维护统一准入/导出三连/工单SLA升级链/拓扑染色坐标 (v2.30.02)",
+        "feat: 拓扑图hover两级信息制+蜂巢分组布局统一——连线\"网络连接\"静态标签删除(图面太杂)改由hover浮层承接，新增节点摘要卡(名称/IP/类型/状态/告警数)+连线关系卡(关系类型/两端/端口明细/链路状态)对齐业界两级制，150ms防闪/跟随鼠标/右缘翻转/移出兜底/命中区加宽；蜂巢分组标签一律另起一行(每组独占整行)（v2.30.01）",
+        "fix: 拓扑发现SNMP字符串NUL清洗根修——LLDP/CDP邻居组装5字段统一过sanitize_snmp_text，防二进制端口ID(lldpRemPortId含\\x00)直接入库触发PG UTF8拒收致discover-all批量flush整体500回滚(SIPG 1737连接实证1条污染致全批失败)；helper收口topo_common与_v3_kwargs同模式(v2.29.103)"
+      ]
+    },
     {
       "version": "2.30.06",
       "released_at": "2026-11-04T16:43:58Z",
