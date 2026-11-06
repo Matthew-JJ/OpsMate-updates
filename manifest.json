@@ -1,10 +1,11 @@
 {
-  "latest": "2.30.14",
-  "latest_version": "2.30.14",
+  "latest": "2.30.15",
+  "latest_version": "2.30.15",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-11-06",
   "changelog": [
+    "v2.30.15: 根修部件重现告警恢复漏检（位置匹配 updated 路径）",
     "v2.30.14: 破坏性测试告警缺口修复 + 监控仪表盘tab + 网络设备基本信息tab重设计",
     "v2.30.13: 告警邮件资产IP根修 + 预设监控阈值调高",
     "fix(tasks): 根修 Excel 导入\"同IP已存在\"分支 Result 双重消费（H2 位置合并假交付）",
@@ -13,8 +14,7 @@
     "v2.30.09: 拔盘6分钟告警(health规则已存在) + 快线覆盖检测 + Redfish事件框架 + 资产详情基本信息tab + 导入位置合并",
     "v2.30.08: 指纹不回刷/事件工单接线/聚类事件工单/分页三页改进",
     "fix: traffic.html 关注端口清单两处根修（v2.30.07）",
-    "fix: assets.html 批量调用错路由根修——漏 /batch 前缀致批量监控开关/批量绑定策略 404（v2.30.07）",
-    "v2.30.06: 采集质量告警、资产级监控开关、蜂巢离线口径、链路管理补全、关注端口清单"
+    "fix: assets.html 批量调用错路由根修——漏 /batch 前缀致批量监控开关/批量绑定策略 404（v2.30.07）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.30.14: v2.30.14: 破坏性测试告警缺口修复 + 监控仪表盘tab + 网络设备基本信息tab重设计 + v2.30.13: 告警邮件资产IP根修 + 预设监控阈值调高 + fix(tasks): 根修 Excel 导入\"同IP已存在\"分支 Result 双重消费（H2 位置合并假交付） 等10项更新",
+  "notes": "v2.30.15: v2.30.15: 根修部件重现告警恢复漏检（位置匹配 updated 路径） + v2.30.14: 破坏性测试告警缺口修复 + 监控仪表盘tab + 网络设备基本信息tab重设计 + v2.30.13: 告警邮件资产IP根修 + 预设监控阈值调高 等10项更新",
   "versions": [
+    {
+      "version": "2.30.15",
+      "released_at": "2026-11-06T15:19:10Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.30.15: 根修部件重现告警恢复漏检（位置匹配 updated 路径）",
+        "v2.30.14: 破坏性测试告警缺口修复 + 监控仪表盘tab + 网络设备基本信息tab重设计",
+        "v2.30.13: 告警邮件资产IP根修 + 预设监控阈值调高",
+        "fix(tasks): 根修 Excel 导入\"同IP已存在\"分支 Result 双重消费（H2 位置合并假交付）",
+        "fix(core): 切断 _get_fernet_key 递归环（v2.30.10 H7 回归根修）",
+        "v2.30.10: 深度审计根修(页面语法/凭证脱敏/escape_sql注入面/登录fail-closed/LLM泄露) + JS语法门禁入CI + 依赖锁版",
+        "v2.30.09: 拔盘6分钟告警(health规则已存在) + 快线覆盖检测 + Redfish事件框架 + 资产详情基本信息tab + 导入位置合并",
+        "v2.30.08: 指纹不回刷/事件工单接线/聚类事件工单/分页三页改进",
+        "fix: traffic.html 关注端口清单两处根修（v2.30.07）",
+        "fix: assets.html 批量调用错路由根修——漏 /batch 前缀致批量监控开关/批量绑定策略 404（v2.30.07）"
+      ]
+    },
     {
       "version": "2.30.14",
       "released_at": "2026-11-06T13:53:36Z",
