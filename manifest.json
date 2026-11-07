@@ -1,10 +1,11 @@
 {
-  "latest": "2.30.16",
-  "latest_version": "2.30.16",
+  "latest": "2.30.17",
+  "latest_version": "2.30.17",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-11-07",
   "changelog": [
+    "v2.30.17: 根修设备互斥跳过丢轮次（跳过任务next_run_at回置180s补跑，防慢线推+24h丢整天清单采集；跳过+回置全程日志可观测）",
     "v2.30.16: SIPG采集缺失修复①②（Chassis/Drives兜底+IPMI磁盘在位判定）+根修补强（空读数自校准门槛/freeipmi双实现统一/Redfish结构化Location归一）",
     "v2.30.15: 根修部件重现告警恢复漏检（位置匹配 updated 路径）",
     "v2.30.14: 破坏性测试告警缺口修复 + 监控仪表盘tab + 网络设备基本信息tab重设计",
@@ -13,8 +14,7 @@
     "fix(core): 切断 _get_fernet_key 递归环（v2.30.10 H7 回归根修）",
     "v2.30.10: 深度审计根修(页面语法/凭证脱敏/escape_sql注入面/登录fail-closed/LLM泄露) + JS语法门禁入CI + 依赖锁版",
     "v2.30.09: 拔盘6分钟告警(health规则已存在) + 快线覆盖检测 + Redfish事件框架 + 资产详情基本信息tab + 导入位置合并",
-    "v2.30.08: 指纹不回刷/事件工单接线/聚类事件工单/分页三页改进",
-    "fix: traffic.html 关注端口清单两处根修（v2.30.07）"
+    "v2.30.08: 指纹不回刷/事件工单接线/聚类事件工单/分页三页改进"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.30.16: v2.30.16: SIPG采集缺失修复①②（Chassis/Drives兜底+IPMI磁盘在位判定）+根修补强（空读数自校准门槛/freeipmi双实现统一/Redfish结构化Location归一） + v2.30.15: 根修部件重现告警恢复漏检（位置匹配 updated 路径） + v2.30.14: 破坏性测试告警缺口修复 + 监控仪表盘tab + 网络设备基本信息tab重设计 等10项更新",
+  "notes": "v2.30.17: v2.30.17: 根修设备互斥跳过丢轮次（跳过任务next_run_at回置180s补跑，防慢线推+24h丢整天清单采集；跳过+回置全程日志可观测） + v2.30.16: SIPG采集缺失修复①②（Chassis/Drives兜底+IPMI磁盘在位判定）+根修补强（空读数自校准门槛/freeipmi双实现统一/Redfish结构化Location归一） + v2.30.15: 根修部件重现告警恢复漏检（位置匹配 updated 路径） 等10项更新",
   "versions": [
+    {
+      "version": "2.30.17",
+      "released_at": "2026-11-07T08:42:43Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.30.17: 根修设备互斥跳过丢轮次（跳过任务next_run_at回置180s补跑，防慢线推+24h丢整天清单采集；跳过+回置全程日志可观测）",
+        "v2.30.16: SIPG采集缺失修复①②（Chassis/Drives兜底+IPMI磁盘在位判定）+根修补强（空读数自校准门槛/freeipmi双实现统一/Redfish结构化Location归一）",
+        "v2.30.15: 根修部件重现告警恢复漏检（位置匹配 updated 路径）",
+        "v2.30.14: 破坏性测试告警缺口修复 + 监控仪表盘tab + 网络设备基本信息tab重设计",
+        "v2.30.13: 告警邮件资产IP根修 + 预设监控阈值调高",
+        "fix(tasks): 根修 Excel 导入\"同IP已存在\"分支 Result 双重消费（H2 位置合并假交付）",
+        "fix(core): 切断 _get_fernet_key 递归环（v2.30.10 H7 回归根修）",
+        "v2.30.10: 深度审计根修(页面语法/凭证脱敏/escape_sql注入面/登录fail-closed/LLM泄露) + JS语法门禁入CI + 依赖锁版",
+        "v2.30.09: 拔盘6分钟告警(health规则已存在) + 快线覆盖检测 + Redfish事件框架 + 资产详情基本信息tab + 导入位置合并",
+        "v2.30.08: 指纹不回刷/事件工单接线/聚类事件工单/分页三页改进"
+      ]
+    },
     {
       "version": "2.30.16",
       "released_at": "2026-11-07T07:13:30Z",
