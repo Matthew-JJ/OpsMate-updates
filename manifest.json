@@ -1,10 +1,11 @@
 {
-  "latest": "2.30.21",
-  "latest_version": "2.30.21",
+  "latest": "2.30.22",
+  "latest_version": "2.30.22",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-11-08",
+  "release_date": "2026-11-09",
   "changelog": [
+    "v2.30.22: 流量分析R1根修批量查询（四函数逐资产436次串行TDengine查询→4次批量IN查询+全局LIMIT，SIPG 109设备实测4函数883s→66s约13倍；旧逐资产LIMIT 10000截断密集资产仅取99042/155030行，新批量全量零饥饿，trend数值口径按Boss拍板取全量数据；设备/接口TopN同分排序加次级键输出确定）；233实测4函数0.3~1.4s+确定性PASS+Playwright traffic/screen页全API 200零控制台错误，pytest 496/12(存量License)/8零倒退",
     "v2.30.21: 安全审计12项根修（L1 /reports/sections补鉴权、L2 /init/status去user_count、L3 TRUNCATE表清单常量化、L4 Fernet密钥真校验、L5过时TODO与死代码清理、redfish ingest改常量时间比较、M1 esc fail-closed去String(v)降级、M2拒缺密码默认口令兜底、M5 normalize_link_status改名if_oper_status_to_link_status消歧、H1 init_setup PG咨询锁防TOCTOU、M4 redfish清单mixin拆分643→403+266行、H2 PyMuPDF版本注释）；233实测14项接口验证+Playwright 6页冒烟全过，pytest 496/12(存量License)/8零倒退",
     "v2.30.20: 修复manifest根修raw回退double-json.loads崩溃（gh_api raw媒体类型返回文本，真实API实测通过）+契约测试",
     "v2.30.19: 根修manifest超1MB致CI更新失败（download超1MB自动回退raw媒体类型/versions瘦身保留最近300条防膨胀，全量历史留存git提交）",
@@ -13,8 +14,7 @@
     "v2.30.16: SIPG采集缺失修复①②（Chassis/Drives兜底+IPMI磁盘在位判定）+根修补强（空读数自校准门槛/freeipmi双实现统一/Redfish结构化Location归一）",
     "v2.30.15: 根修部件重现告警恢复漏检（位置匹配 updated 路径）",
     "v2.30.14: 破坏性测试告警缺口修复 + 监控仪表盘tab + 网络设备基本信息tab重设计",
-    "v2.30.13: 告警邮件资产IP根修 + 预设监控阈值调高",
-    "fix(tasks): 根修 Excel 导入\"同IP已存在\"分支 Result 双重消费（H2 位置合并假交付）"
+    "v2.30.13: 告警邮件资产IP根修 + 预设监控阈值调高"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.30.21: v2.30.21: 安全审计12项根修（L1 /reports/sections补鉴权、L2 /init/status去user_count、L3 TRUNCATE表清单常量化、L4 Fernet密钥真校验、L5过时TODO与死代码清理、redfish ingest改常量时间比较、M1 esc fail-closed去String(v)降级、M2拒缺密码默认口令兜底、M5 normalize_link_status改名if_oper_status_to_link_status消歧、H1 init_setup PG咨询锁防TOCTOU、M4 redfish清单mixin拆分643→403+266行、H2 PyMuPDF版本注释）；233实测14项接口验证+Playwright 6页冒烟全过，pytest 496/12(存量License)/8零倒退 + v2.30.20: 修复manifest根修raw回退double-json.loads崩溃（gh_api raw媒体类型返回文本，真实API实测通过）+契约测试 + v2.30.19: 根修manifest超1MB致CI更新失败（download超1MB自动回退raw媒体类型/versions瘦身保留最近300条防膨胀，全量历史留存git提交） 等10项更新",
+  "notes": "v2.30.22: v2.30.22: 流量分析R1根修批量查询（四函数逐资产436次串行TDengine查询→4次批量IN查询+全局LIMIT，SIPG 109设备实测4函数883s→66s约13倍；旧逐资产LIMIT 10000截断密集资产仅取99042/155030行，新批量全量零饥饿，trend数值口径按Boss拍板取全量数据；设备/接口TopN同分排序加次级键输出确定）；233实测4函数0.3~1.4s+确定性PASS+Playwright traffic/screen页全API 200零控制台错误，pytest 496/12(存量License)/8零倒退 + v2.30.21: 安全审计12项根修（L1 /reports/sections补鉴权、L2 /init/status去user_count、L3 TRUNCATE表清单常量化、L4 Fernet密钥真校验、L5过时TODO与死代码清理、redfish ingest改常量时间比较、M1 esc fail-closed去String(v)降级、M2拒缺密码默认口令兜底、M5 normalize_link_status改名if_oper_status_to_link_status消歧、H1 init_setup PG咨询锁防TOCTOU、M4 redfish清单mixin拆分643→403+266行、H2 PyMuPDF版本注释）；233实测14项接口验证+Playwright 6页冒烟全过，pytest 496/12(存量License)/8零倒退 + v2.30.20: 修复manifest根修raw回退double-json.loads崩溃（gh_api raw媒体类型返回文本，真实API实测通过）+契约测试 等10项更新",
   "versions": [
+    {
+      "version": "2.30.22",
+      "released_at": "2026-11-09T10:41:31Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.30.22: 流量分析R1根修批量查询（四函数逐资产436次串行TDengine查询→4次批量IN查询+全局LIMIT，SIPG 109设备实测4函数883s→66s约13倍；旧逐资产LIMIT 10000截断密集资产仅取99042/155030行，新批量全量零饥饿，trend数值口径按Boss拍板取全量数据；设备/接口TopN同分排序加次级键输出确定）；233实测4函数0.3~1.4s+确定性PASS+Playwright traffic/screen页全API 200零控制台错误，pytest 496/12(存量License)/8零倒退",
+        "v2.30.21: 安全审计12项根修（L1 /reports/sections补鉴权、L2 /init/status去user_count、L3 TRUNCATE表清单常量化、L4 Fernet密钥真校验、L5过时TODO与死代码清理、redfish ingest改常量时间比较、M1 esc fail-closed去String(v)降级、M2拒缺密码默认口令兜底、M5 normalize_link_status改名if_oper_status_to_link_status消歧、H1 init_setup PG咨询锁防TOCTOU、M4 redfish清单mixin拆分643→403+266行、H2 PyMuPDF版本注释）；233实测14项接口验证+Playwright 6页冒烟全过，pytest 496/12(存量License)/8零倒退",
+        "v2.30.20: 修复manifest根修raw回退double-json.loads崩溃（gh_api raw媒体类型返回文本，真实API实测通过）+契约测试",
+        "v2.30.19: 根修manifest超1MB致CI更新失败（download超1MB自动回退raw媒体类型/versions瘦身保留最近300条防膨胀，全量历史留存git提交）",
+        "v2.30.18: 三处根修（R1清单骤降豁免防SNMP丢尾行误删部件：豁免-缓冲-确认3轮仍判移除/任务全禁主动停采豁免质量检查/机房容器类资产不判数据新鲜度）",
+        "v2.30.17: 根修设备互斥跳过丢轮次（跳过任务next_run_at回置180s补跑，防慢线推+24h丢整天清单采集；跳过+回置全程日志可观测）",
+        "v2.30.16: SIPG采集缺失修复①②（Chassis/Drives兜底+IPMI磁盘在位判定）+根修补强（空读数自校准门槛/freeipmi双实现统一/Redfish结构化Location归一）",
+        "v2.30.15: 根修部件重现告警恢复漏检（位置匹配 updated 路径）",
+        "v2.30.14: 破坏性测试告警缺口修复 + 监控仪表盘tab + 网络设备基本信息tab重设计",
+        "v2.30.13: 告警邮件资产IP根修 + 预设监控阈值调高"
+      ]
+    },
     {
       "version": "2.30.21",
       "released_at": "2026-11-08T12:55:25Z",
@@ -6612,28 +6634,6 @@
         "v2.17.49: 定时配置备份功能——网络资产配置备份Tab增加定时备份按钮+弹窗+调度",
         "v2.17.48: 修复 identifier 旋转 bug，删除幽灵子资产 + Redfish 空槽位过滤",
         "v2.17.47: Redfish采集器过滤风扇/电源空槽位(name=None/Absent/Disabled)"
-      ]
-    },
-    {
-      "version": "2.17.55",
-      "released_at": "2026-08-11T05:50:03Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.17.55: metric_catalog策略修正+fault_count语义化+可达性/电源operator优化",
-        "v2.17.54: 巡检报告三个Bug修复",
-        "v2.17.53: 接口级告警/巡检系统性Bug修复",
-        "v2.17.52: 修复接口级告警/巡检三大系统性Bug——admin down豁免+虚拟接口过滤(Link Aggregate/Port-Channel)+采集层ifType补161",
-        "v2.17.51: 修复巡检端口级明细两大Bug——虚拟接口膨胀(48→158)和端口名纯数字，同步修正fault_count计数",
-        "v2.17.50: 群晖NAS完整接入（指纹/厂商指标OID/指标目录/类型映射/P0修复）",
-        "v2.17.49: 定时配置备份功能——网络资产配置备份Tab增加定时备份按钮+弹窗+调度",
-        "v2.17.48: 修复 identifier 旋转 bug，删除幽灵子资产 + Redfish 空槽位过滤",
-        "v2.17.47: Redfish采集器过滤风扇/电源空槽位(name=None/Absent/Disabled)",
-        "v2.17.46: counter wrap速率合理性校验+零流量端口错误标记+错误占比语义修正+oper_status阈值收紧"
       ]
     }
   ],
