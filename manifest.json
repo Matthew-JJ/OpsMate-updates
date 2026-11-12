@@ -1,10 +1,11 @@
 {
-  "latest": "2.30.36",
-  "latest_version": "2.30.36",
+  "latest": "2.30.37",
+  "latest_version": "2.30.37",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-11-12",
   "changelog": [
+    "fix: 清空告警/批量删除报错——AlertRecord.fingerprint_id 字段不存在(应为 AlertFingerprint.alert_record_id)（v2.30.37）",
     "v2.30.36: HTTP响应时间阈值调高(8000->12000ms)消除26条误告警噪音",
     "v2.30.29-35 统一发版批次（2026-11-11）：SIPG 破坏性测试根修+拔盘必告警+4-B sangfor 字典+IANA 修正",
     "v2.30.28: 生产化多批合并发版（①webhook 公开接入三加固：body 大小上限 request_limits 防大包 DoS、未配 secret 端点 fail-closed 401+创建自动生成密钥+禁清空、share_tokens 明文等值查找改 SHA-256 哈希查找（迁移 080 回填+唯一索引）；②前端告警恢复按钮接线 PUT /alerts/records/{id}/resolve（233 Playwright 实测 200+状态回查）；③导入探测类修复：新增 import_probe.py 两阶段并发探测+串行入库，探测超时独立配置 import_probe_timeout/import_probe_concurrency，实测 2 条不可达 IP 122s 并发完成（原串行约 360s）；④E2E-08 自愈规则自建夹具启用、e2e_07 快照留痕深度断言（版本链/change_detected/结构/API 回查/diff 对比）、e2e_10 登录判定竞态修复；⑤回归测试 584 passed、run_all 47 PASS 0 FAIL、契约审计新增 0）",
@@ -13,8 +14,7 @@
     "v2.30.23: R2 C档进程归一化+R3前端分页治理（①snmp_metrics.json hr_proc_name OID 1.3.6.1.2.1.25.4.2.1.1→.2修正索引列错配——原写入PID数字垃圾值，迁移078_v23023复刻066模式修存量任务快照/预设；②collect_points_proc.py进程名归一化+无名fail-closed+进程实例上限200+walk实例闸门2000，collect_points.py手术式集成3处，根修collect_write.py共享results原地篡改致二次调用丢数据（42→34/34→0/0→0实锤）——归一化与hrfs过滤改非篡改变换仅对副本操作，修复后三调用全部42→34一致；③dashboard-hex.js loadAllAssets并发分页5worker+按页拼接保序+id去重，MAX_PAGES 50→300（SIPG 13022资产131页超上限）；④scripts/tdengine_cardinality_cleanup.py子表基数治理A空壳/B过期180d/B+语义失效（进程PID索引子表，业界参照InfluxDB DROP SERIES/ES reindex+delete/Prometheus stale series GC）三档dry-run默认+批量DROP+表名正则防注入；233实测归一化36进程名写入+旧PID子表停增+PG快照含命名实例+Playwright dashboard蜂巢13/13全量渲染控制台零错误，本地pytest 512/12(存量License)/8零倒退",
     "v2.30.22: 流量分析R1根修批量查询（四函数逐资产436次串行TDengine查询→4次批量IN查询+全局LIMIT，SIPG 109设备实测4函数883s→66s约13倍；旧逐资产LIMIT 10000截断密集资产仅取99042/155030行，新批量全量零饥饿，trend数值口径按Boss拍板取全量数据；设备/接口TopN同分排序加次级键输出确定）；233实测4函数0.3~1.4s+确定性PASS+Playwright traffic/screen页全API 200零控制台错误，pytest 496/12(存量License)/8零倒退",
     "v2.30.21: 安全审计12项根修（L1 /reports/sections补鉴权、L2 /init/status去user_count、L3 TRUNCATE表清单常量化、L4 Fernet密钥真校验、L5过时TODO与死代码清理、redfish ingest改常量时间比较、M1 esc fail-closed去String(v)降级、M2拒缺密码默认口令兜底、M5 normalize_link_status改名if_oper_status_to_link_status消歧、H1 init_setup PG咨询锁防TOCTOU、M4 redfish清单mixin拆分643→403+266行、H2 PyMuPDF版本注释）；233实测14项接口验证+Playwright 6页冒烟全过，pytest 496/12(存量License)/8零倒退",
-    "v2.30.20: 修复manifest根修raw回退double-json.loads崩溃（gh_api raw媒体类型返回文本，真实API实测通过）+契约测试",
-    "v2.30.19: 根修manifest超1MB致CI更新失败（download超1MB自动回退raw媒体类型/versions瘦身保留最近300条防膨胀，全量历史留存git提交）"
+    "v2.30.20: 修复manifest根修raw回退double-json.loads崩溃（gh_api raw媒体类型返回文本，真实API实测通过）+契约测试"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.30.36: v2.30.36: HTTP响应时间阈值调高(8000->12000ms)消除26条误告警噪音 + v2.30.29-35 统一发版批次（2026-11-11）：SIPG 破坏性测试根修+拔盘必告警+4-B sangfor 字典+IANA 修正 + v2.30.28: 生产化多批合并发版（①webhook 公开接入三加固：body 大小上限 request_limits 防大包 DoS、未配 secret 端点 fail-closed 401+创建自动生成密钥+禁清空、share_tokens 明文等值查找改 SHA-256 哈希查找（迁移 080 回填+唯一索引）；②前端告警恢复按钮接线 PUT /alerts/records/{id}/resolve（233 Playwright 实测 200+状态回查）；③导入探测类修复：新增 import_probe.py 两阶段并发探测+串行入库，探测超时独立配置 import_probe_timeout/import_probe_concurrency，实测 2 条不可达 IP 122s 并发完成（原串行约 360s）；④E2E-08 自愈规则自建夹具启用、e2e_07 快照留痕深度断言（版本链/change_detected/结构/API 回查/diff 对比）、e2e_10 登录判定竞态修复；⑤回归测试 584 passed、run_all 47 PASS 0 FAIL、契约审计新增 0） 等10项更新",
+  "notes": "v2.30.37: fix: 清空告警/批量删除报错——AlertRecord.fingerprint_id 字段不存在(应为 AlertFingerprint.alert_record_id)（v2.30.37） + v2.30.36: HTTP响应时间阈值调高(8000->12000ms)消除26条误告警噪音 + v2.30.29-35 统一发版批次（2026-11-11）：SIPG 破坏性测试根修+拔盘必告警+4-B sangfor 字典+IANA 修正 等10项更新",
   "versions": [
+    {
+      "version": "2.30.37",
+      "released_at": "2026-11-12T07:14:26Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix: 清空告警/批量删除报错——AlertRecord.fingerprint_id 字段不存在(应为 AlertFingerprint.alert_record_id)（v2.30.37）",
+        "v2.30.36: HTTP响应时间阈值调高(8000->12000ms)消除26条误告警噪音",
+        "v2.30.29-35 统一发版批次（2026-11-11）：SIPG 破坏性测试根修+拔盘必告警+4-B sangfor 字典+IANA 修正",
+        "v2.30.28: 生产化多批合并发版（①webhook 公开接入三加固：body 大小上限 request_limits 防大包 DoS、未配 secret 端点 fail-closed 401+创建自动生成密钥+禁清空、share_tokens 明文等值查找改 SHA-256 哈希查找（迁移 080 回填+唯一索引）；②前端告警恢复按钮接线 PUT /alerts/records/{id}/resolve（233 Playwright 实测 200+状态回查）；③导入探测类修复：新增 import_probe.py 两阶段并发探测+串行入库，探测超时独立配置 import_probe_timeout/import_probe_concurrency，实测 2 条不可达 IP 122s 并发完成（原串行约 360s）；④E2E-08 自愈规则自建夹具启用、e2e_07 快照留痕深度断言（版本链/change_detected/结构/API 回查/diff 对比）、e2e_10 登录判定竞态修复；⑤回归测试 584 passed、run_all 47 PASS 0 FAIL、契约审计新增 0）",
+        "v2.30.27: CI 红双修（①.gitignore backend/scripts/verify_* 历史调试脚本规则误吞 W2-1 生产脚本 verify_celery_runtime.py，文件未入库致 CI Dockerfile COPY not found 构建失败——加 !verify_celery_runtime.py 反忽略例外，并类排查 Dockerfile 全部 COPY 源 git 追踪状态确认无同类漏网；②code-contract.yml 回放测试步骤仅装 pytest 不足，共享 conftest.py 需导入 app.config/backend 依赖——改 pip install pytest -r backend/requirements.txt）；v2.30.26 CI 构建失败未产出任何发布物/未同步 manifest 与静态站，由本版接替",
+        "v2.30.24-26 统一发版批次（2026-11-10）：①License 修复；②W1-1 代码契约进 CI（backend/scripts/code_contract.py R1-R5 契约+693 条存量豁免基线带自校验+.github/workflows/code-contract.yml 门禁+历史事故回放测试 19/19，契约审计本次新增违规 0）；③W1-2 测试转正（.temp 验证脚本转正 5 测试文件含乱序确定性/输入不可变覆盖，pytest 559 passed/11 skipped）；④W1-3 E2E 体系（scripts/e2e 十链路+run_all+RED_REGISTRY 首轮红登记清单，233 六轮收敛终态 37/0/2+Playwright 四页零控制台报错）；⑤W2-1 发布镜像化退役 docker cp（verify_celery_runtime.py 三重校验含构建期占位配置根修 get_settings 拒启+entrypoint Step2.5 fail-fast+build_test_image.sh 一键构建切换含回滚，233 实测 e2e_09 四项过五容器 md5 一致）；⑥W2-2 事件告警超时自动恢复（event_alert_recovery.py 规范恢复动作同 trap_recovery 口径四步兜底+PUT /alerts/records/{id}/resolve 手动恢复+调度 tick+redfish_event_auto_resolve_hours=24 可配，E2E-05 实测 9/9 含 firing+acknowledged 超龄一并恢复，异步端点经 to_thread 独立 sync session 避假删除陷阱）；⑦W2-3 webhook 入口核对通过（rt token 常量时间比对/HMAC 验签/全局限速，3 观察项登记不改造）；⑧M2 docs/RELEASE_CHECKLIST.md 发版清单+M3 行为准则类修复段；同车 v2.30.24 B3 带外事件轮询兜底（redfish_event_tasks 增量轮询+079 entry_id 迁移+asset-events.js 事件卡片接线+redfish 推送门禁测试）；安全扫描高危 0",
+        "v2.30.23: R2 C档进程归一化+R3前端分页治理（①snmp_metrics.json hr_proc_name OID 1.3.6.1.2.1.25.4.2.1.1→.2修正索引列错配——原写入PID数字垃圾值，迁移078_v23023复刻066模式修存量任务快照/预设；②collect_points_proc.py进程名归一化+无名fail-closed+进程实例上限200+walk实例闸门2000，collect_points.py手术式集成3处，根修collect_write.py共享results原地篡改致二次调用丢数据（42→34/34→0/0→0实锤）——归一化与hrfs过滤改非篡改变换仅对副本操作，修复后三调用全部42→34一致；③dashboard-hex.js loadAllAssets并发分页5worker+按页拼接保序+id去重，MAX_PAGES 50→300（SIPG 13022资产131页超上限）；④scripts/tdengine_cardinality_cleanup.py子表基数治理A空壳/B过期180d/B+语义失效（进程PID索引子表，业界参照InfluxDB DROP SERIES/ES reindex+delete/Prometheus stale series GC）三档dry-run默认+批量DROP+表名正则防注入；233实测归一化36进程名写入+旧PID子表停增+PG快照含命名实例+Playwright dashboard蜂巢13/13全量渲染控制台零错误，本地pytest 512/12(存量License)/8零倒退",
+        "v2.30.22: 流量分析R1根修批量查询（四函数逐资产436次串行TDengine查询→4次批量IN查询+全局LIMIT，SIPG 109设备实测4函数883s→66s约13倍；旧逐资产LIMIT 10000截断密集资产仅取99042/155030行，新批量全量零饥饿，trend数值口径按Boss拍板取全量数据；设备/接口TopN同分排序加次级键输出确定）；233实测4函数0.3~1.4s+确定性PASS+Playwright traffic/screen页全API 200零控制台错误，pytest 496/12(存量License)/8零倒退",
+        "v2.30.21: 安全审计12项根修（L1 /reports/sections补鉴权、L2 /init/status去user_count、L3 TRUNCATE表清单常量化、L4 Fernet密钥真校验、L5过时TODO与死代码清理、redfish ingest改常量时间比较、M1 esc fail-closed去String(v)降级、M2拒缺密码默认口令兜底、M5 normalize_link_status改名if_oper_status_to_link_status消歧、H1 init_setup PG咨询锁防TOCTOU、M4 redfish清单mixin拆分643→403+266行、H2 PyMuPDF版本注释）；233实测14项接口验证+Playwright 6页冒烟全过，pytest 496/12(存量License)/8零倒退",
+        "v2.30.20: 修复manifest根修raw回退double-json.loads崩溃（gh_api raw媒体类型返回文本，真实API实测通过）+契约测试"
+      ]
+    },
     {
       "version": "2.30.36",
       "released_at": "2026-11-12T04:50:26Z",
@@ -6612,28 +6634,6 @@
         "v2.17.57: 巡检策略7项缺陷全面修复+三轮深度审查+COALESCE反转",
         "v2.17.55: metric_catalog策略修正+fault_count语义化+可达性/电源operator优化",
         "v2.17.54: 巡检报告三个Bug修复"
-      ]
-    },
-    {
-      "version": "2.18.1",
-      "released_at": "2026-08-12T08:54:24Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.18.1: fix lookup_canonical() lazy reload - 缓存未加载时fault_count指标回退max导致误判",
-        "fix: remove invalid JSONB import from sqlalchemy top-level (was causing ImportError on container startup)",
-        "v2.18.0: 巡检与告警体系架构改造 - 消除fault_count双层修正",
-        "v2.17.60: fix elif trap in patrol fault_count, uptime unit guard, alert_details summary, enum normal value defense, alert instance name translation, errors aggregation→fault_count",
-        "v2.17.59: 接口状态误报根因修复—fault_count SQL层过滤虚拟接口+admin down+ifType兜底+降级阈值7天改24小时",
-        "v2.17.58: 巡检报告10项差距全面修复+三层深度审查+COALESCE反转+ifLastChange三层防御+操作建议22条+趋势对比+PDF导出+端口展开50+无数据原因区分+活跃告警详情",
-        "v2.17.57: 巡检策略7项缺陷全面修复+三轮深度审查+COALESCE反转",
-        "v2.17.55: metric_catalog策略修正+fault_count语义化+可达性/电源operator优化",
-        "v2.17.54: 巡检报告三个Bug修复",
-        "v2.17.53: 接口级告警/巡检系统性Bug修复"
       ]
     }
   ],
