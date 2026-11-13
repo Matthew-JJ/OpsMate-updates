@@ -1,10 +1,11 @@
 {
-  "latest": "2.30.42",
-  "latest_version": "2.30.42",
+  "latest": "2.30.43",
+  "latest_version": "2.30.43",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-11-13",
   "changelog": [
+    "fix(ci): v2.30.43 manifest步骤与Gitee镜像推送网络超时根修",
     "ci: v2.30.42 CI提速方案A——buildx缓存跨tag共享+Gitee镜像挪出主链",
     "fix(snmp): v2.30.41 热同步清理判据根修——计算指标占位不再误清",
     "fix(alerts): v2.30.40 风暴计数只对新告警事件累加(方案A,对齐PagerDuty/Zabbix语义)",
@@ -13,8 +14,7 @@
     "fix: 清空告警/批量删除报错——AlertRecord.fingerprint_id 字段不存在(应为 AlertFingerprint.alert_record_id)（v2.30.37）",
     "v2.30.36: HTTP响应时间阈值调高(8000->12000ms)消除26条误告警噪音",
     "v2.30.29-35 统一发版批次（2026-11-11）：SIPG 破坏性测试根修+拔盘必告警+4-B sangfor 字典+IANA 修正",
-    "v2.30.28: 生产化多批合并发版（①webhook 公开接入三加固：body 大小上限 request_limits 防大包 DoS、未配 secret 端点 fail-closed 401+创建自动生成密钥+禁清空、share_tokens 明文等值查找改 SHA-256 哈希查找（迁移 080 回填+唯一索引）；②前端告警恢复按钮接线 PUT /alerts/records/{id}/resolve（233 Playwright 实测 200+状态回查）；③导入探测类修复：新增 import_probe.py 两阶段并发探测+串行入库，探测超时独立配置 import_probe_timeout/import_probe_concurrency，实测 2 条不可达 IP 122s 并发完成（原串行约 360s）；④E2E-08 自愈规则自建夹具启用、e2e_07 快照留痕深度断言（版本链/change_detected/结构/API 回查/diff 对比）、e2e_10 登录判定竞态修复；⑤回归测试 584 passed、run_all 47 PASS 0 FAIL、契约审计新增 0）",
-    "v2.30.27: CI 红双修（①.gitignore backend/scripts/verify_* 历史调试脚本规则误吞 W2-1 生产脚本 verify_celery_runtime.py，文件未入库致 CI Dockerfile COPY not found 构建失败——加 !verify_celery_runtime.py 反忽略例外，并类排查 Dockerfile 全部 COPY 源 git 追踪状态确认无同类漏网；②code-contract.yml 回放测试步骤仅装 pytest 不足，共享 conftest.py 需导入 app.config/backend 依赖——改 pip install pytest -r backend/requirements.txt）；v2.30.26 CI 构建失败未产出任何发布物/未同步 manifest 与静态站，由本版接替"
+    "v2.30.28: 生产化多批合并发版（①webhook 公开接入三加固：body 大小上限 request_limits 防大包 DoS、未配 secret 端点 fail-closed 401+创建自动生成密钥+禁清空、share_tokens 明文等值查找改 SHA-256 哈希查找（迁移 080 回填+唯一索引）；②前端告警恢复按钮接线 PUT /alerts/records/{id}/resolve（233 Playwright 实测 200+状态回查）；③导入探测类修复：新增 import_probe.py 两阶段并发探测+串行入库，探测超时独立配置 import_probe_timeout/import_probe_concurrency，实测 2 条不可达 IP 122s 并发完成（原串行约 360s）；④E2E-08 自愈规则自建夹具启用、e2e_07 快照留痕深度断言（版本链/change_detected/结构/API 回查/diff 对比）、e2e_10 登录判定竞态修复；⑤回归测试 584 passed、run_all 47 PASS 0 FAIL、契约审计新增 0）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.30.42: ci: v2.30.42 CI提速方案A——buildx缓存跨tag共享+Gitee镜像挪出主链 + fix(snmp): v2.30.41 热同步清理判据根修——计算指标占位不再误清 + fix(alerts): v2.30.40 风暴计数只对新告警事件累加(方案A,对齐PagerDuty/Zabbix语义) 等10项更新",
+  "notes": "v2.30.43: fix(ci): v2.30.43 manifest步骤与Gitee镜像推送网络超时根修 + ci: v2.30.42 CI提速方案A——buildx缓存跨tag共享+Gitee镜像挪出主链 + fix(snmp): v2.30.41 热同步清理判据根修——计算指标占位不再误清 等10项更新",
   "versions": [
+    {
+      "version": "2.30.43",
+      "released_at": "2026-11-13T08:01:46Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix(ci): v2.30.43 manifest步骤与Gitee镜像推送网络超时根修",
+        "ci: v2.30.42 CI提速方案A——buildx缓存跨tag共享+Gitee镜像挪出主链",
+        "fix(snmp): v2.30.41 热同步清理判据根修——计算指标占位不再误清",
+        "fix(alerts): v2.30.40 风暴计数只对新告警事件累加(方案A,对齐PagerDuty/Zabbix语义)",
+        "feat(snmp): v2.30.39 SNMP厂商OID指标字典扩充(523->789条,20厂商)",
+        "fix(alerts): v2.30.38 风暴过滤不再阻断告警恢复，根修告警风暴死锁",
+        "fix: 清空告警/批量删除报错——AlertRecord.fingerprint_id 字段不存在(应为 AlertFingerprint.alert_record_id)（v2.30.37）",
+        "v2.30.36: HTTP响应时间阈值调高(8000->12000ms)消除26条误告警噪音",
+        "v2.30.29-35 统一发版批次（2026-11-11）：SIPG 破坏性测试根修+拔盘必告警+4-B sangfor 字典+IANA 修正",
+        "v2.30.28: 生产化多批合并发版（①webhook 公开接入三加固：body 大小上限 request_limits 防大包 DoS、未配 secret 端点 fail-closed 401+创建自动生成密钥+禁清空、share_tokens 明文等值查找改 SHA-256 哈希查找（迁移 080 回填+唯一索引）；②前端告警恢复按钮接线 PUT /alerts/records/{id}/resolve（233 Playwright 实测 200+状态回查）；③导入探测类修复：新增 import_probe.py 两阶段并发探测+串行入库，探测超时独立配置 import_probe_timeout/import_probe_concurrency，实测 2 条不可达 IP 122s 并发完成（原串行约 360s）；④E2E-08 自愈规则自建夹具启用、e2e_07 快照留痕深度断言（版本链/change_detected/结构/API 回查/diff 对比）、e2e_10 登录判定竞态修复；⑤回归测试 584 passed、run_all 47 PASS 0 FAIL、契约审计新增 0）"
+      ]
+    },
     {
       "version": "2.30.42",
       "released_at": "2026-11-13T07:15:39Z",
@@ -6612,28 +6634,6 @@
         "v2.18.2: 对标Zabbix最佳实践-修复阈值+移除不合理巡检指标+区分-1值message",
         "v2.18.1: fix lookup_canonical() lazy reload - 缓存未加载时fault_count指标回退max导致误判",
         "fix: remove invalid JSONB import from sqlalchemy top-level (was causing ImportError on container startup)"
-      ]
-    },
-    {
-      "version": "2.19.1",
-      "released_at": "2026-08-12T15:54:25Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.19.1: 修复CI ACR推送 - backend加no-cache + Dockerfile ARG前移打破缓存",
-        "v2.19.0: catalog recommended体系重构 - 62个无阈值指标降级+新增thermal.temperature",
-        "v2.18.5: 修复total_checks=0（UnboundLocalError）",
-        "v2.18.4: 修复total_checks=0的bug",
-        "v2.18.3: not_applicable不计入total_checks，消除膨胀",
-        "v2.18.3: 巡检阈值实时解析+check_items预过滤",
-        "v2.18.2: 对标Zabbix最佳实践-修复阈值+移除不合理巡检指标+区分-1值message",
-        "v2.18.1: fix lookup_canonical() lazy reload - 缓存未加载时fault_count指标回退max导致误判",
-        "fix: remove invalid JSONB import from sqlalchemy top-level (was causing ImportError on container startup)",
-        "v2.18.0: 巡检与告警体系架构改造 - 消除fault_count双层修正"
       ]
     }
   ],
