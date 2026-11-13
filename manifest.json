@@ -1,10 +1,11 @@
 {
-  "latest": "2.30.47",
-  "latest_version": "2.30.47",
+  "latest": "2.30.48",
+  "latest_version": "2.30.48",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-11-13",
   "changelog": [
+    "fix(deploy): v2.30.48 生成物版本号去耦合——override 文件头不再携带漂移版本标注",
     "fix(notify): v2.30.47 R3契约修复——channel_probe URL解析异常不再静默吞错",
     "fix(notify): v2.30.46 通知渠道DNS故障双修——健康自检暴露+部署链DNS自愈",
     "fix(redfish): v2.30.45 快线盘健康摘要约定路径回退——拔盘告警链路输入补齐",
@@ -13,8 +14,7 @@
     "ci: v2.30.42 CI提速方案A——buildx缓存跨tag共享+Gitee镜像挪出主链",
     "fix(snmp): v2.30.41 热同步清理判据根修——计算指标占位不再误清",
     "fix(alerts): v2.30.40 风暴计数只对新告警事件累加(方案A,对齐PagerDuty/Zabbix语义)",
-    "feat(snmp): v2.30.39 SNMP厂商OID指标字典扩充(523->789条,20厂商)",
-    "fix(alerts): v2.30.38 风暴过滤不再阻断告警恢复，根修告警风暴死锁"
+    "feat(snmp): v2.30.39 SNMP厂商OID指标字典扩充(523->789条,20厂商)"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.30.47: fix(notify): v2.30.47 R3契约修复——channel_probe URL解析异常不再静默吞错 + fix(notify): v2.30.46 通知渠道DNS故障双修——健康自检暴露+部署链DNS自愈 + fix(redfish): v2.30.45 快线盘健康摘要约定路径回退——拔盘告警链路输入补齐 等10项更新",
+  "notes": "v2.30.48: fix(deploy): v2.30.48 生成物版本号去耦合——override 文件头不再携带漂移版本标注 + fix(notify): v2.30.47 R3契约修复——channel_probe URL解析异常不再静默吞错 + fix(notify): v2.30.46 通知渠道DNS故障双修——健康自检暴露+部署链DNS自愈 等10项更新",
   "versions": [
+    {
+      "version": "2.30.48",
+      "released_at": "2026-11-13T14:05:15Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix(deploy): v2.30.48 生成物版本号去耦合——override 文件头不再携带漂移版本标注",
+        "fix(notify): v2.30.47 R3契约修复——channel_probe URL解析异常不再静默吞错",
+        "fix(notify): v2.30.46 通知渠道DNS故障双修——健康自检暴露+部署链DNS自愈",
+        "fix(redfish): v2.30.45 快线盘健康摘要约定路径回退——拔盘告警链路输入补齐",
+        "fix(redfish): v2.30.44 Redfish子资源约定路径回退根修——极简固件缺链接不再静默丢采集",
+        "fix(ci): v2.30.43 manifest步骤与Gitee镜像推送网络超时根修",
+        "ci: v2.30.42 CI提速方案A——buildx缓存跨tag共享+Gitee镜像挪出主链",
+        "fix(snmp): v2.30.41 热同步清理判据根修——计算指标占位不再误清",
+        "fix(alerts): v2.30.40 风暴计数只对新告警事件累加(方案A,对齐PagerDuty/Zabbix语义)",
+        "feat(snmp): v2.30.39 SNMP厂商OID指标字典扩充(523->789条,20厂商)"
+      ]
+    },
     {
       "version": "2.30.47",
       "released_at": "2026-11-13T12:12:40Z",
@@ -6613,33 +6635,11 @@
         "v2.18.4: 修复total_checks=0的bug",
         "v2.18.3: not_applicable不计入total_checks，消除膨胀"
       ]
-    },
-    {
-      "version": "2.19.5",
-      "released_at": "2026-08-13T05:19:39Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.19.5: P0+P1巡检优化 - 注释修正/not_in运算符保留/批量SQL/僵尸清理/模板查询优化",
-        "v2.19.4: 修复not_in运算符阻止阈值降级 + recommended=false无阈值指标不写入报告",
-        "v2.19.3: 修复catalog UPSERT不清空旧阈值 + not_applicable不写入报告",
-        "v2.19.2: 修复ACR推送 - 禁用provenance避免OCI empty manifest被拒",
-        "v2.19.1: 修复CI ACR推送 - backend加no-cache + Dockerfile ARG前移打破缓存",
-        "v2.19.0: catalog recommended体系重构 - 62个无阈值指标降级+新增thermal.temperature",
-        "v2.18.5: 修复total_checks=0（UnboundLocalError）",
-        "v2.18.4: 修复total_checks=0的bug",
-        "v2.18.3: not_applicable不计入total_checks，消除膨胀",
-        "v2.18.3: 巡检阈值实时解析+check_items预过滤"
-      ]
     }
   ],
   "files": {
     "docker-compose.yml": "71e4960b222686cdf9342af8e20373723807a8b7d87a0420f81541037efb3763",
     "opsmate": "2ce30466423c7a6cbab6e8cea01152f0056559a9e2ba29013d72642d028fa441",
-    "dns-selfheal.sh": "601681af0802649779a25eab9562fd8c120c8031e121c7a5fb10481909d57418"
+    "dns-selfheal.sh": "c9ed45290bb425a5de4b5b4ba73434e92de775d14c1cd869b2f9ca8052b936f0"
   }
 }
