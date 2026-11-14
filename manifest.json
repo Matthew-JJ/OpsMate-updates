@@ -1,20 +1,20 @@
 {
-  "latest": "2.30.57",
-  "latest_version": "2.30.57",
+  "latest": "2.30.60",
+  "latest_version": "2.30.60",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-11-14",
   "changelog": [
+    "fix(redis): v2.30.60 发现D根修——get_redis_client 冷启动同线程锁重入永久死锁（_sync_lock Lock→RLock + 登记前二次判定），新增 2 项回归测试（faulthandler 子进程复现 233 死锁路径）",
+    "fix(compose): v2.30.59 发现C补丁——backend ports 空注释节点改 ports: []（compose 校验报 must be a array，233 实测发现）",
+    "fix(listener): v2.30.59 发现C根修——监听器单例化：原uvicorn多worker下_running_listeners每进程内存字典致start/stop/status轮盘赌(stop空操作/start端口冲突/孤儿监听器)，改为专用单例进程listener-runner(同flow-receiver模式,compose新服务opsmate-listener-runner接管162/1514端口)，API只写Redis期望状态由runner以1s节奏对账启停，状态/详情/心跳回写Redis；启动失败last_error透出+10s退避重试；tenant_id随期望状态持久化注入告警回调；main_lifespan不再恢复监听器；deploy-cn.sh/offline compose/升级脚本/口令轮换/e2e清单同步纳入listener-runner；18项新测试",
+    "fix(notify): v2.30.58 发现A根修——告警通知异步化：send_with_tracking同步重试(5/15/60s)阻塞Trap监听回调/告警评估/Redfish webhook管线(233实测81s/条)，改为投递Celery任务dispatch_alert_notification在worker内查渠道+解密+发送，调用方毫秒级返回；渠道配置解密在任务内进行不入队列；投递失败仅记日志不影响告警记录；渠道测试API同步直发不受影响",
     "feat(event): v2.30.57 问题8 P2——redfish_event_mappings映射规则管理API+listeners页事件映射弹窗；顺修存量bug: ev-filter-modal游离#page-content外被injectLayout销毁致事件过滤弹窗v2.26.13起静默失效，双弹窗移入容器内",
     "fix(ui): v2.30.56 showToast类修复——init/mobile页缺定义致ReferenceError(init阻断初始化主流程)，按change-password样板补轻量toast含R3-5参数序兼容",
     "feat(trap): v2.30.55 问题8 P1——事件与Trap管理：SNMP v3 Trap凭证登记/验签/解密(fail-closed)+trap-settings API+资产页统一管理卡+告警深链",
     "fix(thermal): v2.30.54 问题2/3方案A——CPU温度聚合max唯一主源+单传感器cpu1~4独立，阈值85/95，存量策略迁移订正",
     "feat(retention): v2.30.53 问题5手动清理——管理员清理超期日志API+前端按钮，不触碰自动清理调度",
-    "fix(retention): v2.30.52 问题5全表盘点——10张追加写表纳入清理，全表统一180天保留（覆盖P1-53的546）",
-    "fix(cleanup): v2.30.51 问题5根修——保留期清理任务漏注册致定时清理静默失效；契约R4懒加载盲区同步根修",
-    "fix(asset): v2.30.50 问题1根修——资产改名同步策略名前缀，告警/通知不再显示过期旧名",
-    "test: update_manifest urlopen mock 吸收 timeout 关键字参数——修复 v2.30.43 起的存量测试断裂",
-    "fix(health): v2.30.49 渠道探测超时预算对齐smtp_timeout——慢速SMTP不再误报不可达"
+    "fix(retention): v2.30.52 问题5全表盘点——10张追加写表纳入清理，全表统一180天保留（覆盖P1-53的546）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.30.57: feat(event): v2.30.57 问题8 P2——redfish_event_mappings映射规则管理API+listeners页事件映射弹窗；顺修存量bug: ev-filter-modal游离#page-content外被injectLayout销毁致事件过滤弹窗v2.26.13起静默失效，双弹窗移入容器内 + fix(ui): v2.30.56 showToast类修复——init/mobile页缺定义致ReferenceError(init阻断初始化主流程)，按change-password样板补轻量toast含R3-5参数序兼容 + feat(trap): v2.30.55 问题8 P1——事件与Trap管理：SNMP v3 Trap凭证登记/验签/解密(fail-closed)+trap-settings API+资产页统一管理卡+告警深链 等10项更新",
+  "notes": "v2.30.60: fix(redis): v2.30.60 发现D根修——get_redis_client 冷启动同线程锁重入永久死锁（_sync_lock Lock→RLock + 登记前二次判定），新增 2 项回归测试（faulthandler 子进程复现 233 死锁路径） + fix(compose): v2.30.59 发现C补丁——backend ports 空注释节点改 ports: []（compose 校验报 must be a array，233 实测发现） + fix(listener): v2.30.59 发现C根修——监听器单例化：原uvicorn多worker下_running_listeners每进程内存字典致start/stop/status轮盘赌(stop空操作/start端口冲突/孤儿监听器)，改为专用单例进程listener-runner(同flow-receiver模式,compose新服务opsmate-listener-runner接管162/1514端口)，API只写Redis期望状态由runner以1s节奏对账启停，状态/详情/心跳回写Redis；启动失败last_error透出+10s退避重试；tenant_id随期望状态持久化注入告警回调；main_lifespan不再恢复监听器；deploy-cn.sh/offline compose/升级脚本/口令轮换/e2e清单同步纳入listener-runner；18项新测试 等10项更新",
   "versions": [
+    {
+      "version": "2.30.60",
+      "released_at": "2026-11-14T16:10:52Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix(redis): v2.30.60 发现D根修——get_redis_client 冷启动同线程锁重入永久死锁（_sync_lock Lock→RLock + 登记前二次判定），新增 2 项回归测试（faulthandler 子进程复现 233 死锁路径）",
+        "fix(compose): v2.30.59 发现C补丁——backend ports 空注释节点改 ports: []（compose 校验报 must be a array，233 实测发现）",
+        "fix(listener): v2.30.59 发现C根修——监听器单例化：原uvicorn多worker下_running_listeners每进程内存字典致start/stop/status轮盘赌(stop空操作/start端口冲突/孤儿监听器)，改为专用单例进程listener-runner(同flow-receiver模式,compose新服务opsmate-listener-runner接管162/1514端口)，API只写Redis期望状态由runner以1s节奏对账启停，状态/详情/心跳回写Redis；启动失败last_error透出+10s退避重试；tenant_id随期望状态持久化注入告警回调；main_lifespan不再恢复监听器；deploy-cn.sh/offline compose/升级脚本/口令轮换/e2e清单同步纳入listener-runner；18项新测试",
+        "fix(notify): v2.30.58 发现A根修——告警通知异步化：send_with_tracking同步重试(5/15/60s)阻塞Trap监听回调/告警评估/Redfish webhook管线(233实测81s/条)，改为投递Celery任务dispatch_alert_notification在worker内查渠道+解密+发送，调用方毫秒级返回；渠道配置解密在任务内进行不入队列；投递失败仅记日志不影响告警记录；渠道测试API同步直发不受影响",
+        "feat(event): v2.30.57 问题8 P2——redfish_event_mappings映射规则管理API+listeners页事件映射弹窗；顺修存量bug: ev-filter-modal游离#page-content外被injectLayout销毁致事件过滤弹窗v2.26.13起静默失效，双弹窗移入容器内",
+        "fix(ui): v2.30.56 showToast类修复——init/mobile页缺定义致ReferenceError(init阻断初始化主流程)，按change-password样板补轻量toast含R3-5参数序兼容",
+        "feat(trap): v2.30.55 问题8 P1——事件与Trap管理：SNMP v3 Trap凭证登记/验签/解密(fail-closed)+trap-settings API+资产页统一管理卡+告警深链",
+        "fix(thermal): v2.30.54 问题2/3方案A——CPU温度聚合max唯一主源+单传感器cpu1~4独立，阈值85/95，存量策略迁移订正",
+        "feat(retention): v2.30.53 问题5手动清理——管理员清理超期日志API+前端按钮，不触碰自动清理调度",
+        "fix(retention): v2.30.52 问题5全表盘点——10张追加写表纳入清理，全表统一180天保留（覆盖P1-53的546）"
+      ]
+    },
     {
       "version": "2.30.57",
       "released_at": "2026-11-14T13:04:04Z",
@@ -6613,33 +6635,11 @@
         "v2.19.2: 修复ACR推送 - 禁用provenance避免OCI empty manifest被拒",
         "v2.19.1: 修复CI ACR推送 - backend加no-cache + Dockerfile ARG前移打破缓存"
       ]
-    },
-    {
-      "version": "2.19.8",
-      "released_at": "2026-08-13T07:56:18Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.19.8: 补全约87条recommended指标阈值(default_operator/default_warning/default_critical)",
-        "v2.19.7: fix JSONB CAST syntax for SQLAlchemy param binding",
-        "v2.19.6: fix _resolve_from_template JSONB query param binding",
-        "v2.19.5: P0+P1巡检优化 - 注释修正/not_in运算符保留/批量SQL/僵尸清理/模板查询优化",
-        "v2.19.4: 修复not_in运算符阻止阈值降级 + recommended=false无阈值指标不写入报告",
-        "v2.19.3: 修复catalog UPSERT不清空旧阈值 + not_applicable不写入报告",
-        "v2.19.2: 修复ACR推送 - 禁用provenance避免OCI empty manifest被拒",
-        "v2.19.1: 修复CI ACR推送 - backend加no-cache + Dockerfile ARG前移打破缓存",
-        "v2.19.0: catalog recommended体系重构 - 62个无阈值指标降级+新增thermal.temperature",
-        "v2.18.5: 修复total_checks=0（UnboundLocalError）"
-      ]
     }
   ],
   "files": {
-    "docker-compose.yml": "71e4960b222686cdf9342af8e20373723807a8b7d87a0420f81541037efb3763",
-    "opsmate": "2ce30466423c7a6cbab6e8cea01152f0056559a9e2ba29013d72642d028fa441",
+    "docker-compose.yml": "cdd9190048a6d5f216e705e8f9cb3e0baafadbb80980373e6ab6fea6fafe3e7d",
+    "opsmate": "c107081013f24597d3c626b57e35a293cc27b415322e7fcf34e9ff50e5cf7888",
     "dns-selfheal.sh": "c9ed45290bb425a5de4b5b4ba73434e92de775d14c1cd869b2f9ca8052b936f0"
   }
 }
