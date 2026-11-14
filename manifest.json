@@ -1,20 +1,20 @@
 {
-  "latest": "2.30.49",
-  "latest_version": "2.30.49",
+  "latest": "2.30.57",
+  "latest_version": "2.30.57",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-11-13",
+  "release_date": "2026-11-14",
   "changelog": [
-    "fix(health): v2.30.49 渠道探测超时预算对齐smtp_timeout——慢速SMTP不再误报不可达",
-    "fix(deploy): v2.30.48 生成物版本号去耦合——override 文件头不再携带漂移版本标注",
-    "fix(notify): v2.30.47 R3契约修复——channel_probe URL解析异常不再静默吞错",
-    "fix(notify): v2.30.46 通知渠道DNS故障双修——健康自检暴露+部署链DNS自愈",
-    "fix(redfish): v2.30.45 快线盘健康摘要约定路径回退——拔盘告警链路输入补齐",
-    "fix(redfish): v2.30.44 Redfish子资源约定路径回退根修——极简固件缺链接不再静默丢采集",
-    "fix(ci): v2.30.43 manifest步骤与Gitee镜像推送网络超时根修",
-    "ci: v2.30.42 CI提速方案A——buildx缓存跨tag共享+Gitee镜像挪出主链",
-    "fix(snmp): v2.30.41 热同步清理判据根修——计算指标占位不再误清",
-    "fix(alerts): v2.30.40 风暴计数只对新告警事件累加(方案A,对齐PagerDuty/Zabbix语义)"
+    "feat(event): v2.30.57 问题8 P2——redfish_event_mappings映射规则管理API+listeners页事件映射弹窗；顺修存量bug: ev-filter-modal游离#page-content外被injectLayout销毁致事件过滤弹窗v2.26.13起静默失效，双弹窗移入容器内",
+    "fix(ui): v2.30.56 showToast类修复——init/mobile页缺定义致ReferenceError(init阻断初始化主流程)，按change-password样板补轻量toast含R3-5参数序兼容",
+    "feat(trap): v2.30.55 问题8 P1——事件与Trap管理：SNMP v3 Trap凭证登记/验签/解密(fail-closed)+trap-settings API+资产页统一管理卡+告警深链",
+    "fix(thermal): v2.30.54 问题2/3方案A——CPU温度聚合max唯一主源+单传感器cpu1~4独立，阈值85/95，存量策略迁移订正",
+    "feat(retention): v2.30.53 问题5手动清理——管理员清理超期日志API+前端按钮，不触碰自动清理调度",
+    "fix(retention): v2.30.52 问题5全表盘点——10张追加写表纳入清理，全表统一180天保留（覆盖P1-53的546）",
+    "fix(cleanup): v2.30.51 问题5根修——保留期清理任务漏注册致定时清理静默失效；契约R4懒加载盲区同步根修",
+    "fix(asset): v2.30.50 问题1根修——资产改名同步策略名前缀，告警/通知不再显示过期旧名",
+    "test: update_manifest urlopen mock 吸收 timeout 关键字参数——修复 v2.30.43 起的存量测试断裂",
+    "fix(health): v2.30.49 渠道探测超时预算对齐smtp_timeout——慢速SMTP不再误报不可达"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.30.49: fix(health): v2.30.49 渠道探测超时预算对齐smtp_timeout——慢速SMTP不再误报不可达 + fix(deploy): v2.30.48 生成物版本号去耦合——override 文件头不再携带漂移版本标注 + fix(notify): v2.30.47 R3契约修复——channel_probe URL解析异常不再静默吞错 等10项更新",
+  "notes": "v2.30.57: feat(event): v2.30.57 问题8 P2——redfish_event_mappings映射规则管理API+listeners页事件映射弹窗；顺修存量bug: ev-filter-modal游离#page-content外被injectLayout销毁致事件过滤弹窗v2.26.13起静默失效，双弹窗移入容器内 + fix(ui): v2.30.56 showToast类修复——init/mobile页缺定义致ReferenceError(init阻断初始化主流程)，按change-password样板补轻量toast含R3-5参数序兼容 + feat(trap): v2.30.55 问题8 P1——事件与Trap管理：SNMP v3 Trap凭证登记/验签/解密(fail-closed)+trap-settings API+资产页统一管理卡+告警深链 等10项更新",
   "versions": [
+    {
+      "version": "2.30.57",
+      "released_at": "2026-11-14T13:04:04Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "feat(event): v2.30.57 问题8 P2——redfish_event_mappings映射规则管理API+listeners页事件映射弹窗；顺修存量bug: ev-filter-modal游离#page-content外被injectLayout销毁致事件过滤弹窗v2.26.13起静默失效，双弹窗移入容器内",
+        "fix(ui): v2.30.56 showToast类修复——init/mobile页缺定义致ReferenceError(init阻断初始化主流程)，按change-password样板补轻量toast含R3-5参数序兼容",
+        "feat(trap): v2.30.55 问题8 P1——事件与Trap管理：SNMP v3 Trap凭证登记/验签/解密(fail-closed)+trap-settings API+资产页统一管理卡+告警深链",
+        "fix(thermal): v2.30.54 问题2/3方案A——CPU温度聚合max唯一主源+单传感器cpu1~4独立，阈值85/95，存量策略迁移订正",
+        "feat(retention): v2.30.53 问题5手动清理——管理员清理超期日志API+前端按钮，不触碰自动清理调度",
+        "fix(retention): v2.30.52 问题5全表盘点——10张追加写表纳入清理，全表统一180天保留（覆盖P1-53的546）",
+        "fix(cleanup): v2.30.51 问题5根修——保留期清理任务漏注册致定时清理静默失效；契约R4懒加载盲区同步根修",
+        "fix(asset): v2.30.50 问题1根修——资产改名同步策略名前缀，告警/通知不再显示过期旧名",
+        "test: update_manifest urlopen mock 吸收 timeout 关键字参数——修复 v2.30.43 起的存量测试断裂",
+        "fix(health): v2.30.49 渠道探测超时预算对齐smtp_timeout——慢速SMTP不再误报不可达"
+      ]
+    },
     {
       "version": "2.30.49",
       "released_at": "2026-11-13T15:22:25Z",
@@ -6612,28 +6634,6 @@
         "v2.19.1: 修复CI ACR推送 - backend加no-cache + Dockerfile ARG前移打破缓存",
         "v2.19.0: catalog recommended体系重构 - 62个无阈值指标降级+新增thermal.temperature",
         "v2.18.5: 修复total_checks=0（UnboundLocalError）"
-      ]
-    },
-    {
-      "version": "2.19.7",
-      "released_at": "2026-08-13T06:03:52Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.19.7: fix JSONB CAST syntax for SQLAlchemy param binding",
-        "v2.19.6: fix _resolve_from_template JSONB query param binding",
-        "v2.19.5: P0+P1巡检优化 - 注释修正/not_in运算符保留/批量SQL/僵尸清理/模板查询优化",
-        "v2.19.4: 修复not_in运算符阻止阈值降级 + recommended=false无阈值指标不写入报告",
-        "v2.19.3: 修复catalog UPSERT不清空旧阈值 + not_applicable不写入报告",
-        "v2.19.2: 修复ACR推送 - 禁用provenance避免OCI empty manifest被拒",
-        "v2.19.1: 修复CI ACR推送 - backend加no-cache + Dockerfile ARG前移打破缓存",
-        "v2.19.0: catalog recommended体系重构 - 62个无阈值指标降级+新增thermal.temperature",
-        "v2.18.5: 修复total_checks=0（UnboundLocalError）",
-        "v2.18.4: 修复total_checks=0的bug"
       ]
     }
   ],
