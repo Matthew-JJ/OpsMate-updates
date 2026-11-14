@@ -428,19 +428,12 @@ services:
       # v2.29.28: 模型缓存持久化（fastembed/bge-small-zh 约 100MB）——容器重建不丢，
       # 升级后无网络也可本地加载（Boss 拍板：挂载宿主机卷方案）
       - ${OPSMATE_DIR:-/opt/opsmate}/models/embedding:/app/models/embedding
-    ports:
-      # - "8000:8000"  # ⚠️ 已禁用：绕过nginx安全头/限速，生产环境勿开
-      - "162:162/udp"   # SNMP Trap
-      - "1514:514/udp"   # Syslog（非root Docker需用高端口映射）
-    # 审计 P1-1：非 root（uid 1000）绑定 162/514 特权端口。
-    # 233 实测：cap_add 对非 root 进程无效（能力不落 effective set），实际机制是
-    # 镜像内 setcap 文件能力（Dockerfile 给 python 授 CAP_NET_BIND_SERVICE）；
-    # cap_add 保留作运行时差异时的补充，无副作用
-    cap_add:
-      - NET_BIND_SERVICE
+    # 发现C（v2.30.59）：162/1514 监听端口移交 listener-runner 服务（单例进程）；
+    # 8000:8000 已禁用：绕过nginx安全头/限速，生产环境勿开
+    ports: []
     environment:
       <<: *backend-env
-      MIGRATION_ROLE: primary   # entrypoint.sh 迁移失败硬退出（celery/flow-receiver 用 entrypoint:[] 不受影响）
+      MIGRATION_ROLE: primary   # entrypoint.sh 迁移失败硬退出（celery/flow-receiver/listener-runner 用 entrypoint:[] 不受影响）
       DISCOVERY_FULL_TIMEOUT: "180"
     depends_on:
       init:
@@ -651,6 +644,51 @@ services:
       # YAML 双引号会把 \0 解析成真实 NUL 字节注入命令串，sh 收到含 NUL 的命令
       # 直接报 exec /bin/sh: invalid argument 导致容器 unhealthy（130/SIPG 实锤）
       test: ["CMD-SHELL", "grep -aq receiver /proc/1/cmdline || exit 1"]
+      interval: 20s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    labels:
+      - "com.centurylinklabs.watchtower.enable=true"
+
+  # ========== Listener Runner（监听器单例进程，发现C v2.30.59） ==========
+  # SNMP Trap/Syslog/MQTT 监听器统一在此单进程运行：API 多 worker 不再绑定端口，
+  # 启停走 Redis 期望状态对账（见 app/services/listener_runner.py），
+  # 根修多 worker 启停轮盘赌/孤儿监听器问题
+  listener-runner:
+    <<: *backend-common
+    container_name: opsmate-listener-runner
+    restart: unless-stopped
+    logging: *default-logging
+    volumes:
+      - ${OPSMATE_DIR:-/opt/opsmate}/license:/opt/opsmate/license
+    ports:
+      - "162:162/udp"   # SNMP Trap
+      - "1514:514/udp"   # Syslog（非root Docker需用高端口映射）
+    # 审计 P1-1：非 root（uid 1000）绑定 162/514 特权端口。
+    # 233 实测：cap_add 对非 root 进程无效（能力不落 effective set），实际机制是
+    # 镜像内 setcap 文件能力（Dockerfile 给 python 授 CAP_NET_BIND_SERVICE）；
+    # cap_add 保留作运行时差异时的补充，无副作用
+    cap_add:
+      - NET_BIND_SERVICE
+    environment:
+      <<: *backend-env
+    depends_on:
+      init:
+        condition: service_completed_successfully
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      redis-sentinel-1:
+        condition: service_healthy
+      tdengine:
+        condition: service_healthy
+    entrypoint: []
+    command: python -m app.services.listener_runner
+    healthcheck:
+      # 二进制安全探针（同 flow-receiver v2.26.07 说明：勿用含 \0 的写法）
+      test: ["CMD-SHELL", "grep -aq listener_runner /proc/1/cmdline || exit 1"]
       interval: 20s
       timeout: 5s
       retries: 3
