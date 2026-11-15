@@ -1,10 +1,11 @@
 {
-  "latest": "2.30.68",
-  "latest_version": "2.30.68",
+  "latest": "2.30.69",
+  "latest_version": "2.30.69",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-11-15",
   "changelog": [
+    "v2.30.69 真机回归根修: compute_alert_severity_value引用不存在属性fingerprint_id致_alert_severity仍不生效",
     "v2.30.68 6b P1 切片5: component_change降维——变更/提示类信号退出故障严重度维度",
     "v2.30.67 存量bug根修: 告警级别计算引用不存在模块致_alert_severity从未生效(导入路径打字错误)",
     "v2.30.66 切片2遗留根修: 容量策略硬删后孤儿告警收养归并(双告警收敛)",
@@ -13,8 +14,7 @@
     "v2.30.63 6b切片2: 统一故障键fault_key归一化层+B侧判重命名空间口径修复(类修复一次清)",
     "v2.30.62 6b切片1: 统一去重键-指纹剔除severity(级别变化不换故障身份)",
     "fix(contract): v2.30.61 R3异常可观测性修复——listener_runner reconcile_once死实例清理except静默吞错改warning、retention_cleanup手动清理锁释放except仅debug改warning（code contract新增error/warn清零）",
-    "fix(redis): v2.30.60 发现D根修——get_redis_client 冷启动同线程锁重入永久死锁（_sync_lock Lock→RLock + 登记前二次判定），新增 2 项回归测试（faulthandler 子进程复现 233 死锁路径）",
-    "fix(compose): v2.30.59 发现C补丁——backend ports 空注释节点改 ports: []（compose 校验报 must be a array，233 实测发现）"
+    "fix(redis): v2.30.60 发现D根修——get_redis_client 冷启动同线程锁重入永久死锁（_sync_lock Lock→RLock + 登记前二次判定），新增 2 项回归测试（faulthandler 子进程复现 233 死锁路径）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.30.68: v2.30.68 6b P1 切片5: component_change降维——变更/提示类信号退出故障严重度维度 + v2.30.67 存量bug根修: 告警级别计算引用不存在模块致_alert_severity从未生效(导入路径打字错误) + v2.30.66 切片2遗留根修: 容量策略硬删后孤儿告警收养归并(双告警收敛) 等10项更新",
+  "notes": "v2.30.69: v2.30.69 真机回归根修: compute_alert_severity_value引用不存在属性fingerprint_id致_alert_severity仍不生效 + v2.30.68 6b P1 切片5: component_change降维——变更/提示类信号退出故障严重度维度 + v2.30.67 存量bug根修: 告警级别计算引用不存在模块致_alert_severity从未生效(导入路径打字错误) 等10项更新",
   "versions": [
+    {
+      "version": "2.30.69",
+      "released_at": "2026-11-15T06:34:10Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.30.69 真机回归根修: compute_alert_severity_value引用不存在属性fingerprint_id致_alert_severity仍不生效",
+        "v2.30.68 6b P1 切片5: component_change降维——变更/提示类信号退出故障严重度维度",
+        "v2.30.67 存量bug根修: 告警级别计算引用不存在模块致_alert_severity从未生效(导入路径打字错误)",
+        "v2.30.66 切片2遗留根修: 容量策略硬删后孤儿告警收养归并(双告警收敛)",
+        "v2.30.65 6b切片4: 关单口径——全部故障信号恢复才关单(变更类不参与)",
+        "v2.30.64 6b切片3: 一单一故障——故障组时间窗聚类+建单组归并(复用Incident链路)",
+        "v2.30.63 6b切片2: 统一故障键fault_key归一化层+B侧判重命名空间口径修复(类修复一次清)",
+        "v2.30.62 6b切片1: 统一去重键-指纹剔除severity(级别变化不换故障身份)",
+        "fix(contract): v2.30.61 R3异常可观测性修复——listener_runner reconcile_once死实例清理except静默吞错改warning、retention_cleanup手动清理锁释放except仅debug改warning（code contract新增error/warn清零）",
+        "fix(redis): v2.30.60 发现D根修——get_redis_client 冷启动同线程锁重入永久死锁（_sync_lock Lock→RLock + 登记前二次判定），新增 2 项回归测试（faulthandler 子进程复现 233 死锁路径）"
+      ]
+    },
     {
       "version": "2.30.68",
       "released_at": "2026-11-15T05:29:47Z",
@@ -6612,28 +6634,6 @@
         "v2.19.7: fix JSONB CAST syntax for SQLAlchemy param binding",
         "v2.19.6: fix _resolve_from_template JSONB query param binding",
         "v2.19.5: P0+P1巡检优化 - 注释修正/not_in运算符保留/批量SQL/僵尸清理/模板查询优化"
-      ]
-    },
-    {
-      "version": "2.19.12",
-      "released_at": "2026-08-13T12:00:51Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.19.12: 统一虚拟接口类型 + 消除重复查询 + 常量提取 + 硬编码可配化",
-        "v2.19.11: fix Dockerfile libgdk-pixbuf package name for Debian trixie",
-        "v2.19.10: PDF generation (WeasyPrint) + BGP/OSPF/UPS preset templates",
-        "v2.19.9: schema_version保护 + check_items孤儿过滤",
-        "v2.19.9: 巡检报告TTL清理机制",
-        "v2.19.8: 补全约87条recommended指标阈值(default_operator/default_warning/default_critical)",
-        "v2.19.7: fix JSONB CAST syntax for SQLAlchemy param binding",
-        "v2.19.6: fix _resolve_from_template JSONB query param binding",
-        "v2.19.5: P0+P1巡检优化 - 注释修正/not_in运算符保留/批量SQL/僵尸清理/模板查询优化",
-        "v2.19.4: 修复not_in运算符阻止阈值降级 + recommended=false无阈值指标不写入报告"
       ]
     }
   ],
