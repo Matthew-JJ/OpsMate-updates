@@ -1,10 +1,11 @@
 {
-  "latest": "2.30.72",
-  "latest_version": "2.30.72",
+  "latest": "2.30.75",
+  "latest_version": "2.30.75",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-11-15",
+  "release_date": "2026-11-16",
   "changelog": [
+    "v2.30.75 采集提速三批合发: AMOS资产查询API + 慢BMC采集优化×4 + 机型采集能力档案(profile)",
     "v2.30.72 6a切片2-2: 告警规则链前端管理页——列表/编辑器/试算面板（映射段+路由段）",
     "v2.30.71 6a切片2-1: 规则链引擎——两段式事件→告警/工单规则链（映射段+路由段）",
     "v2.30.70 6a切片1: 同指纹故障期一单+critical/high开单门控钉死",
@@ -13,8 +14,7 @@
     "v2.30.67 存量bug根修: 告警级别计算引用不存在模块致_alert_severity从未生效(导入路径打字错误)",
     "v2.30.66 切片2遗留根修: 容量策略硬删后孤儿告警收养归并(双告警收敛)",
     "v2.30.65 6b切片4: 关单口径——全部故障信号恢复才关单(变更类不参与)",
-    "v2.30.64 6b切片3: 一单一故障——故障组时间窗聚类+建单组归并(复用Incident链路)",
-    "v2.30.63 6b切片2: 统一故障键fault_key归一化层+B侧判重命名空间口径修复(类修复一次清)"
+    "v2.30.64 6b切片3: 一单一故障——故障组时间窗聚类+建单组归并(复用Incident链路)"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.30.72: v2.30.72 6a切片2-2: 告警规则链前端管理页——列表/编辑器/试算面板（映射段+路由段） + v2.30.71 6a切片2-1: 规则链引擎——两段式事件→告警/工单规则链（映射段+路由段） + v2.30.70 6a切片1: 同指纹故障期一单+critical/high开单门控钉死 等10项更新",
+  "notes": "v2.30.75: v2.30.75 采集提速三批合发: AMOS资产查询API + 慢BMC采集优化×4 + 机型采集能力档案(profile) + v2.30.72 6a切片2-2: 告警规则链前端管理页——列表/编辑器/试算面板（映射段+路由段） + v2.30.71 6a切片2-1: 规则链引擎——两段式事件→告警/工单规则链（映射段+路由段） 等10项更新",
   "versions": [
+    {
+      "version": "2.30.75",
+      "released_at": "2026-11-16T08:50:19Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.30.75 采集提速三批合发: AMOS资产查询API + 慢BMC采集优化×4 + 机型采集能力档案(profile)",
+        "v2.30.72 6a切片2-2: 告警规则链前端管理页——列表/编辑器/试算面板（映射段+路由段）",
+        "v2.30.71 6a切片2-1: 规则链引擎——两段式事件→告警/工单规则链（映射段+路由段）",
+        "v2.30.70 6a切片1: 同指纹故障期一单+critical/high开单门控钉死",
+        "v2.30.69 真机回归根修: compute_alert_severity_value引用不存在属性fingerprint_id致_alert_severity仍不生效",
+        "v2.30.68 6b P1 切片5: component_change降维——变更/提示类信号退出故障严重度维度",
+        "v2.30.67 存量bug根修: 告警级别计算引用不存在模块致_alert_severity从未生效(导入路径打字错误)",
+        "v2.30.66 切片2遗留根修: 容量策略硬删后孤儿告警收养归并(双告警收敛)",
+        "v2.30.65 6b切片4: 关单口径——全部故障信号恢复才关单(变更类不参与)",
+        "v2.30.64 6b切片3: 一单一故障——故障组时间窗聚类+建单组归并(复用Incident链路)"
+      ]
+    },
     {
       "version": "2.30.72",
       "released_at": "2026-11-15T11:11:24Z",
@@ -6612,28 +6634,6 @@
         "v2.19.10: PDF generation (WeasyPrint) + BGP/OSPF/UPS preset templates",
         "v2.19.9: schema_version保护 + check_items孤儿过滤",
         "v2.19.9: 巡检报告TTL清理机制"
-      ]
-    },
-    {
-      "version": "2.19.16",
-      "released_at": "2026-08-14T02:42:44Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.19.16: 厂商识别与资产类型推断关键词提取到JSON配置",
-        "v2.19.15: 群晖NAS识别修复+专用预设模板+模板匹配增强",
-        "v2.19.14: P5 scheduler硬编码提取到config + P6 is_interface_metric统一替换 + P2-2 Ping可达性指标+模板 + P2-3 vCenter主机连接状态/维护模式采集+模板",
-        "v2.19.13: N+1查询修复 + Redis key前缀统一 + 静默异常加日志 + 弃用API替换",
-        "v2.19.12: 统一虚拟接口类型 + 消除重复查询 + 常量提取 + 硬编码可配化",
-        "v2.19.11: fix Dockerfile libgdk-pixbuf package name for Debian trixie",
-        "v2.19.10: PDF generation (WeasyPrint) + BGP/OSPF/UPS preset templates",
-        "v2.19.9: schema_version保护 + check_items孤儿过滤",
-        "v2.19.9: 巡检报告TTL清理机制",
-        "v2.19.8: 补全约87条recommended指标阈值(default_operator/default_warning/default_critical)"
       ]
     }
   ],
