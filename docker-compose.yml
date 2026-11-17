@@ -300,7 +300,8 @@ services:
         set -u
         log() { echo "[taos-watchdog] $$(date '+%F %T') $$1"; }
         ulimit -c unlimited
-        export TAOS_KEEPER_TDENGINE_PASSWORD="$${TAOS_ROOT_PASSWORD:-taosdata}"
+        # taoskeeper 凭据：优先 TAOS_ROOT_PASSWORD，否则用 compose 的 TDENGINE_PASSWORD（根修 keeper 认证失败秒死）
+        export TAOS_KEEPER_TDENGINE_PASSWORD="$${TAOS_ROOT_PASSWORD:-$${TDENGINE_PASSWORD:-taosdata}}"
         # 后台跑原 entrypoint（无参=完整初始化+拉起服务+尾部保活循环）
         /usr/bin/entrypoint.sh &
         boot_ts=$$(date +%s)
