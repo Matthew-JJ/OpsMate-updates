@@ -300,8 +300,17 @@ services:
         set -u
         log() { echo "[taos-watchdog] $$(date '+%F %T') $$1"; }
         ulimit -c unlimited
-        # taoskeeper 凭据：优先 TAOS_ROOT_PASSWORD，否则用 compose 的 TDENGINE_PASSWORD（根修 keeper 认证失败秒死）
-        export TAOS_KEEPER_TDENGINE_PASSWORD="$${TAOS_ROOT_PASSWORD:-$${TDENGINE_PASSWORD:-taosdata}}"
+        # root 凭据兜底链：TAOS_ROOT_PASSWORD 未设时用 compose 的 TDENGINE_PASSWORD，再兜 taosdata。
+        # 喂 TAOS_ROOT_PASSWORD 是让各版 entrypoint 的 keeper 凭据传播都拿到正确值
+        # （3.3.x 第10行无条件覆盖为 TAOS_ROOT_PASSWORD、3.4.x init_env_vars 尊重预设）。
+        ROOT_PW="$${TAOS_ROOT_PASSWORD:-$${TDENGINE_PASSWORD:-taosdata}}"
+        export TAOS_ROOT_PASSWORD="$$ROOT_PW"
+        export TAOS_KEEPER_TDENGINE_PASSWORD="$$ROOT_PW"
+        # 预置 marker：禁用 entrypoint 内脆弱的改密块——3.3.x 用 `taos -s ALTER`（无 -p），root 已轮换时
+        # 认证失败→set -ex 杀容器（B 雷）。root 口令由 deploy 脚本 P1-2 / rotate-passwords.sh 权威管理，
+        # entrypoint 不应触碰；此 marker 对 3.4.x 无副作用（其用 dnode.json 判初始化，不读本 marker）。
+        touch /var/lib/taos/.docker-entrypoint-root-password-changed 2>/dev/null \
+          || log "WARN marker 预置失败，entrypoint 改密块可能触发（检查 /var/lib/taos 可写）"
         # 后台跑原 entrypoint（无参=完整初始化+拉起服务+尾部保活循环）
         /usr/bin/entrypoint.sh &
         boot_ts=$$(date +%s)
