@@ -288,6 +288,74 @@ services:
     container_name: opsmate-tdengine
     restart: unless-stopped
     logging: *default-logging
+    # v2.30.84 taosd 守护 wrapper：原 entrypoint 只保活不守护，taosd 崩后无人拉起（SIPG 11-17 事故）。
+    # 后台运行原 entrypoint（初始化+拉起 taos 全家桶），前台守护循环对 taosd/taosadapter/taoskeeper/taos-explorer
+    # 做死亡检测（pgrep）+ taosd 假死探活（taos --check 连续 3 次失败判假死），死亡/假死自动拉起并打 [taos-watchdog] 告警日志。
+    entrypoint:
+      - /tini
+      - --
+      - /bin/bash
+      - -c
+      - |
+        set -u
+        log() { echo "[taos-watchdog] $$(date '+%F %T') $$1"; }
+        ulimit -c unlimited
+        export TAOS_KEEPER_TDENGINE_PASSWORD="$${TAOS_ROOT_PASSWORD:-taosdata}"
+        # 后台跑原 entrypoint（无参=完整初始化+拉起服务+尾部保活循环）
+        /usr/bin/entrypoint.sh &
+        boot_ts=$$(date +%s)
+        # 初始化窗口 30s：窗口内不干预，等原 entrypoint 完成拉起
+        sleep 30
+        ever_seen=0; last_taosd=0; taosd_seen=0; stale=0
+        last_adapter=0; last_keeper=0; last_explorer=0
+        while true; do
+          now=$$(date +%s)
+          # ---- taosd：死亡检测 + 假死探活 ----
+          if ! pgrep -x taosd >/dev/null 2>&1; then
+            stale=0
+            # 曾存活后消失=死亡拉起；从未出现且超 120s=entrypoint 未拉起，兜底（防初始化期重复启动）
+            if [ $$ever_seen -eq 1 ] || [ $$((now - boot_ts)) -ge 120 ]; then
+              if [ $$((now - last_taosd)) -ge 60 ]; then
+                log "ALERT taosd 进程消失，自动拉起"
+                taosd &
+                last_taosd=$$now
+              fi
+            fi
+          else
+            ever_seen=1
+            [ $$taosd_seen -eq 0 ] && taosd_seen=$$now
+            if [ $$((now - taosd_seen)) -lt 90 ]; then
+              stale=0   # 启动宽限期：taosd 存在未满 90s 不做假死判定，防误杀慢启动
+            elif timeout 8 taos --check 2>/dev/null | grep -q '^2:'; then
+              stale=0
+            else
+              stale=$$((stale + 1))
+              log "WARN taosd 探活失败 $$stale/3（taos --check 无响应）"
+              if [ $$stale -ge 3 ]; then
+                log "ALERT taosd 假死（探活连续 3 次失败），强杀重启"
+                pkill -9 -x taosd 2>/dev/null
+                pkill -9 -x taosudf 2>/dev/null
+                sleep 2
+                taosd &
+                last_taosd=$$(date +%s); taosd_seen=0; stale=0
+              fi
+            fi
+          fi
+          # ---- taosadapter / taoskeeper / taos-explorer：死亡检测（尊重 TAOS_DISABLE_* 开关）----
+          if [ "$${TAOS_DISABLE_ADAPTER:-0}" = "0" ] && command -v taosadapter >/dev/null 2>&1 && ! pgrep -x taosadapter >/dev/null 2>&1 && [ $$((now - last_adapter)) -ge 60 ]; then
+            log "ALERT taosadapter 进程消失，自动拉起"
+            taosadapter & last_adapter=$$now
+          fi
+          if [ "$${TAOS_DISABLE_KEEPER:-0}" = "0" ] && command -v taoskeeper >/dev/null 2>&1 && ! pgrep -x taoskeeper >/dev/null 2>&1 && [ $$((now - last_keeper)) -ge 60 ]; then
+            log "ALERT taoskeeper 进程消失，自动拉起"
+            taoskeeper & last_keeper=$$now
+          fi
+          if [ "$${TAOS_DISABLE_EXPLORER:-0}" = "0" ] && command -v taos-explorer >/dev/null 2>&1 && ! pgrep -x taos-explorer >/dev/null 2>&1 && [ $$((now - last_explorer)) -ge 60 ]; then
+            log "ALERT taos-explorer 进程消失，自动拉起"
+            taos-explorer & last_explorer=$$now
+          fi
+          sleep 15
+        done
     # ⚠️ 审计 P1-2：默认已注释——时序库端口不暴露到宿主机；本地调试需要时取消下行注释
     # ports:
     #   - "6030:6030"  # 仅开发/调试使用
