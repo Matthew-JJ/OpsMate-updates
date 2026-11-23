@@ -1,10 +1,12 @@
 {
-  "latest": "2.30.96",
-  "latest_version": "2.30.96",
+  "latest": "2.30.98",
+  "latest_version": "2.30.98",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-11-22",
+  "release_date": "2026-11-23",
   "changelog": [
+    "fix: v2.30.98 两项根修（⑤RAID控制器健康进快线 ⑥缺省策略兜底巡检）",
+    "fix: v2.30.97 SIPG事件链五项根修（P0轮询去重/P1年龄过滤/P1b探活端点/P2a凭证复核/P2b SEL中文化）",
     "v2.30.96 审计修复两批合版：认证热路径去阻塞 + SSRF pin + Hub HMAC nonce",
     "v2.30.94: 大屏告警趋势双层根修 + 清空告警联动收口事件",
     "v2.30.93: 根修重启错峰类型不匹配 bug（UUID键/str键，233 实测抓出）",
@@ -12,9 +14,7 @@
     "v2.30.91: 升级重启韧性四项（错峰派发/防误禁/throttled-403分流/部件数基线）",
     "v2.30.90: #11 翻回率自观测 + B 侧推送告警门控自动开单 + TDengine 幂等DDL容错",
     "v2.30.89: A批7项优化+B批遗留缺陷修复（门控配置化/订阅事件类型/轮询分级入链等）",
-    "v2.30.88 蜂巢图慢/taosd崩溃风暴应对: B+C+L+T 四项修复",
-    "v2.30.87: 根修 taosd wrapper 凭据兼容缺陷 + 禁用 entrypoint 脆弱改密块（TDengine 升级前置）",
-    "v2.30.86 口令同步类根修: 轮换/离线装机不同步 taosd root 脱节（233 keeper 秒死事故类）"
+    "v2.30.88 蜂巢图慢/taosd崩溃风暴应对: B+C+L+T 四项修复"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.30.96: v2.30.96 审计修复两批合版：认证热路径去阻塞 + SSRF pin + Hub HMAC nonce + v2.30.94: 大屏告警趋势双层根修 + 清空告警联动收口事件 + v2.30.93: 根修重启错峰类型不匹配 bug（UUID键/str键，233 实测抓出） 等10项更新",
+  "notes": "v2.30.98: fix: v2.30.98 两项根修（⑤RAID控制器健康进快线 ⑥缺省策略兜底巡检） + fix: v2.30.97 SIPG事件链五项根修（P0轮询去重/P1年龄过滤/P1b探活端点/P2a凭证复核/P2b SEL中文化） + v2.30.96 审计修复两批合版：认证热路径去阻塞 + SSRF pin + Hub HMAC nonce 等10项更新",
   "versions": [
+    {
+      "version": "2.30.98",
+      "released_at": "2026-11-23T08:17:12Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix: v2.30.98 两项根修（⑤RAID控制器健康进快线 ⑥缺省策略兜底巡检）",
+        "fix: v2.30.97 SIPG事件链五项根修（P0轮询去重/P1年龄过滤/P1b探活端点/P2a凭证复核/P2b SEL中文化）",
+        "v2.30.96 审计修复两批合版：认证热路径去阻塞 + SSRF pin + Hub HMAC nonce",
+        "v2.30.94: 大屏告警趋势双层根修 + 清空告警联动收口事件",
+        "v2.30.93: 根修重启错峰类型不匹配 bug（UUID键/str键，233 实测抓出）",
+        "v2.30.92: 新增 API 密钥管理前端页面（外部系统对接 AMOS 用）",
+        "v2.30.91: 升级重启韧性四项（错峰派发/防误禁/throttled-403分流/部件数基线）",
+        "v2.30.90: #11 翻回率自观测 + B 侧推送告警门控自动开单 + TDengine 幂等DDL容错",
+        "v2.30.89: A批7项优化+B批遗留缺陷修复（门控配置化/订阅事件类型/轮询分级入链等）",
+        "v2.30.88 蜂巢图慢/taosd崩溃风暴应对: B+C+L+T 四项修复"
+      ]
+    },
     {
       "version": "2.30.96",
       "released_at": "2026-11-22T09:59:12Z",
@@ -6612,28 +6634,6 @@
         "feat(v2.20.0): G12 TDengine显式配置KEEP 5460d(18个月)留存策略",
         "feat(v2.19.22): 前端适配smart-probe+导入导出+正则模式字段",
         "fix: auto_probe单协议15秒超时保护+迁移修复JSONB null条件 (v2.19.21)"
-      ]
-    },
-    {
-      "version": "2.20.6",
-      "released_at": "2026-08-15T10:00:22Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "G4: 知识库自动匹配处置方案 v2.20.6",
-        "G5: 资产生命周期状态管理 v2.20.5",
-        "feat(G2): On-Call值班排班表 + 用户手机号 + 升级联动值班人",
-        "feat(G1): add SMS & voice_call notification channels + wire escalation notifications",
-        "fix(G3): remove duplicate delivery-stats routes + bump to v2.20.2",
-        "feat(v2.20.1): G3 告警推送可靠性改造",
-        "feat(v2.20.0): G12 TDengine显式配置KEEP 5460d(18个月)留存策略",
-        "feat(v2.19.22): 前端适配smart-probe+导入导出+正则模式字段",
-        "fix: auto_probe单协议15秒超时保护+迁移修复JSONB null条件 (v2.19.21)",
-        "fix: smart_probe快速SNMP探测(3秒超时)+数据迁移补全access_protocol/regex (v2.19.20)"
       ]
     }
   ],
