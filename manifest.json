@@ -1,10 +1,11 @@
 {
-  "latest": "2.30.115",
-  "latest_version": "2.30.115",
+  "latest": "2.30.116",
+  "latest_version": "2.30.116",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-11-25",
   "changelog": [
+    "fix: v2.30.116 采集器 async 契约收口——database/middleware 两族 await list 必炸缺陷（233 实测抓出）",
     "fix: v2.30.115 v2.30.114 前端内联脚本语法错误紧急修复（CI JS 门禁抓出，114 无产物流出）",
     "v2.30.114 阶段三遗留两项收口：RabbitMQ/RocketMQ 拨测器 + 达梦 dmPython + middleware 凭证 schema + 前端完备性补齐",
     "fix: v2.30.113 HAProxy 拨测实测两缺陷修复——OPEN 状态误报 + CSV 表头驱动解析",
@@ -13,8 +14,7 @@
     "fix: v2.30.110 Redis expires=0 丢点小修（233 实测 23/24 最后一公里）",
     "fix: v2.30.109 Redis 计算键采集端补全——233 实测 19/24 缺 5 条计算类指标根修",
     "feat: v2.30.108 数据库监控能力·阶段一——database 协议+MySQL/PG/Redis 三库采集+128 条指标目录",
-    "fix: v2.30.107 TDengine 一致性探针带凭证——已轮换密码环境探不到真实表状态",
-    "fix: v2.30.106 升级流程根修——差异重建+数据层优雅停机+卷快照+一致性探针（SIPG 强杀事故四层防线）"
+    "fix: v2.30.107 TDengine 一致性探针带凭证——已轮换密码环境探不到真实表状态"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.30.115: fix: v2.30.115 v2.30.114 前端内联脚本语法错误紧急修复（CI JS 门禁抓出，114 无产物流出） + v2.30.114 阶段三遗留两项收口：RabbitMQ/RocketMQ 拨测器 + 达梦 dmPython + middleware 凭证 schema + 前端完备性补齐 + fix: v2.30.113 HAProxy 拨测实测两缺陷修复——OPEN 状态误报 + CSV 表头驱动解析 等10项更新",
+  "notes": "v2.30.116: fix: v2.30.116 采集器 async 契约收口——database/middleware 两族 await list 必炸缺陷（233 实测抓出） + fix: v2.30.115 v2.30.114 前端内联脚本语法错误紧急修复（CI JS 门禁抓出，114 无产物流出） + v2.30.114 阶段三遗留两项收口：RabbitMQ/RocketMQ 拨测器 + 达梦 dmPython + middleware 凭证 schema + 前端完备性补齐 等10项更新",
   "versions": [
+    {
+      "version": "2.30.116",
+      "released_at": "2026-11-25T16:08:07Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "fix: v2.30.116 采集器 async 契约收口——database/middleware 两族 await list 必炸缺陷（233 实测抓出）",
+        "fix: v2.30.115 v2.30.114 前端内联脚本语法错误紧急修复（CI JS 门禁抓出，114 无产物流出）",
+        "v2.30.114 阶段三遗留两项收口：RabbitMQ/RocketMQ 拨测器 + 达梦 dmPython + middleware 凭证 schema + 前端完备性补齐",
+        "fix: v2.30.113 HAProxy 拨测实测两缺陷修复——OPEN 状态误报 + CSV 表头驱动解析",
+        "feat: v2.30.112 阶段三起步——middleware HTTP 拨测（nginx/HAProxy）+ Redis ACL username 修复",
+        "feat: v2.30.111 数据库监控·阶段二——Oracle(thin)/SQL Server 采集+74 条指标目录+DB 详情专题卡+驱动依赖根修",
+        "fix: v2.30.110 Redis expires=0 丢点小修（233 实测 23/24 最后一公里）",
+        "fix: v2.30.109 Redis 计算键采集端补全——233 实测 19/24 缺 5 条计算类指标根修",
+        "feat: v2.30.108 数据库监控能力·阶段一——database 协议+MySQL/PG/Redis 三库采集+128 条指标目录",
+        "fix: v2.30.107 TDengine 一致性探针带凭证——已轮换密码环境探不到真实表状态"
+      ]
+    },
     {
       "version": "2.30.115",
       "released_at": "2026-11-25T14:48:06Z",
@@ -6612,28 +6634,6 @@
         "fix(G11): 资产台账导出修复 MissingGreenlet-预加载organization关系 v2.20.17",
         "feat(G13): 分享管理页面-令牌CRUD/链接生成/移动端入口 v2.20.16",
         "feat(G13): 移动端H5页面-分享令牌无登录查看运维状态/告警/维保提醒 v2.20.15"
-      ]
-    },
-    {
-      "version": "2.23.3",
-      "released_at": "2026-08-18T10:53:56Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.23.3: fix update check + auto upgrade + deploy-compose TDENGINE_USER",
-        "v2.23.2: fix health_status overwritten by component sync + parse_llm_json thinking prefix",
-        "fix(ai-nlp): alert status whitelist killing firing value; bump to v2.23.1",
-        "v2.23.0: P0+P1代码审核修复 - AI提示词工程/安全加固/通知实现",
-        "v2.21.1: P1 code quality fixes",
-        "v2.21.0: P0代码审核修复 - silent fail/硬编码安全配置/CDN本地化",
-        "fix(G11): 资产台账导出修复 MissingGreenlet-预加载organization关系 v2.20.17",
-        "feat(G13): 分享管理页面-令牌CRUD/链接生成/移动端入口 v2.20.16",
-        "feat(G13): 移动端H5页面-分享令牌无登录查看运维状态/告警/维保提醒 v2.20.15",
-        "feat(G11): 资产台账独立导出 Excel v2.20.14"
       ]
     }
   ],
