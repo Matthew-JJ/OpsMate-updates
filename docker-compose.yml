@@ -177,6 +177,8 @@ services:
     <<: *postgres-image
     container_name: opsmate-postgres
     restart: unless-stopped
+    # v2.30.106 层2：PG 优雅停机（默认 10s；30s 覆盖 checkpoint 收尾，配合已有 pg_dump 退路）
+    stop_grace_period: 30s
     logging: *default-logging
     environment:
       POSTGRES_DB: opsmate
@@ -287,6 +289,10 @@ services:
     <<: *tdengine-image
     container_name: opsmate-tdengine
     restart: unless-stopped
+    # v2.30.106 层2：数据层优雅停机——docker stop 默认 10s 对 20G 级大库刷盘不足
+    # （SIPG 2026-11-24 实证：升级强杀致 catalog/vnode 元数据永久分裂）。compose 停止/
+    # 重建容器时按此宽限窗等 taosd 优雅退出；手工操作纪律：docker stop -t 180 opsmate-tdengine
+    stop_grace_period: 3m
     logging: *default-logging
     # v2.30.84 taosd 守护 wrapper：原 entrypoint 只保活不守护，taosd 崩后无人拉起（SIPG 11-17 事故）。
     # 后台运行原 entrypoint（初始化+拉起 taos 全家桶），前台守护循环对 taosd/taosadapter/taoskeeper/taos-explorer
