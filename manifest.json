@@ -1,10 +1,11 @@
 {
-  "latest": "2.30.120",
-  "latest_version": "2.30.120",
+  "latest": "2.30.121",
+  "latest_version": "2.30.121",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
   "release_date": "2026-11-26",
   "changelog": [
+    "v2.30.121 资产唯一键扩展（+实例端口/实例标识）+ 采集任务页协议入口补齐",
     "fix: v2.30.120 三项根修/补齐——rocketmq 口径回退、metric_catalog 映射列持久化、UI 指标勾选器",
     "fix(rocketmq): brokerServer 形态兼容——5.x dashboard 嵌套字典静默丢指标（v2.30.119）",
     "fix(catalog): DB 无列模板字段从内置目录回源补齐（v2.30.118）",
@@ -13,8 +14,7 @@
     "fix: v2.30.115 v2.30.114 前端内联脚本语法错误紧急修复（CI JS 门禁抓出，114 无产物流出）",
     "v2.30.114 阶段三遗留两项收口：RabbitMQ/RocketMQ 拨测器 + 达梦 dmPython + middleware 凭证 schema + 前端完备性补齐",
     "fix: v2.30.113 HAProxy 拨测实测两缺陷修复——OPEN 状态误报 + CSV 表头驱动解析",
-    "feat: v2.30.112 阶段三起步——middleware HTTP 拨测（nginx/HAProxy）+ Redis ACL username 修复",
-    "feat: v2.30.111 数据库监控·阶段二——Oracle(thin)/SQL Server 采集+74 条指标目录+DB 详情专题卡+驱动依赖根修"
+    "feat: v2.30.112 阶段三起步——middleware HTTP 拨测（nginx/HAProxy）+ Redis ACL username 修复"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.30.120: fix: v2.30.120 三项根修/补齐——rocketmq 口径回退、metric_catalog 映射列持久化、UI 指标勾选器 + fix(rocketmq): brokerServer 形态兼容——5.x dashboard 嵌套字典静默丢指标（v2.30.119） + fix(catalog): DB 无列模板字段从内置目录回源补齐（v2.30.118） 等10项更新",
+  "notes": "v2.30.121: v2.30.121 资产唯一键扩展（+实例端口/实例标识）+ 采集任务页协议入口补齐 + fix: v2.30.120 三项根修/补齐——rocketmq 口径回退、metric_catalog 映射列持久化、UI 指标勾选器 + fix(rocketmq): brokerServer 形态兼容——5.x dashboard 嵌套字典静默丢指标（v2.30.119） 等10项更新",
   "versions": [
+    {
+      "version": "2.30.121",
+      "released_at": "2026-11-26T04:32:28Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "v2.30.121 资产唯一键扩展（+实例端口/实例标识）+ 采集任务页协议入口补齐",
+        "fix: v2.30.120 三项根修/补齐——rocketmq 口径回退、metric_catalog 映射列持久化、UI 指标勾选器",
+        "fix(rocketmq): brokerServer 形态兼容——5.x dashboard 嵌套字典静默丢指标（v2.30.119）",
+        "fix(catalog): DB 无列模板字段从内置目录回源补齐（v2.30.118）",
+        "fix: v2.30.117 catalog 驱动族指标定义解析补全——database/middleware 缺目录定义静默 0 点（233 实测抓出）",
+        "fix: v2.30.116 采集器 async 契约收口——database/middleware 两族 await list 必炸缺陷（233 实测抓出）",
+        "fix: v2.30.115 v2.30.114 前端内联脚本语法错误紧急修复（CI JS 门禁抓出，114 无产物流出）",
+        "v2.30.114 阶段三遗留两项收口：RabbitMQ/RocketMQ 拨测器 + 达梦 dmPython + middleware 凭证 schema + 前端完备性补齐",
+        "fix: v2.30.113 HAProxy 拨测实测两缺陷修复——OPEN 状态误报 + CSV 表头驱动解析",
+        "feat: v2.30.112 阶段三起步——middleware HTTP 拨测（nginx/HAProxy）+ Redis ACL username 修复"
+      ]
+    },
     {
       "version": "2.30.120",
       "released_at": "2026-11-26T02:55:43Z",
@@ -6612,28 +6634,6 @@
         "v2.23.2: fix health_status overwritten by component sync + parse_llm_json thinking prefix",
         "fix(ai-nlp): alert status whitelist killing firing value; bump to v2.23.1",
         "v2.23.0: P0+P1代码审核修复 - AI提示词工程/安全加固/通知实现"
-      ]
-    },
-    {
-      "version": "2.23.13",
-      "released_at": "2026-08-25T00:57:50Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.23.13: 修复告警评估/温度采集/存储采集4个BUG+全站弹窗替换+前端原型对接API",
-        "v2.23.7: 59个前端原型全部改造对接后端API + 后端补丁",
-        "fix(v2.23.6): TDengine凭据兜底+部署脚本补全TDengine变量",
-        "v2.23.5: revert P1b - only use watchtower internal_url, drop extra_hosts",
-        "v2.23.4: fix deploy-cn.sh celery command, build_update_info guard, watchtower external URL, step numbering",
-        "v2.23.3: fix update check + auto upgrade + deploy-compose TDENGINE_USER",
-        "v2.23.2: fix health_status overwritten by component sync + parse_llm_json thinking prefix",
-        "fix(ai-nlp): alert status whitelist killing firing value; bump to v2.23.1",
-        "v2.23.0: P0+P1代码审核修复 - AI提示词工程/安全加固/通知实现",
-        "v2.21.1: P1 code quality fixes"
       ]
     }
   ],
