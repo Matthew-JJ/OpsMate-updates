@@ -810,8 +810,9 @@ services:
   # 供 middleware JMX mixin 采集。仅监听 opsmate-net 内网，不暴露外部端口。
   # 8 个 Java 中间件（tomcat/weblogic/websphere/jboss/tongweb/apusic/bes/inforsuite）
   # 共用此桥，MBean 命名差异由 metric_catalog part39 条目吸收。
+  # v2.30.125：镜像随 OPSMATE_VERSION 同版发布（CI 构建推送，消除同 tag 换内容）。
   jmx-bridge:
-    image: ${IMAGE_REGISTRY:-ghcr.io}/${IMAGE_NAMESPACE:-matthew-jj}/opsmate-jmx-bridge:1.0
+    image: ${IMAGE_REGISTRY:-ghcr.io}/${IMAGE_NAMESPACE:-matthew-jj}/opsmate-jmx-bridge:${OPSMATE_VERSION:-latest}
     build:
       context: ./docker/jmx-bridge
       dockerfile: Dockerfile
@@ -819,7 +820,7 @@ services:
     restart: unless-stopped
     logging: *default-logging
     healthcheck:
-      test: ["CMD", "wget", "-q", "--spider", "http://localhost:9138/health"]
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:9138/ping"]
       interval: 30s
       timeout: 5s
       retries: 3
