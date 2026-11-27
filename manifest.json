@@ -1,10 +1,11 @@
 {
-  "latest": "2.30.124",
-  "latest_version": "2.30.124",
+  "latest": "2.30.125",
+  "latest_version": "2.30.125",
   "min_compatible": "2.0.0",
   "minimum_version": "2.0.0",
-  "release_date": "2026-11-26",
+  "release_date": "2026-11-27",
   "changelog": [
+    "﻿fix(jmx): 233 e2e 暴露四缺陷根修（v2.30.125）",
     "﻿feat(jmx): 阶段四 JMX 通道实施——jmx-bridge 桥容器 + middleware JMX 族 + Tomcat 目录（v2.30.124）",
     "﻿v2.30.123 凭证同名唯一约束冲突500根修收口",
     "fix(dm): 达梦真实库实测暴露缺陷根修（v2.30.122）",
@@ -13,8 +14,7 @@
     "fix(rocketmq): brokerServer 形态兼容——5.x dashboard 嵌套字典静默丢指标（v2.30.119）",
     "fix(catalog): DB 无列模板字段从内置目录回源补齐（v2.30.118）",
     "fix: v2.30.117 catalog 驱动族指标定义解析补全——database/middleware 缺目录定义静默 0 点（233 实测抓出）",
-    "fix: v2.30.116 采集器 async 契约收口——database/middleware 两族 await list 必炸缺陷（233 实测抓出）",
-    "fix: v2.30.115 v2.30.114 前端内联脚本语法错误紧急修复（CI JS 门禁抓出，114 无产物流出）"
+    "fix: v2.30.116 采集器 async 契约收口——database/middleware 两族 await list 必炸缺陷（233 实测抓出）"
   ],
   "download": {
     "url": "",
@@ -41,8 +41,30 @@
   "download_base": "https://github.com/Matthew-JJ/OpsMate-updates/releases/download",
   "changelog_url": "https://github.com/Matthew-JJ/OpsMate/releases",
   "update_repo_url": "https://github.com/Matthew-JJ/OpsMate-updates",
-  "notes": "v2.30.124: ﻿feat(jmx): 阶段四 JMX 通道实施——jmx-bridge 桥容器 + middleware JMX 族 + Tomcat 目录（v2.30.124） + ﻿v2.30.123 凭证同名唯一约束冲突500根修收口 + fix(dm): 达梦真实库实测暴露缺陷根修（v2.30.122） 等10项更新",
+  "notes": "v2.30.125: ﻿fix(jmx): 233 e2e 暴露四缺陷根修（v2.30.125） + ﻿feat(jmx): 阶段四 JMX 通道实施——jmx-bridge 桥容器 + middleware JMX 族 + Tomcat 目录（v2.30.124） + ﻿v2.30.123 凭证同名唯一约束冲突500根修收口 等10项更新",
   "versions": [
+    {
+      "version": "2.30.125",
+      "released_at": "2026-11-27T03:04:18Z",
+      "download_url": "",
+      "sha256": "",
+      "size_bytes": 0,
+      "compatible_modes": [
+        "docker"
+      ],
+      "changelog": [
+        "﻿fix(jmx): 233 e2e 暴露四缺陷根修（v2.30.125）",
+        "﻿feat(jmx): 阶段四 JMX 通道实施——jmx-bridge 桥容器 + middleware JMX 族 + Tomcat 目录（v2.30.124）",
+        "﻿v2.30.123 凭证同名唯一约束冲突500根修收口",
+        "fix(dm): 达梦真实库实测暴露缺陷根修（v2.30.122）",
+        "v2.30.121 资产唯一键扩展（+实例端口/实例标识）+ 采集任务页协议入口补齐",
+        "fix: v2.30.120 三项根修/补齐——rocketmq 口径回退、metric_catalog 映射列持久化、UI 指标勾选器",
+        "fix(rocketmq): brokerServer 形态兼容——5.x dashboard 嵌套字典静默丢指标（v2.30.119）",
+        "fix(catalog): DB 无列模板字段从内置目录回源补齐（v2.30.118）",
+        "fix: v2.30.117 catalog 驱动族指标定义解析补全——database/middleware 缺目录定义静默 0 点（233 实测抓出）",
+        "fix: v2.30.116 采集器 async 契约收口——database/middleware 两族 await list 必炸缺陷（233 实测抓出）"
+      ]
+    },
     {
       "version": "2.30.124",
       "released_at": "2026-11-26T11:42:20Z",
@@ -6613,32 +6635,10 @@
         "fix(v2.23.6): TDengine凭据兜底+部署脚本补全TDengine变量",
         "v2.23.5: revert P1b - only use watchtower internal_url, drop extra_hosts"
       ]
-    },
-    {
-      "version": "2.23.18",
-      "released_at": "2026-08-25T12:35:07Z",
-      "download_url": "",
-      "sha256": "",
-      "size_bytes": 0,
-      "compatible_modes": [
-        "docker"
-      ],
-      "changelog": [
-        "v2.23.18: 前后端API对齐修复6项GAP - maintenance路径/字段映射+auth/itsm/credential补函数+monitor-policy清理org_id",
-        "v2.23.17: fix requirements.txt pymodbus==3.6.0不存在，改为3.15.0",
-        "v2.23.16: config.py强制TDengine凭据+workflow/alert/self-heal/notification等25项核心服务增强",
-        "v2.23.15: 群晖NAS全功能支持 - DSM REST API采集器(认证/磁盘/存储池/卷/SMART/温度/剩余寿命) + SNMP采集器BUG修复(disk_status=5误判跳过) + 指标字典/指纹库/发现服务/catalog适配 + 前端REST指标匹配",
-        "v2.23.14: 前后端一致性审核修复 - 后端新增4路由(告警导出/工单导出/OS补丁/OS用户) + 前端对接7项已实现API + openFormModal缺陷修复",
-        "v2.23.13: 修复告警评估/温度采集/存储采集4个BUG+全站弹窗替换+前端原型对接API",
-        "v2.23.7: 59个前端原型全部改造对接后端API + 后端补丁",
-        "fix(v2.23.6): TDengine凭据兜底+部署脚本补全TDengine变量",
-        "v2.23.5: revert P1b - only use watchtower internal_url, drop extra_hosts",
-        "v2.23.4: fix deploy-cn.sh celery command, build_update_info guard, watchtower external URL, step numbering"
-      ]
     }
   ],
   "files": {
-    "docker-compose.yml": "b2acd79f1dd4c05b1f591e2d3c9b1f8f9efb13ece249cabce4601d781e652bd5",
+    "docker-compose.yml": "8fa03f9c8ff68436e2117eb522da3befbfd911941431648528bbae26483c9b32",
     "opsmate": "3d879069f58ee82498016fa71114c8b942b7d4ab666587b147b149cbcc72afd5",
     "dns-selfheal.sh": "c9ed45290bb425a5de4b5b4ba73434e92de775d14c1cd869b2f9ca8052b936f0"
   }
